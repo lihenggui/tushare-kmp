@@ -1,16 +1,7 @@
 package li.mercury.tushare.model
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
-
-@Serializable
-data class Request(
-    @SerialName("api_name")
-    val apiName: String,
-    val fields: String = "ts_code,symbol,name,area,industry,list_date",
-    val params: Params,
-    val token: String,
-)
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class Params(
@@ -18,6 +9,8 @@ data class Params(
     val endDate: String = "",
     @SerialName("start_date")
     val startDate: String = "",
+    @SerialName("ann_date")
+    val annDate: String = "",
     @SerialName("trade_date")
     val tradeDate: String = "",
     @SerialName("ts_code")
