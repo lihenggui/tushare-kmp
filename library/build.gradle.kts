@@ -20,6 +20,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(project.dependencies.platform(libs.koin.bom))
+                implementation(libs.koin.core)
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.client.cio)
                 implementation(libs.ktor.client.core)
@@ -33,6 +35,21 @@ kotlin {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(libs.kotlinx.coroutines.test)
+                implementation(libs.koin.test)
+            }
+        }
+        val jvmMain by getting {
+            dependencies {
+                implementation(libs.koin.ktor)
+                implementation(libs.koin.logger.slf4j)
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(libs.koin.test.junit5)
+                implementation(project.dependencies.platform(libs.junit.bom))
+                implementation(libs.junit.jupiter.api)
+                implementation(libs.junit.jupiter.engine)
             }
         }
     }
