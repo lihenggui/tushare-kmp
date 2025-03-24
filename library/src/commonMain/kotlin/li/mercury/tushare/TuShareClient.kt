@@ -54,12 +54,18 @@ class TuShareClient(private val json: Json) {
         }.body()
     }
 
+    /**
+     * Makes a request to the TuShare API
+     * 
+     * @param request The TuShare API request containing the API name, fields, parameters and token
+     * @return Response object containing the API response data
+     */
     suspend fun requestAnnD(
         fields: List<Fields>,
-        block: ParamBuilder.() -> Unit
+        params: ParamBuilder.() -> Unit
     ): Response {
         val config = TushareApiConfig.AnnsD
-        val paramBuilder = ParamBuilder().apply(block)
+        val paramBuilder = ParamBuilder().apply(params)
 
         return apiRequest(
             TushareRequest(

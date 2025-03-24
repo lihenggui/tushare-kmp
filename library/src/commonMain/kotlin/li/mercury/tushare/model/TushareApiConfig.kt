@@ -2,42 +2,45 @@ package li.mercury.tushare.model
 
 sealed class TushareApiConfig(
     val apiName: String,
-    val availableParams: Set<String>,
+    val availableParams: Set<Params>,
     val availableFields: Set<Fields>,
-    val requiredParams: Set<String> = emptySet()
+    val requiredParams: Set<Params> = emptySet()
 ) {
     data object AnnsD : TushareApiConfig(
         apiName = "anns_d",
-        availableParams = setOf("ts_code", "ann_date", "start_date", "end_date"),
+        availableParams = setOf(Params.TS_CODE, Params.ANN_DATE, Params.START_DATE, Params.END_DATE),
         availableFields = setOf(Fields.TS_CODE, Fields.ANN_DATE, Fields.NAME, Fields.TITLE, Fields.URL, Fields.REC_TIME),
     )
 }
 
 class ParamBuilder {
-    private val params = mutableMapOf<String, String>()
+    private val params = mutableMapOf<Params, String>()
 
-    fun annDate(value: String) = apply { params["ann_date"] = value }
-    fun tsCode(value: String) = apply { params["ts_code"] = value }
-    fun tradeDate(value: String) = apply { params["trade_date"] = value }
-    fun startDate(value: String) = apply { params["start_date"] = value }
-    fun endDate(value: String) = apply { params["end_date"] = value }
+    fun annDate(value: String) = paramBuilder(Params.ANN_DATE, value)
 
-    fun build(config: TushareApiConfig): Params {
+    fun tsCode(value: String) = paramBuilder(Params.TS_CODE, value)
+
+    fun tradeDate(value: String) = paramBuilder(Params.TRADE_DATE, value)
+
+    fun startDate(value: String) = paramBuilder(Params.START_DATE, value)
+
+    fun endDate(value: String) = paramBuilder(Params.END_DATE, value)
+
+    fun build(config: TushareApiConfig): Map<String, String> {
         validate(config)
-        return Params(
-            annDate = params["ann_date"] ?: "",
-            tsCode = params["ts_code"] ?: "",
-            tradeDate = params["trade_date"] ?: "",
-            startDate = params["start_date"] ?: "",
-            endDate = params["end_date"] ?: ""
-        )
+        return params.mapKeys { it.key.name }.toMap()
     }
+
+    private fun paramBuilder(key: Params, value: String) = apply { params[key] = value }
 
     private fun validate(config: TushareApiConfig) {
         config.requiredParams.forEach { param ->
-            require(param in params) { "Missing required parameter: $param" }
+            require(params.containsKey(param)) { 
+                "Missing required parameter: ${param.name}"
+            }
         }
     }
 }
+
 
 
