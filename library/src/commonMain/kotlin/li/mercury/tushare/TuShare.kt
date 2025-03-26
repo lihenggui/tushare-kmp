@@ -13,8 +13,6 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import li.mercury.tushare.api.index.IndexRepository
 import li.mercury.tushare.api.index.IndexRepositoryImpl
-import li.mercury.tushare.api.stock.StockRepository
-import li.mercury.tushare.api.stock.StockRepositoryImpl
 import li.mercury.tushare.models.TuShareData
 import li.mercury.tushare.models.TuShareErrorCodes
 import li.mercury.tushare.models.TuShareException
@@ -43,9 +41,6 @@ class TuShare(
         }
     }
 ) {
-    /** 访问股票相关API */
-    val stock: StockRepository by lazy { StockRepositoryImpl(this) }
-    
     /** 访问指数相关API */
     val index: IndexRepository by lazy { IndexRepositoryImpl(this) }
     
