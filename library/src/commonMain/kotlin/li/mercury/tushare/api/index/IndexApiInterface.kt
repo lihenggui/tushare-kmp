@@ -9,7 +9,7 @@ import li.mercury.tushare.models.IndexBasicResult
  * 
  * 提供对指数基本信息和行情数据的访问
  */
-interface IndexRepository {
+interface IndexApiInterface {
     /**
      * 获取指数基本信息
      *

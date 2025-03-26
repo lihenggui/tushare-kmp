@@ -15,7 +15,7 @@ import li.mercury.tushare.utils.toApiParams
  * 
  * @param tuShare TuShare API客户端实例
  */
-internal class IndexRepositoryImpl(private val tuShare: TuShare) : IndexRepository {
+internal class IndexApi(private val tuShare: TuShare) : IndexApiInterface {
     /**
      * 获取指数基本信息
      *
