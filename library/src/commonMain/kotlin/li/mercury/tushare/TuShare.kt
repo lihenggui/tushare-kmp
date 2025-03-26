@@ -11,8 +11,8 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import li.mercury.tushare.api.index.IndexRepository
-import li.mercury.tushare.api.index.IndexRepositoryImpl
+import li.mercury.tushare.api.index.IndexApiInterface
+import li.mercury.tushare.api.index.IndexApi
 import li.mercury.tushare.models.TuShareData
 import li.mercury.tushare.models.TuShareErrorCodes
 import li.mercury.tushare.models.TuShareException
@@ -42,7 +42,7 @@ class TuShare(
     }
 ) {
     /** 访问指数相关API */
-    val index: IndexRepository by lazy { IndexRepositoryImpl(this) }
+    val index: IndexApiInterface by lazy { IndexApi(this) }
     
     /**
      * 向TuShare发起原始API调用
