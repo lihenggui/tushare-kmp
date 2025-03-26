@@ -28,7 +28,7 @@ class TuShareTest {
 
         }
         val client = TuShare(
-            token = "5fa9cc7c4f513093745e84597aac90f3249d82ec1567e6aec6442348",
+            token = "",
             engine = mockEngine,
         )
         runBlocking {
