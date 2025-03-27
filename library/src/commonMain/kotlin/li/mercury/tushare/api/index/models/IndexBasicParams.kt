@@ -1,6 +1,7 @@
-package li.mercury.tushare.models
+package li.mercury.tushare.api.index.models
 
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.models.Market
 
 /**
  * 指数基本信息API请求参数
