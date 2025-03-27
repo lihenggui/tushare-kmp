@@ -68,7 +68,7 @@ class TuShare(
         val response = client.post(apiUrl) {
             contentType(ContentType.Application.Json)
             setBody(request)
-        }.body<TuShareResponse<TuShareData>>()
+        }.body<TuShareResponse>()
         
         if (response.code != TuShareErrorCodes.SUCCESS) {
             throw TuShareException(
