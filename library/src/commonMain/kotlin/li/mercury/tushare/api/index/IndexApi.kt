@@ -22,19 +22,17 @@ internal class IndexApi(private val tuShare: TuShare) : IndexApiInterface {
      * @param params 指数基本信息查询参数
      * @return 返回包含指数基本信息的Flow流
      */
-    override fun getIndexBasic(params: IndexBasicParams): Flow<IndexBasicResult> = flow {
+    override fun getIndexBasic(params: IndexBasicParams): Flow<List<IndexBasicResult>> = flow {
         val apiParams = params.toApiParams()
         
         val response = tuShare.callApi(
             apiName = "index_basic",
             params = apiParams
         )
-        
-        val fieldMap = response.fields.withIndex().associate { it.value to it.index }
-        
-        for (item in response.items) {
-            emit(
-                IndexBasicResult(
+
+        val data = response.toObjects { fields, item ->
+            val fieldMap = fields.withIndex().associate { it.value to it.index }
+            IndexBasicResult(
                 tsCode = item[fieldMap["ts_code"] ?: 0].asString(),
                 name = item[fieldMap["name"] ?: 1].asString(),
                 fullName = item.getOrNull(fieldMap["fullname"] ?: -1)?.asStringOrNull(),
@@ -49,7 +47,7 @@ internal class IndexApi(private val tuShare: TuShare) : IndexApiInterface {
                 desc = item.getOrNull(fieldMap["desc"] ?: -1)?.asStringOrNull(),
                 expDate = item.getOrNull(fieldMap["exp_date"] ?: -1)?.asStringOrNull()
             )
-            )
         }
+        emit(data)
     }
 } 
