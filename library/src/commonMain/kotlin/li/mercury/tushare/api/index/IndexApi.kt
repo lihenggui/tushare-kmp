@@ -29,25 +29,7 @@ internal class IndexApi(private val tuShare: TuShare) : IndexApiInterface {
             apiName = "index_basic",
             params = apiParams
         )
-
-        val data = response.toObjects { fields, item ->
-            val fieldMap = fields.withIndex().associate { it.value to it.index }
-            IndexBasicResult(
-                tsCode = item[fieldMap["ts_code"] ?: 0].asString(),
-                name = item[fieldMap["name"] ?: 1].asString(),
-                fullName = item.getOrNull(fieldMap["fullname"] ?: -1)?.asStringOrNull(),
-                market = item.getOrNull(fieldMap["market"] ?: -1)?.asStringOrNull(),
-                publisher = item.getOrNull(fieldMap["publisher"] ?: -1)?.asStringOrNull(),
-                indexType = item.getOrNull(fieldMap["index_type"] ?: -1)?.asStringOrNull(),
-                category = item.getOrNull(fieldMap["category"] ?: -1)?.asStringOrNull(),
-                baseDate = item.getOrNull(fieldMap["base_date"] ?: -1)?.asStringOrNull(),
-                basePoint = item.getOrNull(fieldMap["base_point"] ?: -1)?.asDoubleOrNull(),
-                listDate = item.getOrNull(fieldMap["list_date"] ?: -1)?.asStringOrNull(),
-                weightRule = item.getOrNull(fieldMap["weight_rule"] ?: -1)?.asStringOrNull(),
-                desc = item.getOrNull(fieldMap["desc"] ?: -1)?.asStringOrNull(),
-                expDate = item.getOrNull(fieldMap["exp_date"] ?: -1)?.asStringOrNull()
-            )
-        }
-        emit(data)
+        val results = response.toTypedObjects(IndexBasicResult.serializer())
+        emit(results)
     }
 } 
