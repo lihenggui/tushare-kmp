@@ -1,16 +1,17 @@
 package li.mercury.tushare
 
-import io.ktor.client.engine.mock.*
+import io.ktor.client.engine.mock.MockEngine
+import io.ktor.client.engine.mock.respond
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
+import kotlin.test.Test
 import kotlinx.coroutines.runBlocking
-import li.mercury.tushare.models.IndexBasicParams
+import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.models.Market
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
-import kotlin.test.Test
 
 class TuShareTest {
     @Test

@@ -1,8 +1,8 @@
 package li.mercury.tushare.api.index
 
 import kotlinx.coroutines.flow.Flow
-import li.mercury.tushare.models.IndexBasicParams
-import li.mercury.tushare.models.IndexBasicResult
+import li.mercury.tushare.api.index.models.IndexBasicParams
+import li.mercury.tushare.api.index.models.IndexBasicResult
 
 /**
  * 指数相关API的存储库接口
