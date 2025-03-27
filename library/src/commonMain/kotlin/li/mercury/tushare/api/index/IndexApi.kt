@@ -5,9 +5,6 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
-import li.mercury.tushare.utils.asDoubleOrNull
-import li.mercury.tushare.utils.asString
-import li.mercury.tushare.utils.asStringOrNull
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -29,7 +26,7 @@ internal class IndexApi(private val tuShare: TuShare) : IndexApiInterface {
             apiName = "index_basic",
             params = apiParams
         )
-        val results = response.toTypedObjects(IndexBasicResult.serializer())
+        val results = response.getResponseItems(IndexBasicResult.serializer())
         emit(results)
     }
 } 
