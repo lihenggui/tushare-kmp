@@ -3,6 +3,9 @@ package li.mercury.tushare.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.json.Json
 
 /**
  * 表示TuShare API数据结构
@@ -16,12 +19,24 @@ data class TuShareData(
     @SerialName("items") val items: List<List<JsonElement>>
 ) {
     /**
-     * 将原始数据转换为指定类型的对象列表
+     * TuShare数据中的对象表达方式不是标准方式
+     * 必须要使用一个自定义的序列化工具把List<List<JsonElement>>转换为List<T>
      *
-     * @param converter 转换函数，接收字段名列表和数据项，返回指定类型的对象
-     * @return 转换后的对象列表
+     * @param serializer 目标类型的序列化器
+     * @return 类型化对象列表
      */
-    fun <T> toObjects(converter: (fields: List<String>, item: List<JsonElement>) -> T): List<T> {
-        return items.map { item -> converter(fields, item) }
+    inline fun <reified T> toTypedObjects(serializer: KSerializer<T>): List<T> {
+        val json = Json { ignoreUnknownKeys = true }
+        
+        return items.map { item ->
+            val jsonObject = buildJsonObject {
+                fields.forEachIndexed { index, field ->
+                    if (index < item.size) {
+                        put(field, item[index])
+                    }
+                }
+            }
+            json.decodeFromJsonElement(serializer, jsonObject)
+        }
     }
 } 
