@@ -7,6 +7,7 @@ kotlinxSerialization = "1.8.0"
 ktor = "3.1.1"
 okio = "3.10.2"
 maven-publish = "0.29.0"
+turbine = "1.2.0"
 
 [libraries]
 kermit = { group = "co.touchlab", name = "kermit", version.ref = "kermit" }
@@ -23,6 +24,8 @@ ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-conte
 ktor-client-mock = { group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

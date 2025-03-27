@@ -1,45 +1,64 @@
 package li.mercury.tushare
 
+import app.cash.turbine.test
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlin.test.Test
-import kotlinx.coroutines.runBlocking
+import kotlin.test.assertNotNull
+import kotlinx.coroutines.test.runTest
 import li.mercury.tushare.api.index.models.IndexBasicParams
+import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.models.Market
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 
 class TuShareTest {
-    @Test
-    fun testFunctionalityWorks() {
-        val file = "src/commonTest/resources/responses/index_basic.json".toPath()
+
+    private fun createMockEngine(responseFileName: String) = MockEngine { _ ->
+        val file = "src/commonTest/resources/responses/$responseFileName".toPath()
         val content = FileSystem.SYSTEM.read(file) {
             readUtf8()
         }
-        val mockEngine = MockEngine { _ ->
-            respond(
-                content = content,
-                status = HttpStatusCode.OK,
-                headers = headersOf(HttpHeaders.ContentType, "application/json")
-            )
-
-        }
-        val client = TuShare(
-            token = "",
-            engine = mockEngine,
+        respond(
+            content = content,
+            status = HttpStatusCode.OK,
+            headers = headersOf(HttpHeaders.ContentType, "application/json")
         )
-        runBlocking {
-            client.index.getIndexBasic(
-                IndexBasicParams(
-                    market = Market.SW
-                )
-            ).collect {
-                println(it)
-            }
+    }
+
+    private fun createClient(responseFileName: String) = TuShare(
+        token = "",
+        engine = createMockEngine(responseFileName),
+    )
+
+    @Test
+    fun testIndexBasicWorks() = runTest {
+        val client = createClient("index_basic.json")
+        client.index.getIndexBasic(
+            IndexBasicParams(
+                market = Market.SW
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testIndexDailyWorks() = runTest {
+        val client = createClient("index_daily.json")
+        client.index.getIndexDaily(
+            IndexDailyParams(
+                tsCode = "399300.SZ"
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
         }
     }
 }
