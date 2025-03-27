@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
+import li.mercury.tushare.api.index.models.IndexDailyParams
+import li.mercury.tushare.api.index.models.IndexDailyResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -27,6 +29,23 @@ internal class IndexApi(private val tuShare: TuShare) : IndexApiInterface {
             params = apiParams
         )
         val results = response.getResponseItems(IndexBasicResult.serializer())
+        emit(results)
+    }
+    
+    /**
+     * 获取指数日线行情
+     *
+     * @param params 指数日线行情查询参数
+     * @return 返回包含指数日线行情的Flow流
+     */
+    override fun getIndexDaily(params: IndexDailyParams): Flow<List<IndexDailyResult>> = flow {
+        val apiParams = params.toApiParams()
+        
+        val response = tuShare.callApi(
+            apiName = "index_daily",
+            params = apiParams
+        )
+        val results = response.getResponseItems(IndexDailyResult.serializer())
         emit(results)
     }
 } 
