@@ -36,6 +36,7 @@ kotlin {
                 implementation(libs.kotlinx.io.core)
                 implementation(libs.kotlinx.io.okio)
                 implementation(libs.okio)
+                implementation(libs.turbine)
             }
         }
     }
