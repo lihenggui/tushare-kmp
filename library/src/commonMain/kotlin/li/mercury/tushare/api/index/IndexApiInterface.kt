@@ -16,5 +16,5 @@ interface IndexApiInterface {
      * @param params 指数基本信息查询参数
      * @return 返回包含指数基本信息的Flow流
      */
-    fun getIndexBasic(params: IndexBasicParams): Flow<IndexBasicResult>
+    fun getIndexBasic(params: IndexBasicParams): Flow<List<IndexBasicResult>>
 } 
