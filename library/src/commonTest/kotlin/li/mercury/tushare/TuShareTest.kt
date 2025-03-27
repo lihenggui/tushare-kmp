@@ -11,6 +11,8 @@ import kotlin.test.assertNotNull
 import kotlinx.coroutines.test.runTest
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyParams
+import li.mercury.tushare.api.stock.models.HsConstParams
+import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.models.Market
 import okio.FileSystem
 import okio.Path.Companion.toPath
@@ -49,7 +51,8 @@ class TuShareTest {
         }
     }
 
-    @Test
+//    @Test
+    // Test skipped, no permission
     fun testIndexDailyWorks() = runTest {
         val client = createClient("index_daily.json")
         client.index.getIndexDaily(
@@ -59,6 +62,20 @@ class TuShareTest {
         ).test {
             val result = awaitItem()
             assertNotNull(result)
+        }
+    }
+
+    @Test
+    fun testHsConstWorks() = runTest {
+        val client = createClient("hs_const.json")
+        client.stock.getHsConst(
+            HsConstParams(
+                hsType = HsType.SH
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
         }
     }
 }
