@@ -25,7 +25,7 @@ data class TuShareData(
      * @param serializer 目标类型的序列化器
      * @return 类型化对象列表
      */
-    inline fun <reified T> toTypedObjects(serializer: KSerializer<T>): List<T> {
+    inline fun <reified T> getResponseItems(serializer: KSerializer<T>): List<T> {
         val json = Json { ignoreUnknownKeys = true }
         
         return items.map { item ->
