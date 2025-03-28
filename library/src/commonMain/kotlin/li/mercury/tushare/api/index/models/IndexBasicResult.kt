@@ -1,41 +1,46 @@
 package li.mercury.tushare.api.index.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
-/**
- * 指数基本信息
- *
- * | 名称         | 类型  | 描述 |
- * |--------------|------|------|
- * | ts_code      | str  | TS代码 |
- * | name         | str  | 简称 |
- * | fullname     | str  | 指数全称 |
- * | market       | str  | 市场 |
- * | publisher    | str  | 发布方 |
- * | index_type   | str  | 指数风格 |
- * | category     | str  | 指数类别 |
- * | base_date    | str  | 基期 |
- * | base_point   | float | 基点 |
- * | list_date    | str  | 发布日期 |
- * | weight_rule  | str  | 加权方式 |
- * | desc         | str  | 描述 |
- * | exp_date     | str  | 终止日期 |
- *
- */
 @Serializable
 data class IndexBasicResult(
-    @SerialName("ts_code") val tsCode: String,
+    /** TS代码 */
+    @SerialName("ts_code")
+    val tsCode: String,
+    /** 简称 */
     val name: String,
-    @SerialName("fullname") val fullName: String? = null,
+    /** 指数全称 */
+    @SerialName("fullname")
+    val fullName: String? = null,
+    /** 市场 */
     val market: String? = null,
+    /** 发布方 */
     val publisher: String? = null,
-    @SerialName("index_type") val indexType: String? = null,
+    /** 指数风格 */
+    @SerialName("index_type")
+    val indexType: String? = null,
+    /** 指数类别 */
     val category: String? = null,
-    @SerialName("base_date") val baseDate: String? = null,
-    @SerialName("base_point") val basePoint: Double? = null,
-    @SerialName("list_date") val listDate: String? = null,
-    @SerialName("weight_rule") val weightRule: String? = null,
+    /** 基期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    @SerialName("base_date")
+    val baseDate: LocalDate? = null,
+    /** 基点 */
+    @SerialName("base_point")
+    val basePoint: Double? = null,
+    /** 发布日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    @SerialName("list_date")
+    val listDate: LocalDate? = null,
+    /** 加权方式 */
+    @SerialName("weight_rule")
+    val weightRule: String? = null,
+    /** 描述 */
     val desc: String? = null,
-    @SerialName("exp_date") val expDate: String? = null,
+    /** 终止日期 */
+    @SerialName("exp_date")
+    val expDate: String? = null,
 )

@@ -1,6 +1,8 @@
 package li.mercury.tushare.api.index.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
  * 指数日线行情API请求参数
@@ -17,9 +19,11 @@ data class IndexDailyParams(
     /** 指数代码，来源指数基础信息接口 */
     val tsCode: String,
     /** 交易日期（日期格式：YYYYMMDD） */
-    val tradeDate: String? = null,
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    val tradeDate: LocalDate? = null,
     /** 开始日期（日期格式：YYYYMMDD）*/
-    val startDate: String? = null,
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    val startDate: LocalDate? = null,
     /** 结束日期 */
     val endDate: String? = null,
 )
