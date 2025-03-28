@@ -2,6 +2,7 @@ package li.mercury.tushare.api.stock.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.models.TsCode
 
 /**
  * 沪深股通成分股信息
@@ -10,7 +11,7 @@ import kotlinx.serialization.Serializable
 data class HsConstResult(
     /** TS代码 */
     @SerialName("ts_code")
-    val tsCode: String,
+    val tsCode: TsCode,
     /** 沪深港通类型 */
     @SerialName("hs_type")
     val hsType: HsType,

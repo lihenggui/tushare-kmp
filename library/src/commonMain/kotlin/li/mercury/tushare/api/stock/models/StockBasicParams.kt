@@ -3,6 +3,7 @@ package li.mercury.tushare.api.stock.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.Exchange
+import li.mercury.tushare.models.TsCode
 
 /**
  * 股票基本信息API请求参数
@@ -11,7 +12,7 @@ import li.mercury.tushare.models.Exchange
 data class StockBasicParams(
     /** TS股票代码 */
     @SerialName("ts_code")
-    val tsCode: String? = null,
+    val tsCode: TsCode? = null,
     /** 股票名称 */
     val name: String? = null,
     /** 市场类别（主板/创业板/科创板/CDR/北交所） */

@@ -14,6 +14,7 @@ import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
+import li.mercury.tushare.models.TsCode
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
@@ -64,7 +65,7 @@ class TuShareTest {
             client.index
                 .getIndexBasic(
                     IndexBasicParams(
-                        market = Market.SW,
+                        market = Market.SSE,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -81,11 +82,12 @@ class TuShareTest {
             client.index
                 .getIndexDaily(
                     IndexDailyParams(
-                        tsCode = "399300.SZ",
+                        tsCode = TsCode("000001", "SH"),
                     ),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
+                    awaitComplete()
                 }
         }
 

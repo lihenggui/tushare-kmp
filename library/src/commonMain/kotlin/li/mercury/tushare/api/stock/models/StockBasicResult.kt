@@ -4,6 +4,7 @@ import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.Exchange
+import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
@@ -12,7 +13,8 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 @Serializable
 data class StockBasicResult(
     /** TS代码 */
-    @SerialName("ts_code") val tsCode: String,
+    @SerialName("ts_code")
+    val tsCode: TsCode,
     /** 股票代码 */
     val symbol: String,
     /** 股票名称 */
