@@ -30,17 +30,24 @@ data class StockBasicResult(
     /** 交易所代码（SSE上交所 SZSE深交所 BSE北交所） */
     val exchange: Exchange? = null,
     /** 交易货币 */
-    @SerialName("curr_type") val currType: String? = null,
+    @SerialName("curr_type")
+    val currType: String? = null,
     /** 上市状态 L上市 D退市 P暂停上市 */
-    @SerialName("list_status") val listStatus: ListStatus? = null,
+    @SerialName("list_status")
+    val listStatus: ListStatus? = null,
     /** 上市日期 */
-    @SerialName("list_date") val listDate: String? = null,
+    @SerialName("list_date")
+    val listDate: String? = null,
     /** 退市日期 */
-    @SerialName("delist_date") val delistDate: String? = null,
+    @SerialName("delist_date")
+    val delistDate: String? = null,
     /** 是否沪深港通标的，N否 H沪股通 S深股通 */
-    @SerialName("is_hs") val isHs: HsTarget? = null,
+    @SerialName("is_hs")
+    val isHs: HsTarget? = null,
     /** 实控人名称 */
-    @SerialName("act_name") val actName: String? = null,
+    @SerialName("act_name")
+    val actName: String? = null,
     /** 实控人企业性质 */
-    @SerialName("act_ent_type") val actEntType: String? = null,
+    @SerialName("act_ent_type")
+    val actEntType: String? = null,
 )
