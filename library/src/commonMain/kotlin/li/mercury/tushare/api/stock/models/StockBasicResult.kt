@@ -1,8 +1,10 @@
 package li.mercury.tushare.api.stock.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.Exchange
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
  * 股票基本信息返回对象类
@@ -36,11 +38,13 @@ data class StockBasicResult(
     @SerialName("list_status")
     val listStatus: ListStatus? = null,
     /** 上市日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("list_date")
-    val listDate: String? = null,
+    val listDate: LocalDate? = null,
     /** 退市日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("delist_date")
-    val delistDate: String? = null,
+    val delistDate: LocalDate? = null,
     /** 是否沪深港通标的，N否 H沪股通 S深股通 */
     @SerialName("is_hs")
     val isHs: HsTarget? = null,
