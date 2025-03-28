@@ -19,12 +19,6 @@ object DataClassConversions {
     fun camelToSnakeCase(input: String): String = input.replace(Regex("([a-z])([A-Z])"), "$1_$2").lowercase()
 
     /**
-     * 将蛇形命名转换为驼峰命名
-     * 例如: this_is_example -> thisIsExample
-     */
-    fun snakeToCamelCase(input: String): String = input.replace(Regex("_([a-z])")) { it.groupValues[1].uppercase() }
-
-    /**
      * 通用方法：将任何可序列化的数据类转换为Map
      *
      * @param T 数据类类型
@@ -54,19 +48,6 @@ object DataClassConversions {
         }
     }
 }
-
-/**
- * 扩展函数：将任意枚举转换为字符串
- *
- * @param snakeCase 是否将枚举名称转换为蛇形命名
- * @return 枚举名称（可选为蛇形命名）
- */
-fun Enum<*>.toApiString(snakeCase: Boolean = true): String =
-    if (snakeCase) {
-        DataClassConversions.camelToSnakeCase(name)
-    } else {
-        name
-    }
 
 /**
  * 扩展函数：将任意可序列化的数据类转换为API参数Map
