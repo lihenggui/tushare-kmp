@@ -5,8 +5,12 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
+import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.StockCompanyResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -38,6 +42,32 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(HsConstResult.serializer())
+            emit(results)
+        }
+
+    override fun getNameChange(params: NameChangeParams): Flow<List<NameChangeResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "namechange",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(NameChangeResult.serializer())
+            emit(results)
+        }
+
+    override fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "stock_company",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(StockCompanyResult.serializer())
             emit(results)
         }
 }

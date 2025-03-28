@@ -2,6 +2,7 @@ package li.mercury.tushare.api.index.models
 
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.Market
+import li.mercury.tushare.models.TsCode
 
 /**
  * 指数基本信息API请求参数
@@ -9,7 +10,7 @@ import li.mercury.tushare.models.Market
 @Serializable
 data class IndexBasicParams(
     /** 指数代码 */
-    val tsCode: String? = null,
+    val tsCode: TsCode? = null,
     /** 指数简称 */
     val name: String? = null,
     /** 交易所或服务商，如SSE（上交所）, SZSE（深交所）等，默认SSE */

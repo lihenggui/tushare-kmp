@@ -11,7 +11,12 @@ import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
+import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.StockBasicParams
+import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
+import li.mercury.tushare.models.TsCode
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
@@ -40,13 +45,29 @@ class TuShareTest {
         )
 
     @Test
+    fun testStockBasicWorks() =
+        runTest {
+            val client = createClient("stock_basic.json")
+            client.stock
+                .getStockBasic(
+                    StockBasicParams(
+                        exchange = Exchange.SSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
     fun testIndexBasicWorks() =
         runTest {
             val client = createClient("index_basic.json")
             client.index
                 .getIndexBasic(
                     IndexBasicParams(
-                        market = Market.SW,
+                        market = Market.SSE,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -63,11 +84,12 @@ class TuShareTest {
             client.index
                 .getIndexDaily(
                     IndexDailyParams(
-                        tsCode = "399300.SZ",
+                        tsCode = TsCode("000001", "SH"),
                     ),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
+                    awaitComplete()
                 }
         }
 
@@ -79,6 +101,38 @@ class TuShareTest {
                 .getHsConst(
                     HsConstParams(
                         hsType = HsType.SH,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testNameChangeWorks() =
+        runTest {
+            val client = createClient("name_change.json")
+            client.stock
+                .getNameChange(
+                    NameChangeParams(
+                        tsCode = TsCode("600519", "SH"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testStockCompanyWorks() =
+        runTest {
+            val client = createClient("stock_company.json")
+            client.stock
+                .getStockCompany(
+                    StockCompanyParams(
+                        exchange = Exchange.SZSE,
                     ),
                 ).test {
                     val result = awaitItem()
