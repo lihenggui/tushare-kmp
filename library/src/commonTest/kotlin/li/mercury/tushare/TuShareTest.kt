@@ -13,6 +13,7 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
+import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
 import li.mercury.tushare.models.TsCode
@@ -116,6 +117,22 @@ class TuShareTest {
                 .getNameChange(
                     NameChangeParams(
                         tsCode = TsCode("600519", "SH"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testStockCompanyWorks() =
+        runTest {
+            val client = createClient("stock_company.json")
+            client.stock
+                .getStockCompany(
+                    StockCompanyParams(
+                        exchange = Exchange.SZSE,
                     ),
                 ).test {
                     val result = awaitItem()

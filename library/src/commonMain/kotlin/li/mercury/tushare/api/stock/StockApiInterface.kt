@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
+import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.StockCompanyResult
 
 /**
  * 股票相关API的存储库接口
@@ -26,4 +28,9 @@ interface StockApiInterface {
      * 获取股票曾用名信息
      */
     fun getNameChange(params: NameChangeParams): Flow<List<NameChangeResult>>
+
+    /**
+     * 获取上市公司基本信息
+     */
+    fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
 }
