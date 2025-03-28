@@ -11,6 +11,8 @@ import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
+import li.mercury.tushare.api.stock.models.StockBasicParams
+import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
 import okio.FileSystem
 import okio.Path.Companion.toPath
@@ -38,6 +40,22 @@ class TuShareTest {
             token = "",
             engine = createMockEngine(responseFileName),
         )
+
+    @Test
+    fun testStockBasicWorks() =
+        runTest {
+            val client = createClient("stock_basic.json")
+            client.stock
+                .getStockBasic(
+                    StockBasicParams(
+                        exchange = Exchange.SSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
 
     @Test
     fun testIndexBasicWorks() =
