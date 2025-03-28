@@ -8,7 +8,7 @@ import li.mercury.tushare.api.index.models.IndexDailyResult
 
 /**
  * 指数相关API的存储库接口
- * 
+ *
  * 提供对指数基本信息和行情数据的访问
  */
 interface IndexApiInterface {
@@ -19,7 +19,7 @@ interface IndexApiInterface {
      * @return 返回包含指数基本信息的Flow流
      */
     fun getIndexBasic(params: IndexBasicParams): Flow<List<IndexBasicResult>>
-    
+
     /**
      * 获取指数日线行情
      *
@@ -27,4 +27,4 @@ interface IndexApiInterface {
      * @return 返回包含指数日线行情的Flow流
      */
     fun getIndexDaily(params: IndexDailyParams): Flow<List<IndexDailyResult>>
-} 
+}

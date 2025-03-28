@@ -1,10 +1,10 @@
 package li.mercury.tushare.api.stock
 
 import kotlinx.coroutines.flow.Flow
-import li.mercury.tushare.api.stock.models.StockBasicParams
-import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.StockBasicParams
+import li.mercury.tushare.api.stock.models.StockBasicResult
 
 /**
  * 股票相关API的存储库接口

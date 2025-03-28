@@ -14,5 +14,5 @@ import kotlinx.serialization.Serializable
 data class TuShareResponse(
     @SerialName("code") val code: Int,
     @SerialName("msg") val msg: String? = null,
-    @SerialName("data") val data: TuShareData? = null
-) 
+    @SerialName("data") val data: TuShareData? = null,
+)

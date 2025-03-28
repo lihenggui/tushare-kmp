@@ -32,5 +32,5 @@ data class IndexDailyResult(
     val change: Double? = null,
     @SerialName("pct_chg") val pctChg: Double? = null,
     val vol: Double? = null,
-    val amount: Double? = null
-) 
+    val amount: Double? = null,
+)

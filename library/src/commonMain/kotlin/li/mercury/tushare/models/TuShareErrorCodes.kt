@@ -10,4 +10,4 @@ object TuShareErrorCodes {
     const val PERMISSION_DENIED = 2004
     const val INVALID_PARAMS = 2005
     const val INTERNAL_ERROR = 5000
-} 
+}

@@ -18,5 +18,5 @@ data class StockBasicParams(
     /** 交易所代码：SSE上交所 SZSE深交所 BSE北交所 */
     val exchange: String? = null,
     /** 是否沪深港通标的：N否 H沪股通 S深股通 */
-    val isHs: String? = null
+    val isHs: String? = null,
 )

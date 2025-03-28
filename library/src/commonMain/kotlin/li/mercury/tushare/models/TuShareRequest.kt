@@ -16,5 +16,5 @@ data class TuShareRequest(
     @SerialName("api_name") val apiName: String,
     @SerialName("token") val token: String,
     @SerialName("params") val params: Map<String, String> = emptyMap(),
-    @SerialName("fields") val fields: String = ""
-) 
+    @SerialName("fields") val fields: String = "",
+)

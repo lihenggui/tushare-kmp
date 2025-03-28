@@ -24,7 +24,7 @@ import kotlinx.serialization.Serializable
  *
  */
 @Serializable
-data class IndexBasicResult (
+data class IndexBasicResult(
     @SerialName("ts_code") val tsCode: String,
     val name: String,
     @SerialName("fullname") val fullName: String? = null,
@@ -37,5 +37,5 @@ data class IndexBasicResult (
     @SerialName("list_date") val listDate: String? = null,
     @SerialName("weight_rule") val weightRule: String? = null,
     val desc: String? = null,
-    @SerialName("exp_date") val expDate: String? = null
+    @SerialName("exp_date") val expDate: String? = null,
 )
