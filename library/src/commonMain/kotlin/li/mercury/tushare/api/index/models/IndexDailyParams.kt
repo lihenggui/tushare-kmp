@@ -21,5 +21,5 @@ data class IndexDailyParams(
     /** 开始日期（日期格式：YYYYMMDD）*/
     val startDate: String? = null,
     /** 结束日期 */
-    val endDate: String? = null
-) 
+    val endDate: String? = null,
+)

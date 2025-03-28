@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.stock.models
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**

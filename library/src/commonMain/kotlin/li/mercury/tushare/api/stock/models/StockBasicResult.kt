@@ -24,5 +24,5 @@ data class StockBasicResult(
     @SerialName("delist_date") val delistDate: String? = null,
     @SerialName("is_hs") val isHs: String? = null,
     @SerialName("act_name") val actName: String? = null,
-    @SerialName("act_ent_type") val actEntType: String? = null
+    @SerialName("act_ent_type") val actEntType: String? = null,
 )

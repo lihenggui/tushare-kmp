@@ -11,8 +11,8 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import li.mercury.tushare.api.index.IndexApiInterface
 import li.mercury.tushare.api.index.IndexApi
+import li.mercury.tushare.api.index.IndexApiInterface
 import li.mercury.tushare.api.stock.StockApi
 import li.mercury.tushare.api.stock.StockApiInterface
 import li.mercury.tushare.models.TuShareData
@@ -34,21 +34,24 @@ class TuShare(
     private val token: String,
     private val apiUrl: String = "https://api.tushare.pro",
     private val engine: HttpClientEngine = CIO.create(),
-    private val client: HttpClient = HttpClient(engine) {
-        install(ContentNegotiation) {
-            json(Json {
-                ignoreUnknownKeys = true
-                isLenient = true
-            })
-        }
-    }
+    private val client: HttpClient =
+        HttpClient(engine) {
+            install(ContentNegotiation) {
+                json(
+                    Json {
+                        ignoreUnknownKeys = true
+                        isLenient = true
+                    },
+                )
+            }
+        },
 ) {
     /** 访问指数相关API */
     val index: IndexApiInterface by lazy { IndexApi(this) }
 
     /** 股票信息相关API */
     val stock: StockApiInterface by lazy { StockApi(this) }
-    
+
     /**
      * 向TuShare发起原始API调用
      *
@@ -61,30 +64,33 @@ class TuShare(
     internal suspend fun callApi(
         apiName: String,
         params: Map<String, String> = emptyMap(),
-        fields: String = ""
+        fields: String = "",
     ): TuShareData {
-        val request = TuShareRequest(
-            apiName = apiName,
-            token = token,
-            params = params,
-            fields = fields
-        )
-        
-        val response = client.post(apiUrl) {
-            contentType(ContentType.Application.Json)
-            setBody(request)
-        }.body<TuShareResponse>()
-        
+        val request =
+            TuShareRequest(
+                apiName = apiName,
+                token = token,
+                params = params,
+                fields = fields,
+            )
+
+        val response =
+            client
+                .post(apiUrl) {
+                    contentType(ContentType.Application.Json)
+                    setBody(request)
+                }.body<TuShareResponse>()
+
         if (response.code != TuShareErrorCodes.SUCCESS) {
             throw TuShareException(
                 message = response.msg ?: "Unknown error occurred",
-                code = response.code
+                code = response.code,
             )
         }
-        
+
         return response.data ?: throw TuShareException(
             message = "No data returned from API",
-            code = TuShareErrorCodes.INTERNAL_ERROR
+            code = TuShareErrorCodes.INTERNAL_ERROR,
         )
     }
 }
