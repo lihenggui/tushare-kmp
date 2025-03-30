@@ -15,4 +15,4 @@ data class StockCompanyParams(
     val tsCode: TsCode? = null,
     /** 交易所代码：SSE上交所，SZSE深交所，BSE北交所 */
     val exchange: Exchange? = null,
-) 
+)
