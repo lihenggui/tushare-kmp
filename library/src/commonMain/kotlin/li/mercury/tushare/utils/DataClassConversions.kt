@@ -16,7 +16,13 @@ object DataClassConversions {
      * 将驼峰命名转换为蛇形命名
      * 例如: thisIsExample -> this_is_example
      */
-    fun camelToSnakeCase(input: String): String = input.replace(Regex("([a-z])([A-Z])"), "$1_$2").lowercase()
+    fun camelToSnakeCase(input: String): String =
+        input
+            .replace(Regex("([a-z0-9])([A-Z])"), "$1_$2")
+            .replace(
+                Regex("([A-Z])([A-Z][a-z])"),
+                "$1_$2",
+            ).lowercase()
 
     /**
      * 通用方法：将任何可序列化的数据类转换为Map

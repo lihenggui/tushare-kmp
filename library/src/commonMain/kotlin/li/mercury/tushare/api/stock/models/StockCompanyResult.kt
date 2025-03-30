@@ -56,4 +56,4 @@ data class StockCompanyResult(
     /** 经营范围 */
     @SerialName("business_scope")
     val businessScope: String? = null,
-) 
+)
