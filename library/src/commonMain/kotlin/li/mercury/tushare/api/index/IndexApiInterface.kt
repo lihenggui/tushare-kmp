@@ -5,6 +5,8 @@ import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
+import li.mercury.tushare.api.index.models.IndexWeeklyParams
+import li.mercury.tushare.api.index.models.IndexWeeklyResult
 
 /**
  * 指数相关API的存储库接口
@@ -27,4 +29,12 @@ interface IndexApiInterface {
      * @return 返回包含指数日线行情的Flow流
      */
     fun getIndexDaily(params: IndexDailyParams): Flow<List<IndexDailyResult>>
+
+    /**
+     * 获取指数周线行情
+     *
+     * @param params 指数周线行情查询参数
+     * @return 返回包含指数周线行情的Flow流
+     */
+    fun getIndexWeekly(params: IndexWeeklyParams): Flow<List<IndexWeeklyResult>>
 }

@@ -7,6 +7,8 @@ import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
+import li.mercury.tushare.api.index.models.IndexWeeklyParams
+import li.mercury.tushare.api.index.models.IndexWeeklyResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -52,6 +54,23 @@ internal class IndexApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(IndexDailyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取指数周线行情
+     *
+     * @param params 指数周线行情查询参数
+     * @return 返回包含指数周线行情的Flow流
+     */
+    override fun getIndexWeekly(params: IndexWeeklyParams): Flow<List<IndexWeeklyResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "index_weekly",
+                params = apiParams,
+            )
+            val results = response.getResponseItems(IndexWeeklyResult.serializer())
             emit(results)
         }
 }
