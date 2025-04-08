@@ -17,6 +17,8 @@ import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyResult
 import li.mercury.tushare.api.index.models.IndexWeightParams
 import li.mercury.tushare.api.index.models.IndexWeightResult
+import li.mercury.tushare.api.index.models.SwDailyParams
+import li.mercury.tushare.api.index.models.SwDailyResult
 
 /**
  * 指数相关API的存储库接口
@@ -86,4 +88,11 @@ interface IndexApiInterface {
      */
     fun getIndexMemberAll(params: IndexMemberAllParams): Flow<List<IndexMemberAllResult>>
 
+    /**
+     * 获取申万行业日线行情
+     *
+     * @param params 申万行业日线行情查询参数
+     * @return 返回包含申万行业日线行情的Flow流
+     */
+    fun getSwDaily(params: SwDailyParams): Flow<List<SwDailyResult>>
 }

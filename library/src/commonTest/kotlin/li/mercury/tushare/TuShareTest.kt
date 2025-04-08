@@ -7,6 +7,7 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexClassifyParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicParams
@@ -15,6 +16,7 @@ import li.mercury.tushare.api.index.models.IndexMemberAllParams
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeightParams
+import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -152,6 +154,20 @@ class TuShareTest {
             client.index
                 .getIndexMonthly(
                     IndexMonthlyParams(),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testSwDailyWorks() =
+        runTest {
+            val client = createClient("sw_daily.json")
+            client.index
+                .getSwDaily(
+                    SwDailyParams(tradeDate = LocalDate(2023, 7, 5))
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)

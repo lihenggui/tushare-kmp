@@ -19,6 +19,8 @@ import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyResult
 import li.mercury.tushare.api.index.models.IndexWeightParams
 import li.mercury.tushare.api.index.models.IndexWeightResult
+import li.mercury.tushare.api.index.models.SwDailyParams
+import li.mercury.tushare.api.index.models.SwDailyResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -170,6 +172,25 @@ internal class IndexApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(IndexMemberAllResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取申万行业日线行情
+     *
+     * @param params 申万行业日线行情查询参数
+     * @return 返回包含申万行业日线行情的Flow流
+     */
+    override fun getSwDaily(params: SwDailyParams): Flow<List<SwDailyResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "sw_daily",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(SwDailyResult.serializer())
             emit(results)
         }
 }
