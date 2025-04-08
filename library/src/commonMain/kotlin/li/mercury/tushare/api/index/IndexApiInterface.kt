@@ -5,6 +5,8 @@ import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
+import li.mercury.tushare.api.index.models.IndexMonthlyParams
+import li.mercury.tushare.api.index.models.IndexMonthlyResult
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyResult
 
@@ -37,4 +39,12 @@ interface IndexApiInterface {
      * @return 返回包含指数周线行情的Flow流
      */
     fun getIndexWeekly(params: IndexWeeklyParams): Flow<List<IndexWeeklyResult>>
+
+    /**
+     * 获取指数月线行情
+     *
+     * @param params 指数月线行情查询参数
+     * @return 返回包含指数月线行情的Flow流
+     */
+    fun getIndexMonthly(params: IndexMonthlyParams): Flow<List<IndexMonthlyResult>>
 }
