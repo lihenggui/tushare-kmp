@@ -21,6 +21,8 @@ import li.mercury.tushare.api.index.models.IndexWeightParams
 import li.mercury.tushare.api.index.models.IndexWeightResult
 import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SwDailyResult
+import li.mercury.tushare.api.index.models.SzDailyInfoParams
+import li.mercury.tushare.api.index.models.SzDailyInfoResult
 
 /**
  * 指数相关API的存储库接口
@@ -106,4 +108,11 @@ interface IndexApiInterface {
  */
 fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>>
 
+    /**
+     * 获取深圳市场每日交易概况
+     *
+     * @param params 深圳市场交易概况查询参数
+     * @return 返回包含交易概况数据的Flow流
+     */
+    fun getSzDailyInfo(params: SzDailyInfoParams): Flow<List<SzDailyInfoResult>>
 }

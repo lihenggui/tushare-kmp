@@ -23,6 +23,8 @@ import li.mercury.tushare.api.index.models.IndexWeightParams
 import li.mercury.tushare.api.index.models.IndexWeightResult
 import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SwDailyResult
+import li.mercury.tushare.api.index.models.SzDailyInfoParams
+import li.mercury.tushare.api.index.models.SzDailyInfoResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -196,22 +198,40 @@ internal class IndexApi(
             emit(results)
         }
 
-        /**
- * 获取市场交易统计数据
- *
- * @param params 市场交易统计查询参数
- * @return 返回包含市场交易统计数据的Flow流
- */
-override fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>> =
-    flow {
-        val apiParams = params.toApiParams()
+    /**
+     * 获取市场交易统计数据
+     *
+     * @param params 市场交易统计查询参数
+     * @return 返回包含市场交易统计数据的Flow流
+     */
+    override fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>> =
+        flow {
+            val apiParams = params.toApiParams()
 
-        val response =
-            tuShare.callApi(
-                apiName = "daily_info",
-                params = apiParams,
+            val response =
+                tuShare.callApi(
+                    apiName = "daily_info",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(DailyInfoResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取深圳市场每日交易概况
+     *
+     * @param params 深圳市场交易概况查询参数
+     * @return 返回包含交易概况数据的Flow流
+     */
+    override fun getSzDailyInfo(params: SzDailyInfoParams): Flow<List<SzDailyInfoResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "sz_daily_info",
+                params = apiParams
             )
-        val results = response.getResponseItems(DailyInfoResult.serializer())
-        emit(results)
-    }
+            val results = response.getResponseItems(SzDailyInfoResult.serializer())
+            emit(results)
+        }
 }
