@@ -9,6 +9,8 @@ import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
+import li.mercury.tushare.api.index.models.IndexMemberAllParams
+import li.mercury.tushare.api.index.models.IndexMemberAllResult
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexMonthlyResult
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
@@ -75,5 +77,13 @@ interface IndexApiInterface {
      * @return 返回包含行业分类数据的Flow流
      */
     fun getIndexClassify(params: IndexClassifyParams): Flow<List<IndexClassifyResult>>
+
+    /**
+     * 申万行业成分构成接口
+     *
+     * @param params 申万行业成分构成查询参数
+     * @return 返回包含行业成分构成的Flow流
+     */
+    fun getIndexMemberAll(params: IndexMemberAllParams): Flow<List<IndexMemberAllResult>>
 
 }

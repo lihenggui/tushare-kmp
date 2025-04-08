@@ -11,6 +11,7 @@ import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexClassifyParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyParams
+import li.mercury.tushare.api.index.models.IndexMemberAllParams
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeightParams
@@ -83,12 +84,27 @@ class TuShareTest {
 
     //    @Test
     // Test skipped, no permission
+    fun testIndexMemberAllWorks() =
+        runTest {
+            val client = createClient("index_member_all.json")
+            client.index
+                .getIndexMemberAll(
+                    IndexMemberAllParams(),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
     fun testIndexClassifyWorks() =
         runTest {
             val client = createClient("index_classify.json")
             client.index
                 .getIndexClassify(
-                    IndexClassifyParams( ),
+                    IndexClassifyParams(),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)

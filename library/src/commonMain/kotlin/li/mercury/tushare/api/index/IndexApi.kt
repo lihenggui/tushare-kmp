@@ -11,6 +11,8 @@ import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
+import li.mercury.tushare.api.index.models.IndexMemberAllParams
+import li.mercury.tushare.api.index.models.IndexMemberAllResult
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexMonthlyResult
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
@@ -149,6 +151,25 @@ internal class IndexApi(
                 params = apiParams
             )
             val results = response.getResponseItems(IndexClassifyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取申万行业成分构成
+     *
+     * @param params 申万行业成分构成查询参数
+     * @return 返回包含行业成分构成的Flow流
+     */
+    override fun getIndexMemberAll(params: IndexMemberAllParams): Flow<List<IndexMemberAllResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "index_member_all",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(IndexMemberAllResult.serializer())
             emit(results)
         }
 }
