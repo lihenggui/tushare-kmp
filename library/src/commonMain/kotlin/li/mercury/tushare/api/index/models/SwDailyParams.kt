@@ -3,6 +3,7 @@ package li.mercury.tushare.api.index.models
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
@@ -11,7 +12,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 @Serializable
 data class SwDailyParams(
     /** 行业代码 */
-    val tsCode: String? = null,
+    val tsCode: TsCode? = null,
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

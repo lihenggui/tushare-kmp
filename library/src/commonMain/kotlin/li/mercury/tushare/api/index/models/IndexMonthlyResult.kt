@@ -1,18 +1,20 @@
 package li.mercury.tushare.api.index.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
 data class IndexMonthlyResult(
     /** TS 指数代码 */
     @SerialName("ts_code")
-    val tsCode: String,
+    val tsCode: TsCode,
     /** 交易日 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
-    val tradeDate: String,
+    val tradeDate: LocalDate,
     /** 收盘点位 */
     val close: Double,
     /** 开盘点位 */
