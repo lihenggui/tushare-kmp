@@ -25,6 +25,8 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SwDailyResult
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.SzDailyInfoResult
+import li.mercury.tushare.api.index.models.ThsDailyParams
+import li.mercury.tushare.api.index.models.ThsDailyResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -232,6 +234,24 @@ internal class IndexApi(
                 params = apiParams
             )
             val results = response.getResponseItems(SzDailyInfoResult.serializer())
+            emit(results)
+        }
+
+        /**
+     * 获取同花顺板块指数行情
+     *
+     * @param params 同花顺指数行情查询参数
+     * @return 返回包含同花顺指数行情的Flow流
+     */
+    override fun getThsDaily(params: ThsDailyParams): Flow<List<ThsDailyResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "ths_daily",
+                params = apiParams
+            )
+            val results = response.getResponseItems(ThsDailyResult.serializer())
             emit(results)
         }
 }

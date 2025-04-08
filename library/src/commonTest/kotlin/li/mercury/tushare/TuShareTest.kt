@@ -19,6 +19,7 @@ import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeightParams
 import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
+import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -184,6 +185,24 @@ class TuShareTest {
             client.index
                 .getSzDailyInfo(
                     SzDailyInfoParams(),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testThsDailyWorks() =
+        runTest {
+            val client = createClient("ths_daily.json")
+            client.index
+                .getThsDaily(
+                    ThsDailyParams(
+                        tsCode = TsCode("865001", "TI"),
+                        startDate = LocalDate(2020, 1, 1),
+                        endDate = LocalDate(2020, 3, 1),
+                    ),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)

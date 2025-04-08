@@ -23,6 +23,8 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SwDailyResult
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.SzDailyInfoResult
+import li.mercury.tushare.api.index.models.ThsDailyParams
+import li.mercury.tushare.api.index.models.ThsDailyResult
 
 /**
  * 指数相关API的存储库接口
@@ -115,4 +117,13 @@ fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>>
      * @return 返回包含交易概况数据的Flow流
      */
     fun getSzDailyInfo(params: SzDailyInfoParams): Flow<List<SzDailyInfoResult>>
+
+    /**
+     * 获取同花顺板块指数行情
+     *
+     * @param params 同花顺指数行情查询参数
+     * @return 返回包含同花顺指数行情的Flow流
+     */
+    fun getThsDaily(params: ThsDailyParams): Flow<List<ThsDailyResult>>
+
 }
