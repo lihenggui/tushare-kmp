@@ -11,6 +11,8 @@ import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexMonthlyResult
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyResult
+import li.mercury.tushare.api.index.models.IndexWeightParams
+import li.mercury.tushare.api.index.models.IndexWeightResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -90,6 +92,25 @@ internal class IndexApi(
                 params = apiParams,
             )
             val results = response.getResponseItems(IndexMonthlyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取指数成分和权重，月度数据
+     *
+     * @param params 指数成分和权重查询参数
+     * @return 返回包含指数成分和权重的Flow流
+     */
+    override fun getIndexWeight(params: IndexWeightParams): Flow<List<IndexWeightResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "index_weight",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(IndexWeightResult.serializer())
             emit(results)
         }
 }

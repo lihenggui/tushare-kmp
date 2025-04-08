@@ -9,6 +9,8 @@ import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexMonthlyResult
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyResult
+import li.mercury.tushare.api.index.models.IndexWeightParams
+import li.mercury.tushare.api.index.models.IndexWeightResult
 
 /**
  * 指数相关API的存储库接口
@@ -47,4 +49,12 @@ interface IndexApiInterface {
      * @return 返回包含指数月线行情的Flow流
      */
     fun getIndexMonthly(params: IndexMonthlyParams): Flow<List<IndexMonthlyResult>>
+
+    /**
+     * 获取指数成分和权重
+     *
+     * @param params 指数成分和权重查询参数
+     * @return 返回包含指数成分和权重的Flow流
+     */
+    fun getIndexWeight(params: IndexWeightParams): Flow<List<IndexWeightResult>>
 }
