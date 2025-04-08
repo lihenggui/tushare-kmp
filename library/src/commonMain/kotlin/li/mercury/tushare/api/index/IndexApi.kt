@@ -5,18 +5,10 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
-import li.mercury.tushare.api.index.models.IndexClassifyParams
-import li.mercury.tushare.api.index.models.IndexClassifyResult
-import li.mercury.tushare.api.index.models.IndexDailyBasicParams
-import li.mercury.tushare.api.index.models.IndexDailyBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
-import li.mercury.tushare.api.index.models.IndexMonthlyParams
-import li.mercury.tushare.api.index.models.IndexMonthlyResult
-import li.mercury.tushare.api.index.models.IndexWeeklyParams
-import li.mercury.tushare.api.index.models.IndexWeeklyResult
-import li.mercury.tushare.api.index.models.IndexWeightParams
-import li.mercury.tushare.api.index.models.IndexWeightResult
+import li.mercury.tushare.api.index.models.IndexMemberAllParams
+import li.mercury.tushare.api.index.models.IndexMemberAllResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -65,90 +57,22 @@ internal class IndexApi(
             emit(results)
         }
 
-    /**
-     * 获取指数周线行情
+        /**
+     * 获取申万行业成分构成
      *
-     * @param params 指数周线行情查询参数
-     * @return 返回包含指数周线行情的Flow流
+     * @param params 申万行业成分构成查询参数
+     * @return 返回包含行业成分构成的Flow流
      */
-    override fun getIndexWeekly(params: IndexWeeklyParams): Flow<List<IndexWeeklyResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "index_weekly",
-                params = apiParams,
-            )
-            val results = response.getResponseItems(IndexWeeklyResult.serializer())
-            emit(results)
-        }
-
-    /**
-     * 获取指数月线行情
-     *
-     * @param params 指数月线行情查询参数
-     * @return 返回包含指数月线行情的Flow流
-     */
-    override fun getIndexMonthly(params: IndexMonthlyParams): Flow<List<IndexMonthlyResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "index_monthly",
-                params = apiParams,
-            )
-            val results = response.getResponseItems(IndexMonthlyResult.serializer())
-            emit(results)
-        }
-
-    /**
-     * 获取指数成分和权重，月度数据
-     *
-     * @param params 指数成分和权重查询参数
-     * @return 返回包含指数成分和权重的Flow流
-     */
-    override fun getIndexWeight(params: IndexWeightParams): Flow<List<IndexWeightResult>> =
+    override fun getIndexMemberAll(params: IndexMemberAllParams): Flow<List<IndexMemberAllResult>> =
         flow {
             val apiParams = params.toApiParams()
 
             val response =
                 tuShare.callApi(
-                    apiName = "index_weight",
+                    apiName = "index_member_all",
                     params = apiParams,
                 )
-            val results = response.getResponseItems(IndexWeightResult.serializer())
-            emit(results)
-        }
-
-    /**
-     * 获取大盘指数每日指标
-     * @param params 大盘指数每日指标查询参数
-     * @return 返回包含每日指标的Flow流
-     */
-    override fun getIndexDailyBasic(params: IndexDailyBasicParams): Flow<List<IndexDailyBasicResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response = tuShare.callApi(
-                apiName = "index_dailybasic",
-                params = apiParams
-            )
-            val results = response.getResponseItems(IndexDailyBasicResult.serializer())
-            emit(results)
-        }
-
-    /**
-     * 获取申万行业分类数据
-     * @param params 申万行业分类查询参数
-     * @return 返回包含行业分类数据的Flow流
-     */
-    override fun getIndexClassify(params: IndexClassifyParams): Flow<List<IndexClassifyResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response = tuShare.callApi(
-                apiName = "index_classify",
-                params = apiParams
-            )
-            val results = response.getResponseItems(IndexClassifyResult.serializer())
+            val results = response.getResponseItems(IndexMemberAllResult.serializer())
             emit(results)
         }
 }
