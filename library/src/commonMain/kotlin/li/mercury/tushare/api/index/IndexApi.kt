@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
+import li.mercury.tushare.api.index.models.IndexClassifyParams
+import li.mercury.tushare.api.index.models.IndexClassifyResult
 import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
@@ -130,6 +132,23 @@ internal class IndexApi(
                 params = apiParams
             )
             val results = response.getResponseItems(IndexDailyBasicResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取申万行业分类数据
+     * @param params 申万行业分类查询参数
+     * @return 返回包含行业分类数据的Flow流
+     */
+    override fun getIndexClassify(params: IndexClassifyParams): Flow<List<IndexClassifyResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "index_classify",
+                params = apiParams
+            )
+            val results = response.getResponseItems(IndexClassifyResult.serializer())
             emit(results)
         }
 }

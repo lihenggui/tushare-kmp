@@ -3,6 +3,8 @@ package li.mercury.tushare.api.index
 import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
+import li.mercury.tushare.api.index.models.IndexClassifyParams
+import li.mercury.tushare.api.index.models.IndexClassifyResult
 import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
@@ -66,4 +68,12 @@ interface IndexApiInterface {
      * @return 返回包含每日指标的Flow流
      */
     fun getIndexDailyBasic(params: IndexDailyBasicParams): Flow<List<IndexDailyBasicResult>>
+
+    /**
+     * 获取申万行业分类数据
+     * @param params 申万行业分类查询参数
+     * @return 返回包含行业分类数据的Flow流
+     */
+    fun getIndexClassify(params: IndexClassifyParams): Flow<List<IndexClassifyResult>>
+
 }
