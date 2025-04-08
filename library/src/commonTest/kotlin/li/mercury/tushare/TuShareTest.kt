@@ -9,6 +9,7 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyParams
+import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
@@ -70,6 +71,21 @@ class TuShareTest {
                     IndexBasicParams(
                         market = Market.SSE,
                     ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testIndexMonthlyWorks() =
+        runTest {
+            val client = createClient("index_monthly.json")
+            client.index
+                .getIndexMonthly(
+                    IndexMonthlyParams(),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
