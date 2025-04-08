@@ -8,6 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import li.mercury.tushare.api.index.models.CiDailyParams
 import li.mercury.tushare.api.index.models.DailyInfoParams
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexClassifyParams
@@ -202,6 +203,22 @@ class TuShareTest {
                         tsCode = TsCode("865001", "TI"),
                         startDate = LocalDate(2020, 1, 1),
                         endDate = LocalDate(2020, 3, 1),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testCiDailyWorks() =
+        runTest {
+            val client = createClient("ci_daily.json")
+            client.index
+                .getCiDaily(
+                    CiDailyParams(
+                        tradeDate = LocalDate(2020, 1, 1),
                     ),
                 ).test {
                     val result = awaitItem()
