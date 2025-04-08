@@ -1,7 +1,9 @@
 package li.mercury.tushare.api.index.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
  * 申万行业成分构成返回结果
@@ -32,11 +34,13 @@ data class IndexMemberAllResult(
     /** 成分股票名称 */
     val name: String,
     /** 纳入日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("in_date")
-    val inDate: String,
+    val inDate: LocalDate,
     /** 剔除日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("out_date")
-    val outDate: String? = null,
+    val outDate: LocalDate? = null,
     /** 是否最新（Y 是，N 否） */
     @SerialName("is_new")
     val isNew: String

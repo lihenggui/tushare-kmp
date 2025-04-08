@@ -1,7 +1,9 @@
 package li.mercury.tushare.api.index.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
  * 申万行业日线行情API返回结果
@@ -12,8 +14,9 @@ data class SwDailyResult(
     @SerialName("ts_code")
     val tsCode: String,
     /** 交易日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
-    val tradeDate: String,
+    val tradeDate: LocalDate,
     /** 指数名称 */
     val name: String? = null,
     /** 开盘点位 */

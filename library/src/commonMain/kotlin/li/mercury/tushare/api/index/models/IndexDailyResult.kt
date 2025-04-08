@@ -1,7 +1,9 @@
 package li.mercury.tushare.api.index.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
  * 指数日线行情返回结果
@@ -12,8 +14,9 @@ data class IndexDailyResult(
     @SerialName("ts_code")
     val tsCode: String,
     /** 交易日 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
-    val tradeDate: String,
+    val tradeDate: LocalDate,
     /** 收盘点位 */
     val close: Double,
     /** 开盘点位 */
