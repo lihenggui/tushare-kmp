@@ -8,6 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import li.mercury.tushare.api.index.models.DailyInfoParams
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexClassifyParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicParams
@@ -168,6 +169,21 @@ class TuShareTest {
             client.index
                 .getSwDaily(
                     SwDailyParams(tradeDate = LocalDate(2023, 7, 5))
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testDailyInfoWorks() =
+        runTest {
+            val client = createClient("daily_info.json")
+            client.index
+                .getDailyInfo(
+                    DailyInfoParams(),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)

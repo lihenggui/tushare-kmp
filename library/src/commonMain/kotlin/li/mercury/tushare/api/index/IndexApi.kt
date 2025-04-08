@@ -3,6 +3,8 @@ package li.mercury.tushare.api.index
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.index.models.DailyInfoParams
+import li.mercury.tushare.api.index.models.DailyInfoResult
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
 import li.mercury.tushare.api.index.models.IndexClassifyParams
@@ -193,4 +195,23 @@ internal class IndexApi(
             val results = response.getResponseItems(SwDailyResult.serializer())
             emit(results)
         }
+
+        /**
+ * 获取市场交易统计数据
+ *
+ * @param params 市场交易统计查询参数
+ * @return 返回包含市场交易统计数据的Flow流
+ */
+override fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>> =
+    flow {
+        val apiParams = params.toApiParams()
+
+        val response =
+            tuShare.callApi(
+                apiName = "daily_info",
+                params = apiParams,
+            )
+        val results = response.getResponseItems(DailyInfoResult.serializer())
+        emit(results)
+    }
 }

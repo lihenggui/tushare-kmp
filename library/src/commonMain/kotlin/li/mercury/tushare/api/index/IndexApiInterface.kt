@@ -1,6 +1,8 @@
 package li.mercury.tushare.api.index
 
 import kotlinx.coroutines.flow.Flow
+import li.mercury.tushare.api.index.models.DailyInfoParams
+import li.mercury.tushare.api.index.models.DailyInfoResult
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
 import li.mercury.tushare.api.index.models.IndexClassifyParams
@@ -95,4 +97,13 @@ interface IndexApiInterface {
      * @return 返回包含申万行业日线行情的Flow流
      */
     fun getSwDaily(params: SwDailyParams): Flow<List<SwDailyResult>>
+
+    /**
+ * 获取市场交易统计数据
+ *
+ * @param params 市场交易统计查询参数
+ * @return 返回包含市场交易统计数据的Flow流
+ */
+fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>>
+
 }
