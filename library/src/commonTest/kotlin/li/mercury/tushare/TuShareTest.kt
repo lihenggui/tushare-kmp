@@ -8,6 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import li.mercury.tushare.api.index.models.IndexBasicParams
+import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
@@ -89,6 +90,21 @@ class TuShareTest {
                     IndexWeightParams(
                         indexCode = TsCode("000001", "SH"),
                     ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testIndexDailyBasicWorks() =
+        runTest {
+            val client = createClient("index_dailybasic.json")
+            client.index
+                .getIndexDailyBasic(
+                    IndexDailyBasicParams(),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
