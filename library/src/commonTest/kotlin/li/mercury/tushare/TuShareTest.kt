@@ -10,6 +10,7 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.index.models.CiDailyParams
 import li.mercury.tushare.api.index.models.DailyInfoParams
+import li.mercury.tushare.api.index.models.IdxFactorProParams
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexCategory
 import li.mercury.tushare.api.index.models.IndexClassifyParams
@@ -85,6 +86,21 @@ class TuShareTest {
                         market = Market.SW,
                         category = IndexCategory.主题指数,
                     ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testIdxFactorProWorks() =
+        runTest {
+            val client = createClient("idx_factor_pro.json")
+            client.index
+                .getIdxFactorPro(
+                    IdxFactorProParams(),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)

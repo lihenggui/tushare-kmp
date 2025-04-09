@@ -5,6 +5,8 @@ import li.mercury.tushare.api.index.models.CiDailyParams
 import li.mercury.tushare.api.index.models.CiDailyResult
 import li.mercury.tushare.api.index.models.DailyInfoParams
 import li.mercury.tushare.api.index.models.DailyInfoResult
+import li.mercury.tushare.api.index.models.IdxFactorProParams
+import li.mercury.tushare.api.index.models.IdxFactorProResult
 import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.index.models.IndexBasicResult
 import li.mercury.tushare.api.index.models.IndexClassifyParams
@@ -145,5 +147,12 @@ interface IndexApiInterface {
      * @return 返回包含国际指数行情的Flow流
      */
     fun getIndexGlobal(params: IndexGlobalParams): Flow<List<IndexGlobalResult>>
+
+    /**
+     * 获取指数技术因子专业版数据
+     * @param params 技术因子查询参数
+     * @return 返回包含技术因子数据的Flow流
+     */
+    fun getIdxFactorPro(params: IdxFactorProParams): Flow<List<IdxFactorProResult>>
 
 }
