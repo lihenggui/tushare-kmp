@@ -15,6 +15,8 @@ import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
+import li.mercury.tushare.api.index.models.IndexGlobalParams
+import li.mercury.tushare.api.index.models.IndexGlobalResult
 import li.mercury.tushare.api.index.models.IndexMemberAllParams
 import li.mercury.tushare.api.index.models.IndexMemberAllResult
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
@@ -272,6 +274,24 @@ internal class IndexApi(
                 params = apiParams
             )
             val results = response.getResponseItems(CiDailyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取国际主要指数日线行情
+     *
+     * @param params 国际指数查询参数
+     * @return 返回包含国际指数行情的Flow流
+     */
+    override fun getIndexGlobal(params: IndexGlobalParams): Flow<List<IndexGlobalResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "index_global",
+                params = apiParams
+            )
+            val results = response.getResponseItems(IndexGlobalResult.serializer())
             emit(results)
         }
 }

@@ -13,6 +13,8 @@ import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicResult
 import li.mercury.tushare.api.index.models.IndexDailyParams
 import li.mercury.tushare.api.index.models.IndexDailyResult
+import li.mercury.tushare.api.index.models.IndexGlobalParams
+import li.mercury.tushare.api.index.models.IndexGlobalResult
 import li.mercury.tushare.api.index.models.IndexMemberAllParams
 import li.mercury.tushare.api.index.models.IndexMemberAllResult
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
@@ -105,12 +107,12 @@ interface IndexApiInterface {
     fun getSwDaily(params: SwDailyParams): Flow<List<SwDailyResult>>
 
     /**
- * 获取市场交易统计数据
- *
- * @param params 市场交易统计查询参数
- * @return 返回包含市场交易统计数据的Flow流
- */
-fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>>
+     * 获取市场交易统计数据
+     *
+     * @param params 市场交易统计查询参数
+     * @return 返回包含市场交易统计数据的Flow流
+     */
+    fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>>
 
     /**
      * 获取深圳市场每日交易概况
@@ -128,12 +130,20 @@ fun getDailyInfo(params: DailyInfoParams): Flow<List<DailyInfoResult>>
      */
     fun getThsDaily(params: ThsDailyParams): Flow<List<ThsDailyResult>>
 
-/**
+    /**
      * 获取中信行业指数日线行情
      *
      * @param params 中信行业指数查询参数
      * @return 返回包含中信行业指数行情的Flow流
      */
     fun getCiDaily(params: CiDailyParams): Flow<List<CiDailyResult>>
+
+    /**
+     * 获取国际主要指数日线行情
+     *
+     * @param params 国际指数查询参数
+     * @return 返回包含国际指数行情的Flow流
+     */
+    fun getIndexGlobal(params: IndexGlobalParams): Flow<List<IndexGlobalResult>>
 
 }

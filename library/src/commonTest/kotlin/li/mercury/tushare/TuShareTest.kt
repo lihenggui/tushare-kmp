@@ -11,9 +11,11 @@ import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.index.models.CiDailyParams
 import li.mercury.tushare.api.index.models.DailyInfoParams
 import li.mercury.tushare.api.index.models.IndexBasicParams
+import li.mercury.tushare.api.index.models.IndexCategory
 import li.mercury.tushare.api.index.models.IndexClassifyParams
 import li.mercury.tushare.api.index.models.IndexDailyBasicParams
 import li.mercury.tushare.api.index.models.IndexDailyParams
+import li.mercury.tushare.api.index.models.IndexGlobalParams
 import li.mercury.tushare.api.index.models.IndexMemberAllParams
 import li.mercury.tushare.api.index.models.IndexMonthlyParams
 import li.mercury.tushare.api.index.models.IndexWeeklyParams
@@ -21,6 +23,7 @@ import li.mercury.tushare.api.index.models.IndexWeightParams
 import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
+import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -79,7 +82,8 @@ class TuShareTest {
             client.index
                 .getIndexBasic(
                     IndexBasicParams(
-                        market = Market.SSE,
+                        market = Market.SW,
+                        category = IndexCategory.主题指数,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -218,7 +222,25 @@ class TuShareTest {
             client.index
                 .getCiDaily(
                     CiDailyParams(
-                        tradeDate = LocalDate(2020, 1, 1),
+                        tradeDate = LocalDate(2023, 7, 5),
+                        tsCode = TsCode("005002", "SH"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testIndexGlobalWorks() =
+        runTest {
+            val client = createClient("index_global.json")
+            client.index
+                .getIndexGlobal(
+                    IndexGlobalParams(
+                        tsCode = TsIndexCode.XIN9,
+                        tradeDate = LocalDate(2023, 7, 5),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -281,7 +303,7 @@ class TuShareTest {
             client.stock
                 .getHsConst(
                     HsConstParams(
-                        hsType = HsType.SH,
+                        hsType = HsType.SZ,
                     ),
                 ).test {
                     val result = awaitItem()
