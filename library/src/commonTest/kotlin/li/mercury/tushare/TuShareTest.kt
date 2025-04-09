@@ -175,7 +175,10 @@ class TuShareTest {
             val client = createClient("sw_daily.json")
             client.index
                 .getSwDaily(
-                    SwDailyParams(tradeDate = LocalDate(2023, 7, 5))
+                    SwDailyParams(
+                        tradeDate = LocalDate(2023, 7, 5),
+                        tsCode = TsCode("801012", "SI"),
+                    )
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
