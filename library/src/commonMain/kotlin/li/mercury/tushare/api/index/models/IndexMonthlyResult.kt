@@ -6,11 +6,8 @@ import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
-/**
- * 指数日线行情返回结果
- */
 @Serializable
-data class IndexDailyResult(
+data class IndexMonthlyResult(
     /** TS 指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,
@@ -38,4 +35,4 @@ data class IndexDailyResult(
     val vol: Double? = null,
     /** 成交额（千元） */
     val amount: Double? = null,
-)
+) 

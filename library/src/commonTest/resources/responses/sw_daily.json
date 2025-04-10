@@ -1,0 +1,45 @@
+{
+  "request_id": "dcec4618-53aa-4884-ba84-7c3b18ec95c1",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "name",
+      "open",
+      "low",
+      "high",
+      "close",
+      "change",
+      "pct_change",
+      "vol",
+      "amount",
+      "pe",
+      "pb",
+      "float_mv",
+      "total_mv"
+    ],
+    "items": [
+      [
+        "801012.SI",
+        "20230705",
+        "农产品加工",
+        2406.02,
+        2378.56,
+        2415.43,
+        2386.46,
+        -22.07,
+        -0.92,
+        11109.0,
+        109826.0,
+        36.69,
+        2.19,
+        7391463.0,
+        34208811.821531
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

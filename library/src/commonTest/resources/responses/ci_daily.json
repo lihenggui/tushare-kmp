@@ -1,0 +1,23 @@
+{
+  "request_id": "2db70c59-cb43-4f5c-88e2-de7242b7a6ce",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "open",
+      "low",
+      "high",
+      "close",
+      "pre_close",
+      "change",
+      "pct_change",
+      "vol",
+      "amount"
+    ],
+    "items": [],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

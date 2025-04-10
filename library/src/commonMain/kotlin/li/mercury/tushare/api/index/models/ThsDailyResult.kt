@@ -7,10 +7,10 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 指数日线行情返回结果
+ * 同花顺板块指数行情返回结果
  */
 @Serializable
-data class IndexDailyResult(
+data class ThsDailyResult(
     /** TS 指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,
@@ -28,14 +28,24 @@ data class IndexDailyResult(
     val low: Double,
     /** 昨日收盘点 */
     @SerialName("pre_close")
-    val preClose: Double? = null,
-    /** 涨跌点 */
-    val change: Double? = null,
+    val preClose: Double,
+    /** 平均价 */
+    @SerialName("avg_price")
+    val avgPrice: Double,
+    /** 涨跌点位 */
+    val change: Double,
     /** 涨跌幅（%） */
-    @SerialName("pct_chg")
-    val pctChg: Double? = null,
-    /** 成交量（手） */
-    val vol: Double? = null,
-    /** 成交额（千元） */
-    val amount: Double? = null,
-)
+    @SerialName("pct_change")
+    val pctChange: Double,
+    /** 成交量 */
+    val vol: Double,
+    /** 换手率（%） */
+    @SerialName("turnover_rate")
+    val turnoverRate: Double,
+    /** 总市值（千元） */
+    @SerialName("total_mv")
+    val totalMv: Double? = null,
+    /** 流通市值（千元） */
+    @SerialName("float_mv")
+    val floatMv: Double? = null,
+) 
