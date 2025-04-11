@@ -9,6 +9,8 @@ import li.mercury.tushare.api.news.models.CctvNewsParams
 import li.mercury.tushare.api.news.models.CctvNewsResult
 import li.mercury.tushare.api.news.models.IrmQaShParams
 import li.mercury.tushare.api.news.models.IrmQaShResult
+import li.mercury.tushare.api.news.models.IrmQaSzParams
+import li.mercury.tushare.api.news.models.IrmQaSzResult
 import li.mercury.tushare.api.news.models.MajorNewsParams
 import li.mercury.tushare.api.news.models.MajorNewsResult
 import li.mercury.tushare.api.news.models.NewsParams
@@ -104,6 +106,23 @@ internal class NewsApi(
         )
 
         val results = response.getResponseItems(MajorNewsResult.serializer())
+        emit(results)
+    }
+
+    /**
+     * 实现深证互动易问答接口
+     * @param params 查询参数
+     * @return 返回问答数据
+     */
+    override fun getIrmQaSz(params: IrmQaSzParams): Flow<List<IrmQaSzResult>> = flow {
+        val apiParams = params.toApiParams()
+
+        val response = tuShare.callApi(
+            apiName = "irm_qa_sz",
+            params = apiParams
+        )
+
+        val results = response.getResponseItems(IrmQaSzResult.serializer())
         emit(results)
     }
 }

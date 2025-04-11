@@ -7,6 +7,8 @@ import li.mercury.tushare.api.news.models.CctvNewsParams
 import li.mercury.tushare.api.news.models.CctvNewsResult
 import li.mercury.tushare.api.news.models.IrmQaShParams
 import li.mercury.tushare.api.news.models.IrmQaShResult
+import li.mercury.tushare.api.news.models.IrmQaSzParams
+import li.mercury.tushare.api.news.models.IrmQaSzResult
 import li.mercury.tushare.api.news.models.MajorNewsParams
 import li.mercury.tushare.api.news.models.MajorNewsResult
 import li.mercury.tushare.api.news.models.NewsParams
@@ -40,5 +42,10 @@ interface NewsApiInterface {
      * 获取长篇通讯信息
      */
     fun getMajorNews(params: MajorNewsParams): Flow<List<MajorNewsResult>>
+
+    /**
+     * 获取深证互动易问答数据
+     */
+    fun getIrmQaSz(params: IrmQaSzParams): Flow<List<IrmQaSzResult>>
 
 }
