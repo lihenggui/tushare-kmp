@@ -29,6 +29,7 @@ import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.news.models.AnnouncementParams
 import li.mercury.tushare.api.news.models.CctvNewsParams
 import li.mercury.tushare.api.news.models.IrmQaShParams
+import li.mercury.tushare.api.news.models.MajorNewsParams
 import li.mercury.tushare.api.news.models.NewsParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
@@ -426,6 +427,24 @@ class TuShareTest {
             client.news
                 .getCctvNews(
                     CctvNewsParams(date = LocalDate(2025, 2, 12)),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testMajorNewsWorks() =
+        runTest {
+            val client = createClient("major_news.json")
+            client.news
+                .getMajorNews(
+                    MajorNewsParams(
+                        startDate = LocalDateTime(2018, 11, 21, 9, 0, 0),
+                        endDate = LocalDateTime(2018, 11, 22, 10, 10, 0),
+                        src = "人民网",
+                    ),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
