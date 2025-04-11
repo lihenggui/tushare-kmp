@@ -5,6 +5,8 @@ import li.mercury.tushare.api.news.models.AnnouncementParams
 import li.mercury.tushare.api.news.models.AnnouncementResult
 import li.mercury.tushare.api.news.models.IrmQaShParams
 import li.mercury.tushare.api.news.models.IrmQaShResult
+import li.mercury.tushare.api.news.models.NewsParams
+import li.mercury.tushare.api.news.models.NewsResult
 
 /**
     * 新闻相关API的存储库接口
@@ -19,5 +21,10 @@ interface NewsApiInterface {
      * 获取上证E互动问答数据
      */
     fun getIrmQaSh(params: IrmQaShParams): Flow<List<IrmQaShResult>>
+
+    /**
+     * 获取新闻快讯数据
+     */
+    fun getNews(params: NewsParams): Flow<List<NewsResult>>
 
 }

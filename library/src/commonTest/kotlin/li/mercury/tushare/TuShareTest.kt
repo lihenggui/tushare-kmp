@@ -8,6 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import li.mercury.tushare.api.index.models.CiDailyParams
 import li.mercury.tushare.api.index.models.DailyInfoParams
 import li.mercury.tushare.api.index.models.IdxFactorProParams
@@ -27,6 +28,7 @@ import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.news.models.AnnouncementParams
 import li.mercury.tushare.api.news.models.IrmQaShParams
+import li.mercury.tushare.api.news.models.NewsParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -389,6 +391,24 @@ class TuShareTest {
                     IrmQaShParams(
                         tradeDate = LocalDate(2025, 2, 12),
                         tsCode = TsCode("601121", "SH"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testNewsWorks() =
+        runTest {
+            val client = createClient("news.json")
+            client.news
+                .getNews(
+                    NewsParams(
+                        startDate = LocalDateTime(2025, 2, 12, 9, 0, 0),
+                        endDate = LocalDateTime(2025, 2, 12, 9, 10, 0),
+                        src = "东方财富",
                     ),
                 ).test {
                     val result = awaitItem()

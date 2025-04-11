@@ -7,6 +7,8 @@ import li.mercury.tushare.api.news.models.AnnouncementParams
 import li.mercury.tushare.api.news.models.AnnouncementResult
 import li.mercury.tushare.api.news.models.IrmQaShParams
 import li.mercury.tushare.api.news.models.IrmQaShResult
+import li.mercury.tushare.api.news.models.NewsParams
+import li.mercury.tushare.api.news.models.NewsResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -47,6 +49,23 @@ internal class NewsApi (
         )
 
         val results = response.getResponseItems(IrmQaShResult.serializer())
+        emit(results)
+    }
+
+    /**
+     * 实现新闻快讯接口
+     * @param params 查询参数
+     * @return 返回新闻快讯数据
+     */
+    override fun getNews(params: NewsParams): Flow<List<NewsResult>> = flow {
+        val apiParams = params.toApiParams()
+
+        val response = tuShare.callApi(
+            apiName = "news",
+            params = apiParams
+        )
+
+        val results = response.getResponseItems(NewsResult.serializer())
         emit(results)
     }
 }
