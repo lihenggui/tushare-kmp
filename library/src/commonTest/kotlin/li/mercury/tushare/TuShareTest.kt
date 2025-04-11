@@ -26,6 +26,7 @@ import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.news.models.AnnouncementParams
+import li.mercury.tushare.api.news.models.IrmQaShParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -372,6 +373,23 @@ class TuShareTest {
             client.news
                 .getAnnsD(
                     AnnouncementParams(),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testIrmQaShWorks() =
+        runTest {
+            val client = createClient("irm_qa_sh.json")
+            client.news
+                .getIrmQaSh(
+                    IrmQaShParams(
+                        tradeDate = LocalDate(2025, 2, 12),
+                        tsCode = TsCode("601121", "SH"),
+                    ),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)

@@ -9,42 +9,40 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
 
 /**
- * 上市公司公告返回结果
+ * 上证E互动问答返回结果
  */
 @Serializable
-data class AnnouncementResult(
-    /**
-     * 公告日期
-     */
-    @SerialName("ann_date")
-    @Serializable(with = LocalDateAsStringSerializer::class)
-    val annDate: LocalDate,
-
+data class IrmQaShResult(
     /**
      * 股票代码
      */
     @SerialName("ts_code")
-    val tsCode: TsCode,
-
+    val tsCode: String,
     /**
-     * 股票名称
+     * 公司名称
      */
+    @SerialName("name")
     val name: String,
-
     /**
-     * 公告标题
+     * 日期
      */
-    val title: String,
-
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    @SerialName("trade_date")
+    val tradeDate: LocalDate,
     /**
-     * PDF文档链接
+     * 问题
      */
-    val url: String,
-
+    @SerialName("q")
+    val q: String,
     /**
-     * 发布时间
+     * 回复
+     */
+    @SerialName("a")
+    val a: String,
+    /**
+     * 回复时间
      */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
-    @SerialName("rec_time")
-    val recTime: LocalDateTime? = null,
+    @SerialName("pub_time")
+    val pubTime: LocalDateTime? = null
 )

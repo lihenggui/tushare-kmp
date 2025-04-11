@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.news.models.AnnouncementParams
 import li.mercury.tushare.api.news.models.AnnouncementResult
+import li.mercury.tushare.api.news.models.IrmQaShParams
+import li.mercury.tushare.api.news.models.IrmQaShResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -31,4 +33,20 @@ internal class NewsApi (
         emit(results)
     }
 
+    /**
+     * 实现上证E互动问答接口
+     * @param params 查询参数
+     * @return 返回问答数据
+     */
+    override fun getIrmQaSh(params: IrmQaShParams): Flow<List<IrmQaShResult>> = flow {
+        val apiParams = params.toApiParams()
+
+        val response = tuShare.callApi(
+            apiName = "irm_qa_sh",
+            params = apiParams
+        )
+
+        val results = response.getResponseItems(IrmQaShResult.serializer())
+        emit(results)
+    }
 }
