@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.stock.models.AdjFactorParams
 import li.mercury.tushare.api.stock.models.AdjFactorResult
+import li.mercury.tushare.api.stock.models.DailyBasicParams
+import li.mercury.tushare.api.stock.models.DailyBasicResult
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -214,6 +216,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(AdjFactorResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股票每日指标数据
+     * @param params 股票每日指标参数
+     * @return 股票每日指标数据流
+     */
+    override fun getDailyBasic(params: DailyBasicParams): Flow<List<DailyBasicResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "daily_basic",
+                params = apiParams
+            )
+            val results = response.getResponseItems(DailyBasicResult.serializer())
             emit(results)
         }
 }
