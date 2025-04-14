@@ -28,5 +28,5 @@ data class NewsParams(
      * 新闻来源标识（见数据源对照表）
      */
     @SerialName("src")
-    val src: String
+    val src: String? = null,
 )

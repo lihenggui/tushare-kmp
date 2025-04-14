@@ -410,8 +410,7 @@ class TuShareTest {
                 .getNews(
                     NewsParams(
                         startDate = LocalDateTime(2025, 2, 12, 9, 0, 0),
-                        endDate = LocalDateTime(2025, 2, 12, 9, 10, 0),
-                        src = "东方财富",
+                        endDate = LocalDateTime(2025, 2, 12, 9, 10, 0)
                     ),
                 ).test {
                     val result = awaitItem()

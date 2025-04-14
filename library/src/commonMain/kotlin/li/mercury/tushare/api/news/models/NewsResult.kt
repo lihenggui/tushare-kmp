@@ -27,7 +27,7 @@ data class NewsResult(
      * 新闻标题
      */
     @SerialName("title")
-    val title: String,
+    val title: String? = null,
     
     /**
      * 新闻分类（多个分类用逗号分隔）
