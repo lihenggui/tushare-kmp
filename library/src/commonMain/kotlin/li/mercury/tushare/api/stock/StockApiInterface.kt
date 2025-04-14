@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.StkPremarketParams
+import li.mercury.tushare.api.stock.models.StkPremarketResult
 
 /**
  * 股票相关API的存储库接口
@@ -33,4 +35,9 @@ interface StockApiInterface {
      * 获取上市公司基本信息
      */
     fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+
+    /**
+     * 获取股本情况（盘前）数据
+     */
+    fun getStkPremarket(params: StkPremarketParams): Flow<List<StkPremarketResult>>
 }

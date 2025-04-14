@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.StkPremarketParams
+import li.mercury.tushare.api.stock.models.StkPremarketResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -68,6 +70,18 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(StockCompanyResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkPremarket(params: StkPremarketParams): Flow<List<StkPremarketResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            
+            val response = tuShare.callApi(
+                apiName = "stk_premarket",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkPremarketResult.serializer())
             emit(results)
         }
 }

@@ -30,6 +30,7 @@ import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
 import li.mercury.tushare.models.TsCode
@@ -362,4 +363,20 @@ class TuShareTest {
                     awaitComplete()
                 }
         }
+
+    // @Test
+    // Test skipped, no permission
+    fun testStkPremarketWorks() = runTest {
+        val client = createClient("stk_premarket.json")
+        client.stock
+            .getStkPremarket(
+                StkPremarketParams(
+                    tradeDate = LocalDate(2025, 1, 1),
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
 }
