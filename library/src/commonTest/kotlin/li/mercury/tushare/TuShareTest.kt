@@ -39,6 +39,8 @@ import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StkLimitParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.SuspendDParams
+import li.mercury.tushare.api.stock.models.SuspendType
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyParams
 import li.mercury.tushare.api.stock.models.WeeklyParams
@@ -516,6 +518,23 @@ class TuShareTest {
                 tsCode = TsCode("000001", "SZ"),
                 startDate = LocalDate(2019, 1, 15),
                 endDate = LocalDate(2019, 6, 18),
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testSuspendDWorks() = runTest {
+        val client = createClient("suspend_d.json")
+        client.stock.getSuspendD(
+            SuspendDParams(
+                tsCode = TsCode("000001", "SZ"),
+                startDate = LocalDate(2020, 1, 1),
+                endDate = LocalDate(2020, 3, 12),
+                suspendType = SuspendType.SUSPEND
             )
         ).test {
             val result = awaitItem()

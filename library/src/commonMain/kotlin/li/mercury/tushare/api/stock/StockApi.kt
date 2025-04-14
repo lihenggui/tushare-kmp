@@ -23,6 +23,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.SuspendDParams
+import li.mercury.tushare.api.stock.models.SuspendDResult
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjResult
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyParams
@@ -250,6 +252,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(StkLimitResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取每日停复牌信息
+     * @param params 每日停复牌信息参数
+     * @return 每日停复牌信息数据流
+     */
+    override fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "suspend_d",
+                params = apiParams
+            )
+            val results = response.getResponseItems(SuspendDResult.serializer())
             emit(results)
         }
 }

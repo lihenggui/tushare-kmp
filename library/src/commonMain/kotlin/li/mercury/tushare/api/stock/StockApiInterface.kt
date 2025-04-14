@@ -21,6 +21,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.SuspendDParams
+import li.mercury.tushare.api.stock.models.SuspendDResult
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjResult
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyParams
@@ -96,4 +98,9 @@ interface StockApiInterface {
      * 获取每日涨跌停价格数据
      */
     fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>>
+
+    /**
+     * 获取每日停复牌信息
+     */
+    fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>>
 }
