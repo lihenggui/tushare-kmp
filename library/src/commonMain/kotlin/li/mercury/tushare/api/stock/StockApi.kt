@@ -11,6 +11,8 @@ import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
+import li.mercury.tushare.api.stock.models.StkRewardsParams
+import li.mercury.tushare.api.stock.models.StkRewardsResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -109,6 +111,18 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(StkManagersResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkRewards(params: StkRewardsParams): Flow<List<StkRewardsResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "stk_rewards",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkRewardsResult.serializer())
             emit(results)
         }
 }

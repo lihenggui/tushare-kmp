@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
+import li.mercury.tushare.api.stock.models.StkRewardsParams
+import li.mercury.tushare.api.stock.models.StkRewardsResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -54,4 +56,9 @@ interface StockApiInterface {
      * 获取上市公司管理层信息
      */
     fun getStkManagers(params: StkManagersParams): Flow<List<StkManagersResult>>
+
+    /**
+     * 获取上市公司管理层薪酬和持股情况
+     */
+    fun getStkRewards(params: StkRewardsParams): Flow<List<StkRewardsResult>>
 }
