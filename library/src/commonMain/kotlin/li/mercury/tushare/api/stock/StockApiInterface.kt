@@ -1,6 +1,8 @@
 package li.mercury.tushare.api.stock
 
 import kotlinx.coroutines.flow.Flow
+import li.mercury.tushare.api.stock.models.AdjFactorParams
+import li.mercury.tushare.api.stock.models.AdjFactorResult
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -75,4 +77,9 @@ interface StockApiInterface {
      * 获取股票周/月线行情（复权，每日更新）
      */
     fun getWeeklyMonthlyAdj(params: WeeklyMonthlyAdjParams): Flow<List<WeeklyMonthlyAdjResult>>
+
+    /**
+     * 获取股票复权因子数据
+     */
+    fun getAdjFactor(params: AdjFactorParams): Flow<List<AdjFactorResult>>
 }

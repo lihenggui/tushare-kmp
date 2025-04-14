@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.stock.models.AdjFactorParams
+import li.mercury.tushare.api.stock.models.AdjFactorResult
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -196,6 +198,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(WeeklyMonthlyAdjResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 股票复权因子
+     * @param params 股票复权因子参数
+     * @return 股票复权因子数据流
+     */
+    override fun getAdjFactor(params: AdjFactorParams): Flow<List<AdjFactorResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "adj_factor",
+                params = apiParams
+            )
+            val results = response.getResponseItems(AdjFactorResult.serializer())
             emit(results)
         }
 }

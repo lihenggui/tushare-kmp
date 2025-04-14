@@ -26,6 +26,7 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
+import li.mercury.tushare.api.stock.models.AdjFactorParams
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.FreqMin
 import li.mercury.tushare.api.stock.models.FreqWeekMonth
@@ -463,6 +464,22 @@ class TuShareTest {
             WeeklyMonthlyAdjParams(
                 tsCode = TsCode("000001", "SZ"),
                 freq = FreqWeekMonth.WEEK,
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testAdjFactorWorks() = runTest {
+        val client = createClient("adj_factor.json")
+        client.stock.getAdjFactor(
+            AdjFactorParams(
+                tsCode = TsCode("000001", "SZ"),
+                startDate = LocalDate(2018, 7, 1),
+                endDate = LocalDate(2018, 10, 11),
             )
         ).test {
             val result = awaitItem()
