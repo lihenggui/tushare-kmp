@@ -13,6 +13,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.WeeklyParams
+import li.mercury.tushare.api.stock.models.WeeklyResult
 
 /**
  * 股票相关API的存储库接口
@@ -47,4 +49,9 @@ interface StockApiInterface {
      * 获取股票分钟行情数据
      */
     fun getMins(params: MinsParams): Flow<List<MinsResult>>
+
+    /**
+     * 获取A股周线行情数据
+     */
+    fun getWeekly(params: WeeklyParams): Flow<List<WeeklyResult>>
 }

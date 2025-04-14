@@ -34,6 +34,7 @@ import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.WeeklyParams
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
 import li.mercury.tushare.models.TsCode
@@ -392,6 +393,22 @@ class TuShareTest {
                 freq = Freq.MIN_1,
                 startDate = LocalDateTime(2023, 8, 25, 9, 0, 0),
                 endDate = LocalDateTime(2023, 8, 25, 19, 0, 0)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testWeeklyWorks() = runTest {
+        val client = createClient("weekly.json")
+        client.stock.getWeekly(
+            WeeklyParams(
+                tsCode = TsCode("000001", "SZ"),
+                startDate = "20180101",
+                endDate = "20181101"
             )
         ).test {
             val result = awaitItem()
