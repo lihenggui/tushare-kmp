@@ -17,6 +17,8 @@ import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.MonthlyResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.StkLimitParams
+import li.mercury.tushare.api.stock.models.StkLimitResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -232,6 +234,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(DailyBasicResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股票涨跌停数据
+     * @param params 股票涨跌停参数
+     * @return 股票涨跌停数据流
+     */
+    override fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "stk_limit",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkLimitResult.serializer())
             emit(results)
         }
 }

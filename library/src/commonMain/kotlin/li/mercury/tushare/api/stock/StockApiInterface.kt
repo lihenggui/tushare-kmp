@@ -15,6 +15,8 @@ import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.MonthlyResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.StkLimitParams
+import li.mercury.tushare.api.stock.models.StkLimitResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -89,4 +91,9 @@ interface StockApiInterface {
      * 获取股票每日指标数据
      */
     fun getDailyBasic(params: DailyBasicParams): Flow<List<DailyBasicResult>>
+
+    /**
+     * 获取每日涨跌停价格数据
+     */
+    fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>>
 }

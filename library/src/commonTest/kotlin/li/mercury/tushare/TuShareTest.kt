@@ -36,6 +36,7 @@ import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.StkLimitParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
@@ -498,6 +499,23 @@ class TuShareTest {
                 tsCode = TsCode("000001", "SZ"),
                 startDate = LocalDate(2018, 7, 1),
                 endDate = LocalDate(2018, 10, 11),
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStkLimitWorks() = runTest {
+        val client = createClient("stk_limit.json")
+        client.stock.getStkLimit(
+            StkLimitParams(
+                tsCode = TsCode("000001", "SZ"),
+                startDate = LocalDate(2019, 1, 15),
+                endDate = LocalDate(2019, 6, 18),
             )
         ).test {
             val result = awaitItem()
