@@ -13,6 +13,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.TradeCalParams
+import li.mercury.tushare.api.stock.models.TradeCalResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -82,6 +84,17 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(StkPremarketResult.serializer())
+            emit(results)
+        }
+
+    override fun getTradeCal(params: TradeCalParams): Flow<List<TradeCalResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "trade_cal",
+                params = apiParams
+            )
+            val results = response.getResponseItems(TradeCalResult.serializer())
             emit(results)
         }
 }

@@ -28,9 +28,10 @@ import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
-import li.mercury.tushare.api.stock.models.StkPremarketParams
+import li.mercury.tushare.api.stock.models.TradeCalParams
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
 import li.mercury.tushare.models.TsCode
@@ -378,5 +379,22 @@ class TuShareTest {
                 assertNotNull(result)
                 awaitComplete()
             }
+    }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testTradeCalWorks() = runTest {
+        val client = createClient("trade_cal.json")
+        client.stock.getTradeCal(
+            TradeCalParams(
+                exchange = Exchange.SSE,
+                startDate = LocalDate(2023, 1, 31),
+                endDate = LocalDate(2023, 2, 1),
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
     }
 }
