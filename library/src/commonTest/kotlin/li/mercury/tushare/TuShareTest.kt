@@ -27,7 +27,8 @@ import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.DailyParams
-import li.mercury.tushare.api.stock.models.Freq
+import li.mercury.tushare.api.stock.models.FreqMin
+import li.mercury.tushare.api.stock.models.FreqWeekMonth
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.MinsParams
@@ -35,6 +36,7 @@ import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyParams
 import li.mercury.tushare.api.stock.models.WeeklyParams
 import li.mercury.tushare.models.Exchange
@@ -392,7 +394,7 @@ class TuShareTest {
         client.stock.getMins(
             MinsParams(
                 tsCode = TsCode("600000", "SH"),
-                freq = Freq.MIN_1,
+                freq = FreqMin.MIN_1,
                 startDate = LocalDateTime(2023, 8, 25, 9, 0, 0),
                 endDate = LocalDateTime(2023, 8, 25, 19, 0, 0)
             )
@@ -444,7 +446,23 @@ class TuShareTest {
                 tsCode = TsCode("000001", "SZ"),
                 startDate = LocalDate(2023, 1, 1),
                 endDate = LocalDate(2023, 7, 1),
-                freq = "week"
+                freq = FreqWeekMonth.WEEK,
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testWeeklyMonthlyAdjWorks() = runTest {
+        val client = createClient("weekly_monthly_adj.json")
+        client.stock.getWeeklyMonthlyAdj(
+            WeeklyMonthlyAdjParams(
+                tsCode = TsCode("000001", "SZ"),
+                freq = FreqWeekMonth.WEEK,
             )
         ).test {
             val result = awaitItem()

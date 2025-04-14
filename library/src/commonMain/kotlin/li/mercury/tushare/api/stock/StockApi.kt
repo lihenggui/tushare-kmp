@@ -17,6 +17,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
+import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjResult
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyResult
 import li.mercury.tushare.api.stock.models.WeeklyParams
@@ -178,6 +180,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(WeeklyMonthlyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股票周月线行情（复权）
+     * @param params 股票周月线行情（复权）参数
+     * @return 股票周月线行情（复权）数据流
+     */
+    override fun getWeeklyMonthlyAdj(params: WeeklyMonthlyAdjParams): Flow<List<WeeklyMonthlyAdjResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "stk_week_month_adj",
+                params = apiParams
+            )
+            val results = response.getResponseItems(WeeklyMonthlyAdjResult.serializer())
             emit(results)
         }
 }

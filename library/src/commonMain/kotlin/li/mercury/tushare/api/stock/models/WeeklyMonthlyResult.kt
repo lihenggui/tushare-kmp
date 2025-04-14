@@ -19,7 +19,7 @@ data class WeeklyMonthlyResult(
     @Serializable(with = LocalDateAsStringSerializer::class)
     val tradeDate: LocalDate,
     /** 频率（week周线/month月线） */
-    val freq: String,
+    val freq: FreqWeekMonth,
     /** （周/月）开盘价 */
     val open: Float,
     /** （周/月）最高价 */

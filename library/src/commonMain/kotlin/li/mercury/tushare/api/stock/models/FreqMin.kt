@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 分钟行情频率枚举类
  */
 @Serializable
-enum class Freq {
+enum class FreqMin {
     /** 1分钟频率 */
     @SerialName("1min")
     MIN_1,

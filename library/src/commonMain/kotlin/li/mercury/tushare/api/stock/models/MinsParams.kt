@@ -16,7 +16,7 @@ data class MinsParams(
     val tsCode: TsCode,
 
     /** 分钟频率（1min/5min/15min/30min/60min） */
-    val freq: Freq,
+    val freq: FreqMin,
 
     /** 开始日期（格式：YYYY-MM-DD HH:MM:SS） */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
