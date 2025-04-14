@@ -1,6 +1,8 @@
 package li.mercury.tushare.api.stock
 
 import kotlinx.coroutines.flow.Flow
+import li.mercury.tushare.api.stock.models.BakBasicParams
+import li.mercury.tushare.api.stock.models.BakBasicResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -68,4 +70,9 @@ interface StockApiInterface {
      * 获取IPO新股列表数据
      */
     fun getNewShare(params: NewShareParams): Flow<List<NewShareResult>>
+
+    /**
+     * 备用基础列表（历史每天股票列表）
+     */
+    fun getBakBasic(params: BakBasicParams): Flow<List<BakBasicResult>>
 }

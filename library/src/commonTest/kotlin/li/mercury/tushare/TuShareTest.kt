@@ -25,6 +25,7 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
+import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -441,6 +442,22 @@ class TuShareTest {
                 NewShareParams(
                     startDate = LocalDate(2018, 9, 1),
                     endDate = LocalDate(2018, 10, 18)
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
+
+    @Test
+    fun testBakBasicWorks() = runTest {
+        val client = createClient("bak_basic.json")
+        client.stock
+            .getBakBasic(
+                BakBasicParams(
+                    tradeDate = LocalDate(2021, 10, 12),
+                    tsCode = TsCode("300605", "SZ")
                 )
             ).test {
                 val result = awaitItem()

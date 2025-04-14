@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.stock.models.BakBasicParams
+import li.mercury.tushare.api.stock.models.BakBasicResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -137,6 +139,18 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(NewShareResult.serializer())
+            emit(results)
+        }
+
+    override fun getBakBasic(params: BakBasicParams): Flow<List<BakBasicResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "bak_basic",
+                params = apiParams
+            )
+            val results = response.getResponseItems(BakBasicResult.serializer())
             emit(results)
         }
 }
