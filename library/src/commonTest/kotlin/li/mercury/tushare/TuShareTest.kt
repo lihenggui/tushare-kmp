@@ -33,6 +33,7 @@ import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.FreqMin
 import li.mercury.tushare.api.stock.models.FreqWeekMonth
 import li.mercury.tushare.api.stock.models.GgMarketType
+import li.mercury.tushare.api.stock.models.GgtDailyParams
 import li.mercury.tushare.api.stock.models.GgtTop10Params
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
@@ -569,6 +570,22 @@ class TuShareTest {
             GgtTop10Params(
                 tradeDate = LocalDate(2018, 7, 25),
                 marketType = GgMarketType.SZ,
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testGgtDailyWorks() = runTest {
+        val client = createClient("ggt_daily.json")
+        client.stock.getGgtDaily(
+            GgtDailyParams(
+                startDate = LocalDate(2018, 9, 25),
+                endDate = LocalDate(2019, 9, 25)
             )
         ).test {
             val result = awaitItem()
