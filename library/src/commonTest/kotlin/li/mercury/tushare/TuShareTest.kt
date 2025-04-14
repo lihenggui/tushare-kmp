@@ -1,5 +1,6 @@
 package li.mercury.tushare
 
+import BakDailyParams
 import HsMarketType
 import app.cash.turbine.test
 import io.ktor.client.engine.mock.MockEngine
@@ -603,6 +604,22 @@ class TuShareTest {
             GgtMonthlyParams(
                 startMonth = "201809",
                 endMonth = "201908"
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testBakDailyWorks() = runTest {
+        val client = createClient("bak_daily.json")
+        client.stock.getBakDaily(
+            BakDailyParams(
+                tsCode = TsCode("300750", "SZ"),
+                startDate = LocalDate(2021, 1, 1),
+                endDate = LocalDate(2021, 10, 12)
             )
         ).test {
             val result = awaitItem()

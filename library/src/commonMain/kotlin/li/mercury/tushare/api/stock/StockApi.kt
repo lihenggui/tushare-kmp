@@ -1,5 +1,7 @@
 package li.mercury.tushare.api.stock
 
+import BakDailyParams
+import BakDailyResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
@@ -341,4 +343,19 @@ internal class StockApi(
             val results = response.getResponseItems(GgtMonthlyResult.serializer())
             emit(results)
         }
+
+    /**
+     * 获取沪深股通每日成交统计
+     * @param params 沪深股通每日成交统计参数
+     * @return 沪深股通每日成交统计数据流
+     */
+    override fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>> = flow {
+        val apiParams = params.toApiParams()
+        val response = tuShare.callApi(
+            apiName = "bak_daily",
+            params = apiParams
+        )
+        val results = response.getResponseItems(BakDailyResult.serializer())
+        emit(results)
+    }
 }

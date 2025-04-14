@@ -1,5 +1,7 @@
 package li.mercury.tushare.api.stock
 
+import BakDailyParams
+import BakDailyResult
 import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.models.AdjFactorParams
 import li.mercury.tushare.api.stock.models.AdjFactorResult
@@ -131,4 +133,9 @@ interface StockApiInterface {
      * 获取港股通每月成交统计
      */
     fun getGgtMonthly(params: GgtMonthlyParams): Flow<List<GgtMonthlyResult>>
+
+    /**
+     * 获取备用行情数据
+     */
+    fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>>
 }
