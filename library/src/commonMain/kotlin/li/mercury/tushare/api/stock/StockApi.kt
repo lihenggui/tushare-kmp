@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.MinsParams
+import li.mercury.tushare.api.stock.models.MinsResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -81,6 +83,17 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(DailyResult.serializer())
+            emit(results)
+        }
+
+    override fun getMins(params: MinsParams): Flow<List<MinsResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "stk_mins",
+                params = apiParams
+            )
+            val results = response.getResponseItems(MinsResult.serializer())
             emit(results)
         }
 }

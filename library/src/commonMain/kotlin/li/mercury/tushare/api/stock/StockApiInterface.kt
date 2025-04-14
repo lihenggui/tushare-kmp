@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.MinsParams
+import li.mercury.tushare.api.stock.models.MinsResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -40,4 +42,9 @@ interface StockApiInterface {
      * 获取股票日线行情数据
      */
     fun getDaily(params: DailyParams): Flow<List<DailyResult>>
+
+    /**
+     * 获取股票分钟行情数据
+     */
+    fun getMins(params: MinsParams): Flow<List<MinsResult>>
 }

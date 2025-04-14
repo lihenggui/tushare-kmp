@@ -8,6 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import li.mercury.tushare.api.index.models.CiDailyParams
 import li.mercury.tushare.api.index.models.DailyInfoParams
 import li.mercury.tushare.api.index.models.IdxFactorProParams
@@ -26,8 +27,10 @@ import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.DailyParams
+import li.mercury.tushare.api.stock.models.Freq
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
+import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -372,6 +375,23 @@ class TuShareTest {
                 tsCode = TsCode("000001", "SZ"),
                 startDate = LocalDate(2018, 7, 1),
                 endDate = LocalDate(2023, 7, 18)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testMinsWorks() = runTest {
+        val client = createClient("mins.json")
+        client.stock.getMins(
+            MinsParams(
+                tsCode = TsCode("600000", "SH"),
+                freq = Freq.MIN_1,
+                startDate = LocalDateTime(2023, 8, 25, 9, 0, 0),
+                endDate = LocalDateTime(2023, 8, 25, 19, 0, 0)
             )
         ).test {
             val result = awaitItem()
