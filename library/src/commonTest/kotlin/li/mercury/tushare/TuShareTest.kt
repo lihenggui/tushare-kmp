@@ -25,6 +25,7 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
+import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -362,4 +363,20 @@ class TuShareTest {
                     awaitComplete()
                 }
         }
+
+    @Test
+    fun testDailyWorks() = runTest {
+        val client = createClient("daily.json")
+        client.stock.getDaily(
+            DailyParams(
+                tsCode = TsCode("000001", "SZ"),
+                startDate = LocalDate(2018, 7, 1),
+                endDate = LocalDate(2023, 7, 18)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
 }

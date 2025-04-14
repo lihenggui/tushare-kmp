@@ -1,0 +1,63 @@
+{
+  "request_id": "7da5bf18-6cce-4852-b0ae-b7db7e2ab790",
+  "code": 0,
+  "data": {
+    "fields": [
+      "trade_date",
+      "ts_code",
+      "name",
+      "industry",
+      "area",
+      "pe",
+      "float_share",
+      "total_share",
+      "total_assets",
+      "liquid_assets",
+      "fixed_assets",
+      "reserved",
+      "reserved_pershare",
+      "eps",
+      "bvps",
+      "pb",
+      "list_date",
+      "undp",
+      "per_undp",
+      "rev_yoy",
+      "profit_yoy",
+      "gpr",
+      "npr",
+      "holder_num"
+    ],
+    "items": [
+      [
+        "20211012",
+        "300605.SZ",
+        "恒锋信息",
+        "软件服务",
+        "福建",
+        56.44,
+        1.03,
+        1.65,
+        9.9,
+        8.6,
+        0.77,
+        1.68,
+        1.02,
+        0.13,
+        3.0,
+        4.95,
+        "20170208",
+        1.44,
+        0.88,
+        23.88,
+        12.79,
+        27.96,
+        10.72,
+        13912
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}
