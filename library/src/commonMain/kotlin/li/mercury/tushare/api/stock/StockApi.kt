@@ -11,6 +11,8 @@ import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.HsgtTop10Params
+import li.mercury.tushare.api.stock.models.HsgtTop10Result
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MinsResult
 import li.mercury.tushare.api.stock.models.MonthlyParams
@@ -268,6 +270,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(SuspendDResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取沪深股通十大成交股数据
+     * @param params 沪深股通十大成交股参数
+     * @return 沪深股通十大成交股数据流
+     */
+    override fun getHsgtTop10(params: HsgtTop10Params): Flow<List<HsgtTop10Result>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "hsgt_top10",
+                params = apiParams
+            )
+            val results = response.getResponseItems(HsgtTop10Result.serializer())
             emit(results)
         }
 }

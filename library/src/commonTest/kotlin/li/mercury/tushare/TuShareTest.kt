@@ -1,5 +1,6 @@
 package li.mercury.tushare
 
+import MarketType
 import app.cash.turbine.test
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -33,6 +34,7 @@ import li.mercury.tushare.api.stock.models.FreqMin
 import li.mercury.tushare.api.stock.models.FreqWeekMonth
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
+import li.mercury.tushare.api.stock.models.HsgtTop10Params
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -535,6 +537,21 @@ class TuShareTest {
                 startDate = LocalDate(2020, 1, 1),
                 endDate = LocalDate(2020, 3, 12),
                 suspendType = SuspendType.SUSPEND
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testHsgtTop10Works() = runTest {
+        val client = createClient("hsgt_top10.json")
+        client.stock.getHsgtTop10(
+            HsgtTop10Params(
+                tradeDate = LocalDate(2018, 7, 25),
+                marketType = MarketType.SH
             )
         ).test {
             val result = awaitItem()

@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.HsgtTop10Params
+import li.mercury.tushare.api.stock.models.HsgtTop10Result
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MinsResult
 import li.mercury.tushare.api.stock.models.MonthlyParams
@@ -103,4 +105,9 @@ interface StockApiInterface {
      * 获取每日停复牌信息
      */
     fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>>
+
+    /**
+     * 获取沪深股通十大成交股数据
+     */
+    fun getHsgtTop10(params: HsgtTop10Params): Flow<List<HsgtTop10Result>>
 }
