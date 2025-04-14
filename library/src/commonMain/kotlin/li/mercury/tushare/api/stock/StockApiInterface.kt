@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.GgtDailyParams
 import li.mercury.tushare.api.stock.models.GgtDailyResult
+import li.mercury.tushare.api.stock.models.GgtMonthlyParams
+import li.mercury.tushare.api.stock.models.GgtMonthlyResult
 import li.mercury.tushare.api.stock.models.GgtTop10Params
 import li.mercury.tushare.api.stock.models.GgtTop10Result
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -124,4 +126,9 @@ interface StockApiInterface {
      * 获取港股通每日成交统计
      */
     fun getGgtDaily(params: GgtDailyParams): Flow<List<GgtDailyResult>>
+
+    /**
+     * 获取港股通每月成交统计
+     */
+    fun getGgtMonthly(params: GgtMonthlyParams): Flow<List<GgtMonthlyResult>>
 }
