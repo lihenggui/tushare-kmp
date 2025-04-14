@@ -28,6 +28,7 @@ import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -396,5 +397,21 @@ class TuShareTest {
             assertNotNull(result)
             awaitComplete()
         }
+    }
+
+    //    @Test
+//    Test skipped, no permission
+    fun testStkManagersWorks() = runTest {
+        val client = createClient("stk_managers.json")
+        client.stock
+            .getStkManagers(
+                StkManagersParams(
+                    tsCode = TsCode("000001", "SZ")
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
     }
 }

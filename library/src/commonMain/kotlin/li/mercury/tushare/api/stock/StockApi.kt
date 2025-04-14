@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.StkManagersParams
+import li.mercury.tushare.api.stock.models.StkManagersResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -95,6 +97,18 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(TradeCalResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkManagers(params: StkManagersParams): Flow<List<StkManagersResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "stk_managers",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkManagersResult.serializer())
             emit(results)
         }
 }
