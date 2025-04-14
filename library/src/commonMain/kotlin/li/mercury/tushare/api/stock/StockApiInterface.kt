@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MinsResult
+import li.mercury.tushare.api.stock.models.MonthlyParams
+import li.mercury.tushare.api.stock.models.MonthlyResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -54,4 +56,9 @@ interface StockApiInterface {
      * 获取A股周线行情数据
      */
     fun getWeekly(params: WeeklyParams): Flow<List<WeeklyResult>>
+
+    /**
+     * 获取A股月线行情数据
+     */
+    fun getMonthly(params: MonthlyParams): Flow<List<MonthlyResult>>
 }

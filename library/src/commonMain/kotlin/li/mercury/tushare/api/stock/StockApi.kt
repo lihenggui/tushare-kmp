@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MinsResult
+import li.mercury.tushare.api.stock.models.MonthlyParams
+import li.mercury.tushare.api.stock.models.MonthlyResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -142,6 +144,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(WeeklyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取A股月线行情数据
+     * @param params 月线行情参数
+     * @return 月线行情数据流
+     */
+    override fun getMonthly(params: MonthlyParams): Flow<List<MonthlyResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "monthly",
+                params = apiParams
+            )
+            val results = response.getResponseItems(MonthlyResult.serializer())
             emit(results)
         }
 }
