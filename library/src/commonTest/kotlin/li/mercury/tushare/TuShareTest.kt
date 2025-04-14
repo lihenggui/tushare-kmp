@@ -28,6 +28,7 @@ import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.NewShareParams
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkRewardsParams
@@ -424,6 +425,22 @@ class TuShareTest {
             .getStkRewards(
                 StkRewardsParams(
                     tsCode = TsCode("000001", "SZ")
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
+
+    @Test
+    fun testNewShareWorks() = runTest {
+        val client = createClient("new_share.json")
+        client.stock
+            .getNewShare(
+                NewShareParams(
+                    startDate = LocalDate(2018, 9, 1),
+                    endDate = LocalDate(2018, 10, 18)
                 )
             ).test {
                 val result = awaitItem()
