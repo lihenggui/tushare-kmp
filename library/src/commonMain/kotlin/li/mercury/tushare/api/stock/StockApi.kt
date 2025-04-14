@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.DailyBasicParams
 import li.mercury.tushare.api.stock.models.DailyBasicResult
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.DailyResult
+import li.mercury.tushare.api.stock.models.GgtTop10Params
+import li.mercury.tushare.api.stock.models.GgtTop10Result
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.HsgtTop10Params
@@ -286,6 +288,21 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(HsgtTop10Result.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取港股通十大成交股数据
+     * @param params 港股通十大成交股参数
+     */
+    override fun getGgtTop10(params: GgtTop10Params): Flow<List<GgtTop10Result>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "ggt_top10",
+                params = apiParams
+            )
+            val results = response.getResponseItems(GgtTop10Result.serializer())
             emit(results)
         }
 }

@@ -1,6 +1,6 @@
 package li.mercury.tushare.api.stock.models
 
-import MarketType
+import HsMarketType
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -35,7 +35,7 @@ data class HsgtTop10Result(
 
     /** 市场类型 */
     @SerialName("market_type")
-    val marketType: MarketType,
+    val hsMarketType: HsMarketType,
 
     /** 成交金额（元） */
     val amount: Double,

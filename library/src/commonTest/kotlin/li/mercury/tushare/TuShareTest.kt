@@ -1,6 +1,6 @@
 package li.mercury.tushare
 
-import MarketType
+import HsMarketType
 import app.cash.turbine.test
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -32,6 +32,8 @@ import li.mercury.tushare.api.stock.models.DailyBasicParams
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.FreqMin
 import li.mercury.tushare.api.stock.models.FreqWeekMonth
+import li.mercury.tushare.api.stock.models.GgMarketType
+import li.mercury.tushare.api.stock.models.GgtTop10Params
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.HsgtTop10Params
@@ -551,7 +553,22 @@ class TuShareTest {
         client.stock.getHsgtTop10(
             HsgtTop10Params(
                 tradeDate = LocalDate(2018, 7, 25),
-                marketType = MarketType.SH
+                hsMarketType = HsMarketType.SH
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testGgtTop10Works() = runTest {
+        val client = createClient("ggt_top10.json")
+        client.stock.getGgtTop10(
+            GgtTop10Params(
+                tradeDate = LocalDate(2018, 7, 25),
+                marketType = GgMarketType.SZ,
             )
         ).test {
             val result = awaitItem()
