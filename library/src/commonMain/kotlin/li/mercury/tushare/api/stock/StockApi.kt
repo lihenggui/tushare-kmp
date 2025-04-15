@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.ExpressParams
+import li.mercury.tushare.api.stock.models.ExpressResult
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.ForecastResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -148,6 +150,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(ForecastResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取业绩快报数据
+     * @param params 请求参数
+     * @return 业绩快报数据流
+     */
+    override fun getExpress(params: ExpressParams): Flow<List<ExpressResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "express",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(ExpressResult.serializer())
             emit(results)
         }
 }
