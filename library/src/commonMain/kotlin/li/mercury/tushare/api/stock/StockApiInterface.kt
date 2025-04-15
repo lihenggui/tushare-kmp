@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
+import li.mercury.tushare.api.stock.models.CashflowParams
+import li.mercury.tushare.api.stock.models.CashflowResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.IncomeParams
@@ -47,4 +49,9 @@ interface StockApiInterface {
      * 获取资产负债表数据
      */
     fun getBalanceSheet(params: BalanceSheetParams): Flow<List<BalanceSheetResult>>
+
+    /**
+     * 获取现金流量表数据
+     */
+    fun getCashflow(params: CashflowParams): Flow<List<CashflowResult>>
 }

@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
+import li.mercury.tushare.api.stock.models.CashflowParams
+import li.mercury.tushare.api.stock.models.CashflowResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.IncomeParams
@@ -108,6 +110,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(BalanceSheetResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取现金流量表数据
+     * @param params 请求参数
+     * @return 现金流量表数据流
+     */
+    override fun getCashflow(params: CashflowParams): Flow<List<CashflowResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "cashflow",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(CashflowResult.serializer())
             emit(results)
         }
 }
