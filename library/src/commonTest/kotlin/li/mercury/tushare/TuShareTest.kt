@@ -29,6 +29,7 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.ExpressParams
+import li.mercury.tushare.api.stock.models.FinaAuditParams
 import li.mercury.tushare.api.stock.models.FinaIndicatorParams
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -490,6 +491,25 @@ class TuShareTest {
                         tsCode = TsCode("600000", "SH"),
                         startDate = LocalDate(2017, 1, 1),
                         endDate = LocalDate(2018, 8, 1),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testFinaAuditWorks() =
+        runTest {
+            val client = createClient("fina_audit.json")
+            client.stock
+                .getFinaAudit(
+                    FinaAuditParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2010, 1, 1),
+                        endDate = LocalDate(2018, 8, 8),
                     ),
                 ).test {
                     val result = awaitItem()

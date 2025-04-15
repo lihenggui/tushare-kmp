@@ -11,6 +11,8 @@ import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.DividendResult
 import li.mercury.tushare.api.stock.models.ExpressParams
 import li.mercury.tushare.api.stock.models.ExpressResult
+import li.mercury.tushare.api.stock.models.FinaAuditParams
+import li.mercury.tushare.api.stock.models.FinaAuditResult
 import li.mercury.tushare.api.stock.models.FinaIndicatorParams
 import li.mercury.tushare.api.stock.models.FinaIndicatorResult
 import li.mercury.tushare.api.stock.models.ForecastParams
@@ -208,6 +210,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(FinaIndicatorResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取财务审计意见数据
+     * @param params 请求参数
+     * @return 财务审计意见数据流
+     */
+    override fun getFinaAudit(params: FinaAuditParams): Flow<List<FinaAuditResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "fina_audit",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(FinaAuditResult.serializer())
             emit(results)
         }
 }
