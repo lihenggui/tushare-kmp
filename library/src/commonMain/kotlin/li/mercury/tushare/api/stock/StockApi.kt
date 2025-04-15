@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.DividendParams
+import li.mercury.tushare.api.stock.models.DividendResult
 import li.mercury.tushare.api.stock.models.ExpressParams
 import li.mercury.tushare.api.stock.models.ExpressResult
 import li.mercury.tushare.api.stock.models.ForecastParams
@@ -168,6 +170,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(ExpressResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取分红送股数据
+     * @param params 请求参数
+     * @return 分红送股数据流
+     */
+    override fun getDividend(params: DividendParams): Flow<List<DividendResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "dividend",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(DividendResult.serializer())
             emit(results)
         }
 }

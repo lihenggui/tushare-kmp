@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.DividendParams
+import li.mercury.tushare.api.stock.models.DividendResult
 import li.mercury.tushare.api.stock.models.ExpressParams
 import li.mercury.tushare.api.stock.models.ExpressResult
 import li.mercury.tushare.api.stock.models.ForecastParams
@@ -68,4 +70,10 @@ interface StockApiInterface {
      * 获取业绩快报数据
      */
     fun getExpress(params: ExpressParams): Flow<List<ExpressResult>>
+
+    /**
+     * 获取分红送股数据
+     */
+    fun getDividend(params: DividendParams): Flow<List<DividendResult>>
+
 }
