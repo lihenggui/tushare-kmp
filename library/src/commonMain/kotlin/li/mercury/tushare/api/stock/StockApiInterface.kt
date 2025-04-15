@@ -13,6 +13,8 @@ import li.mercury.tushare.api.stock.models.FinaAuditParams
 import li.mercury.tushare.api.stock.models.FinaAuditResult
 import li.mercury.tushare.api.stock.models.FinaIndicatorParams
 import li.mercury.tushare.api.stock.models.FinaIndicatorResult
+import li.mercury.tushare.api.stock.models.FinaMainbzParams
+import li.mercury.tushare.api.stock.models.FinaMainbzResult
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.ForecastResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -89,5 +91,10 @@ interface StockApiInterface {
      * 获取财务审计意见数据
      */
     fun getFinaAudit(params: FinaAuditParams): Flow<List<FinaAuditResult>>
+
+    /**
+     * 获取上市公司主营业务构成数据
+     */
+    fun getFinaMainbz(params: FinaMainbzParams): Flow<List<FinaMainbzResult>>
 
 }

@@ -15,6 +15,8 @@ import li.mercury.tushare.api.stock.models.FinaAuditParams
 import li.mercury.tushare.api.stock.models.FinaAuditResult
 import li.mercury.tushare.api.stock.models.FinaIndicatorParams
 import li.mercury.tushare.api.stock.models.FinaIndicatorResult
+import li.mercury.tushare.api.stock.models.FinaMainbzParams
+import li.mercury.tushare.api.stock.models.FinaMainbzResult
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.ForecastResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -228,6 +230,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(FinaAuditResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取上市公司主营业务构成数据
+     * @param params 请求参数
+     * @return 主营业务构成数据流
+     */
+    override fun getFinaMainbz(params: FinaMainbzParams): Flow<List<FinaMainbzResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "fina_mainbz",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(FinaMainbzResult.serializer())
             emit(results)
         }
 }

@@ -31,10 +31,12 @@ import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.ExpressParams
 import li.mercury.tushare.api.stock.models.FinaAuditParams
 import li.mercury.tushare.api.stock.models.FinaIndicatorParams
+import li.mercury.tushare.api.stock.models.FinaMainbzParams
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.IncomeParams
+import li.mercury.tushare.api.stock.models.MainbzType
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -510,6 +512,24 @@ class TuShareTest {
                         tsCode = TsCode("600000", "SH"),
                         startDate = LocalDate(2010, 1, 1),
                         endDate = LocalDate(2018, 8, 8),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testFinaMainbzWorks() =
+        runTest {
+            val client = createClient("fina_mainbz.json")
+            client.stock
+                .getFinaMainbz(
+                    FinaMainbzParams(
+                        tsCode = TsCode("000627", "SZ"),
+                        type = MainbzType.P,
                     ),
                 ).test {
                     val result = awaitItem()
