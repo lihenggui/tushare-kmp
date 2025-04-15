@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.IncomeParams
+import li.mercury.tushare.api.stock.models.IncomeResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -33,4 +35,9 @@ interface StockApiInterface {
      * 获取上市公司基本信息
      */
     fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+
+    /**
+     * 获取利润表数据
+     */
+    fun getIncome(params: IncomeParams): Flow<List<IncomeResult>>
 }

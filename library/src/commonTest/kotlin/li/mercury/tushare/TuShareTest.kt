@@ -27,6 +27,7 @@ import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
+import li.mercury.tushare.api.stock.models.IncomeParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -355,6 +356,25 @@ class TuShareTest {
                 .getStockCompany(
                     StockCompanyParams(
                         exchange = Exchange.SZSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+//  Test skipped, no permission
+    fun testIncomeWorks() =
+        runTest {
+            val client = createClient("income.json")
+            client.stock
+                .getIncome(
+                    IncomeParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 7, 30),
                     ),
                 ).test {
                     val result = awaitItem()

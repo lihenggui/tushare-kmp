@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.IncomeParams
+import li.mercury.tushare.api.stock.models.IncomeResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -68,6 +70,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(StockCompanyResult.serializer())
+            emit(results)
+        }
+
+    /*
+     * 获取利润表数据
+     * @param params 请求参数
+     * @return 利润表数据流
+     */
+    override fun getIncome(params: IncomeParams): Flow<List<IncomeResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "income",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(IncomeResult.serializer())
             emit(results)
         }
 }
