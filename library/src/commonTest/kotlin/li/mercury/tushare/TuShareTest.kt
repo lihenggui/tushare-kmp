@@ -29,6 +29,7 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.ExpressParams
+import li.mercury.tushare.api.stock.models.FinaIndicatorParams
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
@@ -470,6 +471,25 @@ class TuShareTest {
                 .getDividend(
                     DividendParams(
                         tsCode = TsCode("600848", "SH"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testFinaIndicatorWorks() =
+        runTest {
+            val client = createClient("fina_indicator.json")
+            client.stock
+                .getFinaIndicator(
+                    FinaIndicatorParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2017, 1, 1),
+                        endDate = LocalDate(2018, 8, 1),
                     ),
                 ).test {
                     val result = awaitItem()

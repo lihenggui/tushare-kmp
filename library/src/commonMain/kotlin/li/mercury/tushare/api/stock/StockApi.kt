@@ -11,6 +11,8 @@ import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.DividendResult
 import li.mercury.tushare.api.stock.models.ExpressParams
 import li.mercury.tushare.api.stock.models.ExpressResult
+import li.mercury.tushare.api.stock.models.FinaIndicatorParams
+import li.mercury.tushare.api.stock.models.FinaIndicatorResult
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.ForecastResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -188,6 +190,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(DividendResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取财务指标数据
+     * @param params 请求参数
+     * @return 财务指标数据流
+     */
+    override fun getFinaIndicator(params: FinaIndicatorParams): Flow<List<FinaIndicatorResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "fina_indicator",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(FinaIndicatorResult.serializer())
             emit(results)
         }
 }

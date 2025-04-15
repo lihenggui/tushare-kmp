@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.DividendResult
 import li.mercury.tushare.api.stock.models.ExpressParams
 import li.mercury.tushare.api.stock.models.ExpressResult
+import li.mercury.tushare.api.stock.models.FinaIndicatorParams
+import li.mercury.tushare.api.stock.models.FinaIndicatorResult
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.ForecastResult
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -75,5 +77,10 @@ interface StockApiInterface {
      * 获取分红送股数据
      */
     fun getDividend(params: DividendParams): Flow<List<DividendResult>>
+
+    /**
+     * 获取财务指标数据
+     */
+    fun getFinaIndicator(params: FinaIndicatorParams): Flow<List<FinaIndicatorResult>>
 
 }
