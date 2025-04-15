@@ -27,6 +27,7 @@ import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.CashflowParams
+import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.IncomeParams
@@ -415,6 +416,23 @@ class TuShareTest {
                         tsCode = TsCode("600000", "SH"),
                         startDate = LocalDate(2018, 1, 1),
                         endDate = LocalDate(2018, 7, 30),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testForecastWorks() =
+        runTest {
+            val client = createClient("forecast.json")
+            client.stock
+                .getForecast(
+                    ForecastParams(
+                        annDate = LocalDate(2019, 1, 31),
                     ),
                 ).test {
                     val result = awaitItem()

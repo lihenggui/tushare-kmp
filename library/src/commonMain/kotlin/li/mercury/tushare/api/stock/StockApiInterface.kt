@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.ForecastParams
+import li.mercury.tushare.api.stock.models.ForecastResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.IncomeParams
@@ -54,4 +56,9 @@ interface StockApiInterface {
      * 获取现金流量表数据
      */
     fun getCashflow(params: CashflowParams): Flow<List<CashflowResult>>
+
+    /**
+     * 获取业绩预告数据
+     */
+    fun getForecast(params: ForecastParams): Flow<List<ForecastResult>>
 }
