@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.DisclosureDateParams
+import li.mercury.tushare.api.stock.models.DisclosureDateResult
 import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.DividendResult
 import li.mercury.tushare.api.stock.models.ExpressParams
@@ -248,6 +250,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(FinaMainbzResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取财报披露计划数据
+     * @param params 请求参数
+     * @return 财报披露计划数据流
+     */
+    override fun getDisclosureDate(params: DisclosureDateParams): Flow<List<DisclosureDateResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "disclosure_date",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(DisclosureDateResult.serializer())
             emit(results)
         }
 }

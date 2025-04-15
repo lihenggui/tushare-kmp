@@ -27,6 +27,7 @@ import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.CashflowParams
+import li.mercury.tushare.api.stock.models.DisclosureDateParams
 import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.ExpressParams
 import li.mercury.tushare.api.stock.models.FinaAuditParams
@@ -530,6 +531,23 @@ class TuShareTest {
                     FinaMainbzParams(
                         tsCode = TsCode("000627", "SZ"),
                         type = MainbzType.P,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testDisclosureDateWorks() =
+        runTest {
+            val client = createClient("disclosure_date.json")
+            client.stock
+                .getDisclosureDate(
+                    DisclosureDateParams(
+                        endDate = LocalDate(2018, 12, 31),
                     ),
                 ).test {
                     val result = awaitItem()

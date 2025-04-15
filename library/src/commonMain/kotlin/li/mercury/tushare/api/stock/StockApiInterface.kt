@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.DisclosureDateParams
+import li.mercury.tushare.api.stock.models.DisclosureDateResult
 import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.DividendResult
 import li.mercury.tushare.api.stock.models.ExpressParams
@@ -96,5 +98,10 @@ interface StockApiInterface {
      * 获取上市公司主营业务构成数据
      */
     fun getFinaMainbz(params: FinaMainbzParams): Flow<List<FinaMainbzResult>>
+
+    /**
+     * 获取财报披露计划数据
+     */
+    fun getDisclosureDate(params: DisclosureDateParams): Flow<List<DisclosureDateResult>>
 
 }
