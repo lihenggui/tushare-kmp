@@ -25,6 +25,7 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
+import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
@@ -466,6 +467,23 @@ class TuShareTest {
                 .getConcept(
                     ConceptParams(
                         src = "ts",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    // @Test
+    // Test skipped, no permission
+    fun testConceptDetailWorks() =
+        runTest {
+            val client = createClient("concept_detail.json")
+            client.stock
+                .getConceptDetail(
+                    ConceptDetailParams(
+                        id = "TS2",
                     ),
                 ).test {
                     val result = awaitItem()
