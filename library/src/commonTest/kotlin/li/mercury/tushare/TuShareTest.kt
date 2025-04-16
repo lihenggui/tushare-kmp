@@ -28,7 +28,11 @@ import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.AdjFactorParams
+import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.BakDailyParams
+import li.mercury.tushare.api.stock.models.BlockTradeParams
+import li.mercury.tushare.api.stock.models.ConceptDetailParams
+import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.DailyBasicParams
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.FreqMin
@@ -43,11 +47,24 @@ import li.mercury.tushare.api.stock.models.HsgtTop10Params
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.NewShareParams
+import li.mercury.tushare.api.stock.models.PledgeDetailParams
+import li.mercury.tushare.api.stock.models.PledgeStatParams
+import li.mercury.tushare.api.stock.models.RepurchaseParams
+import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.StkLimitParams
+import li.mercury.tushare.api.stock.models.StkManagersParams
+import li.mercury.tushare.api.stock.models.StkPremarketParams
+import li.mercury.tushare.api.stock.models.StkRewardsParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.StockHolderNumberParams
+import li.mercury.tushare.api.stock.models.StockHolderTradeParams
 import li.mercury.tushare.api.stock.models.SuspendDParams
 import li.mercury.tushare.api.stock.models.SuspendType
+import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
+import li.mercury.tushare.api.stock.models.Top10HoldersParams
+import li.mercury.tushare.api.stock.models.TradeCalParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
 import li.mercury.tushare.api.stock.models.WeeklyMonthlyParams
 import li.mercury.tushare.api.stock.models.WeeklyParams
@@ -627,4 +644,296 @@ class TuShareTest {
             awaitComplete()
         }
     }
+
+    // @Test
+    // Test skipped, no permission
+    fun testStkPremarketWorks() = runTest {
+        val client = createClient("stk_premarket.json")
+        client.stock
+            .getStkPremarket(
+                StkPremarketParams(
+                    tradeDate = LocalDate(2025, 1, 1),
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testTradeCalWorks() = runTest {
+        val client = createClient("trade_cal.json")
+        client.stock.getTradeCal(
+            TradeCalParams(
+                exchange = Exchange.SSE,
+                startDate = LocalDate(2023, 1, 31),
+                endDate = LocalDate(2023, 2, 1),
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+//    Test skipped, no permission
+    fun testStkManagersWorks() = runTest {
+        val client = createClient("stk_managers.json")
+        client.stock
+            .getStkManagers(
+                StkManagersParams(
+                    tsCode = TsCode("000001", "SZ")
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
+
+    //    @Test
+//    Test skipped, no permission
+    fun testStkRewardsWorks() = runTest {
+        val client = createClient("stk_rewards.json")
+        client.stock
+            .getStkRewards(
+                StkRewardsParams(
+                    tsCode = TsCode("000001", "SZ")
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
+
+    @Test
+    fun testNewShareWorks() = runTest {
+        val client = createClient("new_share.json")
+        client.stock
+            .getNewShare(
+                NewShareParams(
+                    startDate = LocalDate(2018, 9, 1),
+                    endDate = LocalDate(2018, 10, 18)
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
+
+    @Test
+    fun testBakBasicWorks() = runTest {
+        val client = createClient("bak_basic.json")
+        client.stock
+            .getBakBasic(
+                BakBasicParams(
+                    tradeDate = LocalDate(2021, 10, 12),
+                    tsCode = TsCode("300605", "SZ")
+                )
+            ).test {
+                val result = awaitItem()
+                assertNotNull(result)
+                awaitComplete()
+            }
+    }
+
+    @Test
+    fun testTop10HoldersWorks() =
+        runTest {
+            val client = createClient("top10_holders.json")
+            client.stock
+                .getTop10Holders(
+                    Top10HoldersParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2017, 1, 1),
+                        endDate = LocalDate(2017, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testTop10FloatHoldersWorks() =
+        runTest {
+            val client = createClient("top10_floatholders.json")
+            client.stock
+                .getTop10FloatHolders(
+                    Top10FloatHoldersParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2017, 1, 1),
+                        endDate = LocalDate(2017, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testPledgeStatWorks() =
+        runTest {
+            val client = createClient("pledge_stat.json")
+            client.stock
+                .getPledgeStat(
+                    PledgeStatParams(
+                        tsCode = TsCode("000014", "SZ"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testPledgeDetailWorks() =
+        runTest {
+            val client = createClient("pledge_detail.json")
+            client.stock
+                .getPledgeDetail(
+                    PledgeDetailParams(
+                        tsCode = TsCode("000014", "SZ"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testRepurchaseWorks() =
+        runTest {
+            val client = createClient("repurchase.json")
+            client.stock
+                .getRepurchase(
+                    RepurchaseParams(
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 5, 10),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testConceptWorks() =
+        runTest {
+            val client = createClient("concept.json")
+            client.stock
+                .getConcept(
+                    ConceptParams(
+                        src = "ts",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    // @Test
+    // Test skipped, no permission
+    fun testConceptDetailWorks() =
+        runTest {
+            val client = createClient("concept_detail.json")
+            client.stock
+                .getConceptDetail(
+                    ConceptDetailParams(
+                        id = "TS2",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testShareFloatWorks() =
+        runTest {
+            val client = createClient("share_float.json")
+            client.stock
+                .getShareFloat(
+                    ShareFloatParams(
+                        tsCode = TsCode("000998", "SZ"),
+                        annDate = LocalDate(2018, 12, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testBlockTradeWorks() =
+        runTest {
+            val client = createClient("block_trade.json")
+            client.stock
+                .getBlockTrade(
+                    BlockTradeParams(
+                        tsCode = TsCode("600436", "SH"),
+                        tradeDate = LocalDate(2018, 12, 27),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStockHolderNumberWorks() =
+        runTest {
+            val client = createClient("stk_holdernumber.json")
+            client.stock
+                .getStockHolderNumber(
+                    StockHolderNumberParams(
+                        tsCode = TsCode("300199", "SZ"),
+                        startDate = LocalDate(2016, 1, 1),
+                        endDate2 = LocalDate(2018, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStockHolderTradeWorks() =
+        runTest {
+            val client = createClient("stk_holdertrade.json")
+            client.stock
+                .getStockHolderTrade(
+                    StockHolderTradeParams(
+                        tsCode = TsCode("002149", "SZ"),
+                        startDate = LocalDate(2022, 1, 1),
+                        endDate = LocalDate(2022, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
 }
