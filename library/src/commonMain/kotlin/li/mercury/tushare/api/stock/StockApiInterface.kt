@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.CcassHoldParams
+import li.mercury.tushare.api.stock.models.CcassHoldResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
@@ -259,4 +261,8 @@ interface StockApiInterface {
      */
     fun getStkFactorPro(params: StkFactorProParams): Flow<List<StkFactorProResult>>
 
+    /**
+     * 获取中央结算系统持股汇总数据
+     */
+    fun getCcassHold(params: CcassHoldParams): Flow<List<CcassHoldResult>>
 }

@@ -36,6 +36,7 @@ import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.CashflowParams
+import li.mercury.tushare.api.stock.models.CcassHoldParams
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.CyqChipsParams
@@ -1056,6 +1057,23 @@ class TuShareTest {
                         startDate = LocalDate(2022, 5, 1),
                         endDate = LocalDate(2022, 5, 20),
                     ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testCcassHoldWorks() =
+        runTest {
+            val client = createClient("ccass_hold.json")
+            client.stock
+                .getCcassHold(
+                    CcassHoldParams(
+                        tsCode = TsCode.hk("00960"),
+                        tradeDate = LocalDate(2022, 5, 19)
+                    )
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
