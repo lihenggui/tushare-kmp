@@ -53,6 +53,8 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.StkAuctionCParams
+import li.mercury.tushare.api.stock.models.StkAuctionCResult
 import li.mercury.tushare.api.stock.models.StkAuctionOParams
 import li.mercury.tushare.api.stock.models.StkAuctionOResult
 import li.mercury.tushare.api.stock.models.StkFactorParams
@@ -279,4 +281,9 @@ interface StockApiInterface {
      * 获取股票开盘集合竞价数据
      */
     fun getStkAuctionO(params: StkAuctionOParams): Flow<List<StkAuctionOResult>>
+
+    /**
+     * 获取股票收盘集合竞价数据
+     */
+    fun getStkAuctionC(params: StkAuctionCParams): Flow<List<StkAuctionCResult>>
 }
