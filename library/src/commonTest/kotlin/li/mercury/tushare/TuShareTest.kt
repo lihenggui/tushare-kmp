@@ -37,6 +37,7 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.StockHolderNumberParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.models.Exchange
@@ -521,6 +522,25 @@ class TuShareTest {
                     BlockTradeParams(
                         tsCode = TsCode("600436", "SH"),
                         tradeDate = LocalDate(2018, 12, 27),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStockHolderNumberWorks() =
+        runTest {
+            val client = createClient("stk_holdernumber.json")
+            client.stock
+                .getStockHolderNumber(
+                    StockHolderNumberParams(
+                        tsCode = TsCode("300199", "SZ"),
+                        startDate = LocalDate(2016, 1, 1),
+                        endDate2 = LocalDate(2018, 12, 31),
                     ),
                 ).test {
                     val result = awaitItem()

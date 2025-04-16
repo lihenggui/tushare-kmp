@@ -25,6 +25,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.StockHolderNumberParams
+import li.mercury.tushare.api.stock.models.StockHolderNumberResult
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersResult
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
@@ -248,6 +250,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(BlockTradeResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股东人数
+     * @param params 请求参数
+     * @return 股东人数数据流
+     */
+    override fun getStockHolderNumber(params: StockHolderNumberParams): Flow<List<StockHolderNumberResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_holdernumber",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(StockHolderNumberResult.serializer())
             emit(results)
         }
 }
