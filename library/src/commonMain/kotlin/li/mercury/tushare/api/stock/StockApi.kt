@@ -11,6 +11,8 @@ import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.CcassHoldDetailParams
+import li.mercury.tushare.api.stock.models.CcassHoldDetailResult
 import li.mercury.tushare.api.stock.models.CcassHoldParams
 import li.mercury.tushare.api.stock.models.CcassHoldResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
@@ -690,6 +692,17 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(CcassHoldResult.serializer())
+            emit(results)
+        }
+
+    override fun getCcassHoldDetail(params: CcassHoldDetailParams): Flow<List<CcassHoldDetailResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "ccass_hold_detail",
+                params = apiParams
+            )
+            val results = response.getResponseItems(CcassHoldDetailResult.serializer())
             emit(results)
         }
 }
