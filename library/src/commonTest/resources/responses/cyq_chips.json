@@ -1,0 +1,29 @@
+{
+  "request_id": "ffa34989-52be-4fc4-9d6a-8f4c310857df",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "price",
+      "percent"
+    ],
+    "items": [
+      [
+        "600000.SH",
+        "20220104",
+        10.7,
+        0.42
+      ],
+      [
+        "600000.SH",
+        "20220104",
+        10.6,
+        0.75
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

@@ -35,9 +35,14 @@ import li.mercury.tushare.api.news.models.NewsParams
 import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BlockTradeParams
+import li.mercury.tushare.api.stock.models.BrokerRecommendParams
 import li.mercury.tushare.api.stock.models.CashflowParams
+import li.mercury.tushare.api.stock.models.CcassHoldDetailParams
+import li.mercury.tushare.api.stock.models.CcassHoldParams
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptParams
+import li.mercury.tushare.api.stock.models.CyqChipsParams
+import li.mercury.tushare.api.stock.models.CyqPerfParams
 import li.mercury.tushare.api.stock.models.DisclosureDateParams
 import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.ExpressParams
@@ -45,6 +50,7 @@ import li.mercury.tushare.api.stock.models.FinaAuditParams
 import li.mercury.tushare.api.stock.models.FinaIndicatorParams
 import li.mercury.tushare.api.stock.models.FinaMainbzParams
 import li.mercury.tushare.api.stock.models.ForecastParams
+import li.mercury.tushare.api.stock.models.FreqEnum
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.IncomeParams
@@ -53,11 +59,18 @@ import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NewShareParams
 import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeStatParams
+import li.mercury.tushare.api.stock.models.ReportRcParams
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.ShareFloatParams
+import li.mercury.tushare.api.stock.models.StkAuctionCParams
+import li.mercury.tushare.api.stock.models.StkAuctionOParams
+import li.mercury.tushare.api.stock.models.StkFactorParams
+import li.mercury.tushare.api.stock.models.StkFactorProParams
 import li.mercury.tushare.api.stock.models.StkManagersParams
+import li.mercury.tushare.api.stock.models.StkNineturnParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkRewardsParams
+import li.mercury.tushare.api.stock.models.StkSurvParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockHolderNumberParams
@@ -390,6 +403,22 @@ class TuShareTest {
                 .getStockCompany(
                     StockCompanyParams(
                         exchange = Exchange.SZSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testReportRcWorks() =
+        runTest {
+            val client = createClient("report_rc.json")
+            client.stock
+                .getReportRc(
+                    ReportRcParams(
+                        reportDate = LocalDate(2022, 4, 29),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -970,4 +999,185 @@ class TuShareTest {
                     awaitComplete()
                 }
         }
+
+    @Test
+    fun testCyqPerfWorks() =
+        runTest {
+            val client = createClient("cyq_perf.json")
+            client.stock
+                .getCyqPerf(
+                    CyqPerfParams(
+                        tsCode = TsCode("600000", "SH"),
+                        tradeDate = LocalDate(2022, 4, 29)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testCyqChipsWorks() =
+        runTest {
+            val client = createClient("cyq_chips.json")
+            client.stock
+                .getCyqChips(
+                    CyqChipsParams(
+                        tsCode = TsCode("600000", "SH"),
+                        tradeDate = LocalDate(2022, 4, 29)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testStkFactorWorks() =
+        runTest {
+            val client = createClient("stk_factor.json")
+            client.stock
+                .getStkFactor(
+                    StkFactorParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2022, 5, 1),
+                        endDate = LocalDate(2022, 5, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStkFactorProWorks() =
+        runTest {
+            val client = createClient("stk_factor_pro.json")
+            client.stock
+                .getStkFactorPro(
+                    StkFactorProParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2022, 5, 1),
+                        endDate = LocalDate(2022, 5, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testCcassHoldWorks() =
+        runTest {
+            val client = createClient("ccass_hold.json")
+            client.stock
+                .getCcassHold(
+                    CcassHoldParams(
+                        tsCode = TsCode.hk("00960"),
+                        tradeDate = LocalDate(2022, 5, 19)
+                    )
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testCcassHoldDetailWorks() = runTest {
+        val client = createClient("ccass_hold_detail.json")
+        client.stock.getCcassHoldDetail(
+            CcassHoldDetailParams(
+                tsCode = TsCode.hk("00960"),
+                tradeDate = LocalDate(2022, 5, 19)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStkAuctionOWorks() = runTest {
+        val client = createClient("stk_auction_o.json")
+        client.stock.getStkAuctionO(
+            StkAuctionOParams(
+                tradeDate = LocalDate(2024, 11, 22)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStkAuctionCWorks() = runTest {
+        val client = createClient("stk_auction_c.json")
+        client.stock.getStkAuctionC(
+            StkAuctionCParams(
+                tradeDate = LocalDate(2024, 11, 22)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStkNineturnWorks() = runTest {
+        val client = createClient("stk_nineturn.json")
+        client.stock.getStkNineturn(
+            StkNineturnParams(
+                tsCode = TsCode("000001", "SZ"),
+                freq = FreqEnum.DAILY,
+                startDate = LocalDate(2023, 1, 1),
+                endDate = LocalDate(2025, 1, 17)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testStkSurvWorks() = runTest {
+        val client = createClient("stk_surv.json")
+        client.stock.getStkSurv(
+            StkSurvParams(
+                tsCode = TsCode("002223", "SZ"),
+                tradeDate = LocalDate(2021, 10, 24)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testBrokerRecommendWorks() = runTest {
+        val client = createClient("broker_recommend.json")
+        client.stock.getBrokerRecommend(
+            BrokerRecommendParams(
+                month = "202106"
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
 }

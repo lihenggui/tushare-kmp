@@ -4,7 +4,6 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
 
