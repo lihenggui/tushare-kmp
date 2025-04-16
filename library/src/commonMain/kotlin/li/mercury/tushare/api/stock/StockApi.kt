@@ -51,6 +51,8 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.StkFactorParams
+import li.mercury.tushare.api.stock.models.StkFactorResult
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
@@ -631,6 +633,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(CyqChipsResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股票技术因子数据
+     * @param params 请求参数
+     * @return 股票技术因子数据流
+     */
+    override fun getStkFactor(params: StkFactorParams): Flow<List<StkFactorResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_factor",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(StkFactorResult.serializer())
             emit(results)
         }
 }

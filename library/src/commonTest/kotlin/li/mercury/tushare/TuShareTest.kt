@@ -58,6 +58,7 @@ import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.ReportRcParams
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.ShareFloatParams
+import li.mercury.tushare.api.stock.models.StkFactorParams
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkRewardsParams
@@ -1016,6 +1017,24 @@ class TuShareTest {
                     CyqChipsParams(
                         tsCode = TsCode("600000", "SH"),
                         tradeDate = LocalDate(2022, 4, 29)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testStkFactorWorks() =
+        runTest {
+            val client = createClient("stk_factor.json")
+            client.stock
+                .getStkFactor(
+                    StkFactorParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2022, 5, 1),
+                        endDate = LocalDate(2022, 5, 20),
                     ),
                 ).test {
                     val result = awaitItem()

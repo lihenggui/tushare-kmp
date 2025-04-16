@@ -49,6 +49,8 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.StkFactorParams
+import li.mercury.tushare.api.stock.models.StkFactorResult
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
@@ -244,4 +246,9 @@ interface StockApiInterface {
      * 获取每日筹码分布数据
      */
     fun getCyqChips(params: CyqChipsParams): Flow<List<CyqChipsResult>>
+
+    /**
+     * 获取股票技术因子数据
+     */
+    fun getStkFactor(params: StkFactorParams): Flow<List<StkFactorResult>>
 }
