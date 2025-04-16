@@ -1,0 +1,39 @@
+{
+  "request_id": "35db0a7fc2d7488eaba9d4e11a9a6bcd",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "fields": [
+      "code",
+      "name",
+      "src"
+    ],
+    "items": [
+      [
+        "TS2",
+        "5G",
+        "ts"
+      ],
+      [
+        "TS3",
+        "机场",
+        "ts"
+      ],
+      [
+        "TS4",
+        "高价股",
+        "ts"
+      ],
+      [
+        "TS5",
+        "烧碱",
+        "ts"
+      ],
+      [
+        "TS6",
+        "AH溢价股",
+        "ts"
+      ]
+    ]
+  }
+} 

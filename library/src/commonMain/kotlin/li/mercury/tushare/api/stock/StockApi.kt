@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.stock.models.ConceptParams
+import li.mercury.tushare.api.stock.models.ConceptResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -168,6 +170,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(RepurchaseResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取概念股分类
+     * @param params 请求参数
+     * @return 概念股分类数据流
+     */
+    override fun getConcept(params: ConceptParams): Flow<List<ConceptResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "concept",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(ConceptResult.serializer())
             emit(results)
         }
 }

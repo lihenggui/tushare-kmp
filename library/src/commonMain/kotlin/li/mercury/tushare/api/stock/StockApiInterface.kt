@@ -1,6 +1,8 @@
 package li.mercury.tushare.api.stock
 
 import kotlinx.coroutines.flow.Flow
+import li.mercury.tushare.api.stock.models.ConceptParams
+import li.mercury.tushare.api.stock.models.ConceptResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -68,4 +70,9 @@ interface StockApiInterface {
      * 获取股票回购信息
      */
     fun getRepurchase(params: RepurchaseParams): Flow<List<RepurchaseResult>>
+
+    /**
+     * 获取概念股分类
+     */
+    fun getConcept(params: ConceptParams): Flow<List<ConceptResult>>
 }

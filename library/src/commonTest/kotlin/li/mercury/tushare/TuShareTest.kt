@@ -25,6 +25,7 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
+import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -448,6 +449,23 @@ class TuShareTest {
                     RepurchaseParams(
                         startDate = LocalDate(2018, 1, 1),
                         endDate = LocalDate(2018, 5, 10),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testConceptWorks() =
+        runTest {
+            val client = createClient("concept.json")
+            client.stock
+                .getConcept(
+                    ConceptParams(
+                        src = "ts",
                     ),
                 ).test {
                     val result = awaitItem()
