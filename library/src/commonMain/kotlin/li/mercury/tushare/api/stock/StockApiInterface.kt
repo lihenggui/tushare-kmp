@@ -50,6 +50,8 @@ import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
 import li.mercury.tushare.api.stock.models.StkFactorParams
+import li.mercury.tushare.api.stock.models.StkFactorProParams
+import li.mercury.tushare.api.stock.models.StkFactorProResult
 import li.mercury.tushare.api.stock.models.StkFactorResult
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
@@ -251,4 +253,10 @@ interface StockApiInterface {
      * 获取股票技术因子数据
      */
     fun getStkFactor(params: StkFactorParams): Flow<List<StkFactorResult>>
+
+    /**
+     * 获取股票技术面因子（专业版）
+     */
+    fun getStkFactorPro(params: StkFactorProParams): Flow<List<StkFactorProResult>>
+
 }

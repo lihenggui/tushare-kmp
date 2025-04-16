@@ -59,6 +59,7 @@ import li.mercury.tushare.api.stock.models.ReportRcParams
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.StkFactorParams
+import li.mercury.tushare.api.stock.models.StkFactorProParams
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkRewardsParams
@@ -1032,6 +1033,25 @@ class TuShareTest {
             client.stock
                 .getStkFactor(
                     StkFactorParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2022, 5, 1),
+                        endDate = LocalDate(2022, 5, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStkFactorProWorks() =
+        runTest {
+            val client = createClient("stk_factor_pro.json")
+            client.stock
+                .getStkFactorPro(
+                    StkFactorProParams(
                         tsCode = TsCode("600000", "SH"),
                         startDate = LocalDate(2022, 5, 1),
                         endDate = LocalDate(2022, 5, 20),
