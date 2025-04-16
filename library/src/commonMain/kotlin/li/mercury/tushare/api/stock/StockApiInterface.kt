@@ -3,14 +3,34 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.BakBasicResult
+import li.mercury.tushare.api.stock.models.BalanceSheetParams
+import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
+import li.mercury.tushare.api.stock.models.CashflowParams
+import li.mercury.tushare.api.stock.models.CashflowResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.ConceptResult
+import li.mercury.tushare.api.stock.models.DisclosureDateParams
+import li.mercury.tushare.api.stock.models.DisclosureDateResult
+import li.mercury.tushare.api.stock.models.DividendParams
+import li.mercury.tushare.api.stock.models.DividendResult
+import li.mercury.tushare.api.stock.models.ExpressParams
+import li.mercury.tushare.api.stock.models.ExpressResult
+import li.mercury.tushare.api.stock.models.FinaAuditParams
+import li.mercury.tushare.api.stock.models.FinaAuditResult
+import li.mercury.tushare.api.stock.models.FinaIndicatorParams
+import li.mercury.tushare.api.stock.models.FinaIndicatorResult
+import li.mercury.tushare.api.stock.models.FinaMainbzParams
+import li.mercury.tushare.api.stock.models.FinaMainbzResult
+import li.mercury.tushare.api.stock.models.ForecastParams
+import li.mercury.tushare.api.stock.models.ForecastResult
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.IncomeParams
+import li.mercury.tushare.api.stock.models.IncomeResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.NewShareParams
@@ -67,6 +87,57 @@ interface StockApiInterface {
      * 获取上市公司基本信息
      */
     fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+
+    /**
+     * 获取利润表数据
+     */
+    fun getIncome(params: IncomeParams): Flow<List<IncomeResult>>
+
+    /**
+     * 获取资产负债表数据
+     */
+    fun getBalanceSheet(params: BalanceSheetParams): Flow<List<BalanceSheetResult>>
+
+    /**
+     * 获取现金流量表数据
+     */
+    fun getCashflow(params: CashflowParams): Flow<List<CashflowResult>>
+
+    /**
+     * 获取业绩预告数据
+     */
+    fun getForecast(params: ForecastParams): Flow<List<ForecastResult>>
+
+    /**
+     * 获取业绩快报数据
+     */
+    fun getExpress(params: ExpressParams): Flow<List<ExpressResult>>
+
+    /**
+     * 获取分红送股数据
+     */
+    fun getDividend(params: DividendParams): Flow<List<DividendResult>>
+
+    /**
+     * 获取财务指标数据
+     */
+    fun getFinaIndicator(params: FinaIndicatorParams): Flow<List<FinaIndicatorResult>>
+
+    /**
+     * 获取财务审计意见数据
+     */
+    fun getFinaAudit(params: FinaAuditParams): Flow<List<FinaAuditResult>>
+
+    /**
+     * 获取上市公司主营业务构成数据
+     */
+    fun getFinaMainbz(params: FinaMainbzParams): Flow<List<FinaMainbzResult>>
+
+    /**
+     * 获取财报披露计划数据
+     */
+    fun getDisclosureDate(params: DisclosureDateParams): Flow<List<DisclosureDateResult>>
+
 
     /**
      * 获取股本情况（盘前）数据
