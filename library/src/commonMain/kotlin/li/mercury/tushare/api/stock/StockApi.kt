@@ -11,6 +11,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.Top10HoldersParams
+import li.mercury.tushare.api.stock.models.Top10HoldersResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -68,6 +70,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(StockCompanyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取前十大股东
+     * @param params 请求参数
+     * @return 前十大股东数据流
+     */
+    override fun getTop10Holders(params: Top10HoldersParams): Flow<List<Top10HoldersResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "top10_holders",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(Top10HoldersResult.serializer())
             emit(results)
         }
 }

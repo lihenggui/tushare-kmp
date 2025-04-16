@@ -30,6 +30,7 @@ import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
 import li.mercury.tushare.models.TsCode
@@ -355,6 +356,24 @@ class TuShareTest {
                 .getStockCompany(
                     StockCompanyParams(
                         exchange = Exchange.SZSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testTop10HoldersWorks() =
+        runTest {
+            val client = createClient("top10_holders.json")
+            client.stock
+                .getTop10Holders(
+                    Top10HoldersParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2017, 1, 1),
+                        endDate = LocalDate(2017, 12, 31),
                     ),
                 ).test {
                     val result = awaitItem()
