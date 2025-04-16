@@ -15,6 +15,8 @@ import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.ConceptResult
+import li.mercury.tushare.api.stock.models.CyqChipsParams
+import li.mercury.tushare.api.stock.models.CyqChipsResult
 import li.mercury.tushare.api.stock.models.CyqPerfParams
 import li.mercury.tushare.api.stock.models.CyqPerfResult
 import li.mercury.tushare.api.stock.models.DisclosureDateParams
@@ -611,6 +613,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(CyqPerfResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取每日筹码分布数据
+     * @param params 请求参数
+     * @return 每日筹码分布数据流
+     */
+    override fun getCyqChips(params: CyqChipsParams): Flow<List<CyqChipsResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "cyq_chips",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(CyqChipsResult.serializer())
             emit(results)
         }
 }
