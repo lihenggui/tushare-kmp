@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
+import li.mercury.tushare.api.stock.models.BrokerRecommendParams
+import li.mercury.tushare.api.stock.models.BrokerRecommendResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
 import li.mercury.tushare.api.stock.models.CcassHoldDetailParams
@@ -780,6 +782,23 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(StkSurvResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取券商每月荐股数据
+     * @param params 请求参数
+     * @return 券商每月荐股数据流
+     */
+    override fun getBrokerRecommend(params: BrokerRecommendParams): Flow<List<BrokerRecommendResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "broker_recommend",
+                params = apiParams
+            )
+            val results = response.getResponseItems(BrokerRecommendResult.serializer())
             emit(results)
         }
 }

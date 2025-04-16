@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
+import li.mercury.tushare.api.stock.models.BrokerRecommendParams
+import li.mercury.tushare.api.stock.models.BrokerRecommendResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
 import li.mercury.tushare.api.stock.models.CcassHoldDetailParams
@@ -300,4 +302,9 @@ interface StockApiInterface {
      * 获取机构调研表数据
      */
     fun getStkSurv(params: StkSurvParams): Flow<List<StkSurvResult>>
+
+    /**
+     * 获取券商每月荐股数据
+     */
+    fun getBrokerRecommend(params: BrokerRecommendParams): Flow<List<BrokerRecommendResult>>
 }

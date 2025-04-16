@@ -35,6 +35,7 @@ import li.mercury.tushare.api.news.models.NewsParams
 import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BlockTradeParams
+import li.mercury.tushare.api.stock.models.BrokerRecommendParams
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CcassHoldDetailParams
 import li.mercury.tushare.api.stock.models.CcassHoldParams
@@ -1157,6 +1158,21 @@ class TuShareTest {
             StkSurvParams(
                 tsCode = TsCode("002223", "SZ"),
                 tradeDate = LocalDate(2021, 10, 24)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testBrokerRecommendWorks() = runTest {
+        val client = createClient("broker_recommend.json")
+        client.stock.getBrokerRecommend(
+            BrokerRecommendParams(
+                month = "202106"
             )
         ).test {
             val result = awaitItem()
