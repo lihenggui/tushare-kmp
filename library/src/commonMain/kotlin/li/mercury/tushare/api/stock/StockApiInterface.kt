@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.PledgeStatParams
+import li.mercury.tushare.api.stock.models.PledgeStatResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -47,4 +49,9 @@ interface StockApiInterface {
      * 获取前十大流通股东
      */
     fun getTop10FloatHolders(params: Top10FloatHoldersParams): Flow<List<Top10FloatHoldersResult>>
+
+    /**
+     * 获取股权质押统计数据
+     */
+    fun getPledgeStat(params: PledgeStatParams): Flow<List<PledgeStatResult>>
 }
