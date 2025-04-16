@@ -703,6 +703,11 @@ internal class StockApi(
             emit(results)
         }
 
+    /**
+     * 获取中央结算系统持股明细数据
+     * @param params 请求参数
+     * @return 中央结算系统持股明细数据流
+     */
     override fun getCcassHoldDetail(params: CcassHoldDetailParams): Flow<List<CcassHoldDetailResult>> =
         flow {
             val apiParams = params.toApiParams()
@@ -714,6 +719,11 @@ internal class StockApi(
             emit(results)
         }
 
+    /**
+     * 获取股票开盘集合竞价数据
+     * @param params 请求参数
+     * @return 股票开盘集合竞价数据流
+     */
     override fun getStkAuctionO(params: StkAuctionOParams): Flow<List<StkAuctionOResult>> =
         flow {
             val apiParams = params.toApiParams()
@@ -725,6 +735,11 @@ internal class StockApi(
             emit(results)
         }
 
+    /**
+     * 获取股票收盘集合竞价数据
+     * @param params 请求参数
+     * @return 股票收盘集合竞价数据流
+     */
     override fun getStkAuctionC(params: StkAuctionCParams): Flow<List<StkAuctionCResult>> =
         flow {
             val apiParams = params.toApiParams()
@@ -736,6 +751,11 @@ internal class StockApi(
             emit(results)
         }
 
+    /**
+     * 获取神奇九转指标数据
+     * @param params 请求参数
+     * @return 神奇九转指标数据流
+     */
     override fun getStkNineturn(params: StkNineturnParams): Flow<List<StkNineturnResult>> =
         flow {
             val apiParams = params.toApiParams()
