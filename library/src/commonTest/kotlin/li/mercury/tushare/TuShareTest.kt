@@ -38,6 +38,7 @@ import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockHolderNumberParams
+import li.mercury.tushare.api.stock.models.StockHolderTradeParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.models.Exchange
@@ -541,6 +542,25 @@ class TuShareTest {
                         tsCode = TsCode("300199", "SZ"),
                         startDate = LocalDate(2016, 1, 1),
                         endDate2 = LocalDate(2018, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStockHolderTradeWorks() =
+        runTest {
+            val client = createClient("stk_holdertrade.json")
+            client.stock
+                .getStockHolderTrade(
+                    StockHolderTradeParams(
+                        tsCode = TsCode("002149", "SZ"),
+                        startDate = LocalDate(2022, 1, 1),
+                        endDate = LocalDate(2022, 12, 31),
                     ),
                 ).test {
                     val result = awaitItem()

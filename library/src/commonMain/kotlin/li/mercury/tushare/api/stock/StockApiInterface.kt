@@ -25,6 +25,8 @@ import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
 import li.mercury.tushare.api.stock.models.StockHolderNumberParams
 import li.mercury.tushare.api.stock.models.StockHolderNumberResult
+import li.mercury.tushare.api.stock.models.StockHolderTradeParams
+import li.mercury.tushare.api.stock.models.StockHolderTradeResult
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersResult
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
@@ -103,4 +105,9 @@ interface StockApiInterface {
      * 获取股东人数
      */
     fun getStockHolderNumber(params: StockHolderNumberParams): Flow<List<StockHolderNumberResult>>
+
+    /**
+     * 获取股东增减持数据
+     */
+    fun getStockHolderTrade(params: StockHolderTradeParams): Flow<List<StockHolderTradeResult>>
 }
