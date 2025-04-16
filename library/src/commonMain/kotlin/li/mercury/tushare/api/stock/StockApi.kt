@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.stock.models.BakBasicParams
+import li.mercury.tushare.api.stock.models.BakBasicResult
 import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
@@ -13,6 +15,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.NewShareParams
+import li.mercury.tushare.api.stock.models.NewShareResult
 import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeDetailResult
 import li.mercury.tushare.api.stock.models.PledgeStatParams
@@ -21,6 +25,12 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.StkManagersParams
+import li.mercury.tushare.api.stock.models.StkManagersResult
+import li.mercury.tushare.api.stock.models.StkPremarketParams
+import li.mercury.tushare.api.stock.models.StkPremarketResult
+import li.mercury.tushare.api.stock.models.StkRewardsParams
+import li.mercury.tushare.api.stock.models.StkRewardsResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -33,6 +43,8 @@ import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersResult
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.api.stock.models.Top10HoldersResult
+import li.mercury.tushare.api.stock.models.TradeCalParams
+import li.mercury.tushare.api.stock.models.TradeCalResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -90,6 +102,77 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(StockCompanyResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkPremarket(params: StkPremarketParams): Flow<List<StkPremarketResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "stk_premarket",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkPremarketResult.serializer())
+            emit(results)
+        }
+
+    override fun getTradeCal(params: TradeCalParams): Flow<List<TradeCalResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "trade_cal",
+                params = apiParams
+            )
+            val results = response.getResponseItems(TradeCalResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkManagers(params: StkManagersParams): Flow<List<StkManagersResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "stk_managers",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkManagersResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkRewards(params: StkRewardsParams): Flow<List<StkRewardsResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "stk_rewards",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkRewardsResult.serializer())
+            emit(results)
+        }
+
+    override fun getNewShare(params: NewShareParams): Flow<List<NewShareResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "new_share",
+                params = apiParams
+            )
+            val results = response.getResponseItems(NewShareResult.serializer())
+            emit(results)
+        }
+
+    override fun getBakBasic(params: BakBasicParams): Flow<List<BakBasicResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response = tuShare.callApi(
+                apiName = "bak_basic",
+                params = apiParams
+            )
+            val results = response.getResponseItems(BakBasicResult.serializer())
             emit(results)
         }
 

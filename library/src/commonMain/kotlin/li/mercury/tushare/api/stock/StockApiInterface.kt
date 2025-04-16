@@ -1,6 +1,8 @@
 package li.mercury.tushare.api.stock
 
 import kotlinx.coroutines.flow.Flow
+import li.mercury.tushare.api.stock.models.BakBasicParams
+import li.mercury.tushare.api.stock.models.BakBasicResult
 import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
@@ -11,6 +13,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.NewShareParams
+import li.mercury.tushare.api.stock.models.NewShareResult
 import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeDetailResult
 import li.mercury.tushare.api.stock.models.PledgeStatParams
@@ -19,6 +23,12 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.StkManagersParams
+import li.mercury.tushare.api.stock.models.StkManagersResult
+import li.mercury.tushare.api.stock.models.StkPremarketParams
+import li.mercury.tushare.api.stock.models.StkPremarketResult
+import li.mercury.tushare.api.stock.models.StkRewardsParams
+import li.mercury.tushare.api.stock.models.StkRewardsResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -31,6 +41,8 @@ import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersResult
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.api.stock.models.Top10HoldersResult
+import li.mercury.tushare.api.stock.models.TradeCalParams
+import li.mercury.tushare.api.stock.models.TradeCalResult
 
 /**
  * 股票相关API的存储库接口
@@ -55,6 +67,36 @@ interface StockApiInterface {
      * 获取上市公司基本信息
      */
     fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+
+    /**
+     * 获取股本情况（盘前）数据
+     */
+    fun getStkPremarket(params: StkPremarketParams): Flow<List<StkPremarketResult>>
+
+    /**
+     * 获取交易日历数据
+     */
+    fun getTradeCal(params: TradeCalParams): Flow<List<TradeCalResult>>
+
+    /**
+     * 获取上市公司管理层信息
+     */
+    fun getStkManagers(params: StkManagersParams): Flow<List<StkManagersResult>>
+
+    /**
+     * 获取上市公司管理层薪酬和持股情况
+     */
+    fun getStkRewards(params: StkRewardsParams): Flow<List<StkRewardsResult>>
+
+    /**
+     * 获取IPO新股列表数据
+     */
+    fun getNewShare(params: NewShareParams): Flow<List<NewShareResult>>
+
+    /**
+     * 备用基础列表（历史每天股票列表）
+     */
+    fun getBakBasic(params: BakBasicParams): Flow<List<BakBasicResult>>
 
     /**
      * 获取前十大股东
