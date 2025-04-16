@@ -1,12 +1,12 @@
 package li.mercury.tushare.api.stock
 
-import BakDailyParams
 import BakDailyResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.stock.models.AdjFactorParams
 import li.mercury.tushare.api.stock.models.AdjFactorResult
+import li.mercury.tushare.api.stock.models.BakDailyParams
 import li.mercury.tushare.api.stock.models.DailyBasicParams
 import li.mercury.tushare.api.stock.models.DailyBasicResult
 import li.mercury.tushare.api.stock.models.DailyParams

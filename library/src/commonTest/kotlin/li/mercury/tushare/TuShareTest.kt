@@ -1,6 +1,5 @@
 package li.mercury.tushare
 
-import BakDailyParams
 import HsMarketType
 import app.cash.turbine.test
 import io.ktor.client.engine.mock.MockEngine
@@ -29,6 +28,7 @@ import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.AdjFactorParams
+import li.mercury.tushare.api.stock.models.BakDailyParams
 import li.mercury.tushare.api.stock.models.DailyBasicParams
 import li.mercury.tushare.api.stock.models.DailyParams
 import li.mercury.tushare.api.stock.models.FreqMin
