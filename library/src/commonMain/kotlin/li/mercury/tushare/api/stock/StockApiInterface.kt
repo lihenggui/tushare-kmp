@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.PledgeDetailParams
+import li.mercury.tushare.api.stock.models.PledgeDetailResult
 import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.PledgeStatResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -54,4 +56,9 @@ interface StockApiInterface {
      * 获取股权质押统计数据
      */
     fun getPledgeStat(params: PledgeStatParams): Flow<List<PledgeStatResult>>
+
+    /**
+     * 获取股权质押明细数据
+     */
+    fun getPledgeDetail(params: PledgeDetailParams): Flow<List<PledgeDetailResult>>
 }

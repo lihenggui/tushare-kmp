@@ -28,6 +28,7 @@ import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -410,6 +411,23 @@ class TuShareTest {
             client.stock
                 .getPledgeStat(
                     PledgeStatParams(
+                        tsCode = TsCode("000014", "SZ"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testPledgeDetailWorks() =
+        runTest {
+            val client = createClient("pledge_detail.json")
+            client.stock
+                .getPledgeDetail(
+                    PledgeDetailParams(
                         tsCode = TsCode("000014", "SZ"),
                     ),
                 ).test {

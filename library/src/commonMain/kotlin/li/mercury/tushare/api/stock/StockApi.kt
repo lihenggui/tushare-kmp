@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.PledgeDetailParams
+import li.mercury.tushare.api.stock.models.PledgeDetailResult
 import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.PledgeStatResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -128,6 +130,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(PledgeStatResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股权质押明细数据
+     * @param params 请求参数
+     * @return 股权质押明细数据流
+     */
+    override fun getPledgeDetail(params: PledgeDetailParams): Flow<List<PledgeDetailResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "pledge_detail",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(PledgeDetailResult.serializer())
             emit(results)
         }
 }
