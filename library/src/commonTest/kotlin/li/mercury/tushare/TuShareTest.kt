@@ -27,14 +27,29 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
+import li.mercury.tushare.api.news.models.AnnouncementParams
+import li.mercury.tushare.api.news.models.CctvNewsParams
+import li.mercury.tushare.api.news.models.IrmQaShParams
+import li.mercury.tushare.api.news.models.IrmQaSzParams
+import li.mercury.tushare.api.news.models.MajorNewsParams
+import li.mercury.tushare.api.news.models.NewsParams
 import li.mercury.tushare.api.stock.models.AdjFactorParams
 import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.BakDailyParams
+import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BlockTradeParams
+import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.DailyBasicParams
 import li.mercury.tushare.api.stock.models.DailyParams
+import li.mercury.tushare.api.stock.models.DisclosureDateParams
+import li.mercury.tushare.api.stock.models.DividendParams
+import li.mercury.tushare.api.stock.models.ExpressParams
+import li.mercury.tushare.api.stock.models.FinaAuditParams
+import li.mercury.tushare.api.stock.models.FinaIndicatorParams
+import li.mercury.tushare.api.stock.models.FinaMainbzParams
+import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.FreqMin
 import li.mercury.tushare.api.stock.models.FreqWeekMonth
 import li.mercury.tushare.api.stock.models.GgMarketType
@@ -44,6 +59,8 @@ import li.mercury.tushare.api.stock.models.GgtTop10Params
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.HsgtTop10Params
+import li.mercury.tushare.api.stock.models.IncomeParams
+import li.mercury.tushare.api.stock.models.MainbzType
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -644,6 +661,287 @@ class TuShareTest {
             awaitComplete()
         }
     }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testAnnsDWorks() =
+        runTest {
+            val client = createClient("anns_d.json")
+            client.news
+                .getAnnsD(
+                    AnnouncementParams(),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testIrmQaShWorks() =
+        runTest {
+            val client = createClient("irm_qa_sh.json")
+            client.news
+                .getIrmQaSh(
+                    IrmQaShParams(
+                        tradeDate = LocalDate(2025, 2, 12),
+                        tsCode = TsCode("601121", "SH"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testNewsWorks() =
+        runTest {
+            val client = createClient("news.json")
+            client.news
+                .getNews(
+                    NewsParams(
+                        startDate = LocalDateTime(2025, 2, 12, 9, 0, 0),
+                        endDate = LocalDateTime(2025, 2, 12, 9, 10, 0)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testCctvNewsWorks() =
+        runTest {
+            val client = createClient("cctv_news.json")
+            client.news
+                .getCctvNews(
+                    CctvNewsParams(date = LocalDate(2025, 2, 12)),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testMajorNewsWorks() =
+        runTest {
+            val client = createClient("major_news.json")
+            client.news
+                .getMajorNews(
+                    MajorNewsParams(
+                        startDate = LocalDateTime(2018, 11, 21, 9, 0, 0),
+                        endDate = LocalDateTime(2018, 11, 22, 10, 10, 0),
+                        src = "人民网",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testIrmQaSzWorks() =
+        runTest {
+            val client = createClient("irm_qa_sz.json")
+            client.news
+                .getIrmQaSz(
+                    IrmQaSzParams(
+                        tradeDate = LocalDate(2025, 2, 12),
+                        tsCode = TsCode("002254", "SZ"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+//  Test skipped, no permission
+    fun testIncomeWorks() =
+        runTest {
+            val client = createClient("income.json")
+            client.stock
+                .getIncome(
+                    IncomeParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 7, 30),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testBalanceSheetWorks() =
+        runTest {
+            val client = createClient("balancesheet.json")
+            client.stock
+                .getBalanceSheet(
+                    BalanceSheetParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 7, 30),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testCashflowWorks() =
+        runTest {
+            val client = createClient("cashflow.json")
+            client.stock
+                .getCashflow(
+                    CashflowParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 7, 30),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testForecastWorks() =
+        runTest {
+            val client = createClient("forecast.json")
+            client.stock
+                .getForecast(
+                    ForecastParams(
+                        annDate = LocalDate(2019, 1, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testExpressWorks() =
+        runTest {
+            val client = createClient("express.json")
+            client.stock
+                .getExpress(
+                    ExpressParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 7, 1),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testDividendWorks() =
+        runTest {
+            val client = createClient("dividend.json")
+            client.stock
+                .getDividend(
+                    DividendParams(
+                        tsCode = TsCode("600848", "SH"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testFinaIndicatorWorks() =
+        runTest {
+            val client = createClient("fina_indicator.json")
+            client.stock
+                .getFinaIndicator(
+                    FinaIndicatorParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2017, 1, 1),
+                        endDate = LocalDate(2018, 8, 1),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testFinaAuditWorks() =
+        runTest {
+            val client = createClient("fina_audit.json")
+            client.stock
+                .getFinaAudit(
+                    FinaAuditParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2010, 1, 1),
+                        endDate = LocalDate(2018, 8, 8),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testFinaMainbzWorks() =
+        runTest {
+            val client = createClient("fina_mainbz.json")
+            client.stock
+                .getFinaMainbz(
+                    FinaMainbzParams(
+                        tsCode = TsCode("000627", "SZ"),
+                        type = MainbzType.P,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testDisclosureDateWorks() =
+        runTest {
+            val client = createClient("disclosure_date.json")
+            client.stock
+                .getDisclosureDate(
+                    DisclosureDateParams(
+                        endDate = LocalDate(2018, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
 
     // @Test
     // Test skipped, no permission
