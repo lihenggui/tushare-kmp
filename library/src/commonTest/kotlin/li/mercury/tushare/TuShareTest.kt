@@ -60,6 +60,7 @@ import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.ReportRcParams
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.ShareFloatParams
+import li.mercury.tushare.api.stock.models.StkAuctionOParams
 import li.mercury.tushare.api.stock.models.StkFactorParams
 import li.mercury.tushare.api.stock.models.StkFactorProParams
 import li.mercury.tushare.api.stock.models.StkManagersParams
@@ -1089,6 +1090,21 @@ class TuShareTest {
             CcassHoldDetailParams(
                 tsCode = TsCode.hk("00960"),
                 tradeDate = LocalDate(2022, 5, 19)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    //    @Test
+// Test skipped, no permission
+    fun testStkAuctionOWorks() = runTest {
+        val client = createClient("stk_auction_o.json")
+        client.stock.getStkAuctionO(
+            StkAuctionOParams(
+                tradeDate = LocalDate(2024, 11, 22)
             )
         ).test {
             val result = awaitItem()

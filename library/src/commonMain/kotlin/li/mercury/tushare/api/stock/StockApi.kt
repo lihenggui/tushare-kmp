@@ -55,6 +55,8 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.StkAuctionOParams
+import li.mercury.tushare.api.stock.models.StkAuctionOResult
 import li.mercury.tushare.api.stock.models.StkFactorParams
 import li.mercury.tushare.api.stock.models.StkFactorProParams
 import li.mercury.tushare.api.stock.models.StkFactorProResult
@@ -703,6 +705,17 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(CcassHoldDetailResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkAuctionO(params: StkAuctionOParams): Flow<List<StkAuctionOResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "stk_auction_o",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkAuctionOResult.serializer())
             emit(results)
         }
 }
