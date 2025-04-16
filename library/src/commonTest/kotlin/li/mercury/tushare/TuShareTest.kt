@@ -38,6 +38,7 @@ import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptParams
+import li.mercury.tushare.api.stock.models.CyqPerfParams
 import li.mercury.tushare.api.stock.models.DisclosureDateParams
 import li.mercury.tushare.api.stock.models.DividendParams
 import li.mercury.tushare.api.stock.models.ExpressParams
@@ -980,6 +981,23 @@ class TuShareTest {
                         tsCode = TsCode("002149", "SZ"),
                         startDate = LocalDate(2022, 1, 1),
                         endDate = LocalDate(2022, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testCyqPerfWorks() =
+        runTest {
+            val client = createClient("cyq_perf.json")
+            client.stock
+                .getCyqPerf(
+                    CyqPerfParams(
+                        tsCode = TsCode("600000", "SH"),
+                        tradeDate = LocalDate(2022, 4, 29)
                     ),
                 ).test {
                     val result = awaitItem()

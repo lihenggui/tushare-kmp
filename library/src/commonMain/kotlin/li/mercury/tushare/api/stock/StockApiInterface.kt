@@ -13,6 +13,8 @@ import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.ConceptResult
+import li.mercury.tushare.api.stock.models.CyqPerfParams
+import li.mercury.tushare.api.stock.models.CyqPerfResult
 import li.mercury.tushare.api.stock.models.DisclosureDateParams
 import li.mercury.tushare.api.stock.models.DisclosureDateResult
 import li.mercury.tushare.api.stock.models.DividendParams
@@ -230,4 +232,9 @@ interface StockApiInterface {
      * 获取股东增减持数据
      */
     fun getStockHolderTrade(params: StockHolderTradeParams): Flow<List<StockHolderTradeResult>>
+
+    /**
+     * 获取每日筹码及胜率数据
+     */
+    fun getCyqPerf(params: CyqPerfParams): Flow<List<CyqPerfResult>>
 }

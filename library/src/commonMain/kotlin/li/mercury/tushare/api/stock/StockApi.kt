@@ -15,6 +15,8 @@ import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.ConceptResult
+import li.mercury.tushare.api.stock.models.CyqPerfParams
+import li.mercury.tushare.api.stock.models.CyqPerfResult
 import li.mercury.tushare.api.stock.models.DisclosureDateParams
 import li.mercury.tushare.api.stock.models.DisclosureDateResult
 import li.mercury.tushare.api.stock.models.DividendParams
@@ -591,6 +593,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(StockHolderTradeResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取每日筹码及胜率数据
+     * @param params 请求参数
+     * @return 每日筹码及胜率数据流
+     */
+    override fun getCyqPerf(params: CyqPerfParams): Flow<List<CyqPerfResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "cyq_perf",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(CyqPerfResult.serializer())
             emit(results)
         }
 }
