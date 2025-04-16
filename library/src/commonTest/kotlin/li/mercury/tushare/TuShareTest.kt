@@ -30,6 +30,7 @@ import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
+import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.Market
@@ -371,6 +372,24 @@ class TuShareTest {
             client.stock
                 .getTop10Holders(
                     Top10HoldersParams(
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2017, 1, 1),
+                        endDate = LocalDate(2017, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testTop10FloatHoldersWorks() =
+        runTest {
+            val client = createClient("top10_floatholders.json")
+            client.stock
+                .getTop10FloatHolders(
+                    Top10FloatHoldersParams(
                         tsCode = TsCode("600000", "SH"),
                         startDate = LocalDate(2017, 1, 1),
                         endDate = LocalDate(2017, 12, 31),

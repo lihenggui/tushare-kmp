@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockCompanyResult
+import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
+import li.mercury.tushare.api.stock.models.Top10FloatHoldersResult
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.api.stock.models.Top10HoldersResult
 
@@ -40,4 +42,9 @@ interface StockApiInterface {
      * 获取前十大股东
      */
     fun getTop10Holders(params: Top10HoldersParams): Flow<List<Top10HoldersResult>>
+
+    /**
+     * 获取前十大流通股东
+     */
+    fun getTop10FloatHolders(params: Top10FloatHoldersParams): Flow<List<Top10FloatHoldersResult>>
 }
