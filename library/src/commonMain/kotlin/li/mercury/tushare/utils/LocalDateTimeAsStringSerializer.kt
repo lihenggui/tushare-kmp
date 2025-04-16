@@ -1,7 +1,6 @@
 package li.mercury.tushare.utils
 
 import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
@@ -31,4 +30,4 @@ object LocalDateTimeAsStringSerializer : KSerializer<LocalDateTime> {
             LocalDateTime.parse(dateTimeString)
         }
     }
-} 
+}
