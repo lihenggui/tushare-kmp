@@ -65,6 +65,8 @@ import li.mercury.tushare.api.stock.models.StkFactorProResult
 import li.mercury.tushare.api.stock.models.StkFactorResult
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
+import li.mercury.tushare.api.stock.models.StkNineturnParams
+import li.mercury.tushare.api.stock.models.StkNineturnResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
 import li.mercury.tushare.api.stock.models.StkRewardsParams
@@ -729,6 +731,17 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(StkAuctionCResult.serializer())
+            emit(results)
+        }
+
+    override fun getStkNineturn(params: StkNineturnParams): Flow<List<StkNineturnResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "stk_nineturn",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkNineturnResult.serializer())
             emit(results)
         }
 }

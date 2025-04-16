@@ -49,6 +49,7 @@ import li.mercury.tushare.api.stock.models.FinaAuditParams
 import li.mercury.tushare.api.stock.models.FinaIndicatorParams
 import li.mercury.tushare.api.stock.models.FinaMainbzParams
 import li.mercury.tushare.api.stock.models.ForecastParams
+import li.mercury.tushare.api.stock.models.FreqEnum
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.IncomeParams
@@ -65,6 +66,7 @@ import li.mercury.tushare.api.stock.models.StkAuctionOParams
 import li.mercury.tushare.api.stock.models.StkFactorParams
 import li.mercury.tushare.api.stock.models.StkFactorProParams
 import li.mercury.tushare.api.stock.models.StkManagersParams
+import li.mercury.tushare.api.stock.models.StkNineturnParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkRewardsParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
@@ -1121,6 +1123,23 @@ class TuShareTest {
         client.stock.getStkAuctionC(
             StkAuctionCParams(
                 tradeDate = LocalDate(2024, 11, 22)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testStkNineturnWorks() = runTest {
+        val client = createClient("stk_nineturn.json")
+        client.stock.getStkNineturn(
+            StkNineturnParams(
+                tsCode = TsCode("000001", "SZ"),
+                freq = FreqEnum.DAILY,
+                startDate = LocalDate(2023, 1, 1),
+                endDate = LocalDate(2025, 1, 17)
             )
         ).test {
             val result = awaitItem()

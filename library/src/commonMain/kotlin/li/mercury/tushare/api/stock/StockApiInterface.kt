@@ -63,6 +63,8 @@ import li.mercury.tushare.api.stock.models.StkFactorProResult
 import li.mercury.tushare.api.stock.models.StkFactorResult
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
+import li.mercury.tushare.api.stock.models.StkNineturnParams
+import li.mercury.tushare.api.stock.models.StkNineturnResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
 import li.mercury.tushare.api.stock.models.StkRewardsParams
@@ -286,4 +288,9 @@ interface StockApiInterface {
      * 获取股票收盘集合竞价数据
      */
     fun getStkAuctionC(params: StkAuctionCParams): Flow<List<StkAuctionCResult>>
+
+    /**
+     * 获取神奇九转指标数据
+     */
+    fun getStkNineturn(params: StkNineturnParams): Flow<List<StkNineturnResult>>
 }
