@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.ReportRcParams
+import li.mercury.tushare.api.stock.models.ReportRcResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -33,4 +35,9 @@ interface StockApiInterface {
      * 获取上市公司基本信息
      */
     fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+
+    /**
+     * 获取卖方盈利预测数据
+     */
+    fun getReportRc(params: ReportRcParams): Flow<List<ReportRcResult>>
 }

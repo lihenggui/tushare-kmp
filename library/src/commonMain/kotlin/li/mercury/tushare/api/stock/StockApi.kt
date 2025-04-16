@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
+import li.mercury.tushare.api.stock.models.ReportRcParams
+import li.mercury.tushare.api.stock.models.ReportRcResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -68,6 +70,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(StockCompanyResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取卖方盈利预测数据
+     * @param params 卖方盈利预测数据请求参数
+     * @return 卖方盈利预测数据返回对象列表
+     */
+    override fun getReportRc(params: ReportRcParams): Flow<List<ReportRcResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "report_rc",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(ReportRcResult.serializer())
             emit(results)
         }
 }

@@ -28,6 +28,7 @@ import li.mercury.tushare.api.index.models.TsIndexCode
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
+import li.mercury.tushare.api.stock.models.ReportRcParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.models.Exchange
@@ -355,6 +356,22 @@ class TuShareTest {
                 .getStockCompany(
                     StockCompanyParams(
                         exchange = Exchange.SZSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testReportRcWorks() =
+        runTest {
+            val client = createClient("report_rc.json")
+            client.stock
+                .getReportRc(
+                    ReportRcParams(
+                        reportDate = LocalDate(2022, 4, 29),
                     ),
                 ).test {
                     val result = awaitItem()
