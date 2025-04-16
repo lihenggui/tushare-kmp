@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.stock.models.BlockTradeParams
+import li.mercury.tushare.api.stock.models.BlockTradeResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
@@ -228,6 +230,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(ShareFloatResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取大宗交易数据
+     * @param params 请求参数
+     * @return 大宗交易数据流
+     */
+    override fun getBlockTrade(params: BlockTradeParams): Flow<List<BlockTradeResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "block_trade",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(BlockTradeResult.serializer())
             emit(results)
         }
 }

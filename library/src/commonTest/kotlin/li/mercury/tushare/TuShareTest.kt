@@ -25,6 +25,7 @@ import li.mercury.tushare.api.index.models.SwDailyParams
 import li.mercury.tushare.api.index.models.SzDailyInfoParams
 import li.mercury.tushare.api.index.models.ThsDailyParams
 import li.mercury.tushare.api.index.models.TsIndexCode
+import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.HsConstParams
@@ -502,6 +503,24 @@ class TuShareTest {
                     ShareFloatParams(
                         tsCode = TsCode("000998", "SZ"),
                         annDate = LocalDate(2018, 12, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testBlockTradeWorks() =
+        runTest {
+            val client = createClient("block_trade.json")
+            client.stock
+                .getBlockTrade(
+                    BlockTradeParams(
+                        tsCode = TsCode("600436", "SH"),
+                        tradeDate = LocalDate(2018, 12, 27),
                     ),
                 ).test {
                     val result = awaitItem()

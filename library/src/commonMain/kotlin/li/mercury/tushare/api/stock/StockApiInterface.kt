@@ -1,6 +1,8 @@
 package li.mercury.tushare.api.stock
 
 import kotlinx.coroutines.flow.Flow
+import li.mercury.tushare.api.stock.models.BlockTradeParams
+import li.mercury.tushare.api.stock.models.BlockTradeResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
@@ -89,4 +91,9 @@ interface StockApiInterface {
      * 获取限售股解禁数据
      */
     fun getShareFloat(params: ShareFloatParams): Flow<List<ShareFloatResult>>
+
+    /**
+     * 获取大宗交易数据
+     */
+    fun getBlockTrade(params: BlockTradeParams): Flow<List<BlockTradeResult>>
 }
