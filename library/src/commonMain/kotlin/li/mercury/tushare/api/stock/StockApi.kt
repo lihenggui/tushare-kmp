@@ -11,6 +11,8 @@ import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeDetailResult
 import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.PledgeStatResult
+import li.mercury.tushare.api.stock.models.RepurchaseParams
+import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -148,6 +150,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(PledgeDetailResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股票回购信息
+     * @param params 请求参数
+     * @return 股票回购信息数据流
+     */
+    override fun getRepurchase(params: RepurchaseParams): Flow<List<RepurchaseResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "repurchase",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(RepurchaseResult.serializer())
             emit(results)
         }
 }

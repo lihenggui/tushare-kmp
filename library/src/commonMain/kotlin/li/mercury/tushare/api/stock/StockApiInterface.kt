@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeDetailResult
 import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.PledgeStatResult
+import li.mercury.tushare.api.stock.models.RepurchaseParams
+import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -61,4 +63,9 @@ interface StockApiInterface {
      * 获取股权质押明细数据
      */
     fun getPledgeDetail(params: PledgeDetailParams): Flow<List<PledgeDetailResult>>
+
+    /**
+     * 获取股票回购信息
+     */
+    fun getRepurchase(params: RepurchaseParams): Flow<List<RepurchaseResult>>
 }

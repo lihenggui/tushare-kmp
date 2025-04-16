@@ -30,6 +30,7 @@ import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeStatParams
+import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
@@ -429,6 +430,24 @@ class TuShareTest {
                 .getPledgeDetail(
                     PledgeDetailParams(
                         tsCode = TsCode("000014", "SZ"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testRepurchaseWorks() =
+        runTest {
+            val client = createClient("repurchase.json")
+            client.stock
+                .getRepurchase(
+                    RepurchaseParams(
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 5, 10),
                     ),
                 ).test {
                     val result = awaitItem()
