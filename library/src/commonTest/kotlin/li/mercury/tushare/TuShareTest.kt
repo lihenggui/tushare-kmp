@@ -69,6 +69,7 @@ import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkNineturnParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkRewardsParams
+import li.mercury.tushare.api.stock.models.StkSurvParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.StockHolderNumberParams
@@ -1141,6 +1142,21 @@ class TuShareTest {
                 freq = FreqEnum.DAILY,
                 startDate = LocalDate(2023, 1, 1),
                 endDate = LocalDate(2025, 1, 17)
+            )
+        ).test {
+            val result = awaitItem()
+            assertNotNull(result)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun testStkSurvWorks() = runTest {
+        val client = createClient("stk_surv.json")
+        client.stock.getStkSurv(
+            StkSurvParams(
+                tsCode = TsCode("002223", "SZ"),
+                tradeDate = LocalDate(2021, 10, 24)
             )
         ).test {
             val result = awaitItem()

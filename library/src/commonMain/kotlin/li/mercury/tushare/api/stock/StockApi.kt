@@ -71,6 +71,8 @@ import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
 import li.mercury.tushare.api.stock.models.StkRewardsParams
 import li.mercury.tushare.api.stock.models.StkRewardsResult
+import li.mercury.tushare.api.stock.models.StkSurvParams
+import li.mercury.tushare.api.stock.models.StkSurvResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -742,6 +744,22 @@ internal class StockApi(
                 params = apiParams
             )
             val results = response.getResponseItems(StkNineturnResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取股票调研数据
+     * @param params 请求参数
+     * @return 股票调研数据流
+     */
+    override fun getStkSurv(params: StkSurvParams): Flow<List<StkSurvResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response = tuShare.callApi(
+                apiName = "stk_surv",
+                params = apiParams
+            )
+            val results = response.getResponseItems(StkSurvResult.serializer())
             emit(results)
         }
 }

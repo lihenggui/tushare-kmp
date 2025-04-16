@@ -69,6 +69,8 @@ import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
 import li.mercury.tushare.api.stock.models.StkRewardsParams
 import li.mercury.tushare.api.stock.models.StkRewardsResult
+import li.mercury.tushare.api.stock.models.StkSurvParams
+import li.mercury.tushare.api.stock.models.StkSurvResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -293,4 +295,9 @@ interface StockApiInterface {
      * 获取神奇九转指标数据
      */
     fun getStkNineturn(params: StkNineturnParams): Flow<List<StkNineturnResult>>
+
+    /**
+     * 获取机构调研表数据
+     */
+    fun getStkSurv(params: StkSurvParams): Flow<List<StkSurvResult>>
 }
