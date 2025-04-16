@@ -33,6 +33,7 @@ import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.RepurchaseParams
+import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockCompanyParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
@@ -484,6 +485,23 @@ class TuShareTest {
                 .getConceptDetail(
                     ConceptDetailParams(
                         id = "TS2",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testShareFloatWorks() =
+        runTest {
+            val client = createClient("share_float.json")
+            client.stock
+                .getShareFloat(
+                    ShareFloatParams(
+                        tsCode = TsCode("000998", "SZ"),
+                        annDate = LocalDate(2018, 12, 20),
                     ),
                 ).test {
                     val result = awaitItem()

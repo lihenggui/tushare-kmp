@@ -15,6 +15,8 @@ import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.PledgeStatResult
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
+import li.mercury.tushare.api.stock.models.ShareFloatParams
+import li.mercury.tushare.api.stock.models.ShareFloatResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -82,4 +84,9 @@ interface StockApiInterface {
      * 获取概念股列表
      */
     fun getConceptDetail(params: ConceptDetailParams): Flow<List<ConceptDetailResult>>
+
+    /**
+     * 获取限售股解禁数据
+     */
+    fun getShareFloat(params: ShareFloatParams): Flow<List<ShareFloatResult>>
 }

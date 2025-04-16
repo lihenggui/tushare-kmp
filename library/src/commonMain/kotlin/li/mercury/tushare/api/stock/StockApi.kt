@@ -17,6 +17,8 @@ import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.PledgeStatResult
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
+import li.mercury.tushare.api.stock.models.ShareFloatParams
+import li.mercury.tushare.api.stock.models.ShareFloatResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -208,6 +210,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(ConceptDetailResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取限售股解禁数据
+     * @param params 请求参数
+     * @return 限售股解禁数据流
+     */
+    override fun getShareFloat(params: ShareFloatParams): Flow<List<ShareFloatResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "share_float",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(ShareFloatResult.serializer())
             emit(results)
         }
 }
