@@ -49,6 +49,8 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.SlbLenMmParams
+import li.mercury.tushare.api.stock.models.SlbLenMmResult
 import li.mercury.tushare.api.stock.models.SlbLenParams
 import li.mercury.tushare.api.stock.models.SlbLenResult
 import li.mercury.tushare.api.stock.models.SlbSecDetailParams
@@ -264,4 +266,9 @@ interface StockApiInterface {
      * 获取转融券交易明细数据
      */
     fun getSlbSecDetail(params: SlbSecDetailParams): Flow<List<SlbSecDetailResult>>
+
+    /**
+     * 获取做市借券交易汇总数据
+     */
+    fun getSlbLenMm(params: SlbLenMmParams): Flow<List<SlbLenMmResult>>
 }

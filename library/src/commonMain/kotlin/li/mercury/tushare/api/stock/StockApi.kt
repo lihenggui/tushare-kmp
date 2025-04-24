@@ -51,6 +51,8 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.SlbLenMmParams
+import li.mercury.tushare.api.stock.models.SlbLenMmResult
 import li.mercury.tushare.api.stock.models.SlbLenParams
 import li.mercury.tushare.api.stock.models.SlbLenResult
 import li.mercury.tushare.api.stock.models.SlbSecDetailParams
@@ -697,6 +699,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(SlbSecDetailResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取做市借券交易汇总数据
+     * @param params 请求参数
+     * @return 做市借券交易汇总数据流
+     */
+    override fun getSlbLenMm(params: SlbLenMmParams): Flow<List<SlbLenMmResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "slb_len_mm",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(SlbLenMmResult.serializer())
             emit(results)
         }
 }
