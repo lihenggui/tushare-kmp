@@ -44,5 +44,5 @@ data class IndexMemberAllResult(
     val outDate: LocalDate? = null,
     /** 是否最新（Y 是，N 否） */
     @SerialName("is_new")
-    val isNew: String
-) 
+    val isNew: String,
+)

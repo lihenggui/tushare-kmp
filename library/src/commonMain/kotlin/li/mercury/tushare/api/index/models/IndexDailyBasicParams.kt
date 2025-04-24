@@ -17,24 +17,21 @@ data class IndexDailyBasicParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
     val tradeDate: LocalDate? = null,
-    
     /**
      * TS指数代码
      */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-    
     /**
      * 开始日期 (格式：YYYYMMDD)
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("start_date")
     val startDate: LocalDate? = null,
-    
     /**
      * 结束日期 (格式：YYYYMMDD)
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
-    val endDate: LocalDate? = null
+    val endDate: LocalDate? = null,
 )

@@ -14,13 +14,10 @@ data class IdxFactorProResult(
     /** TS指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,
-    
     /** 交易日 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
     val tradeDate: LocalDate,
-    
-    // 基础行情字段
     /** 开盘价 */
     val open: Double,
     /** 最高价 */
@@ -41,8 +38,6 @@ data class IdxFactorProResult(
     val vol: Double,
     /** 成交额（千元） */
     val amount: Double,
-
-    // 技术指标字段
     /** 振动升降指标 */
     @SerialName("asi_bfq")
     val asiBfq: Double,
@@ -201,5 +196,5 @@ data class IdxFactorProResult(
     @SerialName("rsi_bfq_24")
     val rsiBfq24: Double,
     @SerialName("rsi_bfq_6")
-    val rsiBfq6: Double
+    val rsiBfq6: Double,
 )

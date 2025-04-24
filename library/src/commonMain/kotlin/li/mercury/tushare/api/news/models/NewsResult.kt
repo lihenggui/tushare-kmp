@@ -16,22 +16,19 @@ data class NewsResult(
     @SerialName("datetime")
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     val datetime: LocalDateTime,
-    
     /**
      * 新闻内容
      */
     @SerialName("content")
     val content: String,
-    
     /**
      * 新闻标题
      */
     @SerialName("title")
     val title: String? = null,
-    
     /**
      * 新闻分类（多个分类用逗号分隔）
      */
     @SerialName("channels")
-    val channels: String? = null
-) 
+    val channels: String? = null,
+)

@@ -36,4 +36,4 @@ data class IndexMonthlyParams(
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     val endDate: LocalDate? = null,
-) 
+)

@@ -8,5 +8,18 @@ import kotlinx.serialization.Serializable
 @Suppress("NonAsciiCharacters", "ktlint:standard:enum-entry-name-case")
 @Serializable
 enum class SzTsCode {
-    股票, 主板A股, 主板B股, 创业板A股, 基金, ETF, LOF, 封闭式基金, 基础设施基金, 债券, 债券现券, 债券回购, ABS, 期权
+    股票,
+    主板A股,
+    主板B股,
+    创业板A股,
+    基金,
+    ETF,
+    LOF,
+    封闭式基金,
+    基础设施基金,
+    债券,
+    债券现券,
+    债券回购,
+    ABS,
+    期权,
 }

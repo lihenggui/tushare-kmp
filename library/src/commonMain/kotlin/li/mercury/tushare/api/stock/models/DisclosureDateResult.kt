@@ -34,4 +34,4 @@ data class DisclosureDateResult(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("modify_date")
     val modifyDate: LocalDate? = null,
-) 
+)

@@ -25,5 +25,5 @@ data class StkPremarketParams(
     /** 结束日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
-    val endDate: LocalDate? = null
+    val endDate: LocalDate? = null,
 )

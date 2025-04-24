@@ -64,4 +64,4 @@ enum class HolderType {
     /** 高管 */
     @SerialName("G")
     G,
-} 
+}

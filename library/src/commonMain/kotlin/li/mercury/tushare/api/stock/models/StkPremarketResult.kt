@@ -32,5 +32,5 @@ data class StkPremarketResult(
     val upLimit: Double? = null,
     /** 今日跌停价 */
     @SerialName("down_limit")
-    val downLimit: Double? = null
+    val downLimit: Double? = null,
 )

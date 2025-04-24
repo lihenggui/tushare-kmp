@@ -38,4 +38,4 @@ data class RepurchaseResult(
     /** 回购最低价（元） */
     @SerialName("low_limit")
     val lowLimit: Float? = null,
-) 
+)

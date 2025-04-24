@@ -43,5 +43,5 @@ data class IndexMemberAllParams(
      * 可选参数
      */
     @SerialName("is_new")
-    val isNew: String? = null
-) 
+    val isNew: String? = null,
+)

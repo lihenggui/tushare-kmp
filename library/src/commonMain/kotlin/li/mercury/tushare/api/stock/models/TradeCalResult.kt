@@ -23,5 +23,5 @@ data class TradeCalResult(
     /** 上一个交易日 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("pretrade_date")
-    val preTradeDate: LocalDate? = null
+    val preTradeDate: LocalDate? = null,
 )

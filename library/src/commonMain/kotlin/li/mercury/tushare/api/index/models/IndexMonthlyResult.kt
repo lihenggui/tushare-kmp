@@ -35,4 +35,4 @@ data class IndexMonthlyResult(
     val vol: Double? = null,
     /** 成交额（千元） */
     val amount: Double? = null,
-) 
+)

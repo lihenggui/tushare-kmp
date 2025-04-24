@@ -30,4 +30,4 @@ data class DividendParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("imp_ann_date")
     val impAnnDate: LocalDate? = null,
-) 
+)

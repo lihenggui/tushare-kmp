@@ -106,4 +106,4 @@ data class ExpressResult(
     val isAudit: Int? = null,
     /** 备注 */
     val remark: String? = null,
-) 
+)

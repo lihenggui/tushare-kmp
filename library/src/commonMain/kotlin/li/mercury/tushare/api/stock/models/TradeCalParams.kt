@@ -23,5 +23,5 @@ data class TradeCalParams(
     val endDate: LocalDate? = null,
     /** 是否交易：0休市 1交易 */
     @SerialName("is_open")
-    val isOpen: String? = null
+    val isOpen: String? = null,
 )

@@ -13,5 +13,5 @@ enum class RepurchaseProgress {
     COMPLETED,
 
     @SerialName("股东大会通过")
-    SHAREHOLDER_APPROVED
-} 
+    SHAREHOLDER_APPROVED,
+}

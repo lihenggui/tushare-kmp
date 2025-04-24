@@ -138,7 +138,6 @@ interface StockApiInterface {
      */
     fun getDisclosureDate(params: DisclosureDateParams): Flow<List<DisclosureDateResult>>
 
-
     /**
      * 获取股本情况（盘前）数据
      */
