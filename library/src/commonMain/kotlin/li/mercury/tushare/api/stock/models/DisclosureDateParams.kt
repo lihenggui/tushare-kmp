@@ -26,4 +26,4 @@ data class DisclosureDateParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("actual_date")
     val actualDate: LocalDate? = null,
-) 
+)

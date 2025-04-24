@@ -29,4 +29,4 @@ data class ExpressParams(
     /** 报告期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     val period: LocalDate? = null,
-) 
+)

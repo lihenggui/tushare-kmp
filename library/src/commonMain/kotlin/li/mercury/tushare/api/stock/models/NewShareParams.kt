@@ -17,5 +17,5 @@ data class NewShareParams(
     /** 上网发行结束日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
-    val endDate: LocalDate? = null
+    val endDate: LocalDate? = null,
 )

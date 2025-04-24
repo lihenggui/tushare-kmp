@@ -23,5 +23,5 @@ data class IndexClassifyResult(
     @SerialName("is_pub")
     val isPub: String,
     /** 行业分类来源*/
-    val src: String?
-) 
+    val src: String?,
+)

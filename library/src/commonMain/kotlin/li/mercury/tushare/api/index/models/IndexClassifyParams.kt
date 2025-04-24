@@ -22,17 +22,17 @@ data class IndexClassifyParams(
      * 可选参数，L1/L2/L3
      */
     val level: Level? = null,
-    @SerialName("parent_code")
     /**
      * 父级代码
      *
      * 可选参数，一级为0
      */
+    @SerialName("parent_code")
     val parentCode: String? = null,
     /**
      * 指数来源
      *
      * 可选参数 (SW2014：申万 2014 年版本，SW2021：申万 2021 年版本)
      */
-    val src: String? = null
+    val src: String? = null,
 )

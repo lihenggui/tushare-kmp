@@ -16,35 +16,29 @@ data class IrmQaSzResult(
      */
     @SerialName("ts_code")
     val tsCode: TsCode,
-
     /**
      * 公司名称
      */
     val name: String,
-
     /**
      * 交易日期
      */
     @SerialName("trade_date")
     val tradeDate: String,
-
     /**
      * 问题内容
      */
     val q: String,
-
     /**
      * 回复内容
      */
     val a: String,
-
     /**
      * 发布时间
      */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("pub_time")
     val pubTime: LocalDateTime,
-
     /**
      * 涉及行业
      */

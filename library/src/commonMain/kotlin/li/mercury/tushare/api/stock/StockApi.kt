@@ -432,10 +432,10 @@ internal class StockApi(
         }
 
     /*
-    * 获取资产负债表数据
-    * @param params 请求参数
-    * @return 资产负债表数据流
-    */
+     * 获取资产负债表数据
+     * @param params 请求参数
+     * @return 资产负债表数据流
+     */
     override fun getBalanceSheet(params: BalanceSheetParams): Flow<List<BalanceSheetResult>> =
         flow {
             val apiParams = params.toApiParams()
@@ -597,10 +597,11 @@ internal class StockApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "stk_premarket",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_premarket",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkPremarketResult.serializer())
             emit(results)
         }
@@ -608,10 +609,11 @@ internal class StockApi(
     override fun getTradeCal(params: TradeCalParams): Flow<List<TradeCalResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "trade_cal",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "trade_cal",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(TradeCalResult.serializer())
             emit(results)
         }
@@ -620,10 +622,11 @@ internal class StockApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "stk_managers",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_managers",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkManagersResult.serializer())
             emit(results)
         }
@@ -632,10 +635,11 @@ internal class StockApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "stk_rewards",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_rewards",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkRewardsResult.serializer())
             emit(results)
         }
@@ -644,10 +648,11 @@ internal class StockApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "new_share",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "new_share",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(NewShareResult.serializer())
             emit(results)
         }
@@ -656,10 +661,11 @@ internal class StockApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "bak_basic",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "bak_basic",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(BakBasicResult.serializer())
             emit(results)
         }

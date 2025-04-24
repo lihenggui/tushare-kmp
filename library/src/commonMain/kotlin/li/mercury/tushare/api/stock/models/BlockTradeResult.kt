@@ -28,4 +28,4 @@ data class BlockTradeResult(
     val buyer: String,
     /** 卖方营业部 */
     val seller: String,
-) 
+)

@@ -90,10 +90,11 @@ internal class IndexApi(
     override fun getIndexWeekly(params: IndexWeeklyParams): Flow<List<IndexWeeklyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "index_weekly",
-                params = apiParams,
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "index_weekly",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(IndexWeeklyResult.serializer())
             emit(results)
         }
@@ -107,10 +108,11 @@ internal class IndexApi(
     override fun getIndexMonthly(params: IndexMonthlyParams): Flow<List<IndexMonthlyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "index_monthly",
-                params = apiParams,
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "index_monthly",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(IndexMonthlyResult.serializer())
             emit(results)
         }
@@ -143,10 +145,11 @@ internal class IndexApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "index_dailybasic",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "index_dailybasic",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(IndexDailyBasicResult.serializer())
             emit(results)
         }
@@ -160,10 +163,11 @@ internal class IndexApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "index_classify",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "index_classify",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(IndexClassifyResult.serializer())
             emit(results)
         }
@@ -235,10 +239,11 @@ internal class IndexApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "sz_daily_info",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "sz_daily_info",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(SzDailyInfoResult.serializer())
             emit(results)
         }
@@ -253,10 +258,11 @@ internal class IndexApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "ths_daily",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "ths_daily",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(ThsDailyResult.serializer())
             emit(results)
         }
@@ -271,10 +277,11 @@ internal class IndexApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "ci_daily",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "ci_daily",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(CiDailyResult.serializer())
             emit(results)
         }
@@ -289,10 +296,11 @@ internal class IndexApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "index_global",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "index_global",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(IndexGlobalResult.serializer())
             emit(results)
         }
@@ -306,10 +314,11 @@ internal class IndexApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "idx_factor_pro",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "idx_factor_pro",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(IdxFactorProResult.serializer())
             emit(results)
         }

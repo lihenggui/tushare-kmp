@@ -29,4 +29,4 @@ data class Top10HoldersParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDate? = null,
-) 
+)

@@ -18,4 +18,4 @@ data class PledgeStatParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDate? = null,
-) 
+)

@@ -15,8 +15,7 @@ data class BakBasicParams(
     @SerialName("trade_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val tradeDate: LocalDate? = null,
-
     /** TS股票代码 */
     @SerialName("ts_code")
-    val tsCode: TsCode? = null
-) 
+    val tsCode: TsCode? = null,
+)

@@ -154,5 +154,4 @@ interface IndexApiInterface {
      * @return 返回包含技术因子数据的Flow流
      */
     fun getIdxFactorPro(params: IdxFactorProParams): Flow<List<IdxFactorProResult>>
-
 }

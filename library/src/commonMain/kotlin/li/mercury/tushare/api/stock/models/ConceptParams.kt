@@ -9,4 +9,4 @@ import kotlinx.serialization.Serializable
 data class ConceptParams(
     /** 来源，默认为ts */
     val src: String? = null,
-) 
+)

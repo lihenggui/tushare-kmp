@@ -13,4 +13,4 @@ data class ConceptResult(
     val name: String,
     /** 数据来源（目前仅ts） */
     val src: String,
-) 
+)

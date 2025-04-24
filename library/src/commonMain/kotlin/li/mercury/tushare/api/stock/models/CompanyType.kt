@@ -8,19 +8,19 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 enum class CompanyType {
-    @SerialName("1")
     /** 一般工商业 */
+    @SerialName("1")
     GENERAL_INDUSTRY,
 
-    @SerialName("2")
     /** 银行 */
+    @SerialName("2")
     BANK,
 
-    @SerialName("3")
     /** 保险 */
+    @SerialName("3")
     INSURANCE,
 
-    @SerialName("4")
     /** 证券 */
-    SECURITIES;
+    @SerialName("4")
+    SECURITIES,
 }

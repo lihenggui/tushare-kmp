@@ -48,4 +48,4 @@ data class ThsDailyResult(
     /** 流通市值（千元） */
     @SerialName("float_mv")
     val floatMv: Double? = null,
-) 
+)

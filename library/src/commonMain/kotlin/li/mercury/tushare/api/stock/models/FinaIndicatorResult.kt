@@ -116,4 +116,4 @@ data class FinaIndicatorResult(
     /** 营业收入同比增长率(%) */
     @SerialName("or_yoy")
     val orYoy: Double? = null,
-) 
+)

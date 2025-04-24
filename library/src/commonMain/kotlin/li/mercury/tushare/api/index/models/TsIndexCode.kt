@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 enum class TsIndexCode(
     /** 指数中文名称 */
-    val chineseName: String
+    val chineseName: String,
 ) {
     XIN9("富时中国A50指数 (富时A50)"),
     HSI("恒生指数"),
@@ -33,5 +33,5 @@ enum class TsIndexCode(
     CKLSE("马来西亚指数"),
     SPTSX("加拿大S&P/TSX指数"),
     CSX5P("STOXX欧洲50指数"),
-    RUT("罗素2000指数");
+    RUT("罗素2000指数"),
 }

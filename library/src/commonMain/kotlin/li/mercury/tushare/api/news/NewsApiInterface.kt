@@ -47,5 +47,4 @@ interface NewsApiInterface {
      * 获取深证互动易问答数据
      */
     fun getIrmQaSz(params: IrmQaSzParams): Flow<List<IrmQaSzResult>>
-
 }

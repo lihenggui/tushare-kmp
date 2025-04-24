@@ -14,14 +14,12 @@ data class CctvNewsResult(
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     val date: LocalDate,
-
     /**
      * 新闻标题
      */
     val title: String,
-
     /**
      * 新闻内容（分段处理）
      */
-    val content: String
+    val content: String,
 )

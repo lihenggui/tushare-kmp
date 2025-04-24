@@ -29,5 +29,5 @@ data class StkRewardsResult(
     val reward: Double? = null,
     /** 持股数（单位：股） */
     @SerialName("hold_vol")
-    val holdVol: Double? = null
+    val holdVol: Double? = null,
 )

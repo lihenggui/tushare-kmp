@@ -19,28 +19,23 @@ data class AnnouncementResult(
     @SerialName("ann_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val annDate: LocalDate,
-
     /**
      * 股票代码
      */
     @SerialName("ts_code")
     val tsCode: TsCode,
-
     /**
      * 股票名称
      */
     val name: String,
-
     /**
      * 公告标题
      */
     val title: String,
-
     /**
      * PDF文档链接
      */
     val url: String,
-
     /**
      * 发布时间
      */

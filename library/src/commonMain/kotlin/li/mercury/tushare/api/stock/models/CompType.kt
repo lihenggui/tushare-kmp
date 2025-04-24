@@ -23,4 +23,4 @@ enum class CompType {
     /** 证券 */
     @SerialName("4")
     SECURITIES,
-} 
+}

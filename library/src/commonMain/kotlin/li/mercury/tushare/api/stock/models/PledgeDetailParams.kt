@@ -12,4 +12,4 @@ data class PledgeDetailParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,
-) 
+)

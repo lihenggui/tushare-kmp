@@ -33,4 +33,4 @@ data class PledgeStatResult(
     /** 质押比例(%) */
     @SerialName("pledge_ratio")
     val pledgeRatio: Float? = null,
-) 
+)

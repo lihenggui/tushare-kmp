@@ -28,4 +28,4 @@ data class FinaIndicatorParams(
     val endDate: LocalDate? = null,
     /** 报告期 */
     val period: String? = null,
-) 
+)

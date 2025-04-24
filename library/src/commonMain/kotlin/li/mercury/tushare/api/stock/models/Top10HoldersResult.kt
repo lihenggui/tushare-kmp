@@ -40,4 +40,4 @@ data class Top10HoldersResult(
     /** 股东类型 */
     @SerialName("holder_type")
     val holderType: String? = null,
-) 
+)

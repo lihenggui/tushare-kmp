@@ -33,5 +33,5 @@ data class IrmQaShParams(
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
-    val endDate: LocalDate? = null
+    val endDate: LocalDate? = null,
 )

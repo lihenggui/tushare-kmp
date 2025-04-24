@@ -31,4 +31,4 @@ data class ForecastParams(
     val period: LocalDate? = null,
     /** 预告类型(预增/预减/扭亏/首亏/续亏/续盈/略增/略减) */
     val type: ForecastType? = null,
-) 
+)

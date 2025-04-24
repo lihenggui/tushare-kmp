@@ -30,4 +30,4 @@ data class ShareFloatParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDate? = null,
-) 
+)
