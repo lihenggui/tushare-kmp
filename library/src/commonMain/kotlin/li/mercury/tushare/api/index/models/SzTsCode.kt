@@ -22,4 +22,6 @@ enum class SzTsCode {
     债券回购,
     ABS,
     期权,
+    中小板,
+    分级基金,
 }
