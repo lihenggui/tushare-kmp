@@ -37,6 +37,8 @@ import li.mercury.tushare.api.stock.models.MarginDetailParams
 import li.mercury.tushare.api.stock.models.MarginDetailResult
 import li.mercury.tushare.api.stock.models.MarginParams
 import li.mercury.tushare.api.stock.models.MarginResult
+import li.mercury.tushare.api.stock.models.MarginSecsParams
+import li.mercury.tushare.api.stock.models.MarginSecsResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.NewShareParams
@@ -617,6 +619,24 @@ internal class StockApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(MarginDetailResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取融资融券标的（盘前更新）
+     * @param params 请求参数
+     * @return 融资融券标的数据流
+     */
+    override fun getMarginSecs(params: MarginSecsParams): Flow<List<MarginSecsResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "margin_secs",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(MarginSecsResult.serializer())
             emit(results)
         }
 }
