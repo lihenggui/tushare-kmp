@@ -59,6 +59,7 @@ import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.SlbLenParams
+import li.mercury.tushare.api.stock.models.SlbSecDetailParams
 import li.mercury.tushare.api.stock.models.SlbSecParams
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkPremarketParams
@@ -1061,6 +1062,22 @@ class TuShareTest {
                     SlbLenParams(
                         startDate = LocalDate(2024, 6, 1),
                         endDate = LocalDate(2024, 6, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testSlbSecDetailWorks() =
+        runTest {
+            val client = createClient("slb_sec_detail.json")
+            client.stock
+                .getSlbSecDetail(
+                    SlbSecDetailParams(
+                        tradeDate = LocalDate(2024, 6, 20),
                     ),
                 ).test {
                     val result = awaitItem()
