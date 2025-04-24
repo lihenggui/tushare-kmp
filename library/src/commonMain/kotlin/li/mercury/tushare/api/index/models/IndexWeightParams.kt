@@ -39,4 +39,4 @@ data class IndexWeightParams(
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     val endDate: LocalDate? = null,
-) 
+)

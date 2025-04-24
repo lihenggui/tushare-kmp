@@ -67,7 +67,7 @@ enum class ReleaseStatus {
     Y,
 
     /** 否 */
-    N
+    N,
 }
 
 /**
@@ -79,5 +79,5 @@ enum class BuybackStatus {
     Y,
 
     /** 否 */
-    N
-} 
+    N,
+}

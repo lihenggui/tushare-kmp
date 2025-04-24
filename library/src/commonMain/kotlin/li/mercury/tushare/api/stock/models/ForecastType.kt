@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 /**
  * 业绩预告类型
  */
+@Suppress("NonAsciiCharacters", "ktlint:standard:enum-entry-name-case")
 @Serializable
 enum class ForecastType {
     预增,
@@ -15,4 +16,4 @@ enum class ForecastType {
     续盈,
     略增,
     略减,
-} 
+}

@@ -14,21 +14,18 @@ data class MajorNewsResult(
      * 标题
      */
     val title: String,
-
     /**
      * 内容
      */
     val content: String? = null,
-
     /**
      * 发布时间
      */
     @SerialName("pub_time")
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     val pubTime: LocalDateTime,
-
     /**
      * 来源网站
      */
-    val src: String
+    val src: String,
 )

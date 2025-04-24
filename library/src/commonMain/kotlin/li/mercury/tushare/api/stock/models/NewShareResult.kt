@@ -42,5 +42,5 @@ data class NewShareResult(
     /** 募集资金（亿元） */
     val funds: Float? = null,
     /** 中签率 */
-    val ballot: Float? = null
+    val ballot: Float? = null,
 )

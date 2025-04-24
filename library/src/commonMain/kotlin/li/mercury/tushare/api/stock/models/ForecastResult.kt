@@ -48,4 +48,4 @@ data class ForecastResult(
     /** 业绩变动原因 */
     @SerialName("change_reason")
     val changeReason: String? = null,
-) 
+)

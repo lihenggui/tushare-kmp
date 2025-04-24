@@ -34,4 +34,4 @@ data class ShareFloatResult(
     /** 股份类型（如定增股份、首发原股东限售股份） */
     @SerialName("share_type")
     val shareType: String,
-) 
+)

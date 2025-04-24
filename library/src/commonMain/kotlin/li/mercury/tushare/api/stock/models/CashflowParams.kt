@@ -14,40 +14,32 @@ data class CashflowParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-
     /** 公告日期 */
     @SerialName("ann_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val annDate: LocalDate? = null,
-
     /** 实际公告日期 */
     @SerialName("f_ann_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val fAnnDate: LocalDate? = null,
-
     /** 公告开始日期 */
     @SerialName("start_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val startDate: LocalDate? = null,
-
     /** 公告结束日期 */
     @SerialName("end_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val endDate: LocalDate? = null,
-
     /** 报告期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     val period: LocalDate? = null,
-
     /** 报告类型 */
     @SerialName("report_type")
     val reportType: ReportType? = null,
-
     /** 公司类型 */
     @SerialName("comp_type")
     val compType: CompanyType? = null,
-
     /** 是否计算报表 */
     @SerialName("is_calc")
     val isCalc: Int? = null,
-) 
+)

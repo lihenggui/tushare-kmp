@@ -33,4 +33,4 @@ data class FinaMainbzResult(
     /** 是否更新 */
     @SerialName("update_flag")
     val updateFlag: String? = null,
-) 
+)

@@ -53,4 +53,4 @@ data class StockHolderTradeResult(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("close_date")
     val closeDate: LocalDate? = null,
-) 
+)

@@ -34,4 +34,4 @@ data class FinaAuditResult(
     /** 签字会计师 */
     @SerialName("audit_sign")
     val auditSign: String? = null,
-) 
+)

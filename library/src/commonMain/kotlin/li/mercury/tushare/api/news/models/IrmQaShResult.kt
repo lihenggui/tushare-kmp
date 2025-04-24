@@ -43,5 +43,5 @@ data class IrmQaShResult(
      */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("pub_time")
-    val pubTime: LocalDateTime? = null
+    val pubTime: LocalDateTime? = null,
 )

@@ -25,4 +25,4 @@ data class StockHolderNumberResult(
     /** 股东户数 */
     @SerialName("holder_num")
     val holderNum: Int,
-) 
+)

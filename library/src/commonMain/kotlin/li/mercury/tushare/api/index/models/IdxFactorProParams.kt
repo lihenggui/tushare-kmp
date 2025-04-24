@@ -30,5 +30,5 @@ data class IdxFactorProParams(
      * 交易日期（格式：YYYYMMDD）
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
-    val tradeDate: LocalDate? = null
+    val tradeDate: LocalDate? = null,
 )

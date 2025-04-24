@@ -66,4 +66,4 @@ data class DividendResult(
     /** 基准股本（万） */
     @SerialName("base_share")
     val baseShare: Float? = null,
-) 
+)

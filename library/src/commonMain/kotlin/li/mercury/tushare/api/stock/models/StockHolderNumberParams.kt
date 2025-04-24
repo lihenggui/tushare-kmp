@@ -30,4 +30,4 @@ data class StockHolderNumberParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate2: LocalDate? = null,
-) 
+)

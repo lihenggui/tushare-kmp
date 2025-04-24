@@ -8,51 +8,51 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 enum class ReportType {
-    @SerialName("1")
     /** 合并报表 */
+    @SerialName("1")
     CONSOLIDATED,
 
-    @SerialName("2")
     /** 单季合并 */
+    @SerialName("2")
     SINGLE_QUARTER_CONSOLIDATED,
 
-    @SerialName("3")
     /** 调整单季合并表 */
+    @SerialName("3")
     ADJUSTED_SINGLE_QUARTER_CONSOLIDATED,
 
-    @SerialName("4")
     /** 调整合并报表 */
+    @SerialName("4")
     ADJUSTED_CONSOLIDATED,
 
-    @SerialName("5")
     /** 调整前合并报表 */
+    @SerialName("5")
     PRE_ADJUSTMENT_CONSOLIDATED,
 
-    @SerialName("6")
     /** 母公司报表 */
+    @SerialName("6")
     PARENT_COMPANY,
 
-    @SerialName("7")
     /** 母公司单季表 */
+    @SerialName("7")
     PARENT_COMPANY_SINGLE_QUARTER,
 
-    @SerialName("8")
     /** 母公司调整单季表 */
+    @SerialName("8")
     PARENT_COMPANY_ADJUSTED_SINGLE_QUARTER,
 
-    @SerialName("9")
     /** 母公司调整表 */
+    @SerialName("9")
     PARENT_COMPANY_ADJUSTED,
 
-    @SerialName("10")
     /** 母公司调整前报表 */
+    @SerialName("10")
     PARENT_COMPANY_PRE_ADJUSTMENT,
 
-    @SerialName("11")
     /** 母公司调整前合并报表 */
+    @SerialName("11")
     PARENT_COMPANY_PRE_ADJUSTMENT_CONSOLIDATED,
 
-    @SerialName("12")
     /** 母公司调整前报表 */
-    PARENT_COMPANY_PRE_ADJUSTMENT_REPORT;
-} 
+    @SerialName("12")
+    PARENT_COMPANY_PRE_ADJUSTMENT_REPORT,
+}

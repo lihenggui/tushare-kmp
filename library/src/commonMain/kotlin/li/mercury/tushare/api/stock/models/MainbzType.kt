@@ -14,5 +14,5 @@ enum class MainbzType {
     D,
 
     /** 按行业 */
-    I
+    I,
 }

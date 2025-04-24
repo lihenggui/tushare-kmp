@@ -14,5 +14,5 @@ data class StkRewardsParams(
     val tsCode: TsCode,
     /** 报告期（格式：YYYYMMDD） */
     @SerialName("end_date")
-    val endDate: String? = null
+    val endDate: String? = null,
 )

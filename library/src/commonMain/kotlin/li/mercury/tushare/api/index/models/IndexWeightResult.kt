@@ -21,5 +21,5 @@ data class IndexWeightResult(
     @SerialName("trade_date")
     val tradeDate: LocalDate,
     /** 权重（单位：%） */
-    val weight: Double
-) 
+    val weight: Double,
+)

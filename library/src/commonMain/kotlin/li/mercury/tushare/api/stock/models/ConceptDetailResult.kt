@@ -29,4 +29,4 @@ data class ConceptDetailResult(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("out_date")
     val outDate: LocalDate? = null,
-) 
+)

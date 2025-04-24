@@ -14,4 +14,4 @@ data class ConceptDetailParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-) 
+)

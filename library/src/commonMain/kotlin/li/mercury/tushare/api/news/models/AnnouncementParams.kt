@@ -16,21 +16,18 @@ data class AnnouncementParams(
      */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-
     /**
      * 公告日期 (格式：YYYYMMDD)
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("ann_date")
     val annDate: LocalDate? = null,
-
     /**
      * 开始日期 (格式：YYYYMMDD)
      */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("start_date")
     val startDate: LocalDate? = null,
-
     /**
      * 结束日期 (格式：YYYYMMDD)
      */
