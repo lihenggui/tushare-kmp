@@ -49,6 +49,7 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.IncomeParams
 import li.mercury.tushare.api.stock.models.MainbzType
+import li.mercury.tushare.api.stock.models.MarginParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NewShareParams
 import li.mercury.tushare.api.stock.models.PledgeDetailParams
@@ -970,6 +971,24 @@ class TuShareTest {
                         tsCode = TsCode("002149", "SZ"),
                         startDate = LocalDate(2022, 1, 1),
                         endDate = LocalDate(2022, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testMarginWorks() =
+        runTest {
+            val client = createClient("margin.json")
+            client.stock
+                .getMargin(
+                    MarginParams(
+                        tradeDate = LocalDate(2018, 8, 2),
+                        exchangeId = Exchange.SSE,
                     ),
                 ).test {
                     val result = awaitItem()

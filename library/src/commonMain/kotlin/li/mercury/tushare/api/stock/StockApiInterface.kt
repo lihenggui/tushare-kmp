@@ -31,6 +31,8 @@ import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
 import li.mercury.tushare.api.stock.models.IncomeParams
 import li.mercury.tushare.api.stock.models.IncomeResult
+import li.mercury.tushare.api.stock.models.MarginParams
+import li.mercury.tushare.api.stock.models.MarginResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.NewShareParams
@@ -222,4 +224,9 @@ interface StockApiInterface {
      * 获取股东增减持数据
      */
     fun getStockHolderTrade(params: StockHolderTradeParams): Flow<List<StockHolderTradeResult>>
+
+    /**
+     * 获取融资融券交易汇总数据
+     */
+    fun getMargin(params: MarginParams): Flow<List<MarginResult>>
 }
