@@ -1,8 +1,12 @@
 package li.mercury.tushare.api.stock
 
 import kotlinx.coroutines.flow.Flow
+import li.mercury.tushare.api.stock.models.AdjFactorParams
+import li.mercury.tushare.api.stock.models.AdjFactorResult
 import li.mercury.tushare.api.stock.models.BakBasicParams
 import li.mercury.tushare.api.stock.models.BakBasicResult
+import li.mercury.tushare.api.stock.models.BakDailyParams
+import li.mercury.tushare.api.stock.models.BakDailyResult
 import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.BlockTradeParams
@@ -13,6 +17,10 @@ import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.ConceptResult
+import li.mercury.tushare.api.stock.models.DailyBasicParams
+import li.mercury.tushare.api.stock.models.DailyBasicResult
+import li.mercury.tushare.api.stock.models.DailyParams
+import li.mercury.tushare.api.stock.models.DailyResult
 import li.mercury.tushare.api.stock.models.DisclosureDateParams
 import li.mercury.tushare.api.stock.models.DisclosureDateResult
 import li.mercury.tushare.api.stock.models.DividendParams
@@ -27,8 +35,16 @@ import li.mercury.tushare.api.stock.models.FinaMainbzParams
 import li.mercury.tushare.api.stock.models.FinaMainbzResult
 import li.mercury.tushare.api.stock.models.ForecastParams
 import li.mercury.tushare.api.stock.models.ForecastResult
+import li.mercury.tushare.api.stock.models.GgtDailyParams
+import li.mercury.tushare.api.stock.models.GgtDailyResult
+import li.mercury.tushare.api.stock.models.GgtMonthlyParams
+import li.mercury.tushare.api.stock.models.GgtMonthlyResult
+import li.mercury.tushare.api.stock.models.GgtTop10Params
+import li.mercury.tushare.api.stock.models.GgtTop10Result
 import li.mercury.tushare.api.stock.models.HsConstParams
 import li.mercury.tushare.api.stock.models.HsConstResult
+import li.mercury.tushare.api.stock.models.HsgtTop10Params
+import li.mercury.tushare.api.stock.models.HsgtTop10Result
 import li.mercury.tushare.api.stock.models.IncomeParams
 import li.mercury.tushare.api.stock.models.IncomeResult
 import li.mercury.tushare.api.stock.models.MarginDetailParams
@@ -37,6 +53,10 @@ import li.mercury.tushare.api.stock.models.MarginParams
 import li.mercury.tushare.api.stock.models.MarginResult
 import li.mercury.tushare.api.stock.models.MarginSecsParams
 import li.mercury.tushare.api.stock.models.MarginSecsResult
+import li.mercury.tushare.api.stock.models.MinsParams
+import li.mercury.tushare.api.stock.models.MinsResult
+import li.mercury.tushare.api.stock.models.MonthlyParams
+import li.mercury.tushare.api.stock.models.MonthlyResult
 import li.mercury.tushare.api.stock.models.NameChangeParams
 import li.mercury.tushare.api.stock.models.NameChangeResult
 import li.mercury.tushare.api.stock.models.NewShareParams
@@ -57,6 +77,8 @@ import li.mercury.tushare.api.stock.models.SlbSecDetailParams
 import li.mercury.tushare.api.stock.models.SlbSecDetailResult
 import li.mercury.tushare.api.stock.models.SlbSecParams
 import li.mercury.tushare.api.stock.models.SlbSecResult
+import li.mercury.tushare.api.stock.models.StkLimitParams
+import li.mercury.tushare.api.stock.models.StkLimitResult
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
@@ -71,12 +93,20 @@ import li.mercury.tushare.api.stock.models.StockHolderNumberParams
 import li.mercury.tushare.api.stock.models.StockHolderNumberResult
 import li.mercury.tushare.api.stock.models.StockHolderTradeParams
 import li.mercury.tushare.api.stock.models.StockHolderTradeResult
+import li.mercury.tushare.api.stock.models.SuspendDParams
+import li.mercury.tushare.api.stock.models.SuspendDResult
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.models.Top10FloatHoldersResult
 import li.mercury.tushare.api.stock.models.Top10HoldersParams
 import li.mercury.tushare.api.stock.models.Top10HoldersResult
 import li.mercury.tushare.api.stock.models.TradeCalParams
 import li.mercury.tushare.api.stock.models.TradeCalResult
+import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjParams
+import li.mercury.tushare.api.stock.models.WeeklyMonthlyAdjResult
+import li.mercury.tushare.api.stock.models.WeeklyMonthlyParams
+import li.mercury.tushare.api.stock.models.WeeklyMonthlyResult
+import li.mercury.tushare.api.stock.models.WeeklyParams
+import li.mercury.tushare.api.stock.models.WeeklyResult
 
 /**
  * 股票相关API的存储库接口
@@ -101,6 +131,81 @@ interface StockApiInterface {
      * 获取上市公司基本信息
      */
     fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+
+    /**
+     * 获取股票日线行情数据
+     */
+    fun getDaily(params: DailyParams): Flow<List<DailyResult>>
+
+    /**
+     * 获取股票分钟行情数据
+     */
+    fun getMins(params: MinsParams): Flow<List<MinsResult>>
+
+    /**
+     * 获取A股周线行情数据
+     */
+    fun getWeekly(params: WeeklyParams): Flow<List<WeeklyResult>>
+
+    /**
+     * 获取A股月线行情数据
+     */
+    fun getMonthly(params: MonthlyParams): Flow<List<MonthlyResult>>
+
+    /**
+     * 获取股票周/月线行情数据
+     */
+    fun getWeeklyMonthly(params: WeeklyMonthlyParams): Flow<List<WeeklyMonthlyResult>>
+
+    /**
+     * 获取股票周/月线行情（复权，每日更新）
+     */
+    fun getWeeklyMonthlyAdj(params: WeeklyMonthlyAdjParams): Flow<List<WeeklyMonthlyAdjResult>>
+
+    /**
+     * 获取股票复权因子数据
+     */
+    fun getAdjFactor(params: AdjFactorParams): Flow<List<AdjFactorResult>>
+
+    /**
+     * 获取股票每日指标数据
+     */
+    fun getDailyBasic(params: DailyBasicParams): Flow<List<DailyBasicResult>>
+
+    /**
+     * 获取每日涨跌停价格数据
+     */
+    fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>>
+
+    /**
+     * 获取每日停复牌信息
+     */
+    fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>>
+
+    /**
+     * 获取沪深股通十大成交股数据
+     */
+    fun getHsgtTop10(params: HsgtTop10Params): Flow<List<HsgtTop10Result>>
+
+    /**
+     * 获取港股通十大成交股数据
+     */
+    fun getGgtTop10(params: GgtTop10Params): Flow<List<GgtTop10Result>>
+
+    /**
+     * 获取港股通每日成交统计
+     */
+    fun getGgtDaily(params: GgtDailyParams): Flow<List<GgtDailyResult>>
+
+    /**
+     * 获取港股通每月成交统计
+     */
+    fun getGgtMonthly(params: GgtMonthlyParams): Flow<List<GgtMonthlyResult>>
+
+    /**
+     * 获取备用行情数据
+     */
+    fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>>
 
     /**
      * 获取利润表数据
