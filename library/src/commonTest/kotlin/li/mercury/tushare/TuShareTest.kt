@@ -67,6 +67,9 @@ import li.mercury.tushare.api.stock.models.HsType
 import li.mercury.tushare.api.stock.models.HsgtTop10Params
 import li.mercury.tushare.api.stock.models.IncomeParams
 import li.mercury.tushare.api.stock.models.MainbzType
+import li.mercury.tushare.api.stock.models.MarginDetailParams
+import li.mercury.tushare.api.stock.models.MarginParams
+import li.mercury.tushare.api.stock.models.MarginSecsParams
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MonthlyParams
 import li.mercury.tushare.api.stock.models.NameChangeParams
@@ -76,6 +79,10 @@ import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.ReportRcParams
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.ShareFloatParams
+import li.mercury.tushare.api.stock.models.SlbLenMmParams
+import li.mercury.tushare.api.stock.models.SlbLenParams
+import li.mercury.tushare.api.stock.models.SlbSecDetailParams
+import li.mercury.tushare.api.stock.models.SlbSecParams
 import li.mercury.tushare.api.stock.models.StkAuctionCParams
 import li.mercury.tushare.api.stock.models.StkAuctionOParams
 import li.mercury.tushare.api.stock.models.StkFactorParams
@@ -1293,6 +1300,124 @@ class TuShareTest {
                         tsCode = TsCode("002149", "SZ"),
                         startDate = LocalDate(2022, 1, 1),
                         endDate = LocalDate(2022, 12, 31),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// Test skipped, no permission
+    fun testMarginWorks() =
+        runTest {
+            val client = createClient("margin.json")
+            client.stock
+                .getMargin(
+                    MarginParams(
+                        tradeDate = LocalDate(2018, 8, 2),
+                        exchangeId = Exchange.SSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // Test skipped, no permission
+    fun testMarginDetailWorks() =
+        runTest {
+            val client = createClient("margin_detail.json")
+            client.stock
+                .getMarginDetail(
+                    MarginDetailParams(
+                        tradeDate = LocalDate(2018, 8, 2),
+                        tsCode = TsCode("000001", "SZ"),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testMarginSecsWorks() =
+        runTest {
+            val client = createClient("margin_secs.json")
+            client.stock
+                .getMarginSecs(
+                    MarginSecsParams(
+                        tradeDate = LocalDate(2024, 4, 17),
+                        exchange = Exchange.SZSE,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testSlbSecWorks() =
+        runTest {
+            val client = createClient("slb_sec.json")
+            client.stock
+                .getSlbSec(
+                    SlbSecParams(
+                        tradeDate = LocalDate(2024, 6, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testSlbLenWorks() =
+        runTest {
+            val client = createClient("slb_len.json")
+            client.stock
+                .getSlbLen(
+                    SlbLenParams(
+                        startDate = LocalDate(2024, 6, 1),
+                        endDate = LocalDate(2024, 6, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testSlbSecDetailWorks() =
+        runTest {
+            val client = createClient("slb_sec_detail.json")
+            client.stock
+                .getSlbSecDetail(
+                    SlbSecDetailParams(
+                        tradeDate = LocalDate(2024, 6, 20),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testSlbLenMmWorks() =
+        runTest {
+            val client = createClient("slb_len_mm.json")
+            client.stock
+                .getSlbLenMm(
+                    SlbLenMmParams(
+                        tradeDate = LocalDate(2024, 6, 20),
                     ),
                 ).test {
                     val result = awaitItem()

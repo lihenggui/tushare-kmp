@@ -57,6 +57,12 @@ import li.mercury.tushare.api.stock.models.HsgtTop10Params
 import li.mercury.tushare.api.stock.models.HsgtTop10Result
 import li.mercury.tushare.api.stock.models.IncomeParams
 import li.mercury.tushare.api.stock.models.IncomeResult
+import li.mercury.tushare.api.stock.models.MarginDetailParams
+import li.mercury.tushare.api.stock.models.MarginDetailResult
+import li.mercury.tushare.api.stock.models.MarginParams
+import li.mercury.tushare.api.stock.models.MarginResult
+import li.mercury.tushare.api.stock.models.MarginSecsParams
+import li.mercury.tushare.api.stock.models.MarginSecsResult
 import li.mercury.tushare.api.stock.models.MinsParams
 import li.mercury.tushare.api.stock.models.MinsResult
 import li.mercury.tushare.api.stock.models.MonthlyParams
@@ -75,6 +81,14 @@ import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
 import li.mercury.tushare.api.stock.models.ShareFloatResult
+import li.mercury.tushare.api.stock.models.SlbLenMmParams
+import li.mercury.tushare.api.stock.models.SlbLenMmResult
+import li.mercury.tushare.api.stock.models.SlbLenParams
+import li.mercury.tushare.api.stock.models.SlbLenResult
+import li.mercury.tushare.api.stock.models.SlbSecDetailParams
+import li.mercury.tushare.api.stock.models.SlbSecDetailResult
+import li.mercury.tushare.api.stock.models.SlbSecParams
+import li.mercury.tushare.api.stock.models.SlbSecResult
 import li.mercury.tushare.api.stock.models.StkAuctionCParams
 import li.mercury.tushare.api.stock.models.StkAuctionCResult
 import li.mercury.tushare.api.stock.models.StkAuctionOParams
@@ -356,6 +370,41 @@ interface StockApiInterface {
      * 获取股东增减持数据
      */
     fun getStockHolderTrade(params: StockHolderTradeParams): Flow<List<StockHolderTradeResult>>
+
+    /**
+     * 获取融资融券交易汇总数据
+     */
+    fun getMargin(params: MarginParams): Flow<List<MarginResult>>
+
+    /**
+     * 获取融资融券交易明细数据
+     */
+    fun getMarginDetail(params: MarginDetailParams): Flow<List<MarginDetailResult>>
+
+    /**
+     * 获取融资融券标的（盘前更新）
+     */
+    fun getMarginSecs(params: MarginSecsParams): Flow<List<MarginSecsResult>>
+
+    /**
+     * 获取转融券交易汇总数据
+     */
+    fun getSlbSec(params: SlbSecParams): Flow<List<SlbSecResult>>
+
+    /**
+     * 获取转融资交易汇总数据
+     */
+    fun getSlbLen(params: SlbLenParams): Flow<List<SlbLenResult>>
+
+    /**
+     * 获取转融券交易明细数据
+     */
+    fun getSlbSecDetail(params: SlbSecDetailParams): Flow<List<SlbSecDetailResult>>
+
+    /**
+     * 获取做市借券交易汇总数据
+     */
+    fun getSlbLenMm(params: SlbLenMmParams): Flow<List<SlbLenMmResult>>
 
     /**
      * 获取每日筹码及胜率数据
