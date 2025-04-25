@@ -33,5 +33,5 @@ data class NewsResult(
      * 新闻分类（多个分类用逗号分隔）
      */
     @SerialName("channels")
-    val channels: String? = null,
-)
+    val channels: String? = null
+) 
