@@ -37,5 +37,5 @@ data class MonthlyResult(
     /** 月成交量 */
     val vol: Float,
     /** 月成交额 */
-    val amount: Float
+    val amount: Float,
 )

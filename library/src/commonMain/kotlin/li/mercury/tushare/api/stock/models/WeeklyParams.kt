@@ -20,5 +20,5 @@ data class WeeklyParams(
     val startDate: String? = null,
     /** 结束日期 */
     @SerialName("end_date")
-    val endDate: String? = null
+    val endDate: String? = null,
 )

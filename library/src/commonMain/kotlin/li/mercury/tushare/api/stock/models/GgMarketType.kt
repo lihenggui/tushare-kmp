@@ -14,5 +14,5 @@ enum class GgMarketType {
 
     /** 港股通（深） */
     @SerialName("4")
-    SZ;
+    SZ,
 }

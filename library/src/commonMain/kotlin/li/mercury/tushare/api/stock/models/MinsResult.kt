@@ -14,27 +14,20 @@ data class MinsResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,
-
     /** 交易时间 */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("trade_time")
     val tradeTime: LocalDateTime,
-
     /** 开盘价 */
     val open: Float,
-
     /** 收盘价 */
     val close: Float,
-
     /** 最高价 */
     val high: Float,
-
     /** 最低价 */
     val low: Float,
-
     /** 成交量 */
     val vol: Float,
-
     /** 成交金额 */
-    val amount: Float
+    val amount: Float,
 )

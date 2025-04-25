@@ -1,0 +1,37 @@
+{
+  "request_id": "e12613f6-04fb-447a-9c35-47e67a111060",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "his_low",
+      "his_high",
+      "cost_5pct",
+      "cost_15pct",
+      "cost_50pct",
+      "cost_85pct",
+      "cost_95pct",
+      "weight_avg",
+      "winner_rate"
+    ],
+    "items": [
+      [
+        "000001.SZ",
+        "20220429",
+        0.2,
+        22.2,
+        12.4,
+        13.0,
+        14.4,
+        17.0,
+        20.0,
+        14.92,
+        24.33
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

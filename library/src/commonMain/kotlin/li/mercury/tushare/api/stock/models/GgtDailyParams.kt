@@ -22,4 +22,4 @@ data class GgtDailyParams(
     @SerialName("end_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val endDate: LocalDate? = null,
-) 
+)

@@ -16,14 +16,12 @@ data class NewsParams(
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("start_date")
     val startDate: LocalDateTime,
-
     /**
      * 结束时间
      */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDateTime,
-
     /**
      * 新闻来源标识（见数据源对照表）
      */
