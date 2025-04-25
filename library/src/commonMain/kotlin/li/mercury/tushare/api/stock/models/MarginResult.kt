@@ -32,4 +32,4 @@ data class MarginResult(
     val rzrqye: Double? = null,
     /** 融券余量(股, 份, 手) */
     val rqyl: Double? = null,
-) 
+)

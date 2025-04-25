@@ -36,4 +36,4 @@ data class MarginDetailResult(
     val rqmcl: Double? = null,
     /** 融资融券余额(元) */
     val rzrqye: Double? = null,
-) 
+)

@@ -26,4 +26,4 @@ data class MarginParams(
     /** 交易所代码 */
     @SerialName("exchange_id")
     val exchangeId: Exchange? = null,
-) 
+)

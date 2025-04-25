@@ -27,4 +27,4 @@ data class SlbLenResult(
     val repayAmount: Double? = null,
     /** 期末余额(亿元) */
     val cb: Double? = null,
-) 
+)

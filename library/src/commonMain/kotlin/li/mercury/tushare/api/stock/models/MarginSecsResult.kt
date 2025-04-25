@@ -23,4 +23,4 @@ data class MarginSecsResult(
     val name: String,
     /** 交易所 */
     val exchange: Exchange,
-) 
+)

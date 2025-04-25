@@ -33,4 +33,4 @@ data class SlbLenMmResult(
     /** 期末余额(万元) */
     @SerialName("end_bal")
     val endBal: Double? = null,
-) 
+)
