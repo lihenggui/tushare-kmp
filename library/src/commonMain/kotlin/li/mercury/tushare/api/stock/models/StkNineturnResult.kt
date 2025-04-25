@@ -44,4 +44,4 @@ data class StkNineturnResult(
     /** 是否下九转 */
     @SerialName("nine_down_turn")
     val nineDownTurn: String? = null,
-) 
+)

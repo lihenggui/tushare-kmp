@@ -71,4 +71,4 @@ data class ReportRcResult(
     /** TS数据更新时间 */
     @SerialName("create_time")
     val createTime: String? = null,
-) 
+)

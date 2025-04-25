@@ -37,5 +37,5 @@ data class WeeklyResult(
     /** 周成交量 */
     val vol: Float,
     /** 周成交额 */
-    val amount: Float
+    val amount: Float,
 )

@@ -432,248 +432,278 @@ class TuShareTest {
         }
 
     @Test
-    fun testDailyWorks() = runTest {
-        val client = createClient("daily.json")
-        client.stock.getDaily(
-            DailyParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2018, 7, 1),
-                endDate = LocalDate(2023, 7, 18)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testDailyWorks() =
+        runTest {
+            val client = createClient("daily.json")
+            client.stock
+                .getDaily(
+                    DailyParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = LocalDate(2018, 7, 1),
+                        endDate = LocalDate(2023, 7, 18),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testMinsWorks() = runTest {
-        val client = createClient("mins.json")
-        client.stock.getMins(
-            MinsParams(
-                tsCode = TsCode("600000", "SH"),
-                freq = FreqMin.MIN_1,
-                startDate = LocalDateTime(2023, 8, 25, 9, 0, 0),
-                endDate = LocalDateTime(2023, 8, 25, 19, 0, 0)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testMinsWorks() =
+        runTest {
+            val client = createClient("mins.json")
+            client.stock
+                .getMins(
+                    MinsParams(
+                        tsCode = TsCode("600000", "SH"),
+                        freq = FreqMin.MIN_1,
+                        startDate = LocalDateTime(2023, 8, 25, 9, 0, 0),
+                        endDate = LocalDateTime(2023, 8, 25, 19, 0, 0),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testWeeklyWorks() = runTest {
-        val client = createClient("weekly.json")
-        client.stock.getWeekly(
-            WeeklyParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = "20180101",
-                endDate = "20181101"
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testWeeklyWorks() =
+        runTest {
+            val client = createClient("weekly.json")
+            client.stock
+                .getWeekly(
+                    WeeklyParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = "20180101",
+                        endDate = "20181101",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testMonthlyWorks() = runTest {
-        val client = createClient("monthly.json")
-        client.stock.getMonthly(
-            MonthlyParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2018, 1, 1),
-                endDate = LocalDate(2018, 11, 1),
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testMonthlyWorks() =
+        runTest {
+            val client = createClient("monthly.json")
+            client.stock
+                .getMonthly(
+                    MonthlyParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 11, 1),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
     // Test skipped, no permission
-    fun testWeeklyMonthlyWorks() = runTest {
-        val client = createClient("weekly_monthly.json")
-        client.stock.getWeeklyMonthly(
-            WeeklyMonthlyParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2023, 1, 1),
-                endDate = LocalDate(2023, 7, 1),
-                freq = FreqWeekMonth.WEEK,
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testWeeklyMonthlyWorks() =
+        runTest {
+            val client = createClient("weekly_monthly.json")
+            client.stock
+                .getWeeklyMonthly(
+                    WeeklyMonthlyParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = LocalDate(2023, 1, 1),
+                        endDate = LocalDate(2023, 7, 1),
+                        freq = FreqWeekMonth.WEEK,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
     // Test skipped, no permission
-    fun testWeeklyMonthlyAdjWorks() = runTest {
-        val client = createClient("weekly_monthly_adj.json")
-        client.stock.getWeeklyMonthlyAdj(
-            WeeklyMonthlyAdjParams(
-                tsCode = TsCode("000001", "SZ"),
-                freq = FreqWeekMonth.WEEK,
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testWeeklyMonthlyAdjWorks() =
+        runTest {
+            val client = createClient("weekly_monthly_adj.json")
+            client.stock
+                .getWeeklyMonthlyAdj(
+                    WeeklyMonthlyAdjParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        freq = FreqWeekMonth.WEEK,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testAdjFactorWorks() = runTest {
-        val client = createClient("adj_factor.json")
-        client.stock.getAdjFactor(
-            AdjFactorParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2018, 7, 1),
-                endDate = LocalDate(2018, 10, 11),
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testAdjFactorWorks() =
+        runTest {
+            val client = createClient("adj_factor.json")
+            client.stock
+                .getAdjFactor(
+                    AdjFactorParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = LocalDate(2018, 7, 1),
+                        endDate = LocalDate(2018, 10, 11),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testDailyBasicWorks() = runTest {
-        val client = createClient("daily_basic.json")
-        client.stock.getDailyBasic(
-            DailyBasicParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2018, 7, 1),
-                endDate = LocalDate(2018, 10, 11),
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testDailyBasicWorks() =
+        runTest {
+            val client = createClient("daily_basic.json")
+            client.stock
+                .getDailyBasic(
+                    DailyBasicParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = LocalDate(2018, 7, 1),
+                        endDate = LocalDate(2018, 10, 11),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testStkLimitWorks() = runTest {
-        val client = createClient("stk_limit.json")
-        client.stock.getStkLimit(
-            StkLimitParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2019, 1, 15),
-                endDate = LocalDate(2019, 6, 18),
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testStkLimitWorks() =
+        runTest {
+            val client = createClient("stk_limit.json")
+            client.stock
+                .getStkLimit(
+                    StkLimitParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = LocalDate(2019, 1, 15),
+                        endDate = LocalDate(2019, 6, 18),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testSuspendDWorks() = runTest {
-        val client = createClient("suspend_d.json")
-        client.stock.getSuspendD(
-            SuspendDParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2020, 1, 1),
-                endDate = LocalDate(2020, 3, 12),
-                suspendType = SuspendType.SUSPEND
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testSuspendDWorks() =
+        runTest {
+            val client = createClient("suspend_d.json")
+            client.stock
+                .getSuspendD(
+                    SuspendDParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        startDate = LocalDate(2020, 1, 1),
+                        endDate = LocalDate(2020, 3, 12),
+                        suspendType = SuspendType.SUSPEND,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testHsgtTop10Works() = runTest {
-        val client = createClient("hsgt_top10.json")
-        client.stock.getHsgtTop10(
-            HsgtTop10Params(
-                tradeDate = LocalDate(2018, 7, 25),
-                hsMarketType = HsMarketType.SH
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testHsgtTop10Works() =
+        runTest {
+            val client = createClient("hsgt_top10.json")
+            client.stock
+                .getHsgtTop10(
+                    HsgtTop10Params(
+                        tradeDate = LocalDate(2018, 7, 25),
+                        hsMarketType = HsMarketType.SH,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testGgtTop10Works() = runTest {
-        val client = createClient("ggt_top10.json")
-        client.stock.getGgtTop10(
-            GgtTop10Params(
-                tradeDate = LocalDate(2018, 7, 25),
-                marketType = GgMarketType.SZ,
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testGgtTop10Works() =
+        runTest {
+            val client = createClient("ggt_top10.json")
+            client.stock
+                .getGgtTop10(
+                    GgtTop10Params(
+                        tradeDate = LocalDate(2018, 7, 25),
+                        marketType = GgMarketType.SZ,
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testGgtDailyWorks() = runTest {
-        val client = createClient("ggt_daily.json")
-        client.stock.getGgtDaily(
-            GgtDailyParams(
-                startDate = LocalDate(2018, 9, 25),
-                endDate = LocalDate(2019, 9, 25)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testGgtDailyWorks() =
+        runTest {
+            val client = createClient("ggt_daily.json")
+            client.stock
+                .getGgtDaily(
+                    GgtDailyParams(
+                        startDate = LocalDate(2018, 9, 25),
+                        endDate = LocalDate(2019, 9, 25),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testGgtMonthlyWorks() = runTest {
-        val client = createClient("ggt_monthly.json")
-        client.stock.getGgtMonthly(
-            GgtMonthlyParams(
-                startMonth = "201809",
-                endMonth = "201908"
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testGgtMonthlyWorks() =
+        runTest {
+            val client = createClient("ggt_monthly.json")
+            client.stock
+                .getGgtMonthly(
+                    GgtMonthlyParams(
+                        startMonth = "201809",
+                        endMonth = "201908",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testBakDailyWorks() = runTest {
-        val client = createClient("bak_daily.json")
-        client.stock.getBakDaily(
-            BakDailyParams(
-                tsCode = TsCode("300750", "SZ"),
-                startDate = LocalDate(2021, 1, 1),
-                endDate = LocalDate(2021, 10, 12)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testBakDailyWorks() =
+        runTest {
+            val client = createClient("bak_daily.json")
+            client.stock
+                .getBakDaily(
+                    BakDailyParams(
+                        tsCode = TsCode("300750", "SZ"),
+                        startDate = LocalDate(2021, 1, 1),
+                        endDate = LocalDate(2021, 10, 12),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
     fun testReportRcWorks() =
@@ -1279,7 +1309,7 @@ class TuShareTest {
                 .getCyqPerf(
                     CyqPerfParams(
                         tsCode = TsCode("600000", "SH"),
-                        tradeDate = LocalDate(2022, 4, 29)
+                        tradeDate = LocalDate(2022, 4, 29),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -1296,7 +1326,7 @@ class TuShareTest {
                 .getCyqChips(
                     CyqChipsParams(
                         tsCode = TsCode("600000", "SH"),
-                        tradeDate = LocalDate(2022, 4, 29)
+                        tradeDate = LocalDate(2022, 4, 29),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -1350,8 +1380,8 @@ class TuShareTest {
                 .getCcassHold(
                     CcassHoldParams(
                         tsCode = TsCode.hk("00960"),
-                        tradeDate = LocalDate(2022, 5, 19)
-                    )
+                        tradeDate = LocalDate(2022, 5, 19),
+                    ),
                 ).test {
                     val result = awaitItem()
                     assertNotNull(result)
@@ -1360,95 +1390,107 @@ class TuShareTest {
         }
 
     @Test
-    fun testCcassHoldDetailWorks() = runTest {
-        val client = createClient("ccass_hold_detail.json")
-        client.stock.getCcassHoldDetail(
-            CcassHoldDetailParams(
-                tsCode = TsCode.hk("00960"),
-                tradeDate = LocalDate(2022, 5, 19)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testCcassHoldDetailWorks() =
+        runTest {
+            val client = createClient("ccass_hold_detail.json")
+            client.stock
+                .getCcassHoldDetail(
+                    CcassHoldDetailParams(
+                        tsCode = TsCode.hk("00960"),
+                        tradeDate = LocalDate(2022, 5, 19),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testStkAuctionOWorks() = runTest {
-        val client = createClient("stk_auction_o.json")
-        client.stock.getStkAuctionO(
-            StkAuctionOParams(
-                tradeDate = LocalDate(2024, 11, 22)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testStkAuctionOWorks() =
+        runTest {
+            val client = createClient("stk_auction_o.json")
+            client.stock
+                .getStkAuctionO(
+                    StkAuctionOParams(
+                        tradeDate = LocalDate(2024, 11, 22),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testStkAuctionCWorks() = runTest {
-        val client = createClient("stk_auction_c.json")
-        client.stock.getStkAuctionC(
-            StkAuctionCParams(
-                tradeDate = LocalDate(2024, 11, 22)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testStkAuctionCWorks() =
+        runTest {
+            val client = createClient("stk_auction_c.json")
+            client.stock
+                .getStkAuctionC(
+                    StkAuctionCParams(
+                        tradeDate = LocalDate(2024, 11, 22),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testStkNineturnWorks() = runTest {
-        val client = createClient("stk_nineturn.json")
-        client.stock.getStkNineturn(
-            StkNineturnParams(
-                tsCode = TsCode("000001", "SZ"),
-                freq = FreqEnum.DAILY,
-                startDate = LocalDate(2023, 1, 1),
-                endDate = LocalDate(2025, 1, 17)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testStkNineturnWorks() =
+        runTest {
+            val client = createClient("stk_nineturn.json")
+            client.stock
+                .getStkNineturn(
+                    StkNineturnParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        freq = FreqEnum.DAILY,
+                        startDate = LocalDate(2023, 1, 1),
+                        endDate = LocalDate(2025, 1, 17),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     @Test
-    fun testStkSurvWorks() = runTest {
-        val client = createClient("stk_surv.json")
-        client.stock.getStkSurv(
-            StkSurvParams(
-                tsCode = TsCode("002223", "SZ"),
-                tradeDate = LocalDate(2021, 10, 24)
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testStkSurvWorks() =
+        runTest {
+            val client = createClient("stk_surv.json")
+            client.stock
+                .getStkSurv(
+                    StkSurvParams(
+                        tsCode = TsCode("002223", "SZ"),
+                        tradeDate = LocalDate(2021, 10, 24),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 
     //    @Test
 // Test skipped, no permission
-    fun testBrokerRecommendWorks() = runTest {
-        val client = createClient("broker_recommend.json")
-        client.stock.getBrokerRecommend(
-            BrokerRecommendParams(
-                month = "202106"
-            )
-        ).test {
-            val result = awaitItem()
-            assertNotNull(result)
-            awaitComplete()
+    fun testBrokerRecommendWorks() =
+        runTest {
+            val client = createClient("broker_recommend.json")
+            client.stock
+                .getBrokerRecommend(
+                    BrokerRecommendParams(
+                        month = "202106",
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
         }
-    }
 }

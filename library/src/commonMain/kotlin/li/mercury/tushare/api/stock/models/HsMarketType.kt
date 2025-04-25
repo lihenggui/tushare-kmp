@@ -12,5 +12,5 @@ enum class HsMarketType {
 
     /** 深市 */
     @SerialName("3")
-    SZ;
+    SZ,
 }

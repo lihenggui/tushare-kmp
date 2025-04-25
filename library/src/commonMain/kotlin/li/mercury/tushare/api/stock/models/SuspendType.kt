@@ -14,5 +14,5 @@ enum class SuspendType {
 
     /** 复牌 */
     @SerialName("R")
-    RESUME
+    RESUME,
 }

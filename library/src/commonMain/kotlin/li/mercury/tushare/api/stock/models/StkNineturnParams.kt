@@ -42,5 +42,5 @@ enum class FreqEnum {
 
     /** 60分钟线 */
     @SerialName("60min")
-    MIN_60
-} 
+    MIN_60,
+}

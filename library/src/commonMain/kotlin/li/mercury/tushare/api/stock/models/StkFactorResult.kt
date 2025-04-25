@@ -108,4 +108,4 @@ data class StkFactorResult(
     val bollLower: Double? = null,
     /** CCI指标 */
     val cci: Double? = null,
-) 
+)

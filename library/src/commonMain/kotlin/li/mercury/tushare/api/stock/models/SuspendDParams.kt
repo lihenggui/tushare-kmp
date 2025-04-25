@@ -28,5 +28,5 @@ data class SuspendDParams(
     val endDate: LocalDate? = null,
     /** 停复牌类型（S-停牌，R-复牌） */
     @SerialName("suspend_type")
-    val suspendType: SuspendType? = null
+    val suspendType: SuspendType? = null,
 )

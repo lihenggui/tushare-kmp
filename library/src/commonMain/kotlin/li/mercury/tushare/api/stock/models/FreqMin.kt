@@ -26,5 +26,5 @@ enum class FreqMin {
 
     /** 60分钟频率 */
     @SerialName("60min")
-    MIN_60;
+    MIN_60,
 }

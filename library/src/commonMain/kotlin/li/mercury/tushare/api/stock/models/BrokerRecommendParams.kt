@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BrokerRecommendParams(
     /** 月度（YYYYMM） */
-    val month: String
-) 
+    val month: String,
+)

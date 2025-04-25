@@ -39,4 +39,4 @@ data class StkAuctionCResult(
     /** 均价 */
     @SerialName("vwap")
     val vwap: Double? = null,
-) 
+)

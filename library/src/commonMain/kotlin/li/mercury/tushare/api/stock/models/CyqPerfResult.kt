@@ -45,4 +45,4 @@ data class CyqPerfResult(
     /** 胜率 */
     @SerialName("winner_rate")
     val winnerRate: Float,
-) 
+)

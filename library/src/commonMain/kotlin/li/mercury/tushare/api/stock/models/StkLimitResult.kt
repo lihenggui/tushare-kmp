@@ -26,5 +26,5 @@ data class StkLimitResult(
     val upLimit: Double,
     /** 跌停价 */
     @SerialName("down_limit")
-    val downLimit: Double
-) 
+    val downLimit: Double,
+)

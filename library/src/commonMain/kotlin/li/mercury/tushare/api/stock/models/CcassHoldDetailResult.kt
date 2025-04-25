@@ -33,4 +33,4 @@ data class CcassHoldDetailResult(
     /** 占已发行股份百分比（%） */
     @SerialName("col_shareholding_percent")
     val shareholdingPercent: Double? = null,
-) 
+)

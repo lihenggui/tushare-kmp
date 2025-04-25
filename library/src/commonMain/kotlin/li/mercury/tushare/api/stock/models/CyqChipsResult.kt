@@ -22,4 +22,4 @@ data class CyqChipsResult(
     val price: Float,
     /** 价格占比(%) */
     val percent: Float,
-) 
+)

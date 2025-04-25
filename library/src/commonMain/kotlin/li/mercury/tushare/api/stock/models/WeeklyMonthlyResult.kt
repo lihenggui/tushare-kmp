@@ -39,5 +39,5 @@ data class WeeklyMonthlyResult(
     val change: Float,
     /** （周/月）涨跌幅 */
     @SerialName("pct_chg")
-    val pctChg: Float
-) 
+    val pctChg: Float,
+)

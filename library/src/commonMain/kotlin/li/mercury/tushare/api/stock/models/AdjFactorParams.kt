@@ -14,19 +14,16 @@ data class AdjFactorParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-
     /** 交易日期（格式：YYYYMMDD） */
     @SerialName("trade_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val tradeDate: LocalDate? = null,
-
     /** 开始日期（格式：YYYYMMDD） */
     @SerialName("start_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val startDate: LocalDate? = null,
-
     /** 结束日期（格式：YYYYMMDD） */
     @SerialName("end_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
-    val endDate: LocalDate? = null
-) 
+    val endDate: LocalDate? = null,
+)

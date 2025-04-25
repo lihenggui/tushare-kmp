@@ -58,5 +58,5 @@ data class GgtTop10Result(
     val szBuy: Double? = null,
     /** 深市卖出金额（元） */
     @SerialName("sz_sell")
-    val szSell: Double? = null
-) 
+    val szSell: Double? = null,
+)

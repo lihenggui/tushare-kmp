@@ -225,10 +225,11 @@ internal class StockApi(
     override fun getDaily(params: DailyParams): Flow<List<DailyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "daily",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "daily",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(DailyResult.serializer())
             emit(results)
         }
@@ -241,10 +242,11 @@ internal class StockApi(
     override fun getMins(params: MinsParams): Flow<List<MinsResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_mins",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_mins",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(MinsResult.serializer())
             emit(results)
         }
@@ -257,10 +259,11 @@ internal class StockApi(
     override fun getWeekly(params: WeeklyParams): Flow<List<WeeklyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "weekly",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "weekly",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(WeeklyResult.serializer())
             emit(results)
         }
@@ -273,10 +276,11 @@ internal class StockApi(
     override fun getMonthly(params: MonthlyParams): Flow<List<MonthlyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "monthly",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "monthly",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(MonthlyResult.serializer())
             emit(results)
         }
@@ -289,10 +293,11 @@ internal class StockApi(
     override fun getWeeklyMonthly(params: WeeklyMonthlyParams): Flow<List<WeeklyMonthlyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_weekly_monthly",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_weekly_monthly",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(WeeklyMonthlyResult.serializer())
             emit(results)
         }
@@ -305,10 +310,11 @@ internal class StockApi(
     override fun getWeeklyMonthlyAdj(params: WeeklyMonthlyAdjParams): Flow<List<WeeklyMonthlyAdjResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_week_month_adj",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_week_month_adj",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(WeeklyMonthlyAdjResult.serializer())
             emit(results)
         }
@@ -321,10 +327,11 @@ internal class StockApi(
     override fun getAdjFactor(params: AdjFactorParams): Flow<List<AdjFactorResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "adj_factor",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "adj_factor",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(AdjFactorResult.serializer())
             emit(results)
         }
@@ -337,10 +344,11 @@ internal class StockApi(
     override fun getDailyBasic(params: DailyBasicParams): Flow<List<DailyBasicResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "daily_basic",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "daily_basic",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(DailyBasicResult.serializer())
             emit(results)
         }
@@ -353,10 +361,11 @@ internal class StockApi(
     override fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_limit",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_limit",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkLimitResult.serializer())
             emit(results)
         }
@@ -369,10 +378,11 @@ internal class StockApi(
     override fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "suspend_d",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "suspend_d",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(SuspendDResult.serializer())
             emit(results)
         }
@@ -385,10 +395,11 @@ internal class StockApi(
     override fun getHsgtTop10(params: HsgtTop10Params): Flow<List<HsgtTop10Result>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "hsgt_top10",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "hsgt_top10",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(HsgtTop10Result.serializer())
             emit(results)
         }
@@ -400,10 +411,11 @@ internal class StockApi(
     override fun getGgtTop10(params: GgtTop10Params): Flow<List<GgtTop10Result>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "ggt_top10",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "ggt_top10",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(GgtTop10Result.serializer())
             emit(results)
         }
@@ -416,10 +428,11 @@ internal class StockApi(
     override fun getGgtDaily(params: GgtDailyParams): Flow<List<GgtDailyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "ggt_daily",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "ggt_daily",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(GgtDailyResult.serializer())
             emit(results)
         }
@@ -432,10 +445,11 @@ internal class StockApi(
     override fun getGgtMonthly(params: GgtMonthlyParams): Flow<List<GgtMonthlyResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "ggt_monthly",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "ggt_monthly",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(GgtMonthlyResult.serializer())
             emit(results)
         }
@@ -445,15 +459,17 @@ internal class StockApi(
      * @param params 沪深股通每日成交统计参数
      * @return 沪深股通每日成交统计数据流
      */
-    override fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>> = flow {
-        val apiParams = params.toApiParams()
-        val response = tuShare.callApi(
-            apiName = "bak_daily",
-            params = apiParams
-        )
-        val results = response.getResponseItems(BakDailyResult.serializer())
-        emit(results)
-    }
+    override fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+            val response =
+                tuShare.callApi(
+                    apiName = "bak_daily",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(BakDailyResult.serializer())
+            emit(results)
+        }
 
     /*
      * 获取利润表数据
@@ -991,10 +1007,11 @@ internal class StockApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "ccass_hold",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "ccass_hold",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(CcassHoldResult.serializer())
             emit(results)
         }
@@ -1007,10 +1024,11 @@ internal class StockApi(
     override fun getCcassHoldDetail(params: CcassHoldDetailParams): Flow<List<CcassHoldDetailResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "ccass_hold_detail",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "ccass_hold_detail",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(CcassHoldDetailResult.serializer())
             emit(results)
         }
@@ -1023,10 +1041,11 @@ internal class StockApi(
     override fun getStkAuctionO(params: StkAuctionOParams): Flow<List<StkAuctionOResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_auction_o",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_auction_o",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkAuctionOResult.serializer())
             emit(results)
         }
@@ -1039,10 +1058,11 @@ internal class StockApi(
     override fun getStkAuctionC(params: StkAuctionCParams): Flow<List<StkAuctionCResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_auction_c",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_auction_c",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkAuctionCResult.serializer())
             emit(results)
         }
@@ -1055,10 +1075,11 @@ internal class StockApi(
     override fun getStkNineturn(params: StkNineturnParams): Flow<List<StkNineturnResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_nineturn",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_nineturn",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkNineturnResult.serializer())
             emit(results)
         }
@@ -1071,10 +1092,11 @@ internal class StockApi(
     override fun getStkSurv(params: StkSurvParams): Flow<List<StkSurvResult>> =
         flow {
             val apiParams = params.toApiParams()
-            val response = tuShare.callApi(
-                apiName = "stk_surv",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_surv",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(StkSurvResult.serializer())
             emit(results)
         }
@@ -1088,10 +1110,11 @@ internal class StockApi(
         flow {
             val apiParams = params.toApiParams()
 
-            val response = tuShare.callApi(
-                apiName = "broker_recommend",
-                params = apiParams
-            )
+            val response =
+                tuShare.callApi(
+                    apiName = "broker_recommend",
+                    params = apiParams,
+                )
             val results = response.getResponseItems(BrokerRecommendResult.serializer())
             emit(results)
         }

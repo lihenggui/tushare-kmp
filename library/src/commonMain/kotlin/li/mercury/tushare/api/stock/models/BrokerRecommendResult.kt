@@ -17,5 +17,5 @@ data class BrokerRecommendResult(
     @SerialName("ts_code")
     val tsCode: TsCode,
     /** 股票简称 */
-    val name: String
-) 
+    val name: String,
+)

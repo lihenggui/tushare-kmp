@@ -25,5 +25,5 @@ data class StkLimitParams(
     /** 结束日期（格式：YYYYMMDD） */
     @SerialName("end_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
-    val endDate: LocalDate? = null
+    val endDate: LocalDate? = null,
 )

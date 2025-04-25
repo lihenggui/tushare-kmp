@@ -114,4 +114,4 @@ data class StkFactorProResult(
     /** 真实波动N日平均值（N=20） */
     @SerialName("atr_20")
     val atr20: Float? = null,
-) 
+)

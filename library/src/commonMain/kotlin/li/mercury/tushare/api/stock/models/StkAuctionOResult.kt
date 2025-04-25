@@ -32,4 +32,4 @@ data class StkAuctionOResult(
     val amount: Double,
     /** 开盘集合竞价均价 */
     val vwap: Double,
-) 
+)

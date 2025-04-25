@@ -40,4 +40,4 @@ data class StkSurvResult(
     val compRece: String? = null,
     /** 调研内容 */
     val content: String? = null,
-) 
+)

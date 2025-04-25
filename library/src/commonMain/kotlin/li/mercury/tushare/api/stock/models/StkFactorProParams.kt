@@ -26,4 +26,4 @@ data class StkFactorProParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
     val tradeDate: LocalDate? = null,
-) 
+)
