@@ -33,5 +33,5 @@ data class GgtMonthlyResult(
     val totalSellAmt: Double,
     /** 总卖出成交笔数（万笔） */
     @SerialName("total_sell_vol")
-    val totalSellVol: Double
-) 
+    val totalSellVol: Double,
+)

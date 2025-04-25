@@ -26,4 +26,4 @@ data class GgtDailyResult(
     /** 卖出成交笔数（万笔） */
     @SerialName("sell_volume")
     val sellVolume: Float,
-) 
+)

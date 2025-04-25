@@ -27,4 +27,4 @@ data class WeeklyMonthlyParams(
     val endDate: LocalDate? = null,
     /** 频率（week周线/month月线） */
     val freq: FreqWeekMonth,
-) 
+)

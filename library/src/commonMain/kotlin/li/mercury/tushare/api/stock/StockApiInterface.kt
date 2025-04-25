@@ -11,12 +11,22 @@ import li.mercury.tushare.api.stock.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.models.BlockTradeParams
 import li.mercury.tushare.api.stock.models.BlockTradeResult
+import li.mercury.tushare.api.stock.models.BrokerRecommendParams
+import li.mercury.tushare.api.stock.models.BrokerRecommendResult
 import li.mercury.tushare.api.stock.models.CashflowParams
 import li.mercury.tushare.api.stock.models.CashflowResult
+import li.mercury.tushare.api.stock.models.CcassHoldDetailParams
+import li.mercury.tushare.api.stock.models.CcassHoldDetailResult
+import li.mercury.tushare.api.stock.models.CcassHoldParams
+import li.mercury.tushare.api.stock.models.CcassHoldResult
 import li.mercury.tushare.api.stock.models.ConceptDetailParams
 import li.mercury.tushare.api.stock.models.ConceptDetailResult
 import li.mercury.tushare.api.stock.models.ConceptParams
 import li.mercury.tushare.api.stock.models.ConceptResult
+import li.mercury.tushare.api.stock.models.CyqChipsParams
+import li.mercury.tushare.api.stock.models.CyqChipsResult
+import li.mercury.tushare.api.stock.models.CyqPerfParams
+import li.mercury.tushare.api.stock.models.CyqPerfResult
 import li.mercury.tushare.api.stock.models.DailyBasicParams
 import li.mercury.tushare.api.stock.models.DailyBasicResult
 import li.mercury.tushare.api.stock.models.DailyParams
@@ -65,6 +75,8 @@ import li.mercury.tushare.api.stock.models.PledgeDetailParams
 import li.mercury.tushare.api.stock.models.PledgeDetailResult
 import li.mercury.tushare.api.stock.models.PledgeStatParams
 import li.mercury.tushare.api.stock.models.PledgeStatResult
+import li.mercury.tushare.api.stock.models.ReportRcParams
+import li.mercury.tushare.api.stock.models.ReportRcResult
 import li.mercury.tushare.api.stock.models.RepurchaseParams
 import li.mercury.tushare.api.stock.models.RepurchaseResult
 import li.mercury.tushare.api.stock.models.ShareFloatParams
@@ -77,14 +89,26 @@ import li.mercury.tushare.api.stock.models.SlbSecDetailParams
 import li.mercury.tushare.api.stock.models.SlbSecDetailResult
 import li.mercury.tushare.api.stock.models.SlbSecParams
 import li.mercury.tushare.api.stock.models.SlbSecResult
+import li.mercury.tushare.api.stock.models.StkAuctionCParams
+import li.mercury.tushare.api.stock.models.StkAuctionCResult
+import li.mercury.tushare.api.stock.models.StkAuctionOParams
+import li.mercury.tushare.api.stock.models.StkAuctionOResult
+import li.mercury.tushare.api.stock.models.StkFactorParams
+import li.mercury.tushare.api.stock.models.StkFactorProParams
+import li.mercury.tushare.api.stock.models.StkFactorProResult
+import li.mercury.tushare.api.stock.models.StkFactorResult
 import li.mercury.tushare.api.stock.models.StkLimitParams
 import li.mercury.tushare.api.stock.models.StkLimitResult
 import li.mercury.tushare.api.stock.models.StkManagersParams
 import li.mercury.tushare.api.stock.models.StkManagersResult
+import li.mercury.tushare.api.stock.models.StkNineturnParams
+import li.mercury.tushare.api.stock.models.StkNineturnResult
 import li.mercury.tushare.api.stock.models.StkPremarketParams
 import li.mercury.tushare.api.stock.models.StkPremarketResult
 import li.mercury.tushare.api.stock.models.StkRewardsParams
 import li.mercury.tushare.api.stock.models.StkRewardsResult
+import li.mercury.tushare.api.stock.models.StkSurvParams
+import li.mercury.tushare.api.stock.models.StkSurvResult
 import li.mercury.tushare.api.stock.models.StockBasicParams
 import li.mercury.tushare.api.stock.models.StockBasicResult
 import li.mercury.tushare.api.stock.models.StockCompanyParams
@@ -131,6 +155,11 @@ interface StockApiInterface {
      * 获取上市公司基本信息
      */
     fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+
+    /**
+     * 获取卖方盈利预测数据
+     */
+    fun getReportRc(params: ReportRcParams): Flow<List<ReportRcResult>>
 
     /**
      * 获取股票日线行情数据
@@ -376,4 +405,59 @@ interface StockApiInterface {
      * 获取做市借券交易汇总数据
      */
     fun getSlbLenMm(params: SlbLenMmParams): Flow<List<SlbLenMmResult>>
+
+    /**
+     * 获取每日筹码及胜率数据
+     */
+    fun getCyqPerf(params: CyqPerfParams): Flow<List<CyqPerfResult>>
+
+    /**
+     * 获取每日筹码分布数据
+     */
+    fun getCyqChips(params: CyqChipsParams): Flow<List<CyqChipsResult>>
+
+    /**
+     * 获取股票技术因子数据
+     */
+    fun getStkFactor(params: StkFactorParams): Flow<List<StkFactorResult>>
+
+    /**
+     * 获取股票技术面因子（专业版）
+     */
+    fun getStkFactorPro(params: StkFactorProParams): Flow<List<StkFactorProResult>>
+
+    /**
+     * 获取中央结算系统持股汇总数据
+     */
+    fun getCcassHold(params: CcassHoldParams): Flow<List<CcassHoldResult>>
+
+    /**
+     * 获取中央结算系统持股明细数据
+     */
+    fun getCcassHoldDetail(params: CcassHoldDetailParams): Flow<List<CcassHoldDetailResult>>
+
+    /**
+     * 获取股票开盘集合竞价数据
+     */
+    fun getStkAuctionO(params: StkAuctionOParams): Flow<List<StkAuctionOResult>>
+
+    /**
+     * 获取股票收盘集合竞价数据
+     */
+    fun getStkAuctionC(params: StkAuctionCParams): Flow<List<StkAuctionCResult>>
+
+    /**
+     * 获取神奇九转指标数据
+     */
+    fun getStkNineturn(params: StkNineturnParams): Flow<List<StkNineturnResult>>
+
+    /**
+     * 获取机构调研表数据
+     */
+    fun getStkSurv(params: StkSurvParams): Flow<List<StkSurvResult>>
+
+    /**
+     * 获取券商每月荐股数据
+     */
+    fun getBrokerRecommend(params: BrokerRecommendParams): Flow<List<BrokerRecommendResult>>
 }

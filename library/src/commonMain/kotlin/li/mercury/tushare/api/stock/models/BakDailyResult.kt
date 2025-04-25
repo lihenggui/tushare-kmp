@@ -84,5 +84,5 @@ data class BakDailyResult(
     val interval3: Float,
     /** 近6月涨幅 */
     @SerialName("interval_6")
-    val interval6: Float
-) 
+    val interval6: Float,
+)

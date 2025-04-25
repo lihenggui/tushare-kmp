@@ -61,5 +61,5 @@ data class DailyBasicResult(
     val totalMv: Double? = null,
     /** 流通市值（万元） */
     @SerialName("circ_mv")
-    val circMv: Double? = null
-) 
+    val circMv: Double? = null,
+)

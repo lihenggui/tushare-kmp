@@ -28,5 +28,5 @@ data class GgtTop10Params(
     val endDate: LocalDate? = null,
     /** 市场类型（2 - 港股通（沪），4 - 港股通（深）） */
     @SerialName("market_type")
-    val marketType: GgMarketType? = null
+    val marketType: GgMarketType? = null,
 )

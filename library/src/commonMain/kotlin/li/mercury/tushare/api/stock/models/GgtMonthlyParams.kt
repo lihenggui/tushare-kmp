@@ -15,5 +15,5 @@ data class GgtMonthlyParams(
     val startMonth: String? = null,
     /** 结束月度（格式：YYYYMM） */
     @SerialName("end_month")
-    val endMonth: String? = null
-) 
+    val endMonth: String? = null,
+)
