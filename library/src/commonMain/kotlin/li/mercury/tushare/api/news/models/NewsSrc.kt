@@ -35,4 +35,4 @@ enum class NewsSrc {
     /** 金融界 */
     @SerialName("jinrongjie")
     JINRONGJIE,
-} 
+}
