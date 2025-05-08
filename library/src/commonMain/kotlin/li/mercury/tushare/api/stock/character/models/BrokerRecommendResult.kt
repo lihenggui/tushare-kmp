@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.character.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

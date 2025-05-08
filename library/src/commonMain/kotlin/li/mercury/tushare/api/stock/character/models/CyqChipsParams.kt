@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.character.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,16 +7,13 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 中央结算系统持股明细请求参数
+ * 每日筹码分布API请求参数
  */
 @Serializable
-data class CcassHoldDetailParams(
-    /** TS股票代码（支持A股和港股） */
+data class CyqChipsParams(
+    /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-    /** 港交所股票代码（5位数字） */
-    @SerialName("hk_code")
-    val hkCode: String? = null,
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.character.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,22 +7,22 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 股票收盘集合竞价数据请求参数
+ * 机构调研表API请求参数
  */
 @Serializable
-data class StkAuctionCParams(
+data class StkSurvParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-    /** 交易日期 */
+    /** 调研日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
     val tradeDate: LocalDate? = null,
-    /** 开始日期 */
+    /** 调研开始日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("start_date")
     val startDate: LocalDate? = null,
-    /** 结束日期 */
+    /** 调研结束日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDate? = null,
