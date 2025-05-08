@@ -3,8 +3,6 @@ package li.mercury.tushare.api.stock.finance.models
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import li.mercury.tushare.api.stock.finance.models.CompType
-import li.mercury.tushare.api.stock.finance.models.ReportType
 import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
