@@ -2,7 +2,7 @@ package li.mercury.tushare.api.stock.basic.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import li.mercury.tushare.api.stock.models.HsType
+import li.mercury.tushare.api.stock.basic.models.HsType
 import li.mercury.tushare.models.TsCode
 
 /**

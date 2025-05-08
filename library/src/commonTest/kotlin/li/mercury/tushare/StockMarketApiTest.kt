@@ -1,6 +1,6 @@
 package li.mercury.tushare
 
-import HsMarketType
+import li.mercury.tushare.api.stock.market.models.HsMarketType
 import app.cash.turbine.test
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -10,7 +10,7 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
-import li.mercury.tushare.api.stock.market.FreqMin
+import li.mercury.tushare.api.stock.market.models.FreqMin
 import li.mercury.tushare.api.stock.market.models.AdjFactorParams
 import li.mercury.tushare.api.stock.market.models.BakDailyParams
 import li.mercury.tushare.api.stock.market.models.DailyBasicParams
@@ -27,7 +27,7 @@ import li.mercury.tushare.api.stock.market.models.StkLimitParams
 import li.mercury.tushare.api.stock.market.models.SuspendDParams
 import li.mercury.tushare.api.stock.market.models.WeeklyMonthlyParams
 import li.mercury.tushare.api.stock.market.models.WeeklyParams
-import li.mercury.tushare.api.stock.models.SuspendType
+import li.mercury.tushare.api.stock.market.models.SuspendType
 import li.mercury.tushare.models.TsCode
 import okio.FileSystem
 import okio.Path.Companion.toPath

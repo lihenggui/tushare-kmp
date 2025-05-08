@@ -21,8 +21,8 @@ import li.mercury.tushare.api.stock.basic.models.StockCompanyParams
 import li.mercury.tushare.api.stock.basic.models.StockCompanyResult
 import li.mercury.tushare.api.stock.basic.models.TradeCalParams
 import li.mercury.tushare.api.stock.basic.models.TradeCalResult
-import li.mercury.tushare.api.stock.models.StkPremarketParams
-import li.mercury.tushare.api.stock.models.StkPremarketResult
+import li.mercury.tushare.api.stock.basic.models.StkPremarketParams
+import li.mercury.tushare.api.stock.basic.models.StkPremarketResult
 import li.mercury.tushare.utils.toApiParams
 
 /**

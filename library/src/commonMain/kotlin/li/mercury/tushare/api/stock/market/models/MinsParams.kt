@@ -3,7 +3,7 @@ package li.mercury.tushare.api.stock.market.models
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import li.mercury.tushare.api.stock.market.FreqMin
+import li.mercury.tushare.api.stock.market.models.FreqMin
 import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
 
