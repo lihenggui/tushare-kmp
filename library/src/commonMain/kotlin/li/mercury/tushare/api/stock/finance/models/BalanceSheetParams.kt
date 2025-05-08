@@ -1,16 +1,18 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.finance.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.api.stock.models.CompType
+import li.mercury.tushare.api.stock.models.ReportType
 import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 业绩预告API请求参数
+ * 资产负债表API请求参数
  */
 @Serializable
-data class ForecastParams(
+data class BalanceSheetParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
@@ -29,6 +31,10 @@ data class ForecastParams(
     /** 报告期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     val period: LocalDate? = null,
-    /** 预告类型(预增/预减/扭亏/首亏/续亏/续盈/略增/略减) */
-    val type: ForecastType? = null,
+    /** 报告类型 */
+    @SerialName("report_type")
+    val reportType: ReportType? = null,
+    /** 公司类型 */
+    @SerialName("comp_type")
+    val compType: CompType? = null,
 )

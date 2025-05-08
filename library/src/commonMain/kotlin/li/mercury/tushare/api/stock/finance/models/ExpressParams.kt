@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.finance.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,27 +7,26 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 分红送股API请求参数
+ * 业绩快报API请求参数
  */
 @Serializable
-data class DividendParams(
-    /** TS代码 */
+data class ExpressParams(
+    /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-    /** 公告日 */
-    @Serializable(with = LocalDateAsStringSerializer::class)
+    /** 公告日期 */
     @SerialName("ann_date")
+    @Serializable(with = LocalDateAsStringSerializer::class)
     val annDate: LocalDate? = null,
-    /** 股权登记日期 */
+    /** 公告开始日期 */
+    @SerialName("start_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
-    @SerialName("record_date")
-    val recordDate: LocalDate? = null,
-    /** 除权除息日 */
+    val startDate: LocalDate? = null,
+    /** 公告结束日期 */
+    @SerialName("end_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
-    @SerialName("ex_date")
-    val exDate: LocalDate? = null,
-    /** 实施公告日 */
+    val endDate: LocalDate? = null,
+    /** 报告期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
-    @SerialName("imp_ann_date")
-    val impAnnDate: LocalDate? = null,
+    val period: LocalDate? = null,
 )

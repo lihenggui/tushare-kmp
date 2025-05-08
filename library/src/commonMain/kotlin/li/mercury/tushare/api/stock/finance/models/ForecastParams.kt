@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.finance.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,31 +7,28 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 财务审计意见返回结果
+ * 业绩预告API请求参数
  */
 @Serializable
-data class FinaAuditResult(
+data class ForecastParams(
     /** TS股票代码 */
     @SerialName("ts_code")
-    val tsCode: TsCode,
+    val tsCode: TsCode? = null,
     /** 公告日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("ann_date")
     val annDate: LocalDate? = null,
-    /** 报告期 */
+    /** 公告开始日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    @SerialName("start_date")
+    val startDate: LocalDate? = null,
+    /** 公告结束日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDate? = null,
-    /** 审计结果 */
-    @SerialName("audit_result")
-    val auditResult: String? = null,
-    /** 审计总费用（元） */
-    @SerialName("audit_fees")
-    val auditFees: Double? = null,
-    /** 会计事务所 */
-    @SerialName("audit_agency")
-    val auditAgency: String? = null,
-    /** 签字会计师 */
-    @SerialName("audit_sign")
-    val auditSign: String? = null,
+    /** 报告期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    val period: LocalDate? = null,
+    /** 预告类型(预增/预减/扭亏/首亏/续亏/续盈/略增/略减) */
+    val type: ForecastType? = null,
 )

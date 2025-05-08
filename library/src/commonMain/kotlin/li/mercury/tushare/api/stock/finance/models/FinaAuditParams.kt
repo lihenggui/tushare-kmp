@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.finance.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,10 +7,10 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 资产负债表API请求参数
+ * 财务审计意见API请求参数
  */
 @Serializable
-data class BalanceSheetParams(
+data class FinaAuditParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
@@ -27,12 +27,5 @@ data class BalanceSheetParams(
     @SerialName("end_date")
     val endDate: LocalDate? = null,
     /** 报告期 */
-    @Serializable(with = LocalDateAsStringSerializer::class)
-    val period: LocalDate? = null,
-    /** 报告类型 */
-    @SerialName("report_type")
-    val reportType: ReportType? = null,
-    /** 公司类型 */
-    @SerialName("comp_type")
-    val compType: CompType? = null,
+    val period: String? = null,
 )

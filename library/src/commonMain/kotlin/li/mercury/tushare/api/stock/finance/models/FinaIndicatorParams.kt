@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.finance.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,17 +7,17 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 主营业务构成API请求参数
+ * 财务指标数据请求参数
  */
 @Serializable
-data class FinaMainbzParams(
+data class FinaIndicatorParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-    /** 报告期(每个季度最后一天的日期，如20171231表示年报，20170630表示半年报) */
-    val period: String? = null,
-    /** 类型：P按产品、D按地区、I按行业 */
-    val type: MainbzType? = null,
+    /** 公告日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    @SerialName("ann_date")
+    val annDate: LocalDate? = null,
     /** 报告期开始日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("start_date")
@@ -26,4 +26,6 @@ data class FinaMainbzParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDate? = null,
+    /** 报告期 */
+    val period: String? = null,
 )
