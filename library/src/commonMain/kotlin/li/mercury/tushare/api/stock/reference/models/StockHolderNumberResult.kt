@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.reference.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,15 +7,22 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 股权质押统计数据API请求参数
+ * 股东人数返回对象类
  */
 @Serializable
-data class PledgeStatParams(
+data class StockHolderNumberResult(
     /** TS股票代码 */
     @SerialName("ts_code")
-    val tsCode: TsCode? = null,
+    val tsCode: TsCode,
+    /** 公告日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    @SerialName("ann_date")
+    val annDate: LocalDate,
     /** 截止日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
-    val endDate: LocalDate? = null,
+    val endDate: LocalDate,
+    /** 股东户数 */
+    @SerialName("holder_num")
+    val holderNum: Int,
 )

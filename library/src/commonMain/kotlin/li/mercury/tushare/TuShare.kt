@@ -23,6 +23,8 @@ import li.mercury.tushare.api.stock.finance.StockFinanceApi
 import li.mercury.tushare.api.stock.finance.StockFinanceApiInterface
 import li.mercury.tushare.api.stock.market.StockMarketApi
 import li.mercury.tushare.api.stock.market.StockMarketApiInterface
+import li.mercury.tushare.api.stock.reference.StockReferenceApi
+import li.mercury.tushare.api.stock.reference.StockReferenceApiInterface
 import li.mercury.tushare.models.TuShareData
 import li.mercury.tushare.models.TuShareErrorCodes
 import li.mercury.tushare.models.TuShareException
@@ -71,6 +73,9 @@ class TuShare(
 
     /** 股票财务信息相关API */
     val stockFinance: StockFinanceApiInterface by lazy { StockFinanceApi(this) }
+
+    /** 股票参考信息相关API */
+    val stockReference: StockReferenceApiInterface by lazy { StockReferenceApi(this) }
 
     /**
      * 向TuShare发起原始API调用
