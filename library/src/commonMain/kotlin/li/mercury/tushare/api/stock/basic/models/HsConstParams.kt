@@ -1,7 +1,8 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.basic.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.api.stock.models.HsType
 
 /**
  * 沪深股通成分股查询参数

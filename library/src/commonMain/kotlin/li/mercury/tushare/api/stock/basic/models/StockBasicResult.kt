@@ -1,8 +1,10 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.basic.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.api.stock.models.HsTarget
+import li.mercury.tushare.api.stock.models.ListStatus
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
