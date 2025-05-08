@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.stock.models
+package li.mercury.tushare.api.stock.margin.models
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
@@ -7,15 +7,15 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
- * 融资融券交易明细API请求参数
+ * 做市借券交易汇总API请求参数
  */
 @Serializable
-data class MarginDetailParams(
+data class SlbLenMmParams(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
     val tradeDate: LocalDate? = null,
-    /** TS股票代码 */
+    /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
     /** 开始日期 */
