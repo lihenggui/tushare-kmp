@@ -24,12 +24,12 @@ data class HkHoldResult(
     /** 开始日期 */
     @SerialName("start_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
-    val startDate: LocalDate,
+    val startDate: LocalDate? = null,
 
     /** 结束日期 */
     @SerialName("end_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
-    val endDate: LocalDate,
+    val endDate: LocalDate? = null,
 
     /** 持股数量(股) */
     val vol: Int,
