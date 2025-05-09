@@ -52,7 +52,7 @@ class StockFinanceApiTest {
     fun testIncomeWorks() =
         runTest {
             val client = createClient("income.json")
-            client.stockFinance
+            client.stock.finance
                 .getIncome(
                     IncomeParams(
                         tsCode = TsCode("600000", "SH"),
@@ -71,7 +71,7 @@ class StockFinanceApiTest {
     fun testBalanceSheetWorks() =
         runTest {
             val client = createClient("balancesheet.json")
-            client.stockFinance
+            client.stock.finance
                 .getBalanceSheet(
                     BalanceSheetParams(
                         tsCode = TsCode("600000", "SH"),
@@ -90,7 +90,7 @@ class StockFinanceApiTest {
     fun testCashflowWorks() =
         runTest {
             val client = createClient("cashflow.json")
-            client.stockFinance
+            client.stock.finance
                 .getCashflow(
                     CashflowParams(
                         tsCode = TsCode("600000", "SH"),
@@ -109,7 +109,7 @@ class StockFinanceApiTest {
     fun testForecastWorks() =
         runTest {
             val client = createClient("forecast.json")
-            client.stockFinance
+            client.stock.finance
                 .getForecast(
                     ForecastParams(
                         annDate = LocalDate(2019, 1, 31),
@@ -126,7 +126,7 @@ class StockFinanceApiTest {
     fun testExpressWorks() =
         runTest {
             val client = createClient("express.json")
-            client.stockFinance
+            client.stock.finance
                 .getExpress(
                     ExpressParams(
                         tsCode = TsCode("600000", "SH"),
@@ -144,7 +144,7 @@ class StockFinanceApiTest {
     fun testDividendWorks() =
         runTest {
             val client = createClient("dividend.json")
-            client.stockFinance
+            client.stock.finance
                 .getDividend(
                     DividendParams(
                         tsCode = TsCode("600848", "SH"),
@@ -161,7 +161,7 @@ class StockFinanceApiTest {
     fun testFinaIndicatorWorks() =
         runTest {
             val client = createClient("fina_indicator.json")
-            client.stockFinance
+            client.stock.finance
                 .getFinaIndicator(
                     FinaIndicatorParams(
                         tsCode = TsCode("600000", "SH"),
@@ -180,7 +180,7 @@ class StockFinanceApiTest {
     fun testFinaAuditWorks() =
         runTest {
             val client = createClient("fina_audit.json")
-            client.stockFinance
+            client.stock.finance
                 .getFinaAudit(
                     FinaAuditParams(
                         tsCode = TsCode("600000", "SH"),
@@ -199,7 +199,7 @@ class StockFinanceApiTest {
     fun testFinaMainbzWorks() =
         runTest {
             val client = createClient("fina_mainbz.json")
-            client.stockFinance
+            client.stock.finance
                 .getFinaMainbz(
                     FinaMainbzParams(
                         tsCode = TsCode("000627", "SZ"),
@@ -217,7 +217,7 @@ class StockFinanceApiTest {
     fun testDisclosureDateWorks() =
         runTest {
             val client = createClient("disclosure_date.json")
-            client.stockFinance
+            client.stock.finance
                 .getDisclosureDate(
                     DisclosureDateParams(
                         endDate = LocalDate(2018, 12, 31),

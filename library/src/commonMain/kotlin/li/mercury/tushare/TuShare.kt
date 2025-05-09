@@ -15,18 +15,7 @@ import li.mercury.tushare.api.index.IndexApi
 import li.mercury.tushare.api.index.IndexApiInterface
 import li.mercury.tushare.api.news.NewsApi
 import li.mercury.tushare.api.news.NewsApiInterface
-import li.mercury.tushare.api.stock.basic.StockBasicApi
-import li.mercury.tushare.api.stock.basic.StockBasicApiInterface
-import li.mercury.tushare.api.stock.character.StockCharacterApi
-import li.mercury.tushare.api.stock.character.StockCharacterApiInterface
-import li.mercury.tushare.api.stock.finance.StockFinanceApi
-import li.mercury.tushare.api.stock.finance.StockFinanceApiInterface
-import li.mercury.tushare.api.stock.margin.StockMarginApi
-import li.mercury.tushare.api.stock.margin.StockMarginApiInterface
-import li.mercury.tushare.api.stock.market.StockMarketApi
-import li.mercury.tushare.api.stock.market.StockMarketApiInterface
-import li.mercury.tushare.api.stock.reference.StockReferenceApi
-import li.mercury.tushare.api.stock.reference.StockReferenceApiInterface
+import li.mercury.tushare.api.stock.StockApi
 import li.mercury.tushare.models.TuShareData
 import li.mercury.tushare.models.TuShareErrorCodes
 import li.mercury.tushare.models.TuShareException
@@ -64,23 +53,8 @@ class TuShare(
     /** 新闻相关API */
     val news: NewsApiInterface by lazy { NewsApi(this) }
 
-    /** 股票基础信息相关API */
-    val stockBasic: StockBasicApiInterface by lazy { StockBasicApi(this) }
-
-    /** 股票行情信息相关API */
-    val stockMarket: StockMarketApiInterface by lazy { StockMarketApi(this) }
-
-    /** 股票财务信息相关API */
-    val stockFinance: StockFinanceApiInterface by lazy { StockFinanceApi(this) }
-
-    /** 股票参考信息相关API */
-    val stockReference: StockReferenceApiInterface by lazy { StockReferenceApi(this) }
-
-    /** 股票特色信息相关API */
-    val stockCharacter: StockCharacterApiInterface by lazy { StockCharacterApi(this) }
-
-    /** 股票两融信息相关API */
-    val stockMargin: StockMarginApiInterface by lazy { StockMarginApi(this) }
+    /** 股票相关API */
+    val stock: StockApi by lazy { StockApi(this) }
 
     /**
      * 向TuShare发起原始API调用
