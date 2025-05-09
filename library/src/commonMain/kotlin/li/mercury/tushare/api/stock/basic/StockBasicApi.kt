@@ -13,6 +13,8 @@ import li.mercury.tushare.api.stock.basic.models.NewShareParams
 import li.mercury.tushare.api.stock.basic.models.NewShareResult
 import li.mercury.tushare.api.stock.basic.models.StkManagersParams
 import li.mercury.tushare.api.stock.basic.models.StkManagersResult
+import li.mercury.tushare.api.stock.basic.models.StkPremarketParams
+import li.mercury.tushare.api.stock.basic.models.StkPremarketResult
 import li.mercury.tushare.api.stock.basic.models.StkRewardsParams
 import li.mercury.tushare.api.stock.basic.models.StkRewardsResult
 import li.mercury.tushare.api.stock.basic.models.StockBasicParams
@@ -21,8 +23,6 @@ import li.mercury.tushare.api.stock.basic.models.StockCompanyParams
 import li.mercury.tushare.api.stock.basic.models.StockCompanyResult
 import li.mercury.tushare.api.stock.basic.models.TradeCalParams
 import li.mercury.tushare.api.stock.basic.models.TradeCalResult
-import li.mercury.tushare.api.stock.basic.models.StkPremarketParams
-import li.mercury.tushare.api.stock.basic.models.StkPremarketResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
