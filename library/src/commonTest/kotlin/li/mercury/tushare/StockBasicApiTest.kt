@@ -47,7 +47,6 @@ class StockBasicApiTest {
             engine = createMockEngine(responseFileName),
         )
 
-
     @Test
     fun testHsConstWorks() =
         runTest {

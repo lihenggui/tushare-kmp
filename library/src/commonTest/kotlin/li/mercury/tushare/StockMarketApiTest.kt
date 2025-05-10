@@ -1,6 +1,5 @@
 package li.mercury.tushare
 
-import li.mercury.tushare.api.stock.market.models.HsMarketType
 import app.cash.turbine.test
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -10,24 +9,25 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
-import li.mercury.tushare.api.stock.market.models.FreqMin
 import li.mercury.tushare.api.stock.market.models.AdjFactorParams
 import li.mercury.tushare.api.stock.market.models.BakDailyParams
 import li.mercury.tushare.api.stock.market.models.DailyBasicParams
 import li.mercury.tushare.api.stock.market.models.DailyParams
+import li.mercury.tushare.api.stock.market.models.FreqMin
 import li.mercury.tushare.api.stock.market.models.FreqWeekMonth
 import li.mercury.tushare.api.stock.market.models.GgMarketType
 import li.mercury.tushare.api.stock.market.models.GgtDailyParams
 import li.mercury.tushare.api.stock.market.models.GgtMonthlyParams
 import li.mercury.tushare.api.stock.market.models.GgtTop10Params
+import li.mercury.tushare.api.stock.market.models.HsMarketType
 import li.mercury.tushare.api.stock.market.models.HsgtTop10Params
 import li.mercury.tushare.api.stock.market.models.MinsParams
 import li.mercury.tushare.api.stock.market.models.MonthlyParams
 import li.mercury.tushare.api.stock.market.models.StkLimitParams
 import li.mercury.tushare.api.stock.market.models.SuspendDParams
+import li.mercury.tushare.api.stock.market.models.SuspendType
 import li.mercury.tushare.api.stock.market.models.WeeklyMonthlyParams
 import li.mercury.tushare.api.stock.market.models.WeeklyParams
-import li.mercury.tushare.api.stock.market.models.SuspendType
 import li.mercury.tushare.models.TsCode
 import okio.FileSystem
 import okio.Path.Companion.toPath
@@ -55,7 +55,6 @@ class StockMarketApiTest {
             token = "",
             engine = createMockEngine(responseFileName),
         )
-
 
     @Test
     fun testDailyWorks() =

@@ -150,5 +150,4 @@ internal class StockMarginApi(
             val results = response.getResponseItems(SlbLenMmResult.serializer())
             emit(results)
         }
-
 }
