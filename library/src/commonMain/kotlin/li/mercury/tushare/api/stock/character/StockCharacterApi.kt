@@ -167,8 +167,8 @@ internal class StockCharacterApi(
      * @param params 请求参数
      * @return 沪深港股通持股明细数据流
      */
-    override fun getHkHold(params: HkHoldParams): Flow<List<HkHoldResult>> {
-        return flow {
+    override fun getHkHold(params: HkHoldParams): Flow<List<HkHoldResult>> =
+        flow {
             val apiParams = params.toApiParams()
             val response =
                 tuShare.callApi(
@@ -178,7 +178,6 @@ internal class StockCharacterApi(
             val results = response.getResponseItems(HkHoldResult.serializer())
             emit(results)
         }
-    }
 
     /**
      * 获取股票开盘集合竞价数据

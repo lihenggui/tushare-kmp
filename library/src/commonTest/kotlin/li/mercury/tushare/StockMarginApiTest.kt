@@ -49,7 +49,7 @@ class StockMarginApiTest {
     fun testMarginWorks() =
         runTest {
             val client = createClient("margin.json")
-            client.stockMargin
+            client.stock.margin
                 .getMargin(
                     MarginParams(
                         tradeDate = LocalDate(2018, 8, 2),
@@ -67,7 +67,7 @@ class StockMarginApiTest {
     fun testMarginDetailWorks() =
         runTest {
             val client = createClient("margin_detail.json")
-            client.stockMargin
+            client.stock.margin
                 .getMarginDetail(
                     MarginDetailParams(
                         tradeDate = LocalDate(2018, 8, 2),
@@ -84,7 +84,7 @@ class StockMarginApiTest {
     fun testMarginSecsWorks() =
         runTest {
             val client = createClient("margin_secs.json")
-            client.stockMargin
+            client.stock.margin
                 .getMarginSecs(
                     MarginSecsParams(
                         tradeDate = LocalDate(2024, 4, 17),
@@ -101,7 +101,7 @@ class StockMarginApiTest {
     fun testSlbSecWorks() =
         runTest {
             val client = createClient("slb_sec.json")
-            client.stockMargin
+            client.stock.margin
                 .getSlbSec(
                     SlbSecParams(
                         tradeDate = LocalDate(2024, 6, 20),
@@ -117,7 +117,7 @@ class StockMarginApiTest {
     fun testSlbLenWorks() =
         runTest {
             val client = createClient("slb_len.json")
-            client.stockMargin
+            client.stock.margin
                 .getSlbLen(
                     SlbLenParams(
                         startDate = LocalDate(2024, 6, 1),
@@ -134,7 +134,7 @@ class StockMarginApiTest {
     fun testSlbSecDetailWorks() =
         runTest {
             val client = createClient("slb_sec_detail.json")
-            client.stockMargin
+            client.stock.margin
                 .getSlbSecDetail(
                     SlbSecDetailParams(
                         tradeDate = LocalDate(2024, 6, 20),
@@ -150,7 +150,7 @@ class StockMarginApiTest {
     fun testSlbLenMmWorks() =
         runTest {
             val client = createClient("slb_len_mm.json")
-            client.stockMargin
+            client.stock.margin
                 .getSlbLenMm(
                     SlbLenMmParams(
                         tradeDate = LocalDate(2024, 6, 20),

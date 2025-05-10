@@ -51,7 +51,7 @@ class StockReferenceApiTest {
     fun testTop10HoldersWorks() =
         runTest {
             val client = createClient("top10_holders.json")
-            client.stockReference
+            client.stock.reference
                 .getTop10Holders(
                     Top10HoldersParams(
                         tsCode = TsCode("600000", "SH"),
@@ -69,7 +69,7 @@ class StockReferenceApiTest {
     fun testTop10FloatHoldersWorks() =
         runTest {
             val client = createClient("top10_floatholders.json")
-            client.stockReference
+            client.stock.reference
                 .getTop10FloatHolders(
                     Top10FloatHoldersParams(
                         tsCode = TsCode("600000", "SH"),
@@ -88,7 +88,7 @@ class StockReferenceApiTest {
     fun testPledgeStatWorks() =
         runTest {
             val client = createClient("pledge_stat.json")
-            client.stockReference
+            client.stock.reference
                 .getPledgeStat(
                     PledgeStatParams(
                         tsCode = TsCode("000014", "SZ"),
@@ -105,7 +105,7 @@ class StockReferenceApiTest {
     fun testPledgeDetailWorks() =
         runTest {
             val client = createClient("pledge_detail.json")
-            client.stockReference
+            client.stock.reference
                 .getPledgeDetail(
                     PledgeDetailParams(
                         tsCode = TsCode("000014", "SZ"),
@@ -122,7 +122,7 @@ class StockReferenceApiTest {
     fun testRepurchaseWorks() =
         runTest {
             val client = createClient("repurchase.json")
-            client.stockReference
+            client.stock.reference
                 .getRepurchase(
                     RepurchaseParams(
                         startDate = LocalDate(2018, 1, 1),
@@ -140,7 +140,7 @@ class StockReferenceApiTest {
     fun testConceptWorks() =
         runTest {
             val client = createClient("concept.json")
-            client.stockReference
+            client.stock.reference
                 .getConcept(
                     ConceptParams(
                         src = "ts",
@@ -157,7 +157,7 @@ class StockReferenceApiTest {
     fun testConceptDetailWorks() =
         runTest {
             val client = createClient("concept_detail.json")
-            client.stockReference
+            client.stock.reference
                 .getConceptDetail(
                     ConceptDetailParams(
                         id = "TS2",
@@ -173,7 +173,7 @@ class StockReferenceApiTest {
     fun testShareFloatWorks() =
         runTest {
             val client = createClient("share_float.json")
-            client.stockReference
+            client.stock.reference
                 .getShareFloat(
                     ShareFloatParams(
                         tsCode = TsCode("000998", "SZ"),
@@ -191,7 +191,7 @@ class StockReferenceApiTest {
     fun testBlockTradeWorks() =
         runTest {
             val client = createClient("block_trade.json")
-            client.stockReference
+            client.stock.reference
                 .getBlockTrade(
                     BlockTradeParams(
                         tsCode = TsCode("600436", "SH"),
@@ -209,7 +209,7 @@ class StockReferenceApiTest {
     fun testStockHolderNumberWorks() =
         runTest {
             val client = createClient("stk_holdernumber.json")
-            client.stockReference
+            client.stock.reference
                 .getStockHolderNumber(
                     StockHolderNumberParams(
                         tsCode = TsCode("300199", "SZ"),
@@ -228,7 +228,7 @@ class StockReferenceApiTest {
     fun testStockHolderTradeWorks() =
         runTest {
             val client = createClient("stk_holdertrade.json")
-            client.stockReference
+            client.stock.reference
                 .getStockHolderTrade(
                     StockHolderTradeParams(
                         tsCode = TsCode("002149", "SZ"),

@@ -11,32 +11,25 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 data class HkHoldResult(
     /** 交易所代码 */
     val code: String,
-
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,
-
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
     val tradeDate: LocalDate,
-
     /** 开始日期 */
     @SerialName("start_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val startDate: LocalDate? = null,
-
     /** 结束日期 */
     @SerialName("end_date")
     @Serializable(with = LocalDateAsStringSerializer::class)
     val endDate: LocalDate? = null,
-
     /** 持股数量(股) */
     val vol: Int,
-
     /** 持股占比（%），占已发行股份百分比 */
     val ratio: Float,
-
     /** 类型：SH 沪股通（北向）、SZ 深股通（北向）、HK 港股通（南向持股） */
     val exchange: Exchange,
 )

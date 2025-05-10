@@ -54,7 +54,7 @@ class StockCharacterApiTest {
     fun testCyqPerfWorks() =
         runTest {
             val client = createClient("cyq_perf.json")
-            client.stockCharacter
+            client.stock.character
                 .getCyqPerf(
                     CyqPerfParams(
                         tsCode = TsCode("600000", "SH"),
@@ -71,7 +71,7 @@ class StockCharacterApiTest {
     fun testCyqChipsWorks() =
         runTest {
             val client = createClient("cyq_chips.json")
-            client.stockCharacter
+            client.stock.character
                 .getCyqChips(
                     CyqChipsParams(
                         tsCode = TsCode("600000", "SH"),
@@ -88,7 +88,7 @@ class StockCharacterApiTest {
     fun testStkFactorWorks() =
         runTest {
             val client = createClient("stk_factor.json")
-            client.stockCharacter
+            client.stock.character
                 .getStkFactor(
                     StkFactorParams(
                         tsCode = TsCode("600000", "SH"),
@@ -107,7 +107,7 @@ class StockCharacterApiTest {
     fun testStkFactorProWorks() =
         runTest {
             val client = createClient("stk_factor_pro.json")
-            client.stockCharacter
+            client.stock.character
                 .getStkFactorPro(
                     StkFactorProParams(
                         tsCode = TsCode("600000", "SH"),
@@ -125,7 +125,7 @@ class StockCharacterApiTest {
     fun testCcassHoldWorks() =
         runTest {
             val client = createClient("ccass_hold.json")
-            client.stockCharacter
+            client.stock.character
                 .getCcassHold(
                     CcassHoldParams(
                         tsCode = TsCode.hk("00960"),
@@ -142,7 +142,7 @@ class StockCharacterApiTest {
     fun testCcassHoldDetailWorks() =
         runTest {
             val client = createClient("ccass_hold_detail.json")
-            client.stockCharacter
+            client.stock.character
                 .getCcassHoldDetail(
                     CcassHoldDetailParams(
                         tsCode = TsCode.hk("00960"),
@@ -160,7 +160,7 @@ class StockCharacterApiTest {
     fun testStkAuctionOWorks() =
         runTest {
             val client = createClient("stk_auction_o.json")
-            client.stockCharacter
+            client.stock.character
                 .getStkAuctionO(
                     StkAuctionOParams(
                         tradeDate = LocalDate(2024, 11, 22),
@@ -177,7 +177,7 @@ class StockCharacterApiTest {
     fun testStkAuctionCWorks() =
         runTest {
             val client = createClient("stk_auction_c.json")
-            client.stockCharacter
+            client.stock.character
                 .getStkAuctionC(
                     StkAuctionCParams(
                         tradeDate = LocalDate(2024, 11, 22),
@@ -194,7 +194,7 @@ class StockCharacterApiTest {
     fun testStkNineturnWorks() =
         runTest {
             val client = createClient("stk_nineturn.json")
-            client.stockCharacter
+            client.stock.character
                 .getStkNineturn(
                     StkNineturnParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -213,7 +213,7 @@ class StockCharacterApiTest {
     fun testStkSurvWorks() =
         runTest {
             val client = createClient("stk_surv.json")
-            client.stockCharacter
+            client.stock.character
                 .getStkSurv(
                     StkSurvParams(
                         tsCode = TsCode("002223", "SZ"),
@@ -231,7 +231,7 @@ class StockCharacterApiTest {
     fun testBrokerRecommendWorks() =
         runTest {
             val client = createClient("broker_recommend.json")
-            client.stockCharacter
+            client.stock.character
                 .getBrokerRecommend(
                     BrokerRecommendParams(
                         month = "202106",
@@ -247,7 +247,7 @@ class StockCharacterApiTest {
     fun testHkHoldWorks() =
         runTest {
             val client = createClient("hk_hold.json")
-            client.stockCharacter
+            client.stock.character
                 .getHkHold(
                     HkHoldParams(
                         exchange = Exchange.SH,

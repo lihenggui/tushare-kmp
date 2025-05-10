@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.stock.market.models
 
-import li.mercury.tushare.api.stock.market.models.HsMarketType
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
