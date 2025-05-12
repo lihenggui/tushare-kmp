@@ -60,7 +60,7 @@ class StockMarketApiTest {
     fun testDailyWorks() =
         runTest {
             val client = createClient("daily.json")
-            client.stockMarket
+            client.stock.market
                 .getDaily(
                     DailyParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -78,7 +78,7 @@ class StockMarketApiTest {
     fun testMinsWorks() =
         runTest {
             val client = createClient("mins.json")
-            client.stockMarket
+            client.stock.market
                 .getMins(
                     MinsParams(
                         tsCode = TsCode("600000", "SH"),
@@ -97,7 +97,7 @@ class StockMarketApiTest {
     fun testWeeklyWorks() =
         runTest {
             val client = createClient("weekly.json")
-            client.stockMarket
+            client.stock.market
                 .getWeekly(
                     WeeklyParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -115,7 +115,7 @@ class StockMarketApiTest {
     fun testMonthlyWorks() =
         runTest {
             val client = createClient("monthly.json")
-            client.stockMarket
+            client.stock.market
                 .getMonthly(
                     MonthlyParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -134,7 +134,7 @@ class StockMarketApiTest {
     fun testWeeklyMonthlyWorks() =
         runTest {
             val client = createClient("weekly_monthly.json")
-            client.stockMarket
+            client.stock.market
                 .getWeeklyMonthly(
                     WeeklyMonthlyParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -153,7 +153,7 @@ class StockMarketApiTest {
     fun testAdjFactorWorks() =
         runTest {
             val client = createClient("adj_factor.json")
-            client.stockMarket
+            client.stock.market
                 .getAdjFactor(
                     AdjFactorParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -172,7 +172,7 @@ class StockMarketApiTest {
     fun testDailyBasicWorks() =
         runTest {
             val client = createClient("daily_basic.json")
-            client.stockMarket
+            client.stock.market
                 .getDailyBasic(
                     DailyBasicParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -191,7 +191,7 @@ class StockMarketApiTest {
     fun testStkLimitWorks() =
         runTest {
             val client = createClient("stk_limit.json")
-            client.stockMarket
+            client.stock.market
                 .getStkLimit(
                     StkLimitParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -209,7 +209,7 @@ class StockMarketApiTest {
     fun testSuspendDWorks() =
         runTest {
             val client = createClient("suspend_d.json")
-            client.stockMarket
+            client.stock.market
                 .getSuspendD(
                     SuspendDParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -228,7 +228,7 @@ class StockMarketApiTest {
     fun testHsgtTop10Works() =
         runTest {
             val client = createClient("hsgt_top10.json")
-            client.stockMarket
+            client.stock.market
                 .getHsgtTop10(
                     HsgtTop10Params(
                         tradeDate = LocalDate(2018, 7, 25),
@@ -245,7 +245,7 @@ class StockMarketApiTest {
     fun testGgtTop10Works() =
         runTest {
             val client = createClient("ggt_top10.json")
-            client.stockMarket
+            client.stock.market
                 .getGgtTop10(
                     GgtTop10Params(
                         tradeDate = LocalDate(2018, 7, 25),
@@ -263,7 +263,7 @@ class StockMarketApiTest {
     fun testGgtDailyWorks() =
         runTest {
             val client = createClient("ggt_daily.json")
-            client.stockMarket
+            client.stock.market
                 .getGgtDaily(
                     GgtDailyParams(
                         startDate = LocalDate(2018, 9, 25),
@@ -281,7 +281,7 @@ class StockMarketApiTest {
     fun testGgtMonthlyWorks() =
         runTest {
             val client = createClient("ggt_monthly.json")
-            client.stockMarket
+            client.stock.market
                 .getGgtMonthly(
                     GgtMonthlyParams(
                         startMonth = "201809",
@@ -298,7 +298,7 @@ class StockMarketApiTest {
     fun testBakDailyWorks() =
         runTest {
             val client = createClient("bak_daily.json")
-            client.stockMarket
+            client.stock.market
                 .getBakDaily(
                     BakDailyParams(
                         tsCode = TsCode("300750", "SZ"),

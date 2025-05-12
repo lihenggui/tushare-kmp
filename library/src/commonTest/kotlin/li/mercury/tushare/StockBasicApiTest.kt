@@ -51,7 +51,7 @@ class StockBasicApiTest {
     fun testHsConstWorks() =
         runTest {
             val client = createClient("hs_const.json")
-            client.stockBasic
+            client.stock.basic
                 .getHsConst(
                     HsConstParams(
                         hsType = HsType.SZ,
@@ -67,7 +67,7 @@ class StockBasicApiTest {
     fun testNameChangeWorks() =
         runTest {
             val client = createClient("name_change.json")
-            client.stockBasic
+            client.stock.basic
                 .getNameChange(
                     NameChangeParams(
                         tsCode = TsCode("600519", "SH"),
@@ -83,7 +83,7 @@ class StockBasicApiTest {
     fun testStockCompanyWorks() =
         runTest {
             val client = createClient("stock_company.json")
-            client.stockBasic
+            client.stock.basic
                 .getStockCompany(
                     StockCompanyParams(
                         exchange = Exchange.SZSE,
@@ -100,7 +100,7 @@ class StockBasicApiTest {
     fun testStkPremarketWorks() =
         runTest {
             val client = createClient("stk_premarket.json")
-            client.stockBasic
+            client.stock.basic
                 .getStkPremarket(
                     StkPremarketParams(
                         tradeDate = LocalDate(2025, 1, 1),
@@ -117,7 +117,7 @@ class StockBasicApiTest {
     fun testTradeCalWorks() =
         runTest {
             val client = createClient("trade_cal.json")
-            client.stockBasic
+            client.stock.basic
                 .getTradeCal(
                     TradeCalParams(
                         exchange = Exchange.SSE,
@@ -136,7 +136,7 @@ class StockBasicApiTest {
     fun testStkManagersWorks() =
         runTest {
             val client = createClient("stk_managers.json")
-            client.stockBasic
+            client.stock.basic
                 .getStkManagers(
                     StkManagersParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -153,7 +153,7 @@ class StockBasicApiTest {
     fun testStkRewardsWorks() =
         runTest {
             val client = createClient("stk_rewards.json")
-            client.stockBasic
+            client.stock.basic
                 .getStkRewards(
                     StkRewardsParams(
                         tsCode = TsCode("000001", "SZ"),
@@ -169,7 +169,7 @@ class StockBasicApiTest {
     fun testNewShareWorks() =
         runTest {
             val client = createClient("new_share.json")
-            client.stockBasic
+            client.stock.basic
                 .getNewShare(
                     NewShareParams(
                         startDate = LocalDate(2018, 9, 1),
@@ -186,7 +186,7 @@ class StockBasicApiTest {
     fun testBakBasicWorks() =
         runTest {
             val client = createClient("bak_basic.json")
-            client.stockBasic
+            client.stock.basic
                 .getBakBasic(
                     BakBasicParams(
                         tradeDate = LocalDate(2021, 10, 12),
