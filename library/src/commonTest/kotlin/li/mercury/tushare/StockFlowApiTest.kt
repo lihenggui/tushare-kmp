@@ -9,6 +9,7 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcParams
+import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowThsParams
@@ -102,6 +103,24 @@ class StockFlowApiTest {
                     MoneyflowMktDcParams(
                         startDate = LocalDate(2024, 9, 1),
                         endDate = LocalDate(2024, 9, 30),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // no permission, skip
+    fun testMoneyFlowIndDcWorks() =
+        runTest {
+            val client = createClient("moneyflow_ind_dc.json")
+            client.stock.flow
+                .getMoneyflowIndDc(
+                    MoneyflowIndDcParams(
+                        tradeDate = LocalDate(2024, 9, 27),
+                        contentType = "行业",
                     ),
                 ).test {
                     val result = awaitItem()
