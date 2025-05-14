@@ -12,18 +12,15 @@ data class MoneyflowDcParams(
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")
     val tradeDate: LocalDate? = null,
-
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
-
     /** 开始日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("start_date")
     val startDate: LocalDate? = null,
-
     /** 结束日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
     val endDate: LocalDate? = null,
-) 
+)
