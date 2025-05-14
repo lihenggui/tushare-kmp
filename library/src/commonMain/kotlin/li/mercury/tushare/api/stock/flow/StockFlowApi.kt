@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.flow
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcResult
+import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcParams
+import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowThsParams
@@ -68,6 +70,24 @@ internal class StockFlowApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(MoneyflowDcResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取东方财富大盘资金流向数据
+     * @param params 请求参数
+     * @return 东方财富大盘资金流向数据流
+     */
+    override fun getMoneyflowMktDc(params: MoneyflowMktDcParams): Flow<List<MoneyflowMktDcResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "moneyflow_mkt_dc",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(MoneyflowMktDcResult.serializer())
             emit(results)
         }
 }
