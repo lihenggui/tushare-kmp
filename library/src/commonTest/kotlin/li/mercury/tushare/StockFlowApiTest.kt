@@ -9,6 +9,7 @@ import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcParams
+import li.mercury.tushare.api.stock.flow.models.MoneyflowHsgtParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndThsParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcParams
@@ -17,6 +18,7 @@ import li.mercury.tushare.api.stock.flow.models.MoneyflowThsParams
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
+import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class StockFlowApiTest {
@@ -139,6 +141,23 @@ class StockFlowApiTest {
                 .getMoneyflowIndThs(
                     MoneyflowIndThsParams(
                         tradeDate = LocalDate(2024, 9, 27),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testMoneyFlowHsgtWorks() =
+        runTest {
+            val client = createClient("moneyflow_hsgt.json")
+            client.stock.flow
+                .getMoneyflowHsgt(
+                    MoneyflowHsgtParams(
+                        startDate = LocalDate(2018, 1, 1),
+                        endDate = LocalDate(2018, 12, 31),
                     ),
                 ).test {
                     val result = awaitItem()

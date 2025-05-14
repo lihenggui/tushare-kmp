@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock.flow
 import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcResult
+import li.mercury.tushare.api.stock.flow.models.MoneyflowHsgtParams
+import li.mercury.tushare.api.stock.flow.models.MoneyflowHsgtResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndThsParams
@@ -59,4 +61,11 @@ interface StockFlowApiInterface {
      * @return 同花顺行业板块资金流向数据流
      */
     fun getMoneyflowIndThs(params: MoneyflowIndThsParams): Flow<List<MoneyflowIndThsResult>>
+
+    /**
+     * 获取沪深港通资金流向
+     * @param params 请求参数
+     * @return 沪深港通资金流向数据流
+     */
+    fun getMoneyflowHsgt(params: MoneyflowHsgtParams): Flow<List<MoneyflowHsgtResult>>
 }
