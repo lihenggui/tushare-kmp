@@ -8,6 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowThsParams
 import okio.FileSystem
 import okio.Path.Companion.toPath
@@ -39,12 +40,30 @@ class StockFlowApiTest {
     // no permission, skip
     fun testMoneyFlowWorks() =
         runTest {
-            val client = createClient("daily.json")
+            val client = createClient("moneyflow.json")
+            client.stock.flow
+                .getMoneyflowThs(
+                    MoneyflowParams(
+                        startDate = LocalDate(2018, 7, 1),
+                        endDate = LocalDate(2023, 7, 18),
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // no permission, skip
+    fun testMoneyFlowThsWorks() =
+        runTest {
+            val client = createClient("moneyflow_ths.json")
             client.stock.flow
                 .getMoneyflowThs(
                     MoneyflowThsParams(
-                        startDate = LocalDate(2018, 7, 1),
-                        endDate = LocalDate(2023, 7, 18),
+                        startDate = LocalDate(2024, 10, 1),
+                        endDate = LocalDate(2024, 10, 11),
                     ),
                 ).test {
                     val result = awaitItem()

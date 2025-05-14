@@ -59,4 +59,4 @@ data class MoneyflowThsResult(
     /** 今日小单净流入占比(%) */
     @SerialName("buy_sm_amount_rate")
     val buySmAmountRate: Double,
-)
+) 
