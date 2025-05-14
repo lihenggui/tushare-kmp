@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.flow.models.MoneyflowDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcResult
+import li.mercury.tushare.api.stock.flow.models.MoneyflowIndThsParams
+import li.mercury.tushare.api.stock.flow.models.MoneyflowIndThsResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
@@ -108,6 +110,24 @@ internal class StockFlowApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(MoneyflowIndDcResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取同花顺行业板块资金流向
+     * @param params 请求参数
+     * @return 同花顺行业板块资金流向数据流
+     */
+    override fun getMoneyflowIndThs(params: MoneyflowIndThsParams): Flow<List<MoneyflowIndThsResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "moneyflow_ind_ths",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(MoneyflowIndThsResult.serializer())
             emit(results)
         }
 }

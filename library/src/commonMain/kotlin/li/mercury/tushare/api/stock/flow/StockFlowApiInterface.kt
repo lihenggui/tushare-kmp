@@ -5,6 +5,8 @@ import li.mercury.tushare.api.stock.flow.models.MoneyflowDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowIndDcResult
+import li.mercury.tushare.api.stock.flow.models.MoneyflowIndThsParams
+import li.mercury.tushare.api.stock.flow.models.MoneyflowIndThsResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
@@ -50,4 +52,11 @@ interface StockFlowApiInterface {
      * @return 东方财富板块资金流向数据流
      */
     fun getMoneyflowIndDc(params: MoneyflowIndDcParams): Flow<List<MoneyflowIndDcResult>>
+
+    /**
+     * 获取同花顺行业板块资金流向
+     * @param params 请求参数
+     * @return 同花顺行业板块资金流向数据流
+     */
+    fun getMoneyflowIndThs(params: MoneyflowIndThsParams): Flow<List<MoneyflowIndThsResult>>
 }
