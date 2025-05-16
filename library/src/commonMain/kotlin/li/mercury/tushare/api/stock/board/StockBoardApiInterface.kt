@@ -14,6 +14,8 @@ import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListResult
 import li.mercury.tushare.api.stock.board.models.LimitCptListParams
 import li.mercury.tushare.api.stock.board.models.LimitCptListResult
+import li.mercury.tushare.api.stock.board.models.LimitListDParams
+import li.mercury.tushare.api.stock.board.models.LimitListDResult
 import li.mercury.tushare.api.stock.board.models.StkAuctionParams
 import li.mercury.tushare.api.stock.board.models.StkAuctionResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
@@ -103,4 +105,11 @@ interface StockBoardApiInterface {
      * @return 最强板块统计数据流
      */
     fun getLimitCptList(params: LimitCptListParams): Flow<List<LimitCptListResult>>
+
+    /**
+     * 获取涨跌停列表数据（新）
+     * @param params 请求参数
+     * @return 涨跌停列表数据流
+     */
+    fun getLimitListD(params: LimitListDParams): Flow<List<LimitListDResult>>
 }

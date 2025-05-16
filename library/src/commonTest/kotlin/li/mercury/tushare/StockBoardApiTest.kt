@@ -15,6 +15,8 @@ import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListTag
 import li.mercury.tushare.api.stock.board.models.LimitCptListParams
+import li.mercury.tushare.api.stock.board.models.LimitListDParams
+import li.mercury.tushare.api.stock.board.models.LimitType
 import li.mercury.tushare.api.stock.board.models.StkAuctionParams
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
@@ -230,6 +232,24 @@ class StockBoardApiTest {
                 .getLimitCptList(
                     LimitCptListParams(
                         tradeDate = LocalDate(2024, 11, 27)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// no permission, skip
+    fun testLimitListDWorks() =
+        runTest {
+            val client = createClient("limit_list_d.json")
+            client.stock.board
+                .getLimitListD(
+                    LimitListDParams(
+                        tradeDate = LocalDate(2022, 6, 15),
+                        limitType = LimitType.U
                     ),
                 ).test {
                     val result = awaitItem()
