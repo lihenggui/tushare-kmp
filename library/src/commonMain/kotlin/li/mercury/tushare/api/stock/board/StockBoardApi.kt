@@ -36,6 +36,8 @@ import li.mercury.tushare.api.stock.board.models.ThsMemberParams
 import li.mercury.tushare.api.stock.board.models.ThsMemberResult
 import li.mercury.tushare.api.stock.board.models.TopInstParams
 import li.mercury.tushare.api.stock.board.models.TopInstResult
+import li.mercury.tushare.api.stock.board.models.TopListParams
+import li.mercury.tushare.api.stock.board.models.TopListResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -347,6 +349,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(TopInstResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取龙虎榜每日交易明细
+     * @param params 请求参数
+     * @return 龙虎榜每日交易明细数据流
+     */
+    override fun getTopList(params: TopListParams): Flow<List<TopListResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "top_list",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(TopListResult.serializer())
             emit(results)
         }
 }

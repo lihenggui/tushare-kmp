@@ -28,6 +28,7 @@ import li.mercury.tushare.api.stock.board.models.ThsIndexParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexType
 import li.mercury.tushare.api.stock.board.models.ThsMemberParams
 import li.mercury.tushare.api.stock.board.models.TopInstParams
+import li.mercury.tushare.api.stock.board.models.TopListParams
 import li.mercury.tushare.models.TsCode
 import okio.FileSystem
 import okio.Path.Companion.toPath
@@ -340,6 +341,22 @@ class StockBoardApiTest {
                 .getTopInst(
                     TopInstParams(
                         tradeDate = LocalDate(2024, 11, 25)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testTopListWorks() =
+        runTest {
+            val client = createClient("top_list.json")
+            client.stock.board
+                .getTopList(
+                    TopListParams(
+                        tradeDate = LocalDate(2018, 9, 28)
                     ),
                 ).test {
                     val result = awaitItem()

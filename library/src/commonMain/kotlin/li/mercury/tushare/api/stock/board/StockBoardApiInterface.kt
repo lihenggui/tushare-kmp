@@ -34,6 +34,8 @@ import li.mercury.tushare.api.stock.board.models.ThsMemberParams
 import li.mercury.tushare.api.stock.board.models.ThsMemberResult
 import li.mercury.tushare.api.stock.board.models.TopInstParams
 import li.mercury.tushare.api.stock.board.models.TopInstResult
+import li.mercury.tushare.api.stock.board.models.TopListParams
+import li.mercury.tushare.api.stock.board.models.TopListResult
 
 /**
  * 股票打版专题数据相关API接口
@@ -157,4 +159,11 @@ interface StockBoardApiInterface {
      * @return 龙虎榜机构成交明细数据流
      */
     fun getTopInst(params: TopInstParams): Flow<List<TopInstResult>>
+
+    /**
+     * 获取龙虎榜每日交易明细
+     * @param params 请求参数
+     * @return 龙虎榜每日交易明细数据流
+     */
+    fun getTopList(params: TopListParams): Flow<List<TopListResult>>
 }
