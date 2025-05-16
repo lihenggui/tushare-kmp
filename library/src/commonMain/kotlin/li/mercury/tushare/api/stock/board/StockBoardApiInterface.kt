@@ -32,6 +32,8 @@ import li.mercury.tushare.api.stock.board.models.ThsIndexParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexResult
 import li.mercury.tushare.api.stock.board.models.ThsMemberParams
 import li.mercury.tushare.api.stock.board.models.ThsMemberResult
+import li.mercury.tushare.api.stock.board.models.TopInstParams
+import li.mercury.tushare.api.stock.board.models.TopInstResult
 
 /**
  * 股票打版专题数据相关API接口
@@ -148,4 +150,11 @@ interface StockBoardApiInterface {
      * @return 连板天梯数据流
      */
     fun getLimitStep(params: LimitStepParams): Flow<List<LimitStepResult>>
+
+    /**
+     * 获取龙虎榜机构成交明细
+     * @param params 请求参数
+     * @return 龙虎榜机构成交明细数据流
+     */
+    fun getTopInst(params: TopInstParams): Flow<List<TopInstResult>>
 }

@@ -27,6 +27,7 @@ import li.mercury.tushare.api.stock.board.models.ThsHotParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexType
 import li.mercury.tushare.api.stock.board.models.ThsMemberParams
+import li.mercury.tushare.api.stock.board.models.TopInstParams
 import li.mercury.tushare.models.TsCode
 import okio.FileSystem
 import okio.Path.Companion.toPath
@@ -313,13 +314,31 @@ class StockBoardApiTest {
                 }
         }
 
-    @Test
+    //    @Test
+    // no permission, skip
     fun testLimitStepWorks() =
         runTest {
             val client = createClient("limit_step.json")
             client.stock.board
                 .getLimitStep(
                     LimitStepParams(
+                        tradeDate = LocalDate(2024, 11, 25)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+// no permission, skip
+    fun testTopInstWorks() =
+        runTest {
+            val client = createClient("limit_step.json")
+            client.stock.board
+                .getTopInst(
+                    TopInstParams(
                         tradeDate = LocalDate(2024, 11, 25)
                     ),
                 ).test {
