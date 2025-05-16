@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcIndexResult
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.DcMemberResult
+import li.mercury.tushare.api.stock.board.models.KplListParams
+import li.mercury.tushare.api.stock.board.models.KplListResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
 import li.mercury.tushare.api.stock.board.models.ThsHotResult
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
@@ -59,4 +61,11 @@ interface StockBoardApiInterface {
      * @return 同花顺热榜数据流
      */
     fun getThsHot(params: ThsHotParams): Flow<List<ThsHotResult>>
+
+    /**
+     * 获取开盘啦榜单数据
+     * @param params 请求参数
+     * @return 开盘啦榜单数据流
+     */
+    fun getKplList(params: KplListParams): Flow<List<KplListResult>>
 }

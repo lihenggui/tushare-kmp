@@ -11,6 +11,8 @@ import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.board.models.DcHotParams
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
+import li.mercury.tushare.api.stock.board.models.KplListParams
+import li.mercury.tushare.api.stock.board.models.KplListTag
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexType
@@ -139,6 +141,23 @@ class StockBoardApiTest {
                     ThsHotParams(
                         tradeDate = LocalDate(2024, 3, 15),
                         market = "热股"
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testKplListWorks() =
+        runTest {
+            val client = createClient("kpl_list.json")
+            client.stock.board
+                .getKplList(
+                    KplListParams(
+                        tradeDate = LocalDate(2024, 9, 27),
+                        tag = KplListTag.涨停
                     ),
                 ).test {
                     val result = awaitItem()
