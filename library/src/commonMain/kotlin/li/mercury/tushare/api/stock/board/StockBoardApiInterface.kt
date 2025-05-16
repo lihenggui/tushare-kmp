@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcIndexResult
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.DcMemberResult
+import li.mercury.tushare.api.stock.board.models.HmListParams
+import li.mercury.tushare.api.stock.board.models.HmListResult
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
 import li.mercury.tushare.api.stock.board.models.KplConceptConsResult
 import li.mercury.tushare.api.stock.board.models.KplConceptResult
@@ -121,4 +123,11 @@ interface StockBoardApiInterface {
      * @return 同花顺涨跌停榜单数据流
      */
     fun getLimitListThs(params: LimitListThsParams): Flow<List<LimitListThsResult>>
+
+    /**
+     * 获取游资名录数据
+     * @param params 请求参数
+     * @return 游资名录数据流
+     */
+    fun getHmList(params: HmListParams): Flow<List<HmListResult>>
 }

@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcIndexResult
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.DcMemberResult
+import li.mercury.tushare.api.stock.board.models.HmListParams
+import li.mercury.tushare.api.stock.board.models.HmListResult
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
 import li.mercury.tushare.api.stock.board.models.KplConceptConsResult
 import li.mercury.tushare.api.stock.board.models.KplConceptResult
@@ -267,6 +269,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(LimitListThsResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取游资名录数据
+     * @param params 请求参数
+     * @return 游资名录数据流
+     */
+    override fun getHmList(params: HmListParams): Flow<List<HmListResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "hm_list",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(HmListResult.serializer())
             emit(results)
         }
 }

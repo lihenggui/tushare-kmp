@@ -11,6 +11,7 @@ import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.board.models.DcHotParams
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
+import li.mercury.tushare.api.stock.board.models.HmListParams
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListTag
@@ -270,6 +271,22 @@ class StockBoardApiTest {
                     LimitListThsParams(
                         tradeDate = LocalDate(2024, 11, 25),
                         limitType = LimitTypeEnum.LIMIT_UP_POOL
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testHmListWorks() =
+        runTest {
+            val client = createClient("hm_list.json")
+            client.stock.board
+                .getHmList(
+                    HmListParams(
+                        name = "龙飞虎"
                     ),
                 ).test {
                     val result = awaitItem()
