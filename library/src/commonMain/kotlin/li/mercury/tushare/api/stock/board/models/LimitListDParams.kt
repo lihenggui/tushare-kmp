@@ -17,7 +17,7 @@ enum class LimitType {
     D,
 
     /** 炸板 */
-    Z
+    Z,
 }
 
 /**
@@ -31,7 +31,7 @@ enum class Exchange {
     SZ,
 
     /** 北交所 */
-    BJ
+    BJ,
 }
 
 @Serializable

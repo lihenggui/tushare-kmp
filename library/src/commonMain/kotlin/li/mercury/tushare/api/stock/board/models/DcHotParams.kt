@@ -20,7 +20,7 @@ enum class DcHotMarket {
     HK_MARKET,
 
     /** 美股市场 */
-    US_MARKET
+    US_MARKET,
 }
 
 /**
@@ -31,7 +31,7 @@ enum class DcHotType {
     POPULARITY,
 
     /** 飙升榜 */
-    RISING
+    RISING,
 }
 
 @Serializable

@@ -65,7 +65,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getDcMember(
                     DcMemberParams(
-                        tradeDate = LocalDate(2025, 1, 2)
+                        tradeDate = LocalDate(2025, 1, 2),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -82,7 +82,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getDcIndex(
                     DcIndexParams(
-                        tradeDate = LocalDate(2025, 1, 3)
+                        tradeDate = LocalDate(2025, 1, 3),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -100,7 +100,7 @@ class StockBoardApiTest {
                     DcHotParams(
                         tradeDate = LocalDate(2024, 3, 15),
                         market = "A股市场",
-                        hotType = "人气榜"
+                        hotType = "人气榜",
                     ),
                 ).test {
                     val result = awaitItem()
@@ -118,7 +118,7 @@ class StockBoardApiTest {
                 .getThsIndex(
                     ThsIndexParams(
                         type = ThsIndexType.CONCEPT,
-                        exchange = "A"
+                        exchange = "A",
                     ),
                 ).test {
                     val result = awaitItem()
@@ -135,7 +135,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getThsMember(
                     ThsMemberParams(
-                        tsCode = TsCode("885800", "TI")
+                        tsCode = TsCode("885800", "TI"),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -152,7 +152,7 @@ class StockBoardApiTest {
                 .getThsHot(
                     ThsHotParams(
                         tradeDate = LocalDate(2024, 3, 15),
-                        market = "热股"
+                        market = "热股",
                     ),
                 ).test {
                     val result = awaitItem()
@@ -161,7 +161,8 @@ class StockBoardApiTest {
                 }
         }
 
-    @Test
+    //    @Test
+    // no permission, skip
     fun testKplListWorks() =
         runTest {
             val client = createClient("kpl_list.json")
@@ -169,7 +170,7 @@ class StockBoardApiTest {
                 .getKplList(
                     KplListParams(
                         tradeDate = LocalDate(2024, 9, 27),
-                        tag = KplListTag.涨停
+                        tag = KplListTag.涨停,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -187,7 +188,7 @@ class StockBoardApiTest {
                 .getKplConcept(
                     KplListParams(
                         tradeDate = LocalDate(2024, 9, 27),
-                        tag = KplListTag.涨停
+                        tag = KplListTag.涨停,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -205,7 +206,7 @@ class StockBoardApiTest {
                 .getKplConceptCons(
                     KplConceptConsParams(
                         tradeDate = LocalDate(2024, 10, 14),
-                        tsCode = TsCode("000111", "KP")
+                        tsCode = TsCode("000111", "KP"),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -222,7 +223,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getStkAuction(
                     StkAuctionParams(
-                        tradeDate = LocalDate(2025, 2, 18)
+                        tradeDate = LocalDate(2025, 2, 18),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -231,14 +232,15 @@ class StockBoardApiTest {
                 }
         }
 
-    @Test
+    //    @Test
+    // no permission, skip
     fun testLimitCptListWorks() =
         runTest {
             val client = createClient("limit_cpt_list.json")
             client.stock.board
                 .getLimitCptList(
                     LimitCptListParams(
-                        tradeDate = LocalDate(2024, 11, 27)
+                        tradeDate = LocalDate(2024, 11, 27),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -256,7 +258,7 @@ class StockBoardApiTest {
                 .getLimitListD(
                     LimitListDParams(
                         tradeDate = LocalDate(2022, 6, 15),
-                        limitType = LimitType.U
+                        limitType = LimitType.U,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -274,7 +276,7 @@ class StockBoardApiTest {
                 .getLimitListThs(
                     LimitListThsParams(
                         tradeDate = LocalDate(2024, 11, 25),
-                        limitType = LimitTypeEnum.LIMIT_UP_POOL
+                        limitType = LimitTypeEnum.LIMIT_UP_POOL,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -290,7 +292,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getHmList(
                     HmListParams(
-                        name = "龙飞虎"
+                        name = "龙飞虎",
                     ),
                 ).test {
                     val result = awaitItem()
@@ -306,7 +308,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getHmDetail(
                     HmDetailParams(
-                        tradeDate = LocalDate(2023, 8, 15)
+                        tradeDate = LocalDate(2023, 8, 15),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -323,7 +325,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getLimitStep(
                     LimitStepParams(
-                        tradeDate = LocalDate(2024, 11, 25)
+                        tradeDate = LocalDate(2024, 11, 25),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -340,7 +342,7 @@ class StockBoardApiTest {
             client.stock.board
                 .getTopInst(
                     TopInstParams(
-                        tradeDate = LocalDate(2024, 11, 25)
+                        tradeDate = LocalDate(2024, 11, 25),
                     ),
                 ).test {
                     val result = awaitItem()
@@ -349,14 +351,15 @@ class StockBoardApiTest {
                 }
         }
 
-    @Test
+    //    @Test
+    // no permission, skip
     fun testTopListWorks() =
         runTest {
             val client = createClient("top_list.json")
             client.stock.board
                 .getTopList(
                     TopListParams(
-                        tradeDate = LocalDate(2018, 9, 28)
+                        tradeDate = LocalDate(2018, 9, 28),
                     ),
                 ).test {
                     val result = awaitItem()

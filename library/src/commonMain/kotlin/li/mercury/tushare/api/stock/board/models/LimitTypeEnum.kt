@@ -18,5 +18,5 @@ enum class LimitTypeEnum {
     BREAK_LIMIT_POOL,
 
     @SerialName("跌停池")
-    LIMIT_DOWN_POOL
+    LIMIT_DOWN_POOL,
 }
