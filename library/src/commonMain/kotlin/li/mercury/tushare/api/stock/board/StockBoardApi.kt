@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcIndexResult
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.DcMemberResult
+import li.mercury.tushare.api.stock.board.models.ThsHotParams
+import li.mercury.tushare.api.stock.board.models.ThsHotResult
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexResult
 import li.mercury.tushare.api.stock.board.models.ThsMemberParams
@@ -108,6 +110,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(ThsMemberResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取同花顺热榜数据
+     * @param params 请求参数
+     * @return 同花顺热榜数据流
+     */
+    override fun getThsHot(params: ThsHotParams): Flow<List<ThsHotResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "ths_hot",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(ThsHotResult.serializer())
             emit(results)
         }
 }

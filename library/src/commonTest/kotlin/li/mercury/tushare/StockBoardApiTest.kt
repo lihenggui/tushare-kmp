@@ -11,6 +11,7 @@ import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.board.models.DcHotParams
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
+import li.mercury.tushare.api.stock.board.models.ThsHotParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexType
 import li.mercury.tushare.api.stock.board.models.ThsMemberParams
@@ -121,6 +122,23 @@ class StockBoardApiTest {
                 .getThsMember(
                     ThsMemberParams(
                         tsCode = TsCode("885800", "TI")
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testThsHotWorks() =
+        runTest {
+            val client = createClient("ths_hot.json")
+            client.stock.board
+                .getThsHot(
+                    ThsHotParams(
+                        tradeDate = LocalDate(2024, 3, 15),
+                        market = "热股"
                     ),
                 ).test {
                     val result = awaitItem()
