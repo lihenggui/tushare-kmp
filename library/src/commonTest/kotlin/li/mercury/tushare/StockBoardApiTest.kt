@@ -8,11 +8,13 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import li.mercury.tushare.api.stock.board.models.DcHotParams
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
+import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class StockBoardApiTest {
@@ -62,6 +64,24 @@ class StockBoardApiTest {
                 .getDcIndex(
                     DcIndexParams(
                         tradeDate = LocalDate(2025, 1, 3)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testDCHOTWorks() =
+        runTest {
+            val client = createClient("dc_hot.json")
+            client.stock.board
+                .getDcHot(
+                    DcHotParams(
+                        tradeDate = LocalDate(2024, 3, 15),
+                        market = "A股市场",
+                        hotType = "人气榜"
                     ),
                 ).test {
                     val result = awaitItem()

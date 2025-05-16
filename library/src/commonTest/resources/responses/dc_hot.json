@@ -1,0 +1,47 @@
+{
+  "request_id": "d82cbbd6-93cc-41ee-b260-29a3cd659f33",
+  "code": 0,
+  "data": {
+    "fields": [
+      "trade_date",
+      "data_type",
+      "ts_code",
+      "ts_name",
+      "rank",
+      "pct_change",
+      "current_price",
+      "hot",
+      "concept",
+      "rank_time"
+    ],
+    "items": [
+      [
+        "20250102",
+        "A股市场",
+        "000759.SZ",
+        "中百集团",
+        1,
+        10.02,
+        14.39,
+        null,
+        null,
+        "2025-01-02 21:30:02"
+      ],
+      [
+        "20250102",
+        "A股市场",
+        "600186.SH",
+        "莲花控股",
+        2,
+        10.0,
+        6.27,
+        null,
+        null,
+        "2025-01-02 21:30:02"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}
