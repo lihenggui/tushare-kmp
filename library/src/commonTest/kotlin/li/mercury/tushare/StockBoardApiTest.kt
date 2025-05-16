@@ -8,12 +8,15 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import li.mercury.tushare.api.stock.board.models.DcHotMarket
 import li.mercury.tushare.api.stock.board.models.DcHotParams
+import li.mercury.tushare.api.stock.board.models.DcHotType
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.HmDetailParams
 import li.mercury.tushare.api.stock.board.models.HmListParams
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
+import li.mercury.tushare.api.stock.board.models.KplConceptParams
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListTag
 import li.mercury.tushare.api.stock.board.models.LimitCptListParams
@@ -99,8 +102,8 @@ class StockBoardApiTest {
                 .getDcHot(
                     DcHotParams(
                         tradeDate = LocalDate(2024, 3, 15),
-                        market = "A股市场",
-                        hotType = "人气榜",
+                        market = DcHotMarket.HK_MARKET,
+                        hotType = DcHotType.POPULARITY,
                     ),
                 ).test {
                     val result = awaitItem()
@@ -186,9 +189,8 @@ class StockBoardApiTest {
             val client = createClient("kpl_concept.json")
             client.stock.board
                 .getKplConcept(
-                    KplListParams(
+                    KplConceptParams(
                         tradeDate = LocalDate(2024, 9, 27),
-                        tag = KplListTag.涨停,
                     ),
                 ).test {
                     val result = awaitItem()

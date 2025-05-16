@@ -15,6 +15,7 @@ import li.mercury.tushare.api.stock.board.models.HmListParams
 import li.mercury.tushare.api.stock.board.models.HmListResult
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
 import li.mercury.tushare.api.stock.board.models.KplConceptConsResult
+import li.mercury.tushare.api.stock.board.models.KplConceptParams
 import li.mercury.tushare.api.stock.board.models.KplConceptResult
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListResult
@@ -177,7 +178,7 @@ internal class StockBoardApi(
      * @param params 请求参数
      * @return 开盘啦题材库数据流
      */
-    override fun getKplConcept(params: KplListParams): Flow<List<KplConceptResult>> =
+    override fun getKplConcept(params: KplConceptParams): Flow<List<KplConceptResult>> =
         flow {
             val apiParams = params.toApiParams()
 

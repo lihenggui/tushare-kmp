@@ -1,7 +1,7 @@
 package li.mercury.tushare.api.stock.board.models
 
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalTime
+import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.TsCode
@@ -22,19 +22,19 @@ data class KplListResult(
     /** 涨停时间 */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("lu_time")
-    val luTime: LocalTime? = null,
+    val luTime: LocalDateTime? = null,
     /** 跌停时间 */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("ld_time")
-    val ldTime: LocalTime? = null,
+    val ldTime: LocalDateTime? = null,
     /** 开板时间 */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("open_time")
-    val openTime: LocalTime? = null,
+    val openTime: LocalDateTime? = null,
     /** 最后涨停时间 */
     @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("last_time")
-    val lastTime: LocalTime? = null,
+    val lastTime: LocalDateTime? = null,
     /** 涨停原因 */
     @SerialName("lu_desc")
     val luDesc: String? = null,

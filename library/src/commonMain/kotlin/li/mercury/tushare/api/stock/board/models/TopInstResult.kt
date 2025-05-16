@@ -18,7 +18,7 @@ data class TopInstResult(
     /** 营业部名称 */
     val exalter: String? = null,
     /** 买卖类型（0：买入金额最大的前5名，1：卖出金额最大的前5名） */
-    val side: String? = null,
+    val side: TopInstSide? = null,
     /** 买入额（元） */
     val buy: Double? = null,
     /** 买入占总成交比例 */

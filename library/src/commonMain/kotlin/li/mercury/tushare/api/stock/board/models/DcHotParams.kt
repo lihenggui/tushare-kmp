@@ -44,10 +44,10 @@ data class DcHotParams(
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
     /** 类型（A股市场、ETF基金、港股市场、美股市场） */
-    val market: String? = null,
+    val market: DcHotMarket? = null,
     /** 热点类型（人气榜、飙升榜） */
     @SerialName("hot_type")
-    val hotType: String? = null,
+    val hotType: DcHotType? = null,
     /** 是否最新（默认Y，如果为N则为盘中和盘后阶段采集） */
     @SerialName("is_new")
     val isNew: String? = null,

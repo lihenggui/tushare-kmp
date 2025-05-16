@@ -13,6 +13,7 @@ import li.mercury.tushare.api.stock.board.models.HmListParams
 import li.mercury.tushare.api.stock.board.models.HmListResult
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
 import li.mercury.tushare.api.stock.board.models.KplConceptConsResult
+import li.mercury.tushare.api.stock.board.models.KplConceptParams
 import li.mercury.tushare.api.stock.board.models.KplConceptResult
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListResult
@@ -95,7 +96,7 @@ interface StockBoardApiInterface {
      * @param params 请求参数
      * @return 开盘啦题材库数据流
      */
-    fun getKplConcept(params: KplListParams): Flow<List<KplConceptResult>>
+    fun getKplConcept(params: KplConceptParams): Flow<List<KplConceptResult>>
 
     /**
      * 获取开盘啦题材成分数据
