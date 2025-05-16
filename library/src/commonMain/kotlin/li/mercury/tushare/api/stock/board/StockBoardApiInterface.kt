@@ -7,6 +7,8 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcIndexResult
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.DcMemberResult
+import li.mercury.tushare.api.stock.board.models.HmDetailParams
+import li.mercury.tushare.api.stock.board.models.HmDetailResult
 import li.mercury.tushare.api.stock.board.models.HmListParams
 import li.mercury.tushare.api.stock.board.models.HmListResult
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
@@ -130,4 +132,11 @@ interface StockBoardApiInterface {
      * @return 游资名录数据流
      */
     fun getHmList(params: HmListParams): Flow<List<HmListResult>>
+
+    /**
+     * 获取游资每日明细数据
+     * @param params 请求参数
+     * @return 游资每日明细数据流
+     */
+    fun getHmDetail(params: HmDetailParams): Flow<List<HmDetailResult>>
 }

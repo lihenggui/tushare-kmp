@@ -11,6 +11,7 @@ import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.board.models.DcHotParams
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
+import li.mercury.tushare.api.stock.board.models.HmDetailParams
 import li.mercury.tushare.api.stock.board.models.HmListParams
 import li.mercury.tushare.api.stock.board.models.KplConceptConsParams
 import li.mercury.tushare.api.stock.board.models.KplListParams
@@ -287,6 +288,22 @@ class StockBoardApiTest {
                 .getHmList(
                     HmListParams(
                         name = "龙飞虎"
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testHmDetailWorks() =
+        runTest {
+            val client = createClient("hm_detail.json")
+            client.stock.board
+                .getHmDetail(
+                    HmDetailParams(
+                        tradeDate = LocalDate(2023, 8, 15)
                     ),
                 ).test {
                     val result = awaitItem()
