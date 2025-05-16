@@ -13,6 +13,8 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
 import li.mercury.tushare.api.stock.board.models.ThsIndexType
+import li.mercury.tushare.api.stock.board.models.ThsMemberParams
+import li.mercury.tushare.models.TsCode
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
@@ -102,6 +104,23 @@ class StockBoardApiTest {
                     ThsIndexParams(
                         type = ThsIndexType.CONCEPT,
                         exchange = "A"
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // no permission, skip
+    fun testThsMemberWorks() =
+        runTest {
+            val client = createClient("ths_member.json")
+            client.stock.board
+                .getThsMember(
+                    ThsMemberParams(
+                        tsCode = TsCode("885800", "TI")
                     ),
                 ).test {
                     val result = awaitItem()
