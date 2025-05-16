@@ -19,6 +19,7 @@ import li.mercury.tushare.api.stock.board.models.KplListTag
 import li.mercury.tushare.api.stock.board.models.LimitCptListParams
 import li.mercury.tushare.api.stock.board.models.LimitListDParams
 import li.mercury.tushare.api.stock.board.models.LimitListThsParams
+import li.mercury.tushare.api.stock.board.models.LimitStepParams
 import li.mercury.tushare.api.stock.board.models.LimitType
 import li.mercury.tushare.api.stock.board.models.LimitTypeEnum
 import li.mercury.tushare.api.stock.board.models.StkAuctionParams
@@ -304,6 +305,22 @@ class StockBoardApiTest {
                 .getHmDetail(
                     HmDetailParams(
                         tradeDate = LocalDate(2023, 8, 15)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    @Test
+    fun testLimitStepWorks() =
+        runTest {
+            val client = createClient("limit_step.json")
+            client.stock.board
+                .getLimitStep(
+                    LimitStepParams(
+                        tradeDate = LocalDate(2024, 11, 25)
                     ),
                 ).test {
                     val result = awaitItem()

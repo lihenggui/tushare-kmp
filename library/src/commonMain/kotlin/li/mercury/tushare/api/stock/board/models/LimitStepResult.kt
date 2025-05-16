@@ -1,0 +1,22 @@
+package li.mercury.tushare.api.stock.board.models
+
+import kotlinx.datetime.LocalDate
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import li.mercury.tushare.models.TsCode
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
+
+@Serializable
+data class LimitStepResult(
+    /** 股票代码 */
+    @SerialName("ts_code")
+    val tsCode: TsCode? = null,
+    /** 名称 */
+    val name: String? = null,
+    /** 交易日期 */
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    @SerialName("trade_date")
+    val tradeDate: LocalDate? = null,
+    /** 连板次数 */
+    val nums: String? = null,
+)

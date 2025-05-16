@@ -22,6 +22,8 @@ import li.mercury.tushare.api.stock.board.models.LimitListDParams
 import li.mercury.tushare.api.stock.board.models.LimitListDResult
 import li.mercury.tushare.api.stock.board.models.LimitListThsParams
 import li.mercury.tushare.api.stock.board.models.LimitListThsResult
+import li.mercury.tushare.api.stock.board.models.LimitStepParams
+import li.mercury.tushare.api.stock.board.models.LimitStepResult
 import li.mercury.tushare.api.stock.board.models.StkAuctionParams
 import li.mercury.tushare.api.stock.board.models.StkAuctionResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
@@ -139,4 +141,11 @@ interface StockBoardApiInterface {
      * @return 游资每日明细数据流
      */
     fun getHmDetail(params: HmDetailParams): Flow<List<HmDetailResult>>
+
+    /**
+     * 获取连板天梯数据
+     * @param params 请求参数
+     * @return 连板天梯数据流
+     */
+    fun getLimitStep(params: LimitStepParams): Flow<List<LimitStepResult>>
 }

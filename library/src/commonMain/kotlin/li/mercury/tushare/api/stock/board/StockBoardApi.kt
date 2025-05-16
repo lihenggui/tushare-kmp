@@ -24,6 +24,8 @@ import li.mercury.tushare.api.stock.board.models.LimitListDParams
 import li.mercury.tushare.api.stock.board.models.LimitListDResult
 import li.mercury.tushare.api.stock.board.models.LimitListThsParams
 import li.mercury.tushare.api.stock.board.models.LimitListThsResult
+import li.mercury.tushare.api.stock.board.models.LimitStepParams
+import li.mercury.tushare.api.stock.board.models.LimitStepResult
 import li.mercury.tushare.api.stock.board.models.StkAuctionParams
 import li.mercury.tushare.api.stock.board.models.StkAuctionResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
@@ -307,6 +309,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(HmDetailResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取连板天梯数据
+     * @param params 请求参数
+     * @return 连板天梯数据流
+     */
+    override fun getLimitStep(params: LimitStepParams): Flow<List<LimitStepResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "limit_step",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(LimitStepResult.serializer())
             emit(results)
         }
 }
