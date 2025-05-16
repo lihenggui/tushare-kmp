@@ -12,6 +12,8 @@ import li.mercury.tushare.api.stock.board.models.KplConceptConsResult
 import li.mercury.tushare.api.stock.board.models.KplConceptResult
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListResult
+import li.mercury.tushare.api.stock.board.models.StkAuctionParams
+import li.mercury.tushare.api.stock.board.models.StkAuctionResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
 import li.mercury.tushare.api.stock.board.models.ThsHotResult
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
@@ -85,4 +87,11 @@ interface StockBoardApiInterface {
      * @return 开盘啦题材成分数据流
      */
     fun getKplConceptCons(params: KplConceptConsParams): Flow<List<KplConceptConsResult>>
+
+    /**
+     * 获取当日集合竞价数据
+     * @param params 请求参数
+     * @return 当日集合竞价数据流
+     */
+    fun getStkAuction(params: StkAuctionParams): Flow<List<StkAuctionResult>>
 }

@@ -14,6 +14,8 @@ import li.mercury.tushare.api.stock.board.models.KplConceptConsResult
 import li.mercury.tushare.api.stock.board.models.KplConceptResult
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListResult
+import li.mercury.tushare.api.stock.board.models.StkAuctionParams
+import li.mercury.tushare.api.stock.board.models.StkAuctionResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
 import li.mercury.tushare.api.stock.board.models.ThsHotResult
 import li.mercury.tushare.api.stock.board.models.ThsIndexParams
@@ -187,6 +189,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(KplConceptConsResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取当日集合竞价数据
+     * @param params 请求参数
+     * @return 当日集合竞价数据流
+     */
+    override fun getStkAuction(params: StkAuctionParams): Flow<List<StkAuctionResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "stk_auction",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(StkAuctionResult.serializer())
             emit(results)
         }
 }
