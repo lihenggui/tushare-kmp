@@ -14,6 +14,8 @@ import li.mercury.tushare.api.stock.board.models.KplConceptConsResult
 import li.mercury.tushare.api.stock.board.models.KplConceptResult
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListResult
+import li.mercury.tushare.api.stock.board.models.LimitCptListParams
+import li.mercury.tushare.api.stock.board.models.LimitCptListResult
 import li.mercury.tushare.api.stock.board.models.StkAuctionParams
 import li.mercury.tushare.api.stock.board.models.StkAuctionResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
@@ -207,6 +209,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(StkAuctionResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取最强板块统计数据
+     * @param params 请求参数
+     * @return 最强板块统计数据流
+     */
+    override fun getLimitCptList(params: LimitCptListParams): Flow<List<LimitCptListResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "limit_cpt_list",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(LimitCptListResult.serializer())
             emit(results)
         }
 }
