@@ -165,4 +165,22 @@ class StockBoardApiTest {
                     awaitComplete()
                 }
         }
+
+    //    @Test
+    // no permission, skip
+    fun testKplConceptWorks() =
+        runTest {
+            val client = createClient("kpl_concept.json")
+            client.stock.board
+                .getKplConcept(
+                    KplListParams(
+                        tradeDate = LocalDate(2024, 9, 27),
+                        tag = KplListTag.涨停
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
 }

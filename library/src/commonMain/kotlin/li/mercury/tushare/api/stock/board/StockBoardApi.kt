@@ -9,6 +9,7 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcIndexResult
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.DcMemberResult
+import li.mercury.tushare.api.stock.board.models.KplConceptResult
 import li.mercury.tushare.api.stock.board.models.KplListParams
 import li.mercury.tushare.api.stock.board.models.KplListResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
@@ -148,6 +149,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(KplListResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取开盘啦题材库数据
+     * @param params 请求参数
+     * @return 开盘啦题材库数据流
+     */
+    override fun getKplConcept(params: KplListParams): Flow<List<KplConceptResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "kpl_concept",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(KplConceptResult.serializer())
             emit(results)
         }
 }
