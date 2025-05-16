@@ -18,6 +18,8 @@ import li.mercury.tushare.api.stock.board.models.LimitCptListParams
 import li.mercury.tushare.api.stock.board.models.LimitCptListResult
 import li.mercury.tushare.api.stock.board.models.LimitListDParams
 import li.mercury.tushare.api.stock.board.models.LimitListDResult
+import li.mercury.tushare.api.stock.board.models.LimitListThsParams
+import li.mercury.tushare.api.stock.board.models.LimitListThsResult
 import li.mercury.tushare.api.stock.board.models.StkAuctionParams
 import li.mercury.tushare.api.stock.board.models.StkAuctionResult
 import li.mercury.tushare.api.stock.board.models.ThsHotParams
@@ -247,6 +249,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(LimitListDResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取同花顺每日涨跌停榜单数据
+     * @param params 请求参数
+     * @return 同花顺涨跌停榜单数据流
+     */
+    override fun getLimitListThs(params: LimitListThsParams): Flow<List<LimitListThsResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "limit_list_ths",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(LimitListThsResult.serializer())
             emit(results)
         }
 }
