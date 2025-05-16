@@ -8,6 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import okio.FileSystem
 import okio.Path.Companion.toPath
@@ -44,6 +45,23 @@ class StockBoardApiTest {
                 .getDcMember(
                     DcMemberParams(
                         tradeDate = LocalDate(2025, 1, 2)
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // no permission, skip
+    fun testDCINDEXWorks() =
+        runTest {
+            val client = createClient("dc_index.json")
+            client.stock.board
+                .getDcIndex(
+                    DcIndexParams(
+                        tradeDate = LocalDate(2025, 1, 3)
                     ),
                 ).test {
                     val result = awaitItem()
