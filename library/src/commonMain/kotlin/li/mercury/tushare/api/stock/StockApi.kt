@@ -3,6 +3,8 @@ package li.mercury.tushare.api.stock
 import li.mercury.tushare.TuShare
 import li.mercury.tushare.api.stock.basic.StockBasicApi
 import li.mercury.tushare.api.stock.basic.StockBasicApiInterface
+import li.mercury.tushare.api.stock.board.StockBoardApi
+import li.mercury.tushare.api.stock.board.StockBoardApiInterface
 import li.mercury.tushare.api.stock.character.StockCharacterApi
 import li.mercury.tushare.api.stock.character.StockCharacterApiInterface
 import li.mercury.tushare.api.stock.finance.StockFinanceApi
@@ -42,4 +44,7 @@ class StockApi(
 
     /** 股票资金流向相关API */
     val flow: StockFlowApiInterface by lazy { StockFlowApi(tuShare) }
+
+    /** 股票打版专题数据相关API */
+    val board: StockBoardApiInterface by lazy { StockBoardApi(tuShare) }
 }
