@@ -11,6 +11,8 @@ import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.board.models.DcHotParams
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
+import li.mercury.tushare.api.stock.board.models.ThsIndexParams
+import li.mercury.tushare.api.stock.board.models.ThsIndexType
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
@@ -82,6 +84,24 @@ class StockBoardApiTest {
                         tradeDate = LocalDate(2024, 3, 15),
                         market = "A股市场",
                         hotType = "人气榜"
+                    ),
+                ).test {
+                    val result = awaitItem()
+                    assertNotNull(result)
+                    awaitComplete()
+                }
+        }
+
+    //    @Test
+    // no permission, skip
+    fun testThsIndexWorks() =
+        runTest {
+            val client = createClient("ths_index.json")
+            client.stock.board
+                .getThsIndex(
+                    ThsIndexParams(
+                        type = ThsIndexType.CONCEPT,
+                        exchange = "A"
                     ),
                 ).test {
                     val result = awaitItem()

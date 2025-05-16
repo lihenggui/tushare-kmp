@@ -9,6 +9,8 @@ import li.mercury.tushare.api.stock.board.models.DcIndexParams
 import li.mercury.tushare.api.stock.board.models.DcIndexResult
 import li.mercury.tushare.api.stock.board.models.DcMemberParams
 import li.mercury.tushare.api.stock.board.models.DcMemberResult
+import li.mercury.tushare.api.stock.board.models.ThsIndexParams
+import li.mercury.tushare.api.stock.board.models.ThsIndexResult
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -68,6 +70,24 @@ internal class StockBoardApi(
                     params = apiParams,
                 )
             val results = response.getResponseItems(DcHotResult.serializer())
+            emit(results)
+        }
+
+    /**
+     * 获取同花顺概念和行业指数
+     * @param params 请求参数
+     * @return 同花顺概念和行业指数数据流
+     */
+    override fun getThsIndex(params: ThsIndexParams): Flow<List<ThsIndexResult>> =
+        flow {
+            val apiParams = params.toApiParams()
+
+            val response =
+                tuShare.callApi(
+                    apiName = "ths_index",
+                    params = apiParams,
+                )
+            val results = response.getResponseItems(ThsIndexResult.serializer())
             emit(results)
         }
 }
