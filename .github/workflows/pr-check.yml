@@ -27,7 +27,7 @@ jobs:
         java-version: '21'
         
     - name: Setup Gradle
-      uses: gradle/gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-home-cache-cleanup: true
         
@@ -69,7 +69,7 @@ jobs:
         java-version: '21'
         
     - name: Setup Gradle
-      uses: gradle/gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-home-cache-cleanup: true
         
@@ -112,7 +112,7 @@ jobs:
         java-version: '21'
         
     - name: Setup Gradle
-      uses: gradle/gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-home-cache-cleanup: true
         
@@ -163,7 +163,7 @@ jobs:
         java-version: '21'
         
     - name: Setup Gradle
-      uses: gradle/gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-home-cache-cleanup: true
         
@@ -214,7 +214,7 @@ jobs:
         java-version: '21'
         
     - name: Setup Gradle
-      uses: gradle/gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-home-cache-cleanup: true
         
@@ -265,7 +265,7 @@ jobs:
         java-version: '21'
         
     - name: Setup Gradle
-      uses: gradle/gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-home-cache-cleanup: true
         
