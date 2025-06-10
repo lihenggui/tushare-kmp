@@ -1,0 +1,83 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  validation:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+      with:
+        gradle-home-cache-cleanup: true
+        
+    - name: Cache Kotlin/Native compiler
+      uses: actions/cache@v4
+      with:
+        path: ~/.konan
+        key: ${{ runner.os }}-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-konan-
+          
+    - name: Validate Gradle wrapper
+      uses: gradle/wrapper-validation-action@v2
+      
+    - name: Check code formatting
+      run: ./gradlew --init-script=gradle/init.gradle.kts spotlessCheck --no-configuration-cache
+      
+    - name: Build all targets
+      run: ./gradlew build
+      
+    - name: Run all tests
+      run: ./gradlew allTests
+      
+    - name: Run check task
+      run: ./gradlew check
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          **/build/test-results/**/*.xml
+          
+    - name: Generate formatting patch
+      if: failure()
+      run: |
+        ./gradlew --init-script=gradle/init.gradle.kts spotlessApply --no-configuration-cache || true
+        git diff > formatting-suggestions.patch
+        echo "Formatting suggestions generated. Please run: ./gradlew --init-script=gradle/init.gradle.kts spotlessApply --no-configuration-cache"
+      continue-on-error: true
+      
+    - name: Upload formatting suggestions
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: formatting-suggestions
+        path: formatting-suggestions.patch
+        retention-days: 7
+        
+    - name: Upload build reports
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-reports
+        path: |
+          **/build/reports/
+          **/build/test-results/
+        retention-days: 7 
