@@ -1,4 +1,4 @@
-package li.mercury.ragflow.internal
+package li.mercury.tushare.internal
 
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.toKString
