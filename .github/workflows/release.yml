@@ -11,6 +11,10 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: write
+  checks: write
+
 jobs:
   create-staging-repository:
     name: Create staging repository
