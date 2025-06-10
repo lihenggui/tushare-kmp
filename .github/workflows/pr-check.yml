@@ -12,9 +12,94 @@ permissions:
   pull-requests: write
 
 jobs:
-  validation:
-    name: Build and Test
+  code-quality:
+    name: Code Quality Check
     runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+      with:
+        gradle-home-cache-cleanup: true
+        
+    - name: Validate Gradle wrapper
+      uses: gradle/wrapper-validation-action@v2
+      
+    - name: Check code formatting
+      run: ./gradlew --init-script=gradle/init.gradle.kts spotlessCheck --no-configuration-cache
+      
+    - name: Generate formatting patch
+      if: failure()
+      run: |
+        ./gradlew --init-script=gradle/init.gradle.kts spotlessApply --no-configuration-cache || true
+        git diff > formatting-suggestions.patch
+        echo "Formatting suggestions generated. Please run: ./gradlew --init-script=gradle/init.gradle.kts spotlessApply --no-configuration-cache"
+      continue-on-error: true
+      
+    - name: Upload formatting suggestions
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: formatting-suggestions
+        path: formatting-suggestions.patch
+        retention-days: 7
+
+  build-test-jvm-js:
+    name: JVM & JavaScript Platforms
+    runs-on: ubuntu-latest
+    needs: code-quality
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+      with:
+        gradle-home-cache-cleanup: true
+        
+    - name: Build JVM and JS targets
+      run: ./gradlew jvmJar jsNodeJar wasmJsJar
+      
+    - name: Run JVM and JS tests
+      run: ./gradlew jvmTest jsNodeTest wasmJsNodeTest
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          **/build/test-results/**/*.xml
+          
+    - name: Upload build reports
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-reports-jvm-js
+        path: |
+          **/build/reports/
+          **/build/test-results/
+        retention-days: 7
+
+  build-test-linux-x64:
+    name: Linux Native (x64)
+    runs-on: ubuntu-latest
+    needs: code-quality
     
     steps:
     - name: Checkout code
@@ -39,20 +124,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-konan-
           
-    - name: Validate Gradle wrapper
-      uses: gradle/wrapper-validation-action@v2
+    - name: Build Linux Native targets
+      run: ./gradlew linuxX64MainKlibrary
       
-    - name: Check code formatting
-      run: ./gradlew --init-script=gradle/init.gradle.kts spotlessCheck --no-configuration-cache
-      
-    - name: Build all targets
-      run: ./gradlew build
-      
-    - name: Run all tests
-      run: ./gradlew allTests
-      
-    - name: Run check task
-      run: ./gradlew check
+    - name: Run Linux Native tests
+      run: ./gradlew linuxX64Test
       
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
@@ -61,28 +137,185 @@ jobs:
         files: |
           **/build/test-results/**/*.xml
           
-    - name: Generate formatting patch
-      if: failure()
-      run: |
-        ./gradlew --init-script=gradle/init.gradle.kts spotlessApply --no-configuration-cache || true
-        git diff > formatting-suggestions.patch
-        echo "Formatting suggestions generated. Please run: ./gradlew --init-script=gradle/init.gradle.kts spotlessApply --no-configuration-cache"
-      continue-on-error: true
-      
-    - name: Upload formatting suggestions
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: formatting-suggestions
-        path: formatting-suggestions.patch
-        retention-days: 7
-        
     - name: Upload build reports
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: build-reports
+        name: build-reports-linux-x64
         path: |
           **/build/reports/
           **/build/test-results/
-        retention-days: 7 
+        retention-days: 7
+
+  build-test-windows-x64:
+    name: Windows Native (x64)
+    runs-on: windows-latest
+    needs: code-quality
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+      with:
+        gradle-home-cache-cleanup: true
+        
+    - name: Cache Kotlin/Native compiler
+      uses: actions/cache@v4
+      with:
+        path: ~/.konan
+        key: ${{ runner.os }}-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-konan-
+          
+    - name: Build Windows Native targets
+      run: ./gradlew mingwX64MainKlibrary
+      
+    - name: Run Windows Native tests
+      run: ./gradlew mingwX64Test
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          **/build/test-results/**/*.xml
+          
+    - name: Upload build reports
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-reports-windows-x64
+        path: |
+          **/build/reports/
+          **/build/test-results/
+        retention-days: 7
+
+  build-test-apple-intel:
+    name: Apple Platforms (Intel)
+    runs-on: macos-13
+    needs: code-quality
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+      with:
+        gradle-home-cache-cleanup: true
+        
+    - name: Cache Kotlin/Native compiler
+      uses: actions/cache@v4
+      with:
+        path: ~/.konan
+        key: ${{ runner.os }}-intel-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-intel-konan-
+          
+    - name: Build Apple Intel targets
+      run: ./gradlew iosX64MainKlibrary macosX64MainKlibrary tvosX64MainKlibrary watchosX64MainKlibrary
+      
+    - name: Run Apple Intel tests
+      run: ./gradlew iosX64Test macosX64Test tvosX64Test watchosX64Test
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          **/build/test-results/**/*.xml
+          
+    - name: Upload build reports
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-reports-apple-intel
+        path: |
+          **/build/reports/
+          **/build/test-results/
+        retention-days: 7
+
+  build-test-apple-arm:
+    name: Apple Platforms (ARM)
+    runs-on: macos-latest
+    needs: code-quality
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+      with:
+        gradle-home-cache-cleanup: true
+        
+    - name: Cache Kotlin/Native compiler
+      uses: actions/cache@v4
+      with:
+        path: ~/.konan
+        key: ${{ runner.os }}-arm-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-arm-konan-
+          
+    - name: Build Apple ARM targets
+      run: ./gradlew iosArm64MainKlibrary iosSimulatorArm64MainKlibrary macosArm64MainKlibrary tvosArm64MainKlibrary tvosSimulatorArm64MainKlibrary watchosArm32MainKlibrary watchosArm64MainKlibrary watchosSimulatorArm64MainKlibrary
+      
+    - name: Run Apple ARM tests
+      run: ./gradlew iosSimulatorArm64Test macosArm64Test tvosSimulatorArm64Test watchosSimulatorArm64Test
+      
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          **/build/test-results/**/*.xml
+          
+    - name: Upload build reports
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-reports-apple-arm
+        path: |
+          **/build/reports/
+          **/build/test-results/
+        retention-days: 7
+
+  final-check:
+    name: Final Validation
+    runs-on: ubuntu-latest
+    needs: [build-test-jvm-js, build-test-linux-x64, build-test-windows-x64, build-test-apple-intel, build-test-apple-arm]
+    if: always()
+    
+    steps:
+    - name: Check all platforms success
+      run: |
+        if [[ "${{ needs.build-test-jvm-js.result }}" != "success" || "${{ needs.build-test-linux-x64.result }}" != "success" || "${{ needs.build-test-windows-x64.result }}" != "success" || "${{ needs.build-test-apple-intel.result }}" != "success" || "${{ needs.build-test-apple-arm.result }}" != "success" ]]; then
+          echo "One or more platform builds failed"
+          echo "JVM/JS: ${{ needs.build-test-jvm-js.result }}"
+          echo "Linux x64: ${{ needs.build-test-linux-x64.result }}"
+          echo "Windows x64: ${{ needs.build-test-windows-x64.result }}"
+          echo "Apple Intel: ${{ needs.build-test-apple-intel.result }}"
+          echo "Apple ARM: ${{ needs.build-test-apple-arm.result }}"
+          exit 1
+        fi
+        echo "All platform builds succeeded" 
