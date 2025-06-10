@@ -2,7 +2,6 @@ package li.mercury.tushare.api.index.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import li.mercury.tushare.models.Level
 
 /**
  * 申万行业分类API请求参数
