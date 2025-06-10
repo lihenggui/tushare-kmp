@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 沪深股通成分股信息
  */
 @Serializable
-data class HsConstResult(
+public data class HsConstResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

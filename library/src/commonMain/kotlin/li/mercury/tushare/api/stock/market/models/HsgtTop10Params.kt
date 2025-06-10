@@ -11,7 +11,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 沪深股通十大成交股API请求参数
  */
 @Serializable
-data class HsgtTop10Params(
+public data class HsgtTop10Params(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

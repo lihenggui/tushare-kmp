@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 申万行业成分构成返回结果
  */
 @Serializable
-data class IndexMemberAllResult(
+public data class IndexMemberAllResult(
     /** 一级行业代码 */
     @SerialName("l1_code")
     val l1Code: String,

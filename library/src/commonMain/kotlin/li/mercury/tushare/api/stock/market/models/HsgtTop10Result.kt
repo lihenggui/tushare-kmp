@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 沪深股通十大成交股返回结果
  */
 @Serializable
-data class HsgtTop10Result(
+public data class HsgtTop10Result(
     /** 交易日期 */
     @SerialName("trade_date")
     @Serializable(with = LocalDateAsStringSerializer::class)

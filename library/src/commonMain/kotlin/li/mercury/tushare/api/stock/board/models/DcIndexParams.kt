@@ -7,7 +7,7 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class DcIndexParams(
+public data class DcIndexParams(
     /** 指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

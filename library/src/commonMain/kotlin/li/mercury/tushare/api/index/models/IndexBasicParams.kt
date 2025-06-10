@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 指数基本信息API请求参数
  */
 @Serializable
-data class IndexBasicParams(
+public data class IndexBasicParams(
     /** 指数代码 */
     val tsCode: TsCode? = null,
     /** 指数简称 */

@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股票回购API请求参数
  */
 @Serializable
-data class RepurchaseParams(
+public data class RepurchaseParams(
     /** 公告日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("ann_date")

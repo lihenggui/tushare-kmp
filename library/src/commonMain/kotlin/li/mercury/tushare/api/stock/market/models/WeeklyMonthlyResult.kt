@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股票周/月线行情返回对象类
  */
 @Serializable
-data class WeeklyMonthlyResult(
+public data class WeeklyMonthlyResult(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

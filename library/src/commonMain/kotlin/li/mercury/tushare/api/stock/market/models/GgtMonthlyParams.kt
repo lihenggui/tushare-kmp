@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 港股通每月成交统计API请求参数
  */
 @Serializable
-data class GgtMonthlyParams(
+public data class GgtMonthlyParams(
     /** 月度（格式：YYYYMM，支持多个输入） */
     val month: String? = null,
     /** 开始月度（格式：YYYYMM） */

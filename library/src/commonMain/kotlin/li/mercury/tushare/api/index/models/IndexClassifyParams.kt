@@ -8,7 +8,7 @@ import li.mercury.tushare.models.Level
  * 申万行业分类API请求参数
  */
 @Serializable
-data class IndexClassifyParams(
+public data class IndexClassifyParams(
     /**
      * 指数代码
      *

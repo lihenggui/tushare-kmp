@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 指数成分和权重返回结果
  */
 @Serializable
-data class IndexWeightResult(
+public data class IndexWeightResult(
     /** 指数代码 */
     @SerialName("index_code")
     val indexCode: String,

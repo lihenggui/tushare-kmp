@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 港股通市场类型枚举
  */
 @Serializable
-enum class GgMarketType {
+public enum class GgMarketType {
     /** 港股通（沪） */
     @SerialName("2")
     SH,

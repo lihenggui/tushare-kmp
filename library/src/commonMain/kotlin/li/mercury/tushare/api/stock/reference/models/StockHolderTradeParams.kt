@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股东增减持API请求参数
  */
 @Serializable
-data class StockHolderTradeParams(
+public data class StockHolderTradeParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
@@ -38,7 +38,7 @@ data class StockHolderTradeParams(
  * 交易类型枚举
  */
 @Serializable
-enum class TradeType {
+public enum class TradeType {
     /** 增持 */
     @SerialName("IN")
     IN,
@@ -52,7 +52,7 @@ enum class TradeType {
  * 股东类型枚举
  */
 @Serializable
-enum class HolderType {
+public enum class HolderType {
     /** 公司 */
     @SerialName("C")
     C,

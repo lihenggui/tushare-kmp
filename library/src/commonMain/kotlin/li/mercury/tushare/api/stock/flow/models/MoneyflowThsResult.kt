@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class MoneyflowThsResult(
+public data class MoneyflowThsResult(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

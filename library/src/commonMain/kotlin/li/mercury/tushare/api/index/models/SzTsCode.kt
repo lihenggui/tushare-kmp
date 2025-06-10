@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  */
 @Suppress("NonAsciiCharacters", "ktlint:standard:enum-entry-name-case")
 @Serializable
-enum class SzTsCode {
+public enum class SzTsCode {
     股票,
     主板A股,
     主板B股,

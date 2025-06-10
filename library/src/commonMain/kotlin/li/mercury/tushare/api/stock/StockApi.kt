@@ -21,30 +21,30 @@ import li.mercury.tushare.api.stock.reference.StockReferenceApiInterface
 /**
  * 股票相关API的统一入口
  */
-class StockApi(
+public class StockApi(
     private val tuShare: TuShare,
 ) {
     /** 股票基础信息相关API */
-    val basic: StockBasicApiInterface by lazy { StockBasicApi(tuShare) }
+    public val basic: StockBasicApiInterface by lazy { StockBasicApi(tuShare) }
 
     /** 股票行情信息相关API */
-    val market: StockMarketApiInterface by lazy { StockMarketApi(tuShare) }
+    public val market: StockMarketApiInterface by lazy { StockMarketApi(tuShare) }
 
     /** 股票财务信息相关API */
-    val finance: StockFinanceApiInterface by lazy { StockFinanceApi(tuShare) }
+    public val finance: StockFinanceApiInterface by lazy { StockFinanceApi(tuShare) }
 
     /** 股票参考信息相关API */
-    val reference: StockReferenceApiInterface by lazy { StockReferenceApi(tuShare) }
+    public val reference: StockReferenceApiInterface by lazy { StockReferenceApi(tuShare) }
 
     /** 股票特色信息相关API */
-    val character: StockCharacterApiInterface by lazy { StockCharacterApi(tuShare) }
+    public val character: StockCharacterApiInterface by lazy { StockCharacterApi(tuShare) }
 
     /** 股票两融信息相关API */
-    val margin: StockMarginApiInterface by lazy { StockMarginApi(tuShare) }
+    public val margin: StockMarginApiInterface by lazy { StockMarginApi(tuShare) }
 
     /** 股票资金流向相关API */
-    val flow: StockFlowApiInterface by lazy { StockFlowApi(tuShare) }
+    public val flow: StockFlowApiInterface by lazy { StockFlowApi(tuShare) }
 
     /** 股票打版专题数据相关API */
-    val board: StockBoardApiInterface by lazy { StockBoardApi(tuShare) }
+    public val board: StockBoardApiInterface by lazy { StockBoardApi(tuShare) }
 }

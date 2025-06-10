@@ -10,7 +10,7 @@ import kotlinx.serialization.encoding.Encoder
 /**
  * Custom serializer for LocalDate that formats to YYYYMMDD string
  */
-object LocalDateAsStringSerializer : KSerializer<LocalDate> {
+internal object LocalDateAsStringSerializer : KSerializer<LocalDate> {
     override val descriptor = PrimitiveSerialDescriptor("LocalDate", PrimitiveKind.STRING)
 
     override fun serialize(

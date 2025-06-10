@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * 行业分级
  */
 @Serializable
-enum class Level {
+public enum class Level {
     /** 一级 */
     L1,
 

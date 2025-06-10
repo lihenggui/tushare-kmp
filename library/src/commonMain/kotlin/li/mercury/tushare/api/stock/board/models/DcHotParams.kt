@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 /**
  * 东方财富热板市场类型
  */
-enum class DcHotMarket {
+public enum class DcHotMarket {
     /** A股市场 */
     A_MARKET,
 
@@ -26,7 +26,7 @@ enum class DcHotMarket {
 /**
  * 东方财富热板热点类型
  */
-enum class DcHotType {
+public enum class DcHotType {
     /** 人气榜 */
     POPULARITY,
 
@@ -35,7 +35,7 @@ enum class DcHotType {
 }
 
 @Serializable
-data class DcHotParams(
+public data class DcHotParams(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

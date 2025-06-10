@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
  * 股票分钟行情返回对象类
  */
 @Serializable
-data class MinsResult(
+public data class MinsResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

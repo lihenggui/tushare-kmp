@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
  * 神奇九转指标返回结果
  */
 @Serializable
-data class StkNineturnResult(
+public data class StkNineturnResult(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

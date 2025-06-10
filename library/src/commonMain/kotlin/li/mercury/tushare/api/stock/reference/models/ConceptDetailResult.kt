@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 概念股列表返回对象类
  */
 @Serializable
-data class ConceptDetailResult(
+public data class ConceptDetailResult(
     /** 概念代码 */
     val id: String,
     /** 概念名称 */

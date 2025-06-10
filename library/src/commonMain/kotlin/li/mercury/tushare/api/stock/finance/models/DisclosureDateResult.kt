@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 财报披露计划返回对象类
  */
 @Serializable
-data class DisclosureDateResult(
+public data class DisclosureDateResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

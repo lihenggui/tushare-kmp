@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 转融资交易汇总返回对象类
  */
 @Serializable
-data class SlbLenResult(
+public data class SlbLenResult(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

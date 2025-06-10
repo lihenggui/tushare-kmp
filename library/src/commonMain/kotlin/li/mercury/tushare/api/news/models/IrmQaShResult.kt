@@ -11,7 +11,7 @@ import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
  * 上证E互动问答返回结果
  */
 @Serializable
-data class IrmQaShResult(
+public data class IrmQaShResult(
     /**
      * 股票代码
      */

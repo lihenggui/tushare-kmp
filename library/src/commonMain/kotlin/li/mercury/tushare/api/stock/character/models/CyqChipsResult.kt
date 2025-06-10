@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 每日筹码分布返回结果
  */
 @Serializable
-data class CyqChipsResult(
+public data class CyqChipsResult(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

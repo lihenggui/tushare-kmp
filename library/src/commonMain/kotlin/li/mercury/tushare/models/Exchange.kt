@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * 交易所代码
  */
 @Serializable
-enum class Exchange {
+public enum class Exchange {
     /** 上交所 */
     SSE,
 

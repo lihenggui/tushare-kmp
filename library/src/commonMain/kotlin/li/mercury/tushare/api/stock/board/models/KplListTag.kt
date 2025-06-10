@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Suppress("NonAsciiCharacters", "ktlint:standard:enum-entry-name-case")
 @Serializable
-enum class KplListTag {
+public enum class KplListTag {
     涨停,
     炸板,
     跌停,

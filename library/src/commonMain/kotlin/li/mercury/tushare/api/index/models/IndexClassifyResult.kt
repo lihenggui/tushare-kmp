@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class IndexClassifyResult(
+public data class IndexClassifyResult(
     /** 指数代码*/
     @SerialName("index_code")
     val indexCode: String,

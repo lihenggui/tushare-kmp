@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 深圳市场每日交易概况返回结果
  */
 @Serializable
-data class SzDailyInfoResult(
+public data class SzDailyInfoResult(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

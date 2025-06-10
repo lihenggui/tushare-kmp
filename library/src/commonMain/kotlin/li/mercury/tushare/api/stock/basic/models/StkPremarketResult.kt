@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股本情况（盘前）返回对象类
  */
 @Serializable
-data class StkPremarketResult(
+public data class StkPremarketResult(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

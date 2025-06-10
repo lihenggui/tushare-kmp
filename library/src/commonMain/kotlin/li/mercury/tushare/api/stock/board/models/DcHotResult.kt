@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
 
 @Serializable
-data class DcHotResult(
+public data class DcHotResult(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

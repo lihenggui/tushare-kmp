@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 大盘指数每日指标请求参数
  */
 @Serializable
-data class IndexDailyBasicParams(
+public data class IndexDailyBasicParams(
     /**
      * 交易日期 (格式：YYYYMMDD)
      */

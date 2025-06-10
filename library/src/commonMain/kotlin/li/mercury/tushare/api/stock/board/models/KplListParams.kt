@@ -7,7 +7,7 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class KplListParams(
+public data class KplListParams(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

@@ -1,6 +1,6 @@
 package li.mercury.tushare.models
 
-enum class Market {
+public enum class Market {
     /** MSCI指数 */
     MSCI,
 

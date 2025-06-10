@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 /**
  * 股票回购进度枚举
  */
-enum class RepurchaseProgress {
+public enum class RepurchaseProgress {
     @SerialName("实施")
     IMPLEMENTING,
 

@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 交易日历API请求参数
  */
 @Serializable
-data class TradeCalParams(
+public data class TradeCalParams(
     /** 交易所代码 */
     val exchange: Exchange? = null,
     /** 开始日期 */

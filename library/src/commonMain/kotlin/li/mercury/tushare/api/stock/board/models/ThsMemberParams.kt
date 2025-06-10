@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.TsCode
 
 @Serializable
-data class ThsMemberParams(
+public data class ThsMemberParams(
     /** 板块指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

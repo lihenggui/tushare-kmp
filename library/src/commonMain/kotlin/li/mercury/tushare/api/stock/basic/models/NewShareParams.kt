@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * IPO新股列表API请求参数
  */
 @Serializable
-data class NewShareParams(
+public data class NewShareParams(
     /** 上网发行开始日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("start_date")

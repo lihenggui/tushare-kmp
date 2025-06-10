@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
  * @property data 成功时的响应数据
  */
 @Serializable
-data class TuShareResponse(
+public data class TuShareResponse(
     @SerialName("code") val code: Int,
     @SerialName("msg") val msg: String? = null,
     @SerialName("data") val data: TuShareData? = null,

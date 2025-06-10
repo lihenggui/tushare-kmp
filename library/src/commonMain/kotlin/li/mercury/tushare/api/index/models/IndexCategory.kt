@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  */
 @Suppress("NonAsciiCharacters", "ktlint:standard:enum-entry-name-case")
 @Serializable
-enum class IndexCategory {
+public enum class IndexCategory {
     主题指数,
     行业指数,
     大盘指数,

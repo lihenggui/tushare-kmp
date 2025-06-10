@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 市场类型枚举
  */
 @Serializable
-enum class HsMarketType {
+public enum class HsMarketType {
     /** 沪市 */
     @SerialName("1")
     SH,

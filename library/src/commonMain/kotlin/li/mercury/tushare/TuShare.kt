@@ -31,7 +31,7 @@ import li.mercury.tushare.models.TuShareResponse
  * @property apiUrl TuShare API端点URL
  * @property client 自定义HTTP客户端（可选，默认为配置好的HttpClient）
  */
-class TuShare(
+public class TuShare(
     private val token: String,
     private val apiUrl: String = "https://api.tushare.pro",
     private val engine: HttpClientEngine = CIO.create(),
@@ -48,13 +48,13 @@ class TuShare(
         },
 ) {
     /** 访问指数相关API */
-    val index: IndexApiInterface by lazy { IndexApi(this) }
+    public val index: IndexApiInterface by lazy { IndexApi(this) }
 
     /** 新闻相关API */
-    val news: NewsApiInterface by lazy { NewsApi(this) }
+    public val news: NewsApiInterface by lazy { NewsApi(this) }
 
     /** 股票相关API */
-    val stock: StockApi by lazy { StockApi(this) }
+    public val stock: StockApi by lazy { StockApi(this) }
 
     /**
      * 向TuShare发起原始API调用

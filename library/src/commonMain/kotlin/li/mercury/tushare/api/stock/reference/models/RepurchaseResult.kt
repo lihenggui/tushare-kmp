@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股票回购返回对象类
  */
 @Serializable
-data class RepurchaseResult(
+public data class RepurchaseResult(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

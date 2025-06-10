@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 中央结算系统持股明细返回对象
  */
 @Serializable
-data class CcassHoldDetailResult(
+public data class CcassHoldDetailResult(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

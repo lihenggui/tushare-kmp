@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 复权因子API请求参数
  */
 @Serializable
-data class AdjFactorParams(
+public data class AdjFactorParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

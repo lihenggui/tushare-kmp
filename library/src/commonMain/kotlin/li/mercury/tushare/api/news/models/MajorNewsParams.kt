@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
  * 新闻通讯查询参数
  */
 @Serializable
-data class MajorNewsParams(
+public data class MajorNewsParams(
     /**
      * 新闻来源（新华网、凤凰财经、同花顺、新浪财经、华尔街见闻、中证网）
      */

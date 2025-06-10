@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 概念股列表API请求参数
  */
 @Serializable
-data class ConceptDetailParams(
+public data class ConceptDetailParams(
     /** 概念分类ID（来自concept接口） */
     val id: String? = null,
     /** TS股票代码 */

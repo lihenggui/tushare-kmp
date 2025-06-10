@@ -20,6 +20,7 @@ group = "li.mercury.tushare"
 version = "1.0.0"
 
 kotlin {
+    explicitApi()
     jvm()
     native()
     jsNode()

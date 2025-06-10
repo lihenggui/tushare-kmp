@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 指数日线行情返回结果
  */
 @Serializable
-data class IndexDailyResult(
+public data class IndexDailyResult(
     /** TS 指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

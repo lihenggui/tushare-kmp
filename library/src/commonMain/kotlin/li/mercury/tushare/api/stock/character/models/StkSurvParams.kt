@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 机构调研表API请求参数
  */
 @Serializable
-data class StkSurvParams(
+public data class StkSurvParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

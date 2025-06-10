@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 每日停复牌信息API请求参数
  */
 @Serializable
-data class SuspendDParams(
+public data class SuspendDParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

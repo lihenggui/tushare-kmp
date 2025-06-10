@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 周/月行情频率枚举类
  */
 @Serializable
-enum class FreqWeekMonth {
+public enum class FreqWeekMonth {
     /** 周频率 */
     @SerialName("week")
     WEEK,
