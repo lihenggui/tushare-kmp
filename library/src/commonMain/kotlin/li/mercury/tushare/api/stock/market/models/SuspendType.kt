@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 停复牌类型枚举
  */
 @Serializable
-enum class SuspendType {
+public enum class SuspendType {
     /** 停牌 */
     @SerialName("S")
     SUSPEND,

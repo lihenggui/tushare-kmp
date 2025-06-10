@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class MoneyflowThsParams(
+public data class MoneyflowThsParams(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: String? = null,

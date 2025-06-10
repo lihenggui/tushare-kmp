@@ -12,7 +12,7 @@ import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
  * 神奇九转指标请求参数
  */
 @Serializable
-data class StkNineturnParams(
+public data class StkNineturnParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
@@ -35,7 +35,7 @@ data class StkNineturnParams(
 /**
  * 频率枚举
  */
-enum class FreqEnum {
+public enum class FreqEnum {
     /** 日线 */
     @SerialName("daily")
     DAILY,

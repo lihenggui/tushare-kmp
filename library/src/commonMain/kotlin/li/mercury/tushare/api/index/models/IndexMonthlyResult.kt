@@ -7,7 +7,7 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class IndexMonthlyResult(
+public data class IndexMonthlyResult(
     /** TS 指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * 概念股分类返回对象类
  */
 @Serializable
-data class ConceptResult(
+public data class ConceptResult(
     /** 概念分类ID */
     val code: String,
     /** 概念分类名称 */

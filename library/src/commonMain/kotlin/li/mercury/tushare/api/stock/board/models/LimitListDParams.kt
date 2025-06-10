@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 /**
  * 涨跌停类型
  */
-enum class LimitType {
+public enum class LimitType {
     /** 涨停 */
     U,
 
@@ -23,7 +23,7 @@ enum class LimitType {
 /**
  * 交易所
  */
-enum class Exchange {
+public enum class Exchange {
     /** 上交所 */
     SH,
 
@@ -35,7 +35,7 @@ enum class Exchange {
 }
 
 @Serializable
-data class LimitListDParams(
+public data class LimitListDParams(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

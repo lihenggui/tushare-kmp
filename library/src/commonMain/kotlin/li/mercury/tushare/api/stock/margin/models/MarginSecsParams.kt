@@ -11,7 +11,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 融资融券标的API请求参数
  */
 @Serializable
-data class MarginSecsParams(
+public data class MarginSecsParams(
     /** 标的代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

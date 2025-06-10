@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 公司类型枚举
  */
 @Serializable
-enum class CompType {
+public enum class CompType {
     /** 一般工商业 */
     @SerialName("1")
     GENERAL,

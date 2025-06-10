@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 申万行业日线行情API请求参数
  */
 @Serializable
-data class SwDailyParams(
+public data class SwDailyParams(
     /** 行业代码 */
     val tsCode: TsCode? = null,
     /** 交易日期 */

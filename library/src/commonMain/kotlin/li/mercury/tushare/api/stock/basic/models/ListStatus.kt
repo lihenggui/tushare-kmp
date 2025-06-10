@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * 上市状态
  */
 @Serializable
-enum class ListStatus {
+public enum class ListStatus {
     /** 上市 */
     L,
 

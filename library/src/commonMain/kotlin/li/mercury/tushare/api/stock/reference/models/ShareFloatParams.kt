@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 限售股解禁API请求参数
  */
 @Serializable
-data class ShareFloatParams(
+public data class ShareFloatParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

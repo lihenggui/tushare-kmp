@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  */
 @Suppress("NonAsciiCharacters", "ktlint:standard:enum-entry-name-case")
 @Serializable
-enum class ForecastType {
+public enum class ForecastType {
     预增,
     预减,
     扭亏,

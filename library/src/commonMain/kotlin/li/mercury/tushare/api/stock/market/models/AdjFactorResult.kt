@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 复权因子返回对象类
  */
 @Serializable
-data class AdjFactorResult(
+public data class AdjFactorResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.TsCode
 
 @Serializable
-data class ThsIndexParams(
+public data class ThsIndexParams(
     /** 指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,
@@ -18,7 +18,7 @@ data class ThsIndexParams(
 /**
  * 同花顺指数类型
  */
-enum class ThsIndexType {
+public enum class ThsIndexType {
     /** 概念指数 */
     @SerialName("N")
     CONCEPT,

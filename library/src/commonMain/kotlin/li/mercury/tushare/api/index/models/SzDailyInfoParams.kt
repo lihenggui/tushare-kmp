@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 深圳市场每日交易概况API请求参数
  */
 @Serializable
-data class SzDailyInfoParams(
+public data class SzDailyInfoParams(
     /**
      * 交易日期（YYYYMMDD格式）
      */

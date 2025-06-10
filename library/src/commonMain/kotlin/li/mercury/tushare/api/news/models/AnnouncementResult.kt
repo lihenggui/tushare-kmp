@@ -12,7 +12,7 @@ import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
  * 上市公司公告返回结果
  */
 @Serializable
-data class AnnouncementResult(
+public data class AnnouncementResult(
     /**
      * 公告日期
      */

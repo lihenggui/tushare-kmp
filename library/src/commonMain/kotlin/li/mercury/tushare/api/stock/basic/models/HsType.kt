@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * 沪深港通类型
  */
 @Serializable
-enum class HsType {
+public enum class HsType {
     /** 沪股通 */
     SH,
 

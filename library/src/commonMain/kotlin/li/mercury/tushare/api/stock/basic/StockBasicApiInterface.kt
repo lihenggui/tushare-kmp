@@ -25,54 +25,54 @@ import li.mercury.tushare.api.stock.basic.models.TradeCalResult
 /**
  * 股票相关API的存储库接口
  */
-interface StockBasicApiInterface {
+public interface StockBasicApiInterface {
     /**
      * 获取股票基本信息
      */
-    fun getStockBasic(params: StockBasicParams): Flow<List<StockBasicResult>>
+    public fun getStockBasic(params: StockBasicParams): Flow<List<StockBasicResult>>
 
     /**
      * 获取股本情况（盘前）数据
      */
-    fun getStkPremarket(params: StkPremarketParams): Flow<List<StkPremarketResult>>
+    public fun getStkPremarket(params: StkPremarketParams): Flow<List<StkPremarketResult>>
 
     /**
      * 获取交易日历数据
      */
-    fun getTradeCal(params: TradeCalParams): Flow<List<TradeCalResult>>
+    public fun getTradeCal(params: TradeCalParams): Flow<List<TradeCalResult>>
 
     /**
      * 获取股票曾用名信息
      */
-    fun getNameChange(params: NameChangeParams): Flow<List<NameChangeResult>>
+    public fun getNameChange(params: NameChangeParams): Flow<List<NameChangeResult>>
 
     /**
      * 获取沪深股通成份股数据
      */
-    fun getHsConst(params: HsConstParams): Flow<List<HsConstResult>>
+    public fun getHsConst(params: HsConstParams): Flow<List<HsConstResult>>
 
     /**
      * 获取上市公司基本信息
      */
-    fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+    public fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
 
     /**
      * 获取上市公司管理层信息
      */
-    fun getStkManagers(params: StkManagersParams): Flow<List<StkManagersResult>>
+    public fun getStkManagers(params: StkManagersParams): Flow<List<StkManagersResult>>
 
     /**
      * 获取上市公司管理层薪酬和持股情况
      */
-    fun getStkRewards(params: StkRewardsParams): Flow<List<StkRewardsResult>>
+    public fun getStkRewards(params: StkRewardsParams): Flow<List<StkRewardsResult>>
 
     /**
      * 获取IPO新股列表数据
      */
-    fun getNewShare(params: NewShareParams): Flow<List<NewShareResult>>
+    public fun getNewShare(params: NewShareParams): Flow<List<NewShareResult>>
 
     /**
      * 备用基础列表（历史每天股票列表）
      */
-    fun getBakBasic(params: BakBasicParams): Flow<List<BakBasicResult>>
+    public fun getBakBasic(params: BakBasicParams): Flow<List<BakBasicResult>>
 }

@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 港股通每日成交统计API请求参数
  */
 @Serializable
-data class GgtDailyParams(
+public data class GgtDailyParams(
     /** 交易日期（格式：YYYYMMDD） */
     @SerialName("trade_date")
     @Serializable(with = LocalDateAsStringSerializer::class)

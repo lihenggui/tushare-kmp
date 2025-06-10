@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 报告类型枚举
  */
 @Serializable
-enum class ReportType {
+public enum class ReportType {
     /** 合并报表 */
     @SerialName("1")
     CONSOLIDATED,

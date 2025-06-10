@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 指数技术因子专业版API请求参数
  */
 @Serializable
-data class IdxFactorProParams(
+public data class IdxFactorProParams(
     /**
      * 指数代码（大盘指数、申万指数、中信指数）
      */

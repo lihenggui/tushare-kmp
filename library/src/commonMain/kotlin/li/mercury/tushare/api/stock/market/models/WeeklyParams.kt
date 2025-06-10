@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 周线行情API请求参数
  */
 @Serializable
-data class WeeklyParams(
+public data class WeeklyParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

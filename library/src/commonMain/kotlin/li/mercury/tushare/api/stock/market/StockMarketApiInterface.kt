@@ -33,74 +33,74 @@ import li.mercury.tushare.api.stock.market.models.WeeklyResult
 /**
  * 股票相关API的存储库接口
  */
-interface StockMarketApiInterface {
+public interface StockMarketApiInterface {
     /**
      * 获取股票日线行情数据
      */
-    fun getDaily(params: DailyParams): Flow<List<DailyResult>>
+    public fun getDaily(params: DailyParams): Flow<List<DailyResult>>
 
     /**
      * 获取股票分钟行情数据
      */
-    fun getMins(params: MinsParams): Flow<List<MinsResult>>
+    public fun getMins(params: MinsParams): Flow<List<MinsResult>>
 
     /**
      * 获取A股周线行情数据
      */
-    fun getWeekly(params: WeeklyParams): Flow<List<WeeklyResult>>
+    public fun getWeekly(params: WeeklyParams): Flow<List<WeeklyResult>>
 
     /**
      * 获取A股月线行情数据
      */
-    fun getMonthly(params: MonthlyParams): Flow<List<MonthlyResult>>
+    public fun getMonthly(params: MonthlyParams): Flow<List<MonthlyResult>>
 
     /**
      * 获取股票周/月线行情数据(每日更新)
      */
-    fun getWeeklyMonthly(params: WeeklyMonthlyParams): Flow<List<WeeklyMonthlyResult>>
+    public fun getWeeklyMonthly(params: WeeklyMonthlyParams): Flow<List<WeeklyMonthlyResult>>
 
     /**
      * 获取股票复权因子数据
      */
-    fun getAdjFactor(params: AdjFactorParams): Flow<List<AdjFactorResult>>
+    public fun getAdjFactor(params: AdjFactorParams): Flow<List<AdjFactorResult>>
 
     /**
      * 获取股票每日指标数据
      */
-    fun getDailyBasic(params: DailyBasicParams): Flow<List<DailyBasicResult>>
+    public fun getDailyBasic(params: DailyBasicParams): Flow<List<DailyBasicResult>>
 
     /**
      * 获取每日涨跌停价格数据
      */
-    fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>>
+    public fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>>
 
     /**
      * 获取每日停复牌信息
      */
-    fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>>
+    public fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>>
 
     /**
      * 获取沪深股通十大成交股数据
      */
-    fun getHsgtTop10(params: HsgtTop10Params): Flow<List<HsgtTop10Result>>
+    public fun getHsgtTop10(params: HsgtTop10Params): Flow<List<HsgtTop10Result>>
 
     /**
      * 获取港股通十大成交股数据
      */
-    fun getGgtTop10(params: GgtTop10Params): Flow<List<GgtTop10Result>>
+    public fun getGgtTop10(params: GgtTop10Params): Flow<List<GgtTop10Result>>
 
     /**
      * 获取港股通每日成交统计
      */
-    fun getGgtDaily(params: GgtDailyParams): Flow<List<GgtDailyResult>>
+    public fun getGgtDaily(params: GgtDailyParams): Flow<List<GgtDailyResult>>
 
     /**
      * 获取港股通每月成交统计
      */
-    fun getGgtMonthly(params: GgtMonthlyParams): Flow<List<GgtMonthlyResult>>
+    public fun getGgtMonthly(params: GgtMonthlyParams): Flow<List<GgtMonthlyResult>>
 
     /**
      * 获取备用行情数据
      */
-    fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>>
+    public fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>>
 }

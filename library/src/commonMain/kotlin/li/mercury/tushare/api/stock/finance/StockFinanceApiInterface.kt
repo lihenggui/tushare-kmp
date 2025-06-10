@@ -25,54 +25,54 @@ import li.mercury.tushare.api.stock.finance.models.IncomeResult
 /**
  * 股票相关API的存储库接口
  */
-interface StockFinanceApiInterface {
+public interface StockFinanceApiInterface {
     /**
      * 获取利润表数据
      */
-    fun getIncome(params: IncomeParams): Flow<List<IncomeResult>>
+    public fun getIncome(params: IncomeParams): Flow<List<IncomeResult>>
 
     /**
      * 获取资产负债表数据
      */
-    fun getBalanceSheet(params: BalanceSheetParams): Flow<List<BalanceSheetResult>>
+    public fun getBalanceSheet(params: BalanceSheetParams): Flow<List<BalanceSheetResult>>
 
     /**
      * 获取现金流量表数据
      */
-    fun getCashflow(params: CashflowParams): Flow<List<CashflowResult>>
+    public fun getCashflow(params: CashflowParams): Flow<List<CashflowResult>>
 
     /**
      * 获取业绩预告数据
      */
-    fun getForecast(params: ForecastParams): Flow<List<ForecastResult>>
+    public fun getForecast(params: ForecastParams): Flow<List<ForecastResult>>
 
     /**
      * 获取业绩快报数据
      */
-    fun getExpress(params: ExpressParams): Flow<List<ExpressResult>>
+    public fun getExpress(params: ExpressParams): Flow<List<ExpressResult>>
 
     /**
      * 获取分红送股数据
      */
-    fun getDividend(params: DividendParams): Flow<List<DividendResult>>
+    public fun getDividend(params: DividendParams): Flow<List<DividendResult>>
 
     /**
      * 获取财务指标数据
      */
-    fun getFinaIndicator(params: FinaIndicatorParams): Flow<List<FinaIndicatorResult>>
+    public fun getFinaIndicator(params: FinaIndicatorParams): Flow<List<FinaIndicatorResult>>
 
     /**
      * 获取财务审计意见数据
      */
-    fun getFinaAudit(params: FinaAuditParams): Flow<List<FinaAuditResult>>
+    public fun getFinaAudit(params: FinaAuditParams): Flow<List<FinaAuditResult>>
 
     /**
      * 获取上市公司主营业务构成数据
      */
-    fun getFinaMainbz(params: FinaMainbzParams): Flow<List<FinaMainbzResult>>
+    public fun getFinaMainbz(params: FinaMainbzParams): Flow<List<FinaMainbzResult>>
 
     /**
      * 获取财报披露计划数据
      */
-    fun getDisclosureDate(params: DisclosureDateParams): Flow<List<DisclosureDateResult>>
+    public fun getDisclosureDate(params: DisclosureDateParams): Flow<List<DisclosureDateResult>>
 }

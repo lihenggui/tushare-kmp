@@ -11,7 +11,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股票基本信息返回对象类
  */
 @Serializable
-data class StockBasicResult(
+public data class StockBasicResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

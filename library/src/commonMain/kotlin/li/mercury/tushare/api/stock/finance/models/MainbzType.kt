@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * 主营业务构成类型
  */
 @Serializable
-enum class MainbzType {
+public enum class MainbzType {
     /** 按产品 */
     P,
 

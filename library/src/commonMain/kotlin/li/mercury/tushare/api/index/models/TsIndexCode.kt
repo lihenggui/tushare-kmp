@@ -9,9 +9,9 @@ import kotlinx.serialization.Serializable
  */
 @Suppress("ktlint:standard:enum-entry-name-case")
 @Serializable
-enum class TsIndexCode(
+public enum class TsIndexCode(
     /** 指数中文名称 */
-    val chineseName: String,
+    public val chineseName: String,
 ) {
     XIN9("富时中国A50指数 (富时A50)"),
     HSI("恒生指数"),

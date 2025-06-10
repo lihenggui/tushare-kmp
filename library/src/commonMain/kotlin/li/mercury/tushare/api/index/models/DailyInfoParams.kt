@@ -11,7 +11,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 市场交易统计API请求参数
  */
 @Serializable
-data class DailyInfoParams(
+public data class DailyInfoParams(
     /**
      * 交易日期（YYYYMMDD格式）
      */

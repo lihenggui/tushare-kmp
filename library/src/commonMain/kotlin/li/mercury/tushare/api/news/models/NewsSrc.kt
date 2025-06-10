@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 新闻来源枚举
  */
 @Serializable
-enum class NewsSrc {
+public enum class NewsSrc {
     /** 新浪财经 */
     @SerialName("sina")
     SINA,

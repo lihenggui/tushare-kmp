@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
  * 新闻快讯返回结果
  */
 @Serializable
-data class NewsResult(
+public data class NewsResult(
     /**
      * 新闻发布时间
      */

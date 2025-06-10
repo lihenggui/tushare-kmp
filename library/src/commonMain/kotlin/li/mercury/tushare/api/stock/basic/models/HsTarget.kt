@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * 沪深港通标的
  */
 @Serializable
-enum class HsTarget {
+public enum class HsTarget {
     /** 否 */
     N,
 

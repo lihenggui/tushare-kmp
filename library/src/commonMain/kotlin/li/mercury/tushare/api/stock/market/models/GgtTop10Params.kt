@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 港股通十大成交股API请求参数
  */
 @Serializable
-data class GgtTop10Params(
+public data class GgtTop10Params(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

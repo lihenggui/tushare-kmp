@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 主营业务构成API请求参数
  */
 @Serializable
-data class FinaMainbzParams(
+public data class FinaMainbzParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

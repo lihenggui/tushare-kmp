@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 主营业务构成返回对象类
  */
 @Serializable
-data class FinaMainbzResult(
+public data class FinaMainbzResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

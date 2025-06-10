@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 中央结算系统持股明细请求参数
  */
 @Serializable
-data class CcassHoldDetailParams(
+public data class CcassHoldDetailParams(
     /** TS股票代码（支持A股和港股） */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 业绩预告返回结果
  */
 @Serializable
-data class ForecastResult(
+public data class ForecastResult(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

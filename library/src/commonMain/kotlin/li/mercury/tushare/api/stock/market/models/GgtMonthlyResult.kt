@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * 港股通每月成交统计返回对象类
  */
 @Serializable
-data class GgtMonthlyResult(
+public data class GgtMonthlyResult(
     /** 交易月份（格式：YYYYMM） */
     val month: String,
     /** 当月日均买入成交金额（亿元） */

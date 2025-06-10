@@ -10,7 +10,7 @@ import kotlinx.serialization.encoding.Encoder
 /**
  * 自定义LocalDateTime序列化器，处理"yyyy-MM-dd HH:mm:ss"格式的字符串
  */
-object LocalDateTimeAsStringSerializer : KSerializer<LocalDateTime> {
+internal object LocalDateTimeAsStringSerializer : KSerializer<LocalDateTime> {
     override val descriptor = PrimitiveSerialDescriptor("LocalDateTime", PrimitiveKind.STRING)
 
     override fun serialize(
