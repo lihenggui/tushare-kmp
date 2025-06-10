@@ -1,4 +1,4 @@
-package com.aallam.openai.api.logging
+package li.mercury.tushare.internal.logging
 
 /**
  * Http client logging log level.

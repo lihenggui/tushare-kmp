@@ -1,6 +1,5 @@
 package li.mercury.tushare
 
-import com.aallam.openai.api.logging.LogLevel
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.http.HttpHeaders
@@ -13,6 +12,7 @@ import li.mercury.tushare.client.TuShareConfig
 import li.mercury.tushare.client.createHttpClient
 import li.mercury.tushare.http.HttpTransport
 import li.mercury.tushare.internal.extension.Timeout
+import li.mercury.tushare.internal.logging.LogLevel
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM

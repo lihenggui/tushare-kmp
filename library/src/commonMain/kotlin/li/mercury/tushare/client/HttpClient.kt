@@ -1,7 +1,5 @@
 package li.mercury.tushare.client
 
-import com.aallam.openai.client.internal.extension.toKtorLogLevel
-import com.aallam.openai.client.internal.extension.toKtorLogger
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.ProxyBuilder
@@ -16,6 +14,8 @@ import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
 import io.ktor.util.appendIfNameAbsent
 import kotlinx.serialization.json.Json
+import li.mercury.tushare.internal.extension.toKtorLogLevel
+import li.mercury.tushare.internal.extension.toKtorLogger
 import kotlin.time.DurationUnit
 
 /**

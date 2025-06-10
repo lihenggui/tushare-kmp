@@ -1,11 +1,11 @@
 package li.mercury.tushare.client
 
-import com.aallam.openai.api.logging.LogLevel
-import com.aallam.openai.api.logging.Logger
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.cio.CIO
 import li.mercury.tushare.internal.extension.Timeout
+import li.mercury.tushare.internal.logging.LogLevel
+import li.mercury.tushare.internal.logging.Logger
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
