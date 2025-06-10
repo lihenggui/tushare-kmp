@@ -1,11 +1,6 @@
 package li.mercury.tushare
 
 import app.cash.turbine.test
-import io.ktor.client.engine.mock.MockEngine
-import io.ktor.client.engine.mock.respond
-import io.ktor.http.HttpHeaders
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.headersOf
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.basic.models.BakBasicParams
@@ -18,29 +13,13 @@ import li.mercury.tushare.api.stock.basic.models.StkPremarketParams
 import li.mercury.tushare.api.stock.basic.models.StkRewardsParams
 import li.mercury.tushare.api.stock.basic.models.StockCompanyParams
 import li.mercury.tushare.api.stock.basic.models.TradeCalParams
+import li.mercury.tushare.api.util.createMockEngine
 import li.mercury.tushare.models.Exchange
 import li.mercury.tushare.models.TsCode
-import okio.FileSystem
-import okio.Path.Companion.toPath
-import okio.SYSTEM
 import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class StockBasicApiTest {
-    private fun createMockEngine(responseFileName: String) =
-        MockEngine { _ ->
-            val file = "src/commonTest/resources/responses/$responseFileName".toPath()
-            val content =
-                FileSystem.SYSTEM.read(file) {
-                    readUtf8()
-                }
-            respond(
-                content = content,
-                status = HttpStatusCode.OK,
-                headers = headersOf(HttpHeaders.ContentType, "application/json"),
-            )
-        }
-
     private fun createClient(responseFileName: String) =
         TuShare(
             token = "",
