@@ -1,0 +1,189 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  checks: write
+
+jobs:
+  create-staging-repository:
+    name: Create staging repository
+    runs-on: ubuntu-latest
+    outputs:
+      repository-id: ${{ steps.staging.outputs.repository-id }}
+    steps:
+      - name: Create staging repository
+        id: staging
+        uses: nexus-actions/create-nexus-staging-repo@v1.2
+        with:
+          base_url: https://s01.oss.sonatype.org/service/local/
+          username: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_USERNAME }}
+          password: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_PASSWORD }}
+          staging_profile_id: ${{ secrets.ORG_GRADLE_PROJECT_STAGING_PROFILE_ID }}
+          description: ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }}
+
+  validation:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-home-cache-cleanup: true
+
+      - name: Cache Kotlin/Native compiler
+        uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-konan-
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v2
+
+      - name: Build all targets
+        run: ./gradlew build
+
+      - name: Run tests
+        run: ./gradlew allTests
+
+  publish-linux:
+    name: Publish Linux targets
+    needs: [ create-staging-repository, validation ]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Cache Kotlin/Native compiler
+        uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-konan-
+
+      - name: Publish Linux targets
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+          ORG_GRADLE_PROJECT_mavenCentralStagingRepositoryId: ${{ needs.create-staging-repository.outputs.repository-id }}
+        run: ./gradlew publishJvmPublicationToMavenCentralRepository publishKotlinMultiplatformPublicationToMavenCentralRepository publishLinuxX64PublicationToMavenCentralRepository --no-configuration-cache
+
+  publish-apple:
+    name: Publish Apple targets
+    needs: [ create-staging-repository, validation ]
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Cache Kotlin/Native compiler
+        uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-konan-
+
+      - name: Publish Apple targets
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+          ORG_GRADLE_PROJECT_mavenCentralStagingRepositoryId: ${{ needs.create-staging-repository.outputs.repository-id }}
+        run: ./gradlew publishIosArm64PublicationToMavenCentralRepository publishIosX64PublicationToMavenCentralRepository publishIosSimulatorArm64PublicationToMavenCentralRepository --no-configuration-cache
+
+  finalize:
+    name: Finalize release
+    runs-on: ubuntu-latest
+    needs: [ create-staging-repository, publish-linux, publish-apple ]
+    if: ${{ always() && needs.create-staging-repository.result == 'success' }}
+    
+    steps:
+      - name: Discard staging repository
+        if: ${{ needs.publish-linux.result != 'success' || needs.publish-apple.result != 'success' }}
+        uses: nexus-actions/drop-nexus-staging-repo@v1
+        with:
+          base_url: https://s01.oss.sonatype.org/service/local/
+          username: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_USERNAME }}
+          password: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_PASSWORD }}
+          staging_repository_id: ${{ needs.create-staging-repository.outputs.repository-id }}
+
+      - name: Release staging repository
+        if: ${{ needs.publish-linux.result == 'success' && needs.publish-apple.result == 'success' }}
+        uses: nexus-actions/release-nexus-staging-repo@v1.2
+        with:
+          base_url: https://s01.oss.sonatype.org/service/local/
+          username: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_USERNAME }}
+          password: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRAL_PASSWORD }}
+          staging_repository_id: ${{ needs.create-staging-repository.outputs.repository-id }}
+
+  create-github-release:
+    name: Create GitHub Release
+    needs: [ finalize, publish-linux, publish-apple ]
+    if: ${{ needs.publish-linux.result == 'success' && needs.publish-apple.result == 'success' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          name: Release ${{ steps.version.outputs.version }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
