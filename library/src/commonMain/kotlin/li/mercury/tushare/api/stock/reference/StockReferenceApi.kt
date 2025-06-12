@@ -1,8 +1,8 @@
 package li.mercury.tushare.api.stock.reference
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import li.mercury.tushare.TuShare
+import io.ktor.client.call.body
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
 import li.mercury.tushare.api.stock.reference.models.BlockTradeParams
 import li.mercury.tushare.api.stock.reference.models.BlockTradeResult
 import li.mercury.tushare.api.stock.reference.models.ConceptDetailParams
@@ -25,209 +25,124 @@ import li.mercury.tushare.api.stock.reference.models.Top10FloatHoldersParams
 import li.mercury.tushare.api.stock.reference.models.Top10FloatHoldersResult
 import li.mercury.tushare.api.stock.reference.models.Top10HoldersParams
 import li.mercury.tushare.api.stock.reference.models.Top10HoldersResult
+import li.mercury.tushare.http.HttpRequester
+import li.mercury.tushare.http.createRequest
+import li.mercury.tushare.http.perform
 import li.mercury.tushare.utils.toApiParams
 
 /**
- * 股票相关API的实现类
+ * 股票参考数据相关API的实现类
  */
 internal class StockReferenceApi(
-    private val tuShare: TuShare,
+    private val requester: HttpRequester
 ) : StockReferenceApiInterface {
     /**
      * 获取前十大股东
      * @param params 请求参数
-     * @return 前十大股东数据流
+     * @return 前十大股东数据
      */
-    override fun getTop10Holders(params: Top10HoldersParams): Flow<List<Top10HoldersResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "top10_holders",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(Top10HoldersResult.serializer())
-            emit(results)
-        }
+    override suspend fun getTop10Holders(params: Top10HoldersParams): List<Top10HoldersResult> {
+        val request = requester.createRequest("top10_holders", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取前十大流通股东
      * @param params 请求参数
-     * @return 前十大流通股东数据流
+     * @return 前十大流通股东数据
      */
-    override fun getTop10FloatHolders(params: Top10FloatHoldersParams): Flow<List<Top10FloatHoldersResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "top10_floatholders",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(Top10FloatHoldersResult.serializer())
-            emit(results)
-        }
+    override suspend fun getTop10FloatHolders(params: Top10FloatHoldersParams): List<Top10FloatHoldersResult> {
+        val request = requester.createRequest("top10_floatholders", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取股权质押统计数据
      * @param params 请求参数
-     * @return 股权质押统计数据流
+     * @return 股权质押统计数据
      */
-    override fun getPledgeStat(params: PledgeStatParams): Flow<List<PledgeStatResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "pledge_stat",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(PledgeStatResult.serializer())
-            emit(results)
-        }
+    override suspend fun getPledgeStat(params: PledgeStatParams): List<PledgeStatResult> {
+        val request = requester.createRequest("pledge_stat", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取股权质押明细数据
      * @param params 请求参数
-     * @return 股权质押明细数据流
+     * @return 股权质押明细数据
      */
-    override fun getPledgeDetail(params: PledgeDetailParams): Flow<List<PledgeDetailResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "pledge_detail",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(PledgeDetailResult.serializer())
-            emit(results)
-        }
+    override suspend fun getPledgeDetail(params: PledgeDetailParams): List<PledgeDetailResult> {
+        val request = requester.createRequest("pledge_detail", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取股票回购信息
      * @param params 请求参数
-     * @return 股票回购信息数据流
+     * @return 股票回购信息数据
      */
-    override fun getRepurchase(params: RepurchaseParams): Flow<List<RepurchaseResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "repurchase",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(RepurchaseResult.serializer())
-            emit(results)
-        }
+    override suspend fun getRepurchase(params: RepurchaseParams): List<RepurchaseResult> {
+        val request = requester.createRequest("repurchase", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取概念股分类
      * @param params 请求参数
-     * @return 概念股分类数据流
+     * @return 概念股分类数据
      */
-    override fun getConcept(params: ConceptParams): Flow<List<ConceptResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "concept",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ConceptResult.serializer())
-            emit(results)
-        }
+    override suspend fun getConcept(params: ConceptParams): List<ConceptResult> {
+        val request = requester.createRequest("concept", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取概念股列表
      * @param params 请求参数
-     * @return 概念股列表数据流
+     * @return 概念股列表数据
      */
-    override fun getConceptDetail(params: ConceptDetailParams): Flow<List<ConceptDetailResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "concept_detail",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ConceptDetailResult.serializer())
-            emit(results)
-        }
+    override suspend fun getConceptDetail(params: ConceptDetailParams): List<ConceptDetailResult> {
+        val request = requester.createRequest("concept_detail", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取限售股解禁数据
      * @param params 请求参数
-     * @return 限售股解禁数据流
+     * @return 限售股解禁数据
      */
-    override fun getShareFloat(params: ShareFloatParams): Flow<List<ShareFloatResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "share_float",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ShareFloatResult.serializer())
-            emit(results)
-        }
+    override suspend fun getShareFloat(params: ShareFloatParams): List<ShareFloatResult> {
+        val request = requester.createRequest("share_float", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取大宗交易数据
      * @param params 请求参数
-     * @return 大宗交易数据流
+     * @return 大宗交易数据
      */
-    override fun getBlockTrade(params: BlockTradeParams): Flow<List<BlockTradeResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "block_trade",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(BlockTradeResult.serializer())
-            emit(results)
-        }
+    override suspend fun getBlockTrade(params: BlockTradeParams): List<BlockTradeResult> {
+        val request = requester.createRequest("block_trade", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取股东人数
      * @param params 请求参数
-     * @return 股东人数数据流
+     * @return 股东人数数据
      */
-    override fun getStockHolderNumber(params: StockHolderNumberParams): Flow<List<StockHolderNumberResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "stk_holdernumber",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(StockHolderNumberResult.serializer())
-            emit(results)
-        }
+    override suspend fun getStockHolderNumber(params: StockHolderNumberParams): List<StockHolderNumberResult> {
+        val request = requester.createRequest("stk_holdernumber", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取股东增减持数据
      * @param params 请求参数
-     * @return 股东增减持数据流
+     * @return 股东增减持数据
      */
-    override fun getStockHolderTrade(params: StockHolderTradeParams): Flow<List<StockHolderTradeResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "stk_holdertrade",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(StockHolderTradeResult.serializer())
-            emit(results)
-        }
+    override suspend fun getStockHolderTrade(params: StockHolderTradeParams): List<StockHolderTradeResult> {
+        val request = requester.createRequest("stk_holdertrade", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 }
