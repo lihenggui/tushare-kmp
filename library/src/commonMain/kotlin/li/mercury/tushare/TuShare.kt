@@ -1,7 +1,16 @@
 package li.mercury.tushare
 
 import io.ktor.client.HttpClientConfig
+import li.mercury.tushare.api.index.IndexApiInterface
 import li.mercury.tushare.api.news.NewsApiInterface
+import li.mercury.tushare.api.stock.basic.StockBasicApiInterface
+import li.mercury.tushare.api.stock.board.StockBoardApiInterface
+import li.mercury.tushare.api.stock.character.StockCharacterApiInterface
+import li.mercury.tushare.api.stock.finance.StockFinanceApiInterface
+import li.mercury.tushare.api.stock.flow.StockFlowApiInterface
+import li.mercury.tushare.api.stock.margin.StockMarginApiInterface
+import li.mercury.tushare.api.stock.market.StockMarketApiInterface
+import li.mercury.tushare.api.stock.reference.StockReferenceApiInterface
 import li.mercury.tushare.client.LoggingConfig
 import li.mercury.tushare.client.ProxyConfig
 import li.mercury.tushare.client.RetryStrategy
@@ -17,6 +26,15 @@ import kotlin.time.Duration.Companion.seconds
  */
 public interface TuShare :
     NewsApiInterface,
+    IndexApiInterface,
+    StockBasicApiInterface,
+    StockBoardApiInterface,
+    StockCharacterApiInterface,
+    StockFinanceApiInterface,
+    StockFlowApiInterface,
+    StockMarginApiInterface,
+    StockMarketApiInterface,
+    StockReferenceApiInterface,
     AutoCloseable
 
 /**
