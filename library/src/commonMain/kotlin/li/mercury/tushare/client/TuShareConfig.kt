@@ -12,18 +12,18 @@ import kotlin.time.Duration.Companion.seconds
 /**
  * TuShare客户端配置
  */
-class TuShareConfig(
-    val token: String,
-    val host: TuShareHost = TuShareHost.TuShare,
-    val logging: LoggingConfig = LoggingConfig(),
-    val headers: Map<String, String> = emptyMap(),
-    val timeout: Timeout = Timeout(socket = 30.seconds),
-    val engine: HttpClientEngine? = null,
-    val retry: RetryStrategy = RetryStrategy(),
-    val proxy: ProxyConfig? = null,
-    val httpClientConfig: HttpClientConfig<*>.() -> Unit = {}
+public class TuShareConfig(
+    public val token: String,
+    public val host: TuShareHost = TuShareHost.TuShare,
+    public val logging: LoggingConfig = LoggingConfig(),
+    public val headers: Map<String, String> = emptyMap(),
+    public val timeout: Timeout = Timeout(socket = 30.seconds),
+    public val engine: HttpClientEngine? = null,
+    public val retry: RetryStrategy = RetryStrategy(),
+    public val proxy: ProxyConfig? = null,
+    public val httpClientConfig: HttpClientConfig<*>.() -> Unit = {}
 ) {
-    constructor(
+    public constructor(
         token: String,
         logLevel: LogLevel = LogLevel.Headers,
         logger: Logger = Logger.Simple,
@@ -49,7 +49,7 @@ class TuShareConfig(
  * A class to configure the TuShare host.
  * It provides a mechanism to customize the base URL and additional query parameters used in TuShare API requests.
  */
-class TuShareHost(
+public class TuShareHost(
 
     /**
      * Base URL configuration.
@@ -57,31 +57,31 @@ class TuShareHost(
      * The URL can include a base path, but in that case, the base path should always end with a `/`.
      * For example, a valid base URL would be "https://api.tushare.pro/".
      */
-    val baseUrl: String,
+    public val baseUrl: String,
 
     /**
      * Additional query parameters to be appended to all API requests to TuShare.
      * These can be used to provide additional configuration or context for the API requests.
      */
-    val queryParams: Map<String, String> = emptyMap()
+    public val queryParams: Map<String, String> = emptyMap()
 ) {
 
-    companion object {
+    public companion object {
         /**
          * A pre-configured instance of [TuShareHost] with the base URL set as `https://api.tushare.pro/`.
          */
-        val TuShare: TuShareHost = TuShareHost(baseUrl = "https://api.tushare.pro/")
+        public val TuShare: TuShareHost = TuShareHost(baseUrl = "https://api.tushare.pro/")
     }
 }
 
 /** Proxy configuration. */
-sealed interface ProxyConfig {
+public sealed interface ProxyConfig {
 
     /** Creates an HTTP proxy from [url]. */
-    class Http(val url: String) : ProxyConfig
+    public class Http(public val url: String) : ProxyConfig
 
     /** Create socks proxy from [host] and [port]. */
-    class Socks(val host: String, val port: Int) : ProxyConfig
+    public class Socks(public val host: String, public val port: Int) : ProxyConfig
 }
 
 
@@ -92,10 +92,10 @@ sealed interface ProxyConfig {
  * @param base retry base value
  * @param maxDelay max retry delay
  */
-class RetryStrategy(
-    val maxRetries: Int = 3,
-    val base: Double = 2.0,
-    val maxDelay: Duration = 60.seconds,
+public class RetryStrategy(
+    public val maxRetries: Int = 3,
+    public val base: Double = 2.0,
+    public val maxDelay: Duration = 60.seconds,
 )
 
 /**
@@ -105,8 +105,8 @@ class RetryStrategy(
  * @property logger the logger instance to be used by the HTTP client.
  * @property sanitize flag indicating whether to sanitize sensitive information (i.e., authorization header) in the logs
  */
-class LoggingConfig(
-    val logLevel: LogLevel = LogLevel.Headers,
-    val logger: Logger = Logger.Simple,
-    val sanitize: Boolean = true,
+public class LoggingConfig(
+    public val logLevel: LogLevel = LogLevel.Headers,
+    public val logger: Logger = Logger.Simple,
+    public val sanitize: Boolean = true,
 )

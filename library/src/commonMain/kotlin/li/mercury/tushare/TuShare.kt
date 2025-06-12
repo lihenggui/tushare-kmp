@@ -79,5 +79,5 @@ public fun TuShare(
 public fun TuShare(config: TuShareConfig): TuShare {
     val httpClient = createHttpClient(config)
     val transport = HttpTransport(httpClient, config)
-    return TuShareApi(transport, config)
+    return TuShareApi(transport)
 }
