@@ -1,8 +1,8 @@
 package li.mercury.tushare.api.stock.margin
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import li.mercury.tushare.TuShare
+import io.ktor.client.call.body
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
 import li.mercury.tushare.api.stock.margin.models.MarginDetailParams
 import li.mercury.tushare.api.stock.margin.models.MarginDetailResult
 import li.mercury.tushare.api.stock.margin.models.MarginParams
@@ -17,137 +17,84 @@ import li.mercury.tushare.api.stock.margin.models.SlbSecDetailParams
 import li.mercury.tushare.api.stock.margin.models.SlbSecDetailResult
 import li.mercury.tushare.api.stock.margin.models.SlbSecParams
 import li.mercury.tushare.api.stock.margin.models.SlbSecResult
+import li.mercury.tushare.http.HttpRequester
+import li.mercury.tushare.http.createRequest
+import li.mercury.tushare.http.perform
 import li.mercury.tushare.utils.toApiParams
 
 /**
- * 股票相关API的实现类
+ * 股票融资融券相关API的实现类
  */
 internal class StockMarginApi(
-    private val tuShare: TuShare,
+    private val requester: HttpRequester
 ) : StockMarginApiInterface {
     /**
      * 获取融资融券交易汇总数据
      * @param params 请求参数
-     * @return 融资融券交易汇总数据流
+     * @return 融资融券交易汇总数据
      */
-    override fun getMargin(params: MarginParams): Flow<List<MarginResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "margin",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(MarginResult.serializer())
-            emit(results)
-        }
+    override suspend fun getMargin(params: MarginParams): List<MarginResult> {
+        val request = requester.createRequest("margin", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取融资融券交易明细数据
      * @param params 请求参数
-     * @return 融资融券交易明细数据流
+     * @return 融资融券交易明细数据
      */
-    override fun getMarginDetail(params: MarginDetailParams): Flow<List<MarginDetailResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "margin_detail",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(MarginDetailResult.serializer())
-            emit(results)
-        }
+    override suspend fun getMarginDetail(params: MarginDetailParams): List<MarginDetailResult> {
+        val request = requester.createRequest("margin_detail", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取融资融券标的（盘前更新）
      * @param params 请求参数
-     * @return 融资融券标的数据流
+     * @return 融资融券标的数据
      */
-    override fun getMarginSecs(params: MarginSecsParams): Flow<List<MarginSecsResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "margin_secs",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(MarginSecsResult.serializer())
-            emit(results)
-        }
+    override suspend fun getMarginSecs(params: MarginSecsParams): List<MarginSecsResult> {
+        val request = requester.createRequest("margin_secs", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取转融券交易汇总数据
      * @param params 请求参数
-     * @return 转融券交易汇总数据流
+     * @return 转融券交易汇总数据
      */
-    override fun getSlbSec(params: SlbSecParams): Flow<List<SlbSecResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "slb_sec",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(SlbSecResult.serializer())
-            emit(results)
-        }
+    override suspend fun getSlbSec(params: SlbSecParams): List<SlbSecResult> {
+        val request = requester.createRequest("slb_sec", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取转融资交易汇总数据
      * @param params 请求参数
-     * @return 转融资交易汇总数据流
+     * @return 转融资交易汇总数据
      */
-    override fun getSlbLen(params: SlbLenParams): Flow<List<SlbLenResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "slb_len",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(SlbLenResult.serializer())
-            emit(results)
-        }
+    override suspend fun getSlbLen(params: SlbLenParams): List<SlbLenResult> {
+        val request = requester.createRequest("slb_len", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取转融券交易明细数据
      * @param params 请求参数
-     * @return 转融券交易明细数据流
+     * @return 转融券交易明细数据
      */
-    override fun getSlbSecDetail(params: SlbSecDetailParams): Flow<List<SlbSecDetailResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "slb_sec_detail",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(SlbSecDetailResult.serializer())
-            emit(results)
-        }
+    override suspend fun getSlbSecDetail(params: SlbSecDetailParams): List<SlbSecDetailResult> {
+        val request = requester.createRequest("slb_sec_detail", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取做市借券交易汇总数据
      * @param params 请求参数
-     * @return 做市借券交易汇总数据流
+     * @return 做市借券交易汇总数据
      */
-    override fun getSlbLenMm(params: SlbLenMmParams): Flow<List<SlbLenMmResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "slb_len_mm",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(SlbLenMmResult.serializer())
-            emit(results)
-        }
+    override suspend fun getSlbLenMm(params: SlbLenMmParams): List<SlbLenMmResult> {
+        val request = requester.createRequest("slb_len_mm", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 }
