@@ -1,8 +1,8 @@
 package li.mercury.tushare.api.stock.finance
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import li.mercury.tushare.TuShare
+import io.ktor.client.call.body
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
 import li.mercury.tushare.api.stock.finance.models.BalanceSheetParams
 import li.mercury.tushare.api.stock.finance.models.BalanceSheetResult
 import li.mercury.tushare.api.stock.finance.models.CashflowParams
@@ -23,191 +23,114 @@ import li.mercury.tushare.api.stock.finance.models.ForecastParams
 import li.mercury.tushare.api.stock.finance.models.ForecastResult
 import li.mercury.tushare.api.stock.finance.models.IncomeParams
 import li.mercury.tushare.api.stock.finance.models.IncomeResult
+import li.mercury.tushare.http.HttpRequester
+import li.mercury.tushare.http.createRequest
+import li.mercury.tushare.http.perform
 import li.mercury.tushare.utils.toApiParams
 
 /**
- * 股票相关API的实现类
+ * 股票财务数据相关API的实现类
  */
 internal class StockFinanceApi(
-    private val tuShare: TuShare,
+    private val requester: HttpRequester
 ) : StockFinanceApiInterface {
-    /*
+    /**
      * 获取利润表数据
      * @param params 请求参数
-     * @return 利润表数据流
+     * @return 利润表数据
      */
-    override fun getIncome(params: IncomeParams): Flow<List<IncomeResult>> =
-        flow {
-            val apiParams = params.toApiParams()
+    override suspend fun getIncome(params: IncomeParams): List<IncomeResult> {
+        val request = requester.createRequest("income", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
-            val response =
-                tuShare.callApi(
-                    apiName = "income",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(IncomeResult.serializer())
-            emit(results)
-        }
-
-    /*
+    /**
      * 获取资产负债表数据
      * @param params 请求参数
-     * @return 资产负债表数据流
+     * @return 资产负债表数据
      */
-    override fun getBalanceSheet(params: BalanceSheetParams): Flow<List<BalanceSheetResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "balancesheet",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(BalanceSheetResult.serializer())
-            emit(results)
-        }
+    override suspend fun getBalanceSheet(params: BalanceSheetParams): List<BalanceSheetResult> {
+        val request = requester.createRequest("balancesheet", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取现金流量表数据
      * @param params 请求参数
-     * @return 现金流量表数据流
+     * @return 现金流量表数据
      */
-    override fun getCashflow(params: CashflowParams): Flow<List<CashflowResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "cashflow",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(CashflowResult.serializer())
-            emit(results)
-        }
+    override suspend fun getCashflow(params: CashflowParams): List<CashflowResult> {
+        val request = requester.createRequest("cashflow", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取业绩预告数据
      * @param params 请求参数
-     * @return 业绩预告数据流
+     * @return 业绩预告数据
      */
-    override fun getForecast(params: ForecastParams): Flow<List<ForecastResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "forecast",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ForecastResult.serializer())
-            emit(results)
-        }
+    override suspend fun getForecast(params: ForecastParams): List<ForecastResult> {
+        val request = requester.createRequest("forecast", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取业绩快报数据
      * @param params 请求参数
-     * @return 业绩快报数据流
+     * @return 业绩快报数据
      */
-    override fun getExpress(params: ExpressParams): Flow<List<ExpressResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "express",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ExpressResult.serializer())
-            emit(results)
-        }
+    override suspend fun getExpress(params: ExpressParams): List<ExpressResult> {
+        val request = requester.createRequest("express", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取分红送股数据
      * @param params 请求参数
-     * @return 分红送股数据流
+     * @return 分红送股数据
      */
-    override fun getDividend(params: DividendParams): Flow<List<DividendResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "dividend",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(DividendResult.serializer())
-            emit(results)
-        }
+    override suspend fun getDividend(params: DividendParams): List<DividendResult> {
+        val request = requester.createRequest("dividend", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取财务指标数据
      * @param params 请求参数
-     * @return 财务指标数据流
+     * @return 财务指标数据
      */
-    override fun getFinaIndicator(params: FinaIndicatorParams): Flow<List<FinaIndicatorResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "fina_indicator",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(FinaIndicatorResult.serializer())
-            emit(results)
-        }
+    override suspend fun getFinaIndicator(params: FinaIndicatorParams): List<FinaIndicatorResult> {
+        val request = requester.createRequest("fina_indicator", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取财务审计意见数据
      * @param params 请求参数
-     * @return 财务审计意见数据流
+     * @return 财务审计意见数据
      */
-    override fun getFinaAudit(params: FinaAuditParams): Flow<List<FinaAuditResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "fina_audit",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(FinaAuditResult.serializer())
-            emit(results)
-        }
+    override suspend fun getFinaAudit(params: FinaAuditParams): List<FinaAuditResult> {
+        val request = requester.createRequest("fina_audit", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取上市公司主营业务构成数据
      * @param params 请求参数
-     * @return 主营业务构成数据流
+     * @return 主营业务构成数据
      */
-    override fun getFinaMainbz(params: FinaMainbzParams): Flow<List<FinaMainbzResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "fina_mainbz",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(FinaMainbzResult.serializer())
-            emit(results)
-        }
+    override suspend fun getFinaMainbz(params: FinaMainbzParams): List<FinaMainbzResult> {
+        val request = requester.createRequest("fina_mainbz", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取财报披露计划数据
      * @param params 请求参数
-     * @return 财报披露计划数据流
+     * @return 财报披露计划数据
      */
-    override fun getDisclosureDate(params: DisclosureDateParams): Flow<List<DisclosureDateResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "disclosure_date",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(DisclosureDateResult.serializer())
-            emit(results)
-        }
+    override suspend fun getDisclosureDate(params: DisclosureDateParams): List<DisclosureDateResult> {
+        val request = requester.createRequest("disclosure_date", params.toApiParams())
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 }
