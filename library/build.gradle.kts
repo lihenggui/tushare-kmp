@@ -8,7 +8,6 @@ import org.jetbrains.kotlin.gradle.targets.js.testing.KotlinJsTest
 import org.jetbrains.kotlin.gradle.targets.jvm.tasks.KotlinJvmTest
 import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeTest
 import org.jetbrains.kotlin.konan.target.HostManager
-import kotlin.apply
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -20,6 +19,7 @@ group = "li.mercury.tushare"
 version = "1.0.0"
 
 kotlin {
+    explicitApi()
     jvm()
     native()
     jsNode()

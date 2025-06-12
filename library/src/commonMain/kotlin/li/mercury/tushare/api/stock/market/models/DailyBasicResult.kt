@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 每日指标返回对象类
  */
 @Serializable
-data class DailyBasicResult(
+public data class DailyBasicResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

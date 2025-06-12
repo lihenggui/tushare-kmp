@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
 import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
 
 @Serializable
-data class KplListResult(
+public data class KplListResult(
     /** 代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

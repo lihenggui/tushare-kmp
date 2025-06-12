@@ -8,7 +8,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 新闻联播返回结果
  */
 @Serializable
-data class CctvNewsResult(
+public data class CctvNewsResult(
     /**
      * 新闻日期
      */

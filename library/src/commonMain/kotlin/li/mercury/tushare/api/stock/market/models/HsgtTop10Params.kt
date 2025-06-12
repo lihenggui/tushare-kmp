@@ -3,7 +3,6 @@ package li.mercury.tushare.api.stock.market.models
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import li.mercury.tushare.api.stock.market.models.HsMarketType
 import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
@@ -11,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 沪深股通十大成交股API请求参数
  */
 @Serializable
-data class HsgtTop10Params(
+public data class HsgtTop10Params(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

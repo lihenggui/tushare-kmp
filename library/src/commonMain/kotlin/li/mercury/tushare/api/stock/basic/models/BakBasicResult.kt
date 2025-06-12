@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 备用基础列表返回对象类
  */
 @Serializable
-data class BakBasicResult(
+public data class BakBasicResult(
     /** 交易日期 */
     @SerialName("trade_date")
     @Serializable(with = LocalDateAsStringSerializer::class)

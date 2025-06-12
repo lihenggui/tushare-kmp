@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 券商每月荐股返回对象
  */
 @Serializable
-data class BrokerRecommendResult(
+public data class BrokerRecommendResult(
     /** 月度（YYYYMM） */
     val month: String,
     /** 券商名称 */

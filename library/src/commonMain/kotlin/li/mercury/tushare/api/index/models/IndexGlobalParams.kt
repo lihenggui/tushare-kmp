@@ -9,7 +9,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 国际指数日线行情请求参数
  */
 @Serializable
-data class IndexGlobalParams(
+public data class IndexGlobalParams(
     /**
      * TS指数代码
      *

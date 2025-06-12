@@ -11,7 +11,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 融资融券标的返回结果
  */
 @Serializable
-data class MarginSecsResult(
+public data class MarginSecsResult(
     /** 交易日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("trade_date")

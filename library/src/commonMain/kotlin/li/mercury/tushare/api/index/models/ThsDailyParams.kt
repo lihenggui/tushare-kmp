@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 同花顺板块指数行情请求参数
  */
 @Serializable
-data class ThsDailyParams(
+public data class ThsDailyParams(
     /**
      * 指数代码
      *

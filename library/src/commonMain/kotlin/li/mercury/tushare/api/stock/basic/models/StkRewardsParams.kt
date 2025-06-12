@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 管理层薪酬和持股API请求参数
  */
 @Serializable
-data class StkRewardsParams(
+public data class StkRewardsParams(
     /** TS股票代码（必填） */
     @SerialName("ts_code")
     val tsCode: TsCode,

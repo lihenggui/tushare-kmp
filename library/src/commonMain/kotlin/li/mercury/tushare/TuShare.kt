@@ -15,7 +15,7 @@ import kotlin.time.Duration.Companion.seconds
 /**
  * TuShare API.
  */
-interface TuShare :
+public interface TuShare :
     NewsApiInterface,
     AutoCloseable
 
@@ -31,7 +31,7 @@ interface TuShare :
  * @param retry rate limit retry configuration
  * @param httpClientConfig additional custom client configuration
  */
-fun TuShare(
+public fun TuShare(
     token: String,
     loggingConfig: LoggingConfig = LoggingConfig(),
     header: Map<String, String> = emptyMap(),
@@ -58,7 +58,7 @@ fun TuShare(
  *
  * @param config client configuration
  */
-fun TuShare(config: TuShareConfig): TuShare {
+public fun TuShare(config: TuShareConfig): TuShare {
     val httpClient = createHttpClient(config)
     val transport = HttpTransport(httpClient)
     return TuShareApi(transport, config)

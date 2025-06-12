@@ -9,8 +9,8 @@ import kotlinx.serialization.serializer
 /**
  * 数据类与Map之间转换的工具类
  */
-object DataClassConversions {
-    val json = Json { ignoreUnknownKeys = true }
+internal object DataClassConversions {
+    val json: Json = Json { ignoreUnknownKeys = true }
 
     /**
      * 将驼峰命名转换为蛇形命名
@@ -58,4 +58,5 @@ object DataClassConversions {
 /**
  * 扩展函数：将任意可序列化的数据类转换为API参数Map
  */
-inline fun <reified T> T.toApiParams(snakeCase: Boolean = true): Map<String, String> = DataClassConversions.toMap(this, snakeCase)
+internal inline fun <reified T> T.toApiParams(snakeCase: Boolean = true): Map<String, String> =
+    DataClassConversions.toMap(this, snakeCase)

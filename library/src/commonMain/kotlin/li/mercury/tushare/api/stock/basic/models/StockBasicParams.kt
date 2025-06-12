@@ -9,7 +9,7 @@ import li.mercury.tushare.models.TsCode
  * 股票基本信息API请求参数
  */
 @Serializable
-data class StockBasicParams(
+public data class StockBasicParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

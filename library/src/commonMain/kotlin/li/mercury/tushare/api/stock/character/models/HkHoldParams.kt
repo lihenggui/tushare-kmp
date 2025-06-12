@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class HkHoldParams(
+public data class HkHoldParams(
     /** 交易所代码 */
     val code: String? = null,
     /** 股票代码 */

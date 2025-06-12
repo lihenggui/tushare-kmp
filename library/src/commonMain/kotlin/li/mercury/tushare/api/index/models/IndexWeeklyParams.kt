@@ -7,7 +7,7 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class IndexWeeklyParams(
+public data class IndexWeeklyParams(
     /**
      * TS 代码
      *

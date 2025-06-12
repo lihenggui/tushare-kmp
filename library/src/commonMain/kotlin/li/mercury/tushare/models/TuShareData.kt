@@ -14,7 +14,7 @@ import kotlinx.serialization.json.buildJsonObject
  * @property items 数据行列表
  */
 @Serializable
-data class TuShareData(
+public data class TuShareData(
     @SerialName("fields") val fields: List<String>,
     @SerialName("items") val items: List<List<JsonElement>>,
 ) {
@@ -25,7 +25,7 @@ data class TuShareData(
      * @param serializer 目标类型的序列化器
      * @return 类型化对象列表
      */
-    inline fun <reified T> getResponseItems(serializer: KSerializer<T>): List<T> {
+    internal inline fun <reified T> getResponseItems(serializer: KSerializer<T>): List<T> {
         val json = Json { ignoreUnknownKeys = true }
 
         return items.map { item ->

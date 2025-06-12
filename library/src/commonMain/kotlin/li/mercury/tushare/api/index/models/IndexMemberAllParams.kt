@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 申万行业成分构成API请求参数
  */
 @Serializable
-data class IndexMemberAllParams(
+public data class IndexMemberAllParams(
     /**
      * 一级行业代码
      *

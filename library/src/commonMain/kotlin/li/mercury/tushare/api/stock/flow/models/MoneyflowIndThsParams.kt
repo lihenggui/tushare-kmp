@@ -7,7 +7,7 @@ import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
-data class MoneyflowIndThsParams(
+public data class MoneyflowIndThsParams(
     /** 代码 */
     @SerialName("ts_code")
     val tsCode: TsCode? = null,

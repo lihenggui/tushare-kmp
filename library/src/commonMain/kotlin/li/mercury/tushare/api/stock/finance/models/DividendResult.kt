@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 分红送股返回结果
  */
 @Serializable
-data class DividendResult(
+public data class DividendResult(
     /** TS代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

@@ -17,34 +17,33 @@ import li.mercury.tushare.api.news.models.NewsResult
 /**
  * 新闻相关API的存储库接口
  */
-interface NewsApiInterface {
+public interface NewsApiInterface {
     /**
      * 获取全量公告数据
      */
-    suspend fun getAnnsD(params: AnnouncementParams): List<AnnouncementResult>
-
+    public suspend fun getAnnsD(params: AnnouncementParams): List<AnnouncementResult>
     /**
      * 获取上证E互动问答数据
      */
-    fun getIrmQaSh(params: IrmQaShParams): Flow<List<IrmQaShResult>>
+    public fun getIrmQaSh(params: IrmQaShParams): Flow<List<IrmQaShResult>>
 
     /**
      * 获取新闻快讯数据
      */
-    fun getNews(params: NewsParams): Flow<List<NewsResult>>
+    public fun getNews(params: NewsParams): Flow<List<NewsResult>>
 
     /**
      * 获取新闻联播数据
      */
-    fun getCctvNews(params: CctvNewsParams): Flow<List<CctvNewsResult>>
+    public fun getCctvNews(params: CctvNewsParams): Flow<List<CctvNewsResult>>
 
     /**
      * 获取长篇通讯信息
      */
-    fun getMajorNews(params: MajorNewsParams): Flow<List<MajorNewsResult>>
+    public fun getMajorNews(params: MajorNewsParams): Flow<List<MajorNewsResult>>
 
     /**
      * 获取深证互动易问答数据
      */
-    fun getIrmQaSz(params: IrmQaSzParams): Flow<List<IrmQaSzResult>>
+    public fun getIrmQaSz(params: IrmQaSzParams): Flow<List<IrmQaSzResult>>
 }

@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股权质押明细返回对象类
  */
 @Serializable
-data class PledgeDetailResult(
+public data class PledgeDetailResult(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,
@@ -62,7 +62,7 @@ data class PledgeDetailResult(
  * 是否已解押状态
  */
 @Serializable
-enum class ReleaseStatus {
+public enum class ReleaseStatus {
     /** 是 */
     Y,
 
@@ -74,7 +74,7 @@ enum class ReleaseStatus {
  * 是否回购状态
  */
 @Serializable
-enum class BuybackStatus {
+public enum class BuybackStatus {
     /** 是 */
     Y,
 

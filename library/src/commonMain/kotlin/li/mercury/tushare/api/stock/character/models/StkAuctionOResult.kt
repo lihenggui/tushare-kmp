@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股票开盘集合竞价数据返回对象
  */
 @Serializable
-data class StkAuctionOResult(
+public data class StkAuctionOResult(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

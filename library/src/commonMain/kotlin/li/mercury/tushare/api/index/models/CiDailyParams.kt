@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 中信行业指数日线行情请求参数
  */
 @Serializable
-data class CiDailyParams(
+public data class CiDailyParams(
     /**
      * 行业代码
      */

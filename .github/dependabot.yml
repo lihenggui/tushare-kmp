@@ -1,0 +1,30 @@
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    registries: "*"
+    labels: [ "version update" ]
+    groups:
+      kotlin-ksp:
+        patterns:
+          - "org.jetbrains.kotlin:*"
+          - "org.jetbrains.kotlin.multiplatform"
+          - "org.jetbrains.kotlin.plugin.serialization"
+      gradle-plugin-and-build-tools:
+        patterns:
+          - "com.vanniktech.maven.publish"
+      ktor-dependencies:
+        patterns:
+          - "io.ktor:*"
+registries:
+  maven-google:
+    type: "maven-repository"
+    url: "https://maven.google.com"
+    replaces-base: true

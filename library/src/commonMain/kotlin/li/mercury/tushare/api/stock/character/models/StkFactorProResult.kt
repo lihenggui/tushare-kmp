@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 股票技术面因子（专业版）返回结果
  */
 @Serializable
-data class StkFactorProResult(
+public data class StkFactorProResult(
     /** 股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

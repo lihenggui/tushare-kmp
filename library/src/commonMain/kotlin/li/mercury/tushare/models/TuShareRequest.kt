@@ -13,7 +13,7 @@ import li.mercury.tushare.internal.extension.TuShareDsl
  * @property fields 需要获取的特定字段列表，以逗号分隔
  */
 @Serializable
-data class TuShareRequest(
+public data class TuShareRequest(
     @SerialName("api_name") val apiName: String,
     @SerialName("token") val token: String,
     @SerialName("params") val params: Map<String, String> = emptyMap(),

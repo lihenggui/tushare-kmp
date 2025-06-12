@@ -8,7 +8,7 @@ import li.mercury.tushare.models.TsCode
  * 股权质押明细API请求参数
  */
 @Serializable
-data class PledgeDetailParams(
+public data class PledgeDetailParams(
     /** TS股票代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

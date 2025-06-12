@@ -10,7 +10,7 @@ import li.mercury.tushare.utils.LocalDateAsStringSerializer
  * 指数技术因子专业版返回结果
  */
 @Serializable
-data class IdxFactorProResult(
+public data class IdxFactorProResult(
     /** TS指数代码 */
     @SerialName("ts_code")
     val tsCode: TsCode,

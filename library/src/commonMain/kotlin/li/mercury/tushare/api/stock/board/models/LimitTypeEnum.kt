@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class LimitTypeEnum {
+public enum class LimitTypeEnum {
     @SerialName("涨停池")
     LIMIT_UP_POOL,
 
