@@ -1,0 +1,98 @@
+package li.mercury.tushare
+
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import li.mercury.tushare.api.news.models.AnnouncementParams
+import li.mercury.tushare.api.news.models.CctvNewsParams
+import li.mercury.tushare.api.news.models.IrmQaShParams
+import li.mercury.tushare.api.news.models.IrmQaSzParams
+import li.mercury.tushare.api.news.models.MajorNewsParams
+import li.mercury.tushare.api.news.models.NewsParams
+import li.mercury.tushare.models.TsCode
+import kotlin.test.Test
+import kotlin.test.assertNotNull
+
+class TestNewsApi : TestTuShare() {
+
+    @Test
+    fun testAnnsDWorks() = test {
+        val annsConfig = createConfigWithMockEngine("anns_d.json")
+        val tuShareInstance = generateTuShare(annsConfig)
+
+        val result = tuShareInstance.getAnnsD(
+            AnnouncementParams(
+                tsCode = TsCode("000001", "SZ")
+            )
+        )
+        assertNotNull(result, "公告数据不应为空")
+    }
+
+    @Test
+    fun testIrmQaShWorks() = test {
+        val config = createConfigWithMockEngine("irm_qa_sh.json")
+        val tuShareInstance = generateTuShare(config)
+
+        val result = tuShareInstance.getIrmQaSh(
+            IrmQaShParams(
+                tradeDate = LocalDate(2025, 2, 12),
+                tsCode = TsCode("601121", "SH"),
+            )
+        )
+        assertNotNull(result, "上证E互动问答数据不应为空")
+    }
+
+    @Test
+    fun testNewsWorks() = test {
+        val config = createConfigWithMockEngine("news.json")
+        val tuShareInstance = generateTuShare(config)
+
+        val result = tuShareInstance.getNews(
+            NewsParams(
+                startDate = LocalDateTime(2025, 2, 12, 9, 0, 0),
+                endDate = LocalDateTime(2025, 2, 12, 9, 10, 0),
+            )
+        )
+        assertNotNull(result, "新闻快讯数据不应为空")
+    }
+
+    // Test skipped, no permission
+    // @Test
+    fun testCctvNewsWorks() = test {
+        val config = createConfigWithMockEngine("cctv_news.json")
+        val tuShareInstance = generateTuShare(config)
+
+        val result = tuShareInstance.getCctvNews(
+            CctvNewsParams(date = LocalDate(2025, 2, 12))
+        )
+        assertNotNull(result, "新闻联播数据不应为空")
+    }
+
+    @Test
+    fun testMajorNewsWorks() = test {
+        val config = createConfigWithMockEngine("major_news.json")
+        val tuShareInstance = generateTuShare(config)
+
+        val result = tuShareInstance.getMajorNews(
+            MajorNewsParams(
+                startDate = LocalDateTime(2018, 11, 21, 9, 0, 0),
+                endDate = LocalDateTime(2018, 11, 22, 10, 10, 0),
+                src = "人民网",
+            )
+        )
+        assertNotNull(result, "长篇通讯数据不应为空")
+    }
+
+    @Test
+    fun testIrmQaSzWorks() = test {
+        val config = createConfigWithMockEngine("irm_qa_sz.json")
+        val tuShareInstance = generateTuShare(config)
+
+        val result = tuShareInstance.getIrmQaSz(
+            IrmQaSzParams(
+                tradeDate = LocalDate(2025, 2, 12),
+                tsCode = TsCode("002254", "SZ"),
+            )
+        )
+        assertNotNull(result, "深证互动易问答数据不应为空")
+    }
+}

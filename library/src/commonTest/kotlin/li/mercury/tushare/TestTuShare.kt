@@ -32,7 +32,8 @@ private fun transport(config: TuShareConfig? = null): HttpTransport {
     return HttpTransport(
         createHttpClient(
             config ?: testConfig
-        )
+        ),
+        config = testConfig,
     )
 }
 
@@ -56,8 +57,7 @@ abstract class TestTuShare {
         config: TuShareConfig
     ): TuShareApi {
         return TuShareApi(
-            requester = transport(config),
-            config = config
+            requester = transport(config)
         )
     }
 
