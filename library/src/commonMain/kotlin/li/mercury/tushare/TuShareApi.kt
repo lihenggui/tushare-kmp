@@ -15,5 +15,5 @@ internal class TuShareApi(
     private val requester: HttpRequester,
     private val config: TuShareConfig
 ) : TuShare,
-    NewsApiInterface by NewsApi(requester, config),
+    NewsApiInterface by NewsApi(requester),
     AutoCloseable by requester

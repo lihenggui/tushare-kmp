@@ -16,6 +16,7 @@ import io.ktor.util.reflect.TypeInfo
 import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.SerializationException
+import li.mercury.tushare.client.TuShareConfig
 import li.mercury.tushare.internal.extension.TuShareAPIException
 import li.mercury.tushare.internal.extension.TuShareAuthenticationException
 import li.mercury.tushare.internal.extension.TuShareError
@@ -30,7 +31,10 @@ import li.mercury.tushare.internal.extension.TuShareTimeoutException
 /**
  * TuShare HTTP传输层
  */
-internal class HttpTransport(private val httpClient: HttpClient) : HttpRequester {
+internal class HttpTransport(
+    private val httpClient: HttpClient,
+    override val config: TuShareConfig,
+) : HttpRequester {
 
     /**
      * 执行HTTP请求并获取结果

@@ -2,7 +2,6 @@ package li.mercury.tushare.api.index
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import li.mercury.tushare.api.BaseApiImpl
 import li.mercury.tushare.api.index.models.CiDailyParams
 import li.mercury.tushare.api.index.models.CiDailyResult
 import li.mercury.tushare.api.index.models.DailyInfoParams
