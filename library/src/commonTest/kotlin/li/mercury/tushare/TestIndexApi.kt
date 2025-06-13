@@ -24,198 +24,227 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class TestIndexApi : TestTuShare() {
+    @Test
+    fun testIndexBasicWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_basic.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexBasic(
+                    IndexBasicParams(
+                        market = Market.SW,
+                        category = IndexCategory.主题指数,
+                    ),
+                )
+            assertNotNull(result, "指数基本信息数据不应为空")
+        }
+
+    // Test skipped, no permission
+    // @Test
+    fun testIdxFactorProWorks() =
+        test {
+            val config = createConfigWithMockEngine("idx_factor_pro.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIdxFactorPro(
+                    IdxFactorProParams(),
+                )
+            assertNotNull(result, "指数因子数据不应为空")
+        }
+
+    // Test skipped, no permission
+    // @Test
+    fun testIndexMemberAllWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_member_all.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexMemberAll(
+                    IndexMemberAllParams(),
+                )
+            assertNotNull(result, "指数成分股数据不应为空")
+        }
+
+    // Test skipped, no permission
+    // @Test
+    fun testIndexClassifyWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_classify.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexClassify(
+                    IndexClassifyParams(),
+                )
+            assertNotNull(result, "申万行业分类数据不应为空")
+        }
+
+    // Test skipped, no permission
+    // @Test
+    fun testIndexWeightWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_weight.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexWeight(
+                    IndexWeightParams(
+                        indexCode = TsCode("000001", "SH"),
+                    ),
+                )
+            assertNotNull(result, "指数权重数据不应为空")
+        }
+
+    // Test skipped, no permission
+    // @Test
+    fun testIndexDailyBasicWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_dailybasic.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexDailyBasic(
+                    IndexDailyBasicParams(),
+                )
+            assertNotNull(result, "指数每日基本信息数据不应为空")
+        }
+
+    // Test skipped, no permission
+    // @Test
+    fun testIndexMonthlyWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_monthly.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexMonthly(
+                    IndexMonthlyParams(),
+                )
+            assertNotNull(result, "指数月线数据不应为空")
+        }
 
     @Test
-    fun testIndexBasicWorks() = test {
-        val config = createConfigWithMockEngine("index_basic.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testSwDailyWorks() =
+        test {
+            val config = createConfigWithMockEngine("sw_daily.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getIndexBasic(
-            IndexBasicParams(
-                market = Market.SW,
-                category = IndexCategory.主题指数,
-            )
-        )
-        assertNotNull(result, "指数基本信息数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testIdxFactorProWorks() = test {
-        val config = createConfigWithMockEngine("idx_factor_pro.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getIdxFactorPro(
-            IdxFactorProParams()
-        )
-        assertNotNull(result, "指数因子数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testIndexMemberAllWorks() = test {
-        val config = createConfigWithMockEngine("index_member_all.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getIndexMemberAll(
-            IndexMemberAllParams()
-        )
-        assertNotNull(result, "指数成分股数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testIndexClassifyWorks() = test {
-        val config = createConfigWithMockEngine("index_classify.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getIndexClassify(
-            IndexClassifyParams()
-        )
-        assertNotNull(result, "申万行业分类数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testIndexWeightWorks() = test {
-        val config = createConfigWithMockEngine("index_weight.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getIndexWeight(
-            IndexWeightParams(
-                indexCode = TsCode("000001", "SH"),
-            )
-        )
-        assertNotNull(result, "指数权重数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testIndexDailyBasicWorks() = test {
-        val config = createConfigWithMockEngine("index_dailybasic.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getIndexDailyBasic(
-            IndexDailyBasicParams()
-        )
-        assertNotNull(result, "指数每日基本信息数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testIndexMonthlyWorks() = test {
-        val config = createConfigWithMockEngine("index_monthly.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getIndexMonthly(
-            IndexMonthlyParams()
-        )
-        assertNotNull(result, "指数月线数据不应为空")
-    }
+            val result =
+                tuShareInstance.getSwDaily(
+                    SwDailyParams(
+                        tradeDate = LocalDate(2023, 7, 5),
+                        tsCode = TsCode("801012", "SI"),
+                    ),
+                )
+            assertNotNull(result, "申万指数日线数据不应为空")
+        }
 
     @Test
-    fun testSwDailyWorks() = test {
-        val config = createConfigWithMockEngine("sw_daily.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testSzDailyInfoWorks() =
+        test {
+            val config = createConfigWithMockEngine("sz_daily_info.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getSwDaily(
-            SwDailyParams(
-                tradeDate = LocalDate(2023, 7, 5),
-                tsCode = TsCode("801012", "SI"),
-            )
-        )
-        assertNotNull(result, "申万指数日线数据不应为空")
-    }
-
-    @Test
-    fun testSzDailyInfoWorks() = test {
-        val config = createConfigWithMockEngine("sz_daily_info.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getSzDailyInfo(
-            SzDailyInfoParams()
-        )
-        assertNotNull(result, "深圳市场每日交易统计数据不应为空")
-    }
+            val result =
+                tuShareInstance.getSzDailyInfo(
+                    SzDailyInfoParams(),
+                )
+            assertNotNull(result, "深圳市场每日交易统计数据不应为空")
+        }
 
     @Test
-    fun testThsDailyWorks() = test {
-        val config = createConfigWithMockEngine("ths_daily.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testThsDailyWorks() =
+        test {
+            val config = createConfigWithMockEngine("ths_daily.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getThsDaily(
-            ThsDailyParams(
-                tsCode = TsCode("865001", "TI"),
-                startDate = LocalDate(2020, 1, 1),
-                endDate = LocalDate(2020, 3, 1),
-            )
-        )
-        assertNotNull(result, "同花顺概念和行业指数数据不应为空")
-    }
-
-    @Test
-    fun testCiDailyWorks() = test {
-        val config = createConfigWithMockEngine("ci_daily.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getCiDaily(
-            CiDailyParams(
-                tradeDate = LocalDate(2023, 7, 5),
-                tsCode = TsCode("005002", "SH"),
-            )
-        )
-        assertNotNull(result, "中证指数日线数据不应为空")
-    }
+            val result =
+                tuShareInstance.getThsDaily(
+                    ThsDailyParams(
+                        tsCode = TsCode("865001", "TI"),
+                        startDate = LocalDate(2020, 1, 1),
+                        endDate = LocalDate(2020, 3, 1),
+                    ),
+                )
+            assertNotNull(result, "同花顺概念和行业指数数据不应为空")
+        }
 
     @Test
-    fun testIndexGlobalWorks() = test {
-        val config = createConfigWithMockEngine("index_global.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testCiDailyWorks() =
+        test {
+            val config = createConfigWithMockEngine("ci_daily.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getIndexGlobal(
-            IndexGlobalParams(
-                tsCode = TsIndexCode.XIN9,
-                tradeDate = LocalDate(2023, 7, 5),
-            )
-        )
-        assertNotNull(result, "国际指数数据不应为空")
-    }
+            val result =
+                tuShareInstance.getCiDaily(
+                    CiDailyParams(
+                        tradeDate = LocalDate(2023, 7, 5),
+                        tsCode = TsCode("005002", "SH"),
+                    ),
+                )
+            assertNotNull(result, "中证指数日线数据不应为空")
+        }
+
+    @Test
+    fun testIndexGlobalWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_global.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexGlobal(
+                    IndexGlobalParams(
+                        tsCode = TsIndexCode.XIN9,
+                        tradeDate = LocalDate(2023, 7, 5),
+                    ),
+                )
+            assertNotNull(result, "国际指数数据不应为空")
+        }
 
     // Test skipped, no permission
     // @Test
-    fun testDailyInfoWorks() = test {
-        val config = createConfigWithMockEngine("daily_info.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testDailyInfoWorks() =
+        test {
+            val config = createConfigWithMockEngine("daily_info.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getDailyInfo(
-            DailyInfoParams()
-        )
-        assertNotNull(result, "大盘指数每日指标数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testIndexWeeklyWorks() = test {
-        val config = createConfigWithMockEngine("index_weekly.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getIndexWeekly(
-            IndexWeeklyParams()
-        )
-        assertNotNull(result, "指数周线数据不应为空")
-    }
+            val result =
+                tuShareInstance.getDailyInfo(
+                    DailyInfoParams(),
+                )
+            assertNotNull(result, "大盘指数每日指标数据不应为空")
+        }
 
     // Test skipped, no permission
     // @Test
-    fun testIndexDailyWorks() = test {
-        val config = createConfigWithMockEngine("index_daily.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testIndexWeeklyWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_weekly.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getIndexDaily(
-            IndexDailyParams(
-                tsCode = TsCode("000001", "SH"),
-            )
-        )
-        assertNotNull(result, "指数日线数据不应为空")
-    }
-} 
+            val result =
+                tuShareInstance.getIndexWeekly(
+                    IndexWeeklyParams(),
+                )
+            assertNotNull(result, "指数周线数据不应为空")
+        }
+
+    // Test skipped, no permission
+    // @Test
+    fun testIndexDailyWorks() =
+        test {
+            val config = createConfigWithMockEngine("index_daily.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getIndexDaily(
+                    IndexDailyParams(
+                        tsCode = TsCode("000001", "SH"),
+                    ),
+                )
+            assertNotNull(result, "指数日线数据不应为空")
+        }
+}

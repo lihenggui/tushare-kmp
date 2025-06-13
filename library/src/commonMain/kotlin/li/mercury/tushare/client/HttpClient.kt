@@ -29,26 +29,29 @@ import kotlin.time.DurationUnit
  */
 @OptIn(InternalAPI::class)
 internal fun createHttpClient(config: TuShareConfig): HttpClient {
-    val customerBodyPlugin = createClientPlugin("CustomHeaderPlugin") {
-        onRequest { request, _ ->
-            val originalBody = request.body
-            if (originalBody is JsonObject) {
-                val newBody = buildJsonObject {
-                    put("token", config.token)
-                    originalBody.forEach { (k, v) -> put(k, v) }
+    val customerBodyPlugin =
+        createClientPlugin("CustomHeaderPlugin") {
+            onRequest { request, _ ->
+                val originalBody = request.body
+                if (originalBody is JsonObject) {
+                    val newBody =
+                        buildJsonObject {
+                            put("token", config.token)
+                            originalBody.forEach { (k, v) -> put(k, v) }
+                        }
+                    request.body = newBody
                 }
-                request.body = newBody
             }
         }
-    }
 
     val configuration: HttpClientConfig<*>.() -> Unit = {
         engine {
             config.proxy?.let { proxyConfig ->
-                proxy = when (proxyConfig) {
-                    is ProxyConfig.Http -> ProxyBuilder.http(proxyConfig.url)
-                    is ProxyConfig.Socks -> ProxyBuilder.socks(proxyConfig.host, proxyConfig.port)
-                }
+                proxy =
+                    when (proxyConfig) {
+                        is ProxyConfig.Http -> ProxyBuilder.http(proxyConfig.url)
+                        is ProxyConfig.Socks -> ProxyBuilder.socks(proxyConfig.host, proxyConfig.port)
+                    }
             }
         }
 
@@ -108,7 +111,8 @@ internal fun createHttpClient(config: TuShareConfig): HttpClient {
 /**
  * Internal Json Serializer.
  */
-internal val JsonLenient = Json {
-    isLenient = true
-    ignoreUnknownKeys = true
-}
+internal val JsonLenient =
+    Json {
+        isLenient = true
+        ignoreUnknownKeys = true
+    }

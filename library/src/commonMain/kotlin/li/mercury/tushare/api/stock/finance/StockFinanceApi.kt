@@ -32,7 +32,7 @@ import li.mercury.tushare.utils.toApiParams
  * 股票财务数据相关API的实现类
  */
 internal class StockFinanceApi(
-    private val requester: HttpRequester
+    private val requester: HttpRequester,
 ) : StockFinanceApiInterface {
     /**
      * 获取利润表数据
@@ -40,9 +40,11 @@ internal class StockFinanceApi(
      * @return 利润表数据
      */
     override suspend fun getIncome(params: IncomeParams): List<IncomeResult> {
-        val request = TuShareRequest(
-            apiName = "income", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "income",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -52,9 +54,11 @@ internal class StockFinanceApi(
      * @return 资产负债表数据
      */
     override suspend fun getBalanceSheet(params: BalanceSheetParams): List<BalanceSheetResult> {
-        val request = TuShareRequest(
-            apiName = "balancesheet", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "balancesheet",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -64,9 +68,11 @@ internal class StockFinanceApi(
      * @return 现金流量表数据
      */
     override suspend fun getCashflow(params: CashflowParams): List<CashflowResult> {
-        val request = TuShareRequest(
-            apiName = "cashflow", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "cashflow",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -76,9 +82,11 @@ internal class StockFinanceApi(
      * @return 业绩预告数据
      */
     override suspend fun getForecast(params: ForecastParams): List<ForecastResult> {
-        val request = TuShareRequest(
-            apiName = "forecast", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "forecast",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -88,9 +96,11 @@ internal class StockFinanceApi(
      * @return 业绩快报数据
      */
     override suspend fun getExpress(params: ExpressParams): List<ExpressResult> {
-        val request = TuShareRequest(
-            apiName = "express", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "express",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -100,9 +110,11 @@ internal class StockFinanceApi(
      * @return 分红送股数据
      */
     override suspend fun getDividend(params: DividendParams): List<DividendResult> {
-        val request = TuShareRequest(
-            apiName = "dividend", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "dividend",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -112,9 +124,11 @@ internal class StockFinanceApi(
      * @return 财务指标数据
      */
     override suspend fun getFinaIndicator(params: FinaIndicatorParams): List<FinaIndicatorResult> {
-        val request = TuShareRequest(
-            apiName = "fina_indicator", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "fina_indicator",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -124,9 +138,11 @@ internal class StockFinanceApi(
      * @return 财务审计意见数据
      */
     override suspend fun getFinaAudit(params: FinaAuditParams): List<FinaAuditResult> {
-        val request = TuShareRequest(
-            apiName = "fina_audit", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "fina_audit",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -136,9 +152,11 @@ internal class StockFinanceApi(
      * @return 主营业务构成数据
      */
     override suspend fun getFinaMainbz(params: FinaMainbzParams): List<FinaMainbzResult> {
-        val request = TuShareRequest(
-            apiName = "fina_mainbz", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "fina_mainbz",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -148,9 +166,11 @@ internal class StockFinanceApi(
      * @return 财报披露计划数据
      */
     override suspend fun getDisclosureDate(params: DisclosureDateParams): List<DisclosureDateResult> {
-        val request = TuShareRequest(
-            apiName = "disclosure_date", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "disclosure_date",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

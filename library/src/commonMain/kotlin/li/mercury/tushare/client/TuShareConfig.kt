@@ -21,7 +21,7 @@ public class TuShareConfig(
     public val engine: HttpClientEngine? = null,
     public val retry: RetryStrategy = RetryStrategy(),
     public val proxy: ProxyConfig? = null,
-    public val httpClientConfig: HttpClientConfig<*>.() -> Unit = {}
+    public val httpClientConfig: HttpClientConfig<*>.() -> Unit = {},
 ) {
     public constructor(
         token: String,
@@ -32,7 +32,7 @@ public class TuShareConfig(
         timeout: Timeout = Timeout(socket = 30.seconds),
         engine: HttpClientEngine = CIO.create(),
         retry: RetryStrategy = RetryStrategy(),
-        httpClientConfig: HttpClientConfig<*>.() -> Unit = {}
+        httpClientConfig: HttpClientConfig<*>.() -> Unit = {},
     ) : this(
         token = token,
         host = host,
@@ -41,7 +41,7 @@ public class TuShareConfig(
         timeout = timeout,
         engine = engine,
         retry = retry,
-        httpClientConfig = httpClientConfig
+        httpClientConfig = httpClientConfig,
     )
 }
 
@@ -50,7 +50,6 @@ public class TuShareConfig(
  * It provides a mechanism to customize the base URL and additional query parameters used in TuShare API requests.
  */
 public class TuShareHost(
-
     /**
      * Base URL configuration.
      * This is the root URL that will be used for all API requests to TuShare.
@@ -58,14 +57,12 @@ public class TuShareHost(
      * For example, a valid base URL would be "https://api.tushare.pro/".
      */
     public val baseUrl: String,
-
     /**
      * Additional query parameters to be appended to all API requests to TuShare.
      * These can be used to provide additional configuration or context for the API requests.
      */
-    public val queryParams: Map<String, String> = emptyMap()
+    public val queryParams: Map<String, String> = emptyMap(),
 ) {
-
     public companion object {
         /**
          * A pre-configured instance of [TuShareHost] with the base URL set as `https://api.tushare.pro/`.
@@ -76,14 +73,17 @@ public class TuShareHost(
 
 /** Proxy configuration. */
 public sealed interface ProxyConfig {
-
     /** Creates an HTTP proxy from [url]. */
-    public class Http(public val url: String) : ProxyConfig
+    public class Http(
+        public val url: String,
+    ) : ProxyConfig
 
     /** Create socks proxy from [host] and [port]. */
-    public class Socks(public val host: String, public val port: Int) : ProxyConfig
+    public class Socks(
+        public val host: String,
+        public val port: Int,
+    ) : ProxyConfig
 }
-
 
 /**
  * Specifies the retry strategy

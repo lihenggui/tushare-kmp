@@ -34,14 +34,16 @@ import li.mercury.tushare.models.TuShareResponse
 internal class HttpTransport(
     private val httpClient: HttpClient,
 ) : HttpRequester {
-
     /**
      * 执行HTTP请求并获取结果
      * @param info 类型信息
      * @param block HTTP请求构建器
      * @return 反序列化后的响应对象
      */
-    override suspend fun <T : Any> perform(info: TypeInfo, block: suspend (HttpClient) -> HttpResponse): T {
+    override suspend fun <T : Any> perform(
+        info: TypeInfo,
+        block: suspend (HttpClient) -> HttpResponse,
+    ): T {
         try {
             val response = block(httpClient)
             val tuShareResponse = response.body<TuShareResponse>()
@@ -49,20 +51,25 @@ internal class HttpTransport(
             if (tuShareResponse.code != 0) {
                 throw ClientRequestException(
                     response,
-                    "TuShare API error: ${tuShareResponse.msg}"
+                    "TuShare API error: ${tuShareResponse.msg}",
                 )
             }
 
-            val data = tuShareResponse.data ?: throw ClientRequestException(
-                response,
-                "No data in response"
-            )
+            val data =
+                tuShareResponse.data ?: throw ClientRequestException(
+                    response,
+                    "No data in response",
+                )
 
             @Suppress("UNCHECKED_CAST")
             return when (info.type) {
                 List::class -> {
-                    val itemType = info.kotlinType?.arguments?.firstOrNull()?.type
-                        ?: throw IllegalArgumentException("Expected List type with one type parameter")
+                    val itemType =
+                        info.kotlinType
+                            ?.arguments
+                            ?.firstOrNull()
+                            ?.type
+                            ?: throw IllegalArgumentException("Expected List type with one type parameter")
                     val serializer = serializer(itemType) as KSerializer<Any>
                     data.getResponseItems(serializer) as T
                 }
@@ -81,7 +88,7 @@ internal class HttpTransport(
      */
     override suspend fun <T : Any> perform(
         builder: HttpRequestBuilder,
-        block: suspend (response: HttpResponse) -> T
+        block: suspend (response: HttpResponse) -> T,
     ) {
         try {
             HttpStatement(builder = builder, client = httpClient).execute(block)
@@ -101,16 +108,19 @@ internal class HttpTransport(
      * Handles various exceptions that can occur during an API request and converts them into appropriate
      * [li.mercury.tushare.internal.exception.TuShareException] instances.
      */
-    private suspend fun handleException(e: Throwable) = when (e) {
-        is CancellationException -> e // propagate coroutine cancellation
-        is ClientRequestException -> tuShareAPIException(e)
-        is ServerResponseException -> TuShareServerException(e)
-        is HttpRequestTimeoutException, is SocketTimeoutException, is ConnectTimeoutException -> TuShareTimeoutException(
-            e
-        )
-        is IOException -> GenericIOException(e)
-        else -> TuShareHttpException(e)
-    }
+    private suspend fun handleException(e: Throwable) =
+        when (e) {
+            is CancellationException -> e // propagate coroutine cancellation
+            is ClientRequestException -> tuShareAPIException(e)
+            is ServerResponseException -> TuShareServerException(e)
+            is HttpRequestTimeoutException, is SocketTimeoutException, is ConnectTimeoutException ->
+                TuShareTimeoutException(
+                    e,
+                )
+
+            is IOException -> GenericIOException(e)
+            else -> TuShareHttpException(e)
+        }
 
     /**
      * Converts a [ClientRequestException] into a corresponding [TuShareAPIException] based on the HTTP status code.

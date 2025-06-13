@@ -16,37 +16,32 @@ internal val testConfig: TuShareConfig by lazy {
     TuShareConfig(
         token = "test-token", // 测试中使用固定的 token
         logging = LoggingConfig(logLevel = LogLevel.All),
-        timeout = Timeout(socket = 1.minutes)
+        timeout = Timeout(socket = 1.minutes),
     )
 }
 
 private fun transport(config: TuShareConfig): HttpTransport {
     require(config.engine != null) { "测试必须提供 MockEngine，请使用 createConfigWithMockEngine 创建配置" }
     return HttpTransport(
-        createHttpClient(config)
+        createHttpClient(config),
     )
 }
 
 abstract class TestTuShare {
-
-    internal fun generateTuShare(
-        config: TuShareConfig
-    ): TuShareApi {
-        return TuShareApi(
-            requester = transport(config)
+    internal fun generateTuShare(config: TuShareConfig): TuShareApi =
+        TuShareApi(
+            requester = transport(config),
         )
-    }
 
     /**
      * 创建带有指定 mock 响应文件的配置
      */
-    internal fun createConfigWithMockEngine(responseFileName: String): TuShareConfig {
-        return TuShareConfig(
+    internal fun createConfigWithMockEngine(responseFileName: String): TuShareConfig =
+        TuShareConfig(
             token = testConfig.token,
             engine = createMockEngine(responseFileName),
-            httpClientConfig = testConfig.httpClientConfig
+            httpClientConfig = testConfig.httpClientConfig,
         )
-    }
 
     fun test(testBody: suspend TestScope.() -> Unit) = runTest(timeout = 1.minutes, testBody = testBody)
 }

@@ -3,7 +3,7 @@ package li.mercury.tushare.internal.exception
 /** TuShare client exception */
 public sealed class TuShareException(
     message: String? = null,
-    throwable: Throwable? = null
+    throwable: Throwable? = null,
 ) : RuntimeException(message, throwable)
 
 /** Runtime Http Client exception */

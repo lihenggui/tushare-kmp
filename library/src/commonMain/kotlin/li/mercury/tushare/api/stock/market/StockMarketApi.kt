@@ -40,7 +40,7 @@ import li.mercury.tushare.utils.toApiParams
  * 股票行情数据相关API的实现类
  */
 internal class StockMarketApi(
-    private val requester: HttpRequester
+    private val requester: HttpRequester,
 ) : StockMarketApiInterface {
     /**
      * 获取股票日线行情数据
@@ -48,9 +48,11 @@ internal class StockMarketApi(
      * @return 日线行情数据
      */
     override suspend fun getDaily(params: DailyParams): List<DailyResult> {
-        val request = TuShareRequest(
-            apiName = "daily", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "daily",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -60,9 +62,11 @@ internal class StockMarketApi(
      * @return 分钟行情数据
      */
     override suspend fun getMins(params: MinsParams): List<MinsResult> {
-        val request = TuShareRequest(
-            apiName = "stk_mins", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_mins",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -72,9 +76,11 @@ internal class StockMarketApi(
      * @return 周线行情数据
      */
     override suspend fun getWeekly(params: WeeklyParams): List<WeeklyResult> {
-        val request = TuShareRequest(
-            apiName = "weekly", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "weekly",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -84,9 +90,11 @@ internal class StockMarketApi(
      * @return 月线行情数据
      */
     override suspend fun getMonthly(params: MonthlyParams): List<MonthlyResult> {
-        val request = TuShareRequest(
-            apiName = "monthly", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "monthly",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -96,9 +104,11 @@ internal class StockMarketApi(
      * @return 周/月线行情数据
      */
     override suspend fun getWeeklyMonthly(params: WeeklyMonthlyParams): List<WeeklyMonthlyResult> {
-        val request = TuShareRequest(
-            apiName = "stk_weekly_monthly", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_weekly_monthly",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -108,9 +118,11 @@ internal class StockMarketApi(
      * @return 股票复权因子数据
      */
     override suspend fun getAdjFactor(params: AdjFactorParams): List<AdjFactorResult> {
-        val request = TuShareRequest(
-            apiName = "adj_factor", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "adj_factor",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -120,9 +132,11 @@ internal class StockMarketApi(
      * @return 股票每日指标数据
      */
     override suspend fun getDailyBasic(params: DailyBasicParams): List<DailyBasicResult> {
-        val request = TuShareRequest(
-            apiName = "daily_basic", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "daily_basic",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -132,9 +146,11 @@ internal class StockMarketApi(
      * @return 股票涨跌停数据
      */
     override suspend fun getStkLimit(params: StkLimitParams): List<StkLimitResult> {
-        val request = TuShareRequest(
-            apiName = "stk_limit", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_limit",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -144,9 +160,11 @@ internal class StockMarketApi(
      * @return 每日停复牌信息数据
      */
     override suspend fun getSuspendD(params: SuspendDParams): List<SuspendDResult> {
-        val request = TuShareRequest(
-            apiName = "suspend_d", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "suspend_d",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -156,9 +174,11 @@ internal class StockMarketApi(
      * @return 沪深股通十大成交股数据
      */
     override suspend fun getHsgtTop10(params: HsgtTop10Params): List<HsgtTop10Result> {
-        val request = TuShareRequest(
-            apiName = "hsgt_top10", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "hsgt_top10",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -168,9 +188,11 @@ internal class StockMarketApi(
      * @return 港股通十大成交股数据
      */
     override suspend fun getGgtTop10(params: GgtTop10Params): List<GgtTop10Result> {
-        val request = TuShareRequest(
-            apiName = "ggt_top10", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ggt_top10",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -180,9 +202,11 @@ internal class StockMarketApi(
      * @return 港股通每日成交统计数据
      */
     override suspend fun getGgtDaily(params: GgtDailyParams): List<GgtDailyResult> {
-        val request = TuShareRequest(
-            apiName = "ggt_daily", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ggt_daily",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -192,9 +216,11 @@ internal class StockMarketApi(
      * @return 港股通月度成交统计数据
      */
     override suspend fun getGgtMonthly(params: GgtMonthlyParams): List<GgtMonthlyResult> {
-        val request = TuShareRequest(
-            apiName = "ggt_monthly", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ggt_monthly",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -204,9 +230,11 @@ internal class StockMarketApi(
      * @return 备用行情数据
      */
     override suspend fun getBakDaily(params: BakDailyParams): List<BakDailyResult> {
-        val request = TuShareRequest(
-            apiName = "bak_daily", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "bak_daily",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

@@ -7,7 +7,7 @@ public sealed class TuShareIOException(
 
 /** An exception thrown in case a request times out. */
 public class TuShareTimeoutException(
-    throwable: Throwable
+    throwable: Throwable,
 ) : TuShareIOException(throwable = throwable)
 
 /** An exception thrown in case of an I/O error */

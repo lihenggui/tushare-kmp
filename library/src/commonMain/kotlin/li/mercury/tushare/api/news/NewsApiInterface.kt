@@ -21,6 +21,7 @@ public interface NewsApiInterface {
      * 获取全量公告数据
      */
     public suspend fun getAnnsD(params: AnnouncementParams): List<AnnouncementResult>
+
     /**
      * 获取上证E互动问答数据
      */

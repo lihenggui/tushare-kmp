@@ -57,19 +57,21 @@ public fun TuShare(
     timeout: Timeout = Timeout(socket = 30.seconds),
     proxy: ProxyConfig? = null,
     retry: RetryStrategy = RetryStrategy(),
-    httpClientConfig: HttpClientConfig<*>.() -> Unit = {}
-): TuShare = TuShare(
-    config = TuShareConfig(
-        token = token,
-        logging = loggingConfig,
-        headers = header,
-        host = host,
-        timeout = timeout,
-        proxy = proxy,
-        retry = retry,
-        httpClientConfig = httpClientConfig
+    httpClientConfig: HttpClientConfig<*>.() -> Unit = {},
+): TuShare =
+    TuShare(
+        config =
+            TuShareConfig(
+                token = token,
+                logging = loggingConfig,
+                headers = header,
+                host = host,
+                timeout = timeout,
+                proxy = proxy,
+                retry = retry,
+                httpClientConfig = httpClientConfig,
+            ),
     )
-)
 
 /**
  * Creates an instance of [TuShare]

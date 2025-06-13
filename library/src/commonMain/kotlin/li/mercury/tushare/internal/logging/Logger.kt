@@ -4,7 +4,6 @@ package li.mercury.tushare.internal.logging
  * Http client logger.
  */
 public enum class Logger {
-
     /**
      * Default logger to use.
      */
@@ -18,5 +17,5 @@ public enum class Logger {
     /**
      * Empty Logger for test purpose.
      */
-    Empty
+    Empty,
 }

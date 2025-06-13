@@ -48,7 +48,7 @@ import li.mercury.tushare.utils.toApiParams
  * 股票打版专题数据相关API的实现类
  */
 internal class StockBoardApi(
-    private val requester: HttpRequester
+    private val requester: HttpRequester,
 ) : StockBoardApiInterface {
     /**
      * 获取东方财富板块成分
@@ -56,9 +56,11 @@ internal class StockBoardApi(
      * @return 东方财富板块成分数据
      */
     override suspend fun getDcMember(params: DcMemberParams): List<DcMemberResult> {
-        val request = TuShareRequest(
-            apiName = "dc_member", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "dc_member",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -68,9 +70,11 @@ internal class StockBoardApi(
      * @return 东方财富概念板块数据
      */
     override suspend fun getDcIndex(params: DcIndexParams): List<DcIndexResult> {
-        val request = TuShareRequest(
-            apiName = "dc_index", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "dc_index",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -80,9 +84,11 @@ internal class StockBoardApi(
      * @return 东方财富热板数据
      */
     override suspend fun getDcHot(params: DcHotParams): List<DcHotResult> {
-        val request = TuShareRequest(
-            apiName = "dc_hot", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "dc_hot",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -92,9 +98,11 @@ internal class StockBoardApi(
      * @return 同花顺概念和行业指数数据
      */
     override suspend fun getThsIndex(params: ThsIndexParams): List<ThsIndexResult> {
-        val request = TuShareRequest(
-            apiName = "ths_index", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ths_index",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -104,9 +112,11 @@ internal class StockBoardApi(
      * @return 同花顺概念板块成分数据
      */
     override suspend fun getThsMember(params: ThsMemberParams): List<ThsMemberResult> {
-        val request = TuShareRequest(
-            apiName = "ths_member", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ths_member",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -116,9 +126,11 @@ internal class StockBoardApi(
      * @return 同花顺热榜数据
      */
     override suspend fun getThsHot(params: ThsHotParams): List<ThsHotResult> {
-        val request = TuShareRequest(
-            apiName = "ths_hot", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ths_hot",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -128,9 +140,11 @@ internal class StockBoardApi(
      * @return 开盘啦榜单数据
      */
     override suspend fun getKplList(params: KplListParams): List<KplListResult> {
-        val request = TuShareRequest(
-            apiName = "kpl_list", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "kpl_list",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -140,9 +154,11 @@ internal class StockBoardApi(
      * @return 开盘啦题材库数据
      */
     override suspend fun getKplConcept(params: KplConceptParams): List<KplConceptResult> {
-        val request = TuShareRequest(
-            apiName = "kpl_concept", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "kpl_concept",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -152,9 +168,11 @@ internal class StockBoardApi(
      * @return 开盘啦题材成分数据
      */
     override suspend fun getKplConceptCons(params: KplConceptConsParams): List<KplConceptConsResult> {
-        val request = TuShareRequest(
-            apiName = "kpl_concept_cons", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "kpl_concept_cons",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -164,9 +182,11 @@ internal class StockBoardApi(
      * @return 当日集合竞价数据
      */
     override suspend fun getStkAuction(params: StkAuctionParams): List<StkAuctionResult> {
-        val request = TuShareRequest(
-            apiName = "stk_auction", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_auction",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -176,9 +196,11 @@ internal class StockBoardApi(
      * @return 最强板块统计数据
      */
     override suspend fun getLimitCptList(params: LimitCptListParams): List<LimitCptListResult> {
-        val request = TuShareRequest(
-            apiName = "limit_cpt_list", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "limit_cpt_list",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -188,9 +210,11 @@ internal class StockBoardApi(
      * @return 涨跌停列表数据
      */
     override suspend fun getLimitListD(params: LimitListDParams): List<LimitListDResult> {
-        val request = TuShareRequest(
-            apiName = "limit_list_d", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "limit_list_d",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -200,9 +224,11 @@ internal class StockBoardApi(
      * @return 同花顺涨跌停榜单数据
      */
     override suspend fun getLimitListThs(params: LimitListThsParams): List<LimitListThsResult> {
-        val request = TuShareRequest(
-            apiName = "limit_list_ths", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "limit_list_ths",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -212,9 +238,11 @@ internal class StockBoardApi(
      * @return 游资名录数据
      */
     override suspend fun getHmList(params: HmListParams): List<HmListResult> {
-        val request = TuShareRequest(
-            apiName = "hm_list", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "hm_list",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -224,9 +252,11 @@ internal class StockBoardApi(
      * @return 游资每日明细数据
      */
     override suspend fun getHmDetail(params: HmDetailParams): List<HmDetailResult> {
-        val request = TuShareRequest(
-            apiName = "hm_detail", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "hm_detail",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -236,9 +266,11 @@ internal class StockBoardApi(
      * @return 连板天梯数据
      */
     override suspend fun getLimitStep(params: LimitStepParams): List<LimitStepResult> {
-        val request = TuShareRequest(
-            apiName = "limit_step", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "limit_step",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -248,9 +280,11 @@ internal class StockBoardApi(
      * @return 龙虎榜机构成交明细数据
      */
     override suspend fun getTopInst(params: TopInstParams): List<TopInstResult> {
-        val request = TuShareRequest(
-            apiName = "top_inst", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "top_inst",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -260,9 +294,11 @@ internal class StockBoardApi(
      * @return 龙虎榜每日交易明细数据
      */
     override suspend fun getTopList(params: TopListParams): List<TopListResult> {
-        val request = TuShareRequest(
-            apiName = "top_list", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "top_list",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

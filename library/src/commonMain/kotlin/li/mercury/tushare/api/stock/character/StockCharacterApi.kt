@@ -38,7 +38,7 @@ import li.mercury.tushare.utils.toApiParams
  * 股票特色数据相关API的实现类
  */
 internal class StockCharacterApi(
-    private val requester: HttpRequester
+    private val requester: HttpRequester,
 ) : StockCharacterApiInterface {
     /**
      * 获取卖方盈利预测数据
@@ -46,9 +46,11 @@ internal class StockCharacterApi(
      * @return 卖方盈利预测数据返回对象列表
      */
     override suspend fun getReportRc(params: ReportRcParams): List<ReportRcResult> {
-        val request = TuShareRequest(
-            apiName = "report_rc", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "report_rc",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -58,9 +60,11 @@ internal class StockCharacterApi(
      * @return 每日筹码及胜率数据
      */
     override suspend fun getCyqPerf(params: CyqPerfParams): List<CyqPerfResult> {
-        val request = TuShareRequest(
-            apiName = "cyq_perf", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "cyq_perf",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -70,9 +74,11 @@ internal class StockCharacterApi(
      * @return 每日筹码分布数据
      */
     override suspend fun getCyqChips(params: CyqChipsParams): List<CyqChipsResult> {
-        val request = TuShareRequest(
-            apiName = "cyq_chips", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "cyq_chips",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -82,9 +88,11 @@ internal class StockCharacterApi(
      * @return 股票技术因子数据
      */
     override suspend fun getStkFactor(params: StkFactorParams): List<StkFactorResult> {
-        val request = TuShareRequest(
-            apiName = "stk_factor", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_factor",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -94,9 +102,11 @@ internal class StockCharacterApi(
      * @return 股票技术面因子数据
      */
     override suspend fun getStkFactorPro(params: StkFactorProParams): List<StkFactorProResult> {
-        val request = TuShareRequest(
-            apiName = "stk_factor_pro", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_factor_pro",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -106,9 +116,11 @@ internal class StockCharacterApi(
      * @return 中央结算系统持股汇总数据
      */
     override suspend fun getCcassHold(params: CcassHoldParams): List<CcassHoldResult> {
-        val request = TuShareRequest(
-            apiName = "ccass_hold", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ccass_hold",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -118,9 +130,11 @@ internal class StockCharacterApi(
      * @return 中央结算系统持股明细数据
      */
     override suspend fun getCcassHoldDetail(params: CcassHoldDetailParams): List<CcassHoldDetailResult> {
-        val request = TuShareRequest(
-            apiName = "ccass_hold_detail", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "ccass_hold_detail",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -130,9 +144,11 @@ internal class StockCharacterApi(
      * @return 沪深港股通持股明细数据
      */
     override suspend fun getHkHold(params: HkHoldParams): List<HkHoldResult> {
-        val request = TuShareRequest(
-            apiName = "hk_hold", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "hk_hold",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -142,9 +158,11 @@ internal class StockCharacterApi(
      * @return 股票开盘集合竞价数据
      */
     override suspend fun getStkAuctionO(params: StkAuctionOParams): List<StkAuctionOResult> {
-        val request = TuShareRequest(
-            apiName = "stk_auction_o", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_auction_o",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -154,9 +172,11 @@ internal class StockCharacterApi(
      * @return 股票收盘集合竞价数据
      */
     override suspend fun getStkAuctionC(params: StkAuctionCParams): List<StkAuctionCResult> {
-        val request = TuShareRequest(
-            apiName = "stk_auction_c", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_auction_c",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -166,9 +186,11 @@ internal class StockCharacterApi(
      * @return 神奇九转指标数据
      */
     override suspend fun getStkNineturn(params: StkNineturnParams): List<StkNineturnResult> {
-        val request = TuShareRequest(
-            apiName = "stk_nineturn", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_nineturn",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -178,9 +200,11 @@ internal class StockCharacterApi(
      * @return 股票调研数据
      */
     override suspend fun getStkSurv(params: StkSurvParams): List<StkSurvResult> {
-        val request = TuShareRequest(
-            apiName = "stk_surv", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_surv",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -190,9 +214,11 @@ internal class StockCharacterApi(
      * @return 券商每月荐股数据
      */
     override suspend fun getBrokerRecommend(params: BrokerRecommendParams): List<BrokerRecommendResult> {
-        val request = TuShareRequest(
-            apiName = "broker_recommend", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "broker_recommend",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

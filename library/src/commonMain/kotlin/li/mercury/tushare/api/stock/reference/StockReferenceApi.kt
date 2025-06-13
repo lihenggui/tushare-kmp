@@ -34,7 +34,7 @@ import li.mercury.tushare.utils.toApiParams
  * 股票参考数据相关API的实现类
  */
 internal class StockReferenceApi(
-    private val requester: HttpRequester
+    private val requester: HttpRequester,
 ) : StockReferenceApiInterface {
     /**
      * 获取前十大股东
@@ -42,9 +42,11 @@ internal class StockReferenceApi(
      * @return 前十大股东数据
      */
     override suspend fun getTop10Holders(params: Top10HoldersParams): List<Top10HoldersResult> {
-        val request = TuShareRequest(
-            apiName = "top10_holders", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "top10_holders",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -54,9 +56,11 @@ internal class StockReferenceApi(
      * @return 前十大流通股东数据
      */
     override suspend fun getTop10FloatHolders(params: Top10FloatHoldersParams): List<Top10FloatHoldersResult> {
-        val request = TuShareRequest(
-            apiName = "top10_floatholders", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "top10_floatholders",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -66,9 +70,11 @@ internal class StockReferenceApi(
      * @return 股权质押统计数据
      */
     override suspend fun getPledgeStat(params: PledgeStatParams): List<PledgeStatResult> {
-        val request = TuShareRequest(
-            apiName = "pledge_stat", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "pledge_stat",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -78,9 +84,11 @@ internal class StockReferenceApi(
      * @return 股权质押明细数据
      */
     override suspend fun getPledgeDetail(params: PledgeDetailParams): List<PledgeDetailResult> {
-        val request = TuShareRequest(
-            apiName = "pledge_detail", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "pledge_detail",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -90,9 +98,11 @@ internal class StockReferenceApi(
      * @return 股票回购信息数据
      */
     override suspend fun getRepurchase(params: RepurchaseParams): List<RepurchaseResult> {
-        val request = TuShareRequest(
-            apiName = "repurchase", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "repurchase",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -102,9 +112,11 @@ internal class StockReferenceApi(
      * @return 概念股分类数据
      */
     override suspend fun getConcept(params: ConceptParams): List<ConceptResult> {
-        val request = TuShareRequest(
-            apiName = "concept", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "concept",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -114,9 +126,11 @@ internal class StockReferenceApi(
      * @return 概念股列表数据
      */
     override suspend fun getConceptDetail(params: ConceptDetailParams): List<ConceptDetailResult> {
-        val request = TuShareRequest(
-            apiName = "concept_detail", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "concept_detail",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -126,9 +140,11 @@ internal class StockReferenceApi(
      * @return 限售股解禁数据
      */
     override suspend fun getShareFloat(params: ShareFloatParams): List<ShareFloatResult> {
-        val request = TuShareRequest(
-            apiName = "share_float", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "share_float",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -138,9 +154,11 @@ internal class StockReferenceApi(
      * @return 大宗交易数据
      */
     override suspend fun getBlockTrade(params: BlockTradeParams): List<BlockTradeResult> {
-        val request = TuShareRequest(
-            apiName = "block_trade", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "block_trade",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -150,9 +168,11 @@ internal class StockReferenceApi(
      * @return 股东人数数据
      */
     override suspend fun getStockHolderNumber(params: StockHolderNumberParams): List<StockHolderNumberResult> {
-        val request = TuShareRequest(
-            apiName = "stk_holdernumber", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_holdernumber",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -162,9 +182,11 @@ internal class StockReferenceApi(
      * @return 股东增减持数据
      */
     override suspend fun getStockHolderTrade(params: StockHolderTradeParams): List<StockHolderTradeResult> {
-        val request = TuShareRequest(
-            apiName = "stk_holdertrade", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_holdertrade",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

@@ -17,7 +17,10 @@ internal interface HttpRequester : AutoCloseable {
      * @param block HTTP请求构建器
      * @return 反序列化后的响应对象
      */
-    suspend fun <T : Any> perform(info: TypeInfo, block: suspend (HttpClient) -> HttpResponse): T
+    suspend fun <T : Any> perform(
+        info: TypeInfo,
+        block: suspend (HttpClient) -> HttpResponse,
+    ): T
 
     /**
      * 执行HTTP请求并处理响应
@@ -27,13 +30,12 @@ internal interface HttpRequester : AutoCloseable {
      */
     suspend fun <T : Any> perform(
         builder: HttpRequestBuilder,
-        block: suspend (response: HttpResponse) -> T
+        block: suspend (response: HttpResponse) -> T,
     )
 }
 
 /**
  * 内联函数，提供类型安全的HTTP请求
  */
-internal suspend inline fun <reified T> HttpRequester.perform(noinline block: suspend (HttpClient) -> HttpResponse): T {
-    return perform(typeInfo<T>(), block)
-}
+internal suspend inline fun <reified T> HttpRequester.perform(noinline block: suspend (HttpClient) -> HttpResponse): T =
+    perform(typeInfo<T>(), block)

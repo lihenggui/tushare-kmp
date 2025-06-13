@@ -40,9 +40,11 @@ internal class StockBasicApi(
      * @return 股票基本信息列表
      */
     override suspend fun getStockBasic(params: StockBasicParams): List<StockBasicResult> {
-        val request = TuShareRequest(
-            apiName = "stock_basic", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stock_basic",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -52,9 +54,11 @@ internal class StockBasicApi(
      * @return 沪深股通成份股数据列表
      */
     override suspend fun getHsConst(params: HsConstParams): List<HsConstResult> {
-        val request = TuShareRequest(
-            apiName = "hs_const", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "hs_const",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -64,9 +68,11 @@ internal class StockBasicApi(
      * @return 股票曾用名数据列表
      */
     override suspend fun getNameChange(params: NameChangeParams): List<NameChangeResult> {
-        val request = TuShareRequest(
-            apiName = "namechange", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "namechange",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -76,9 +82,11 @@ internal class StockBasicApi(
      * @return 上市公司基本信息数据列表
      */
     override suspend fun getStockCompany(params: StockCompanyParams): List<StockCompanyResult> {
-        val request = TuShareRequest(
-            apiName = "stock_company", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stock_company",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -88,9 +96,11 @@ internal class StockBasicApi(
      * @return 股票预披露数据列表
      */
     override suspend fun getStkPremarket(params: StkPremarketParams): List<StkPremarketResult> {
-        val request = TuShareRequest(
-            apiName = "stk_premarket", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_premarket",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -100,9 +110,11 @@ internal class StockBasicApi(
      * @return 交易日历数据列表
      */
     override suspend fun getTradeCal(params: TradeCalParams): List<TradeCalResult> {
-        val request = TuShareRequest(
-            apiName = "trade_cal", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "trade_cal",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -112,9 +124,11 @@ internal class StockBasicApi(
      * @return 上市公司管理层数据列表
      */
     override suspend fun getStkManagers(params: StkManagersParams): List<StkManagersResult> {
-        val request = TuShareRequest(
-            apiName = "stk_managers", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_managers",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -124,9 +138,11 @@ internal class StockBasicApi(
      * @return 分红送股数据列表
      */
     override suspend fun getStkRewards(params: StkRewardsParams): List<StkRewardsResult> {
-        val request = TuShareRequest(
-            apiName = "stk_rewards", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "stk_rewards",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -136,9 +152,11 @@ internal class StockBasicApi(
      * @return 新股上市数据列表
      */
     override suspend fun getNewShare(params: NewShareParams): List<NewShareResult> {
-        val request = TuShareRequest(
-            apiName = "new_share", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "new_share",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -148,9 +166,11 @@ internal class StockBasicApi(
      * @return 备用股票基本信息数据列表
      */
     override suspend fun getBakBasic(params: BakBasicParams): List<BakBasicResult> {
-        val request = TuShareRequest(
-            apiName = "bak_basic", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "bak_basic",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

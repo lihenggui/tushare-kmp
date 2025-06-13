@@ -28,7 +28,7 @@ import li.mercury.tushare.http.HttpRequester
  * @param requester http transport layer
  */
 internal class TuShareApi(
-    private val requester: HttpRequester
+    private val requester: HttpRequester,
 ) : TuShare,
     NewsApiInterface by NewsApi(requester),
     IndexApiInterface by IndexApi(requester),

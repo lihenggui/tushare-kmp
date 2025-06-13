@@ -26,7 +26,7 @@ import li.mercury.tushare.utils.toApiParams
  * 股票资金流向相关API的实现类
  */
 internal class StockFlowApi(
-    private val requester: HttpRequester
+    private val requester: HttpRequester,
 ) : StockFlowApiInterface {
     /**
      * 获取个股资金流向
@@ -34,9 +34,11 @@ internal class StockFlowApi(
      * @return 个股资金流向数据
      */
     override suspend fun getMoneyflow(params: MoneyflowParams): List<MoneyflowResult> {
-        val request = TuShareRequest(
-            apiName = "moneyflow", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "moneyflow",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -46,9 +48,11 @@ internal class StockFlowApi(
      * @return 同花顺个股资金流向数据
      */
     override suspend fun getMoneyflowThs(params: MoneyflowThsParams): List<MoneyflowThsResult> {
-        val request = TuShareRequest(
-            apiName = "moneyflow_ths", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "moneyflow_ths",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -58,9 +62,11 @@ internal class StockFlowApi(
      * @return 东方财富个股资金流向数据
      */
     override suspend fun getMoneyflowDc(params: MoneyflowDcParams): List<MoneyflowDcResult> {
-        val request = TuShareRequest(
-            apiName = "moneyflow_dc", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "moneyflow_dc",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -70,9 +76,11 @@ internal class StockFlowApi(
      * @return 东方财富大盘资金流向数据
      */
     override suspend fun getMoneyflowMktDc(params: MoneyflowMktDcParams): List<MoneyflowMktDcResult> {
-        val request = TuShareRequest(
-            apiName = "moneyflow_mkt_dc", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "moneyflow_mkt_dc",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -82,9 +90,11 @@ internal class StockFlowApi(
      * @return 东方财富板块资金流向数据
      */
     override suspend fun getMoneyflowIndDc(params: MoneyflowIndDcParams): List<MoneyflowIndDcResult> {
-        val request = TuShareRequest(
-            apiName = "moneyflow_ind_dc", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "moneyflow_ind_dc",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -94,9 +104,11 @@ internal class StockFlowApi(
      * @return 同花顺行业板块资金流向数据
      */
     override suspend fun getMoneyflowIndThs(params: MoneyflowIndThsParams): List<MoneyflowIndThsResult> {
-        val request = TuShareRequest(
-            apiName = "moneyflow_ind_ths", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "moneyflow_ind_ths",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -106,9 +118,11 @@ internal class StockFlowApi(
      * @return 沪深港通资金流向数据
      */
     override suspend fun getMoneyflowHsgt(params: MoneyflowHsgtParams): List<MoneyflowHsgtResult> {
-        val request = TuShareRequest(
-            apiName = "moneyflow_hsgt", params = params.toApiParams(),
-        )
+        val request =
+            TuShareRequest(
+                apiName = "moneyflow_hsgt",
+                params = params.toApiParams(),
+            )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

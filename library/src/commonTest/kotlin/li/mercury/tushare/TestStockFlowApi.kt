@@ -10,57 +10,64 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class TestStockFlowApi : TestTuShare() {
+    @Test
+    fun testMoneyflowWorks() =
+        test {
+            val config = createConfigWithMockEngine("moneyflow.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getMoneyflow(
+                    MoneyflowParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        tradeDate = LocalDate(2018, 7, 16),
+                    ),
+                )
+            assertNotNull(result, "个股资金流向数据不应为空")
+        }
 
     @Test
-    fun testMoneyflowWorks() = test {
-        val config = createConfigWithMockEngine("moneyflow.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testMoneyflowHsgtWorks() =
+        test {
+            val config = createConfigWithMockEngine("moneyflow_hsgt.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getMoneyflow(
-            MoneyflowParams(
-                tsCode = TsCode("000001", "SZ"),
-                tradeDate = LocalDate(2018, 7, 16)
-            )
-        )
-        assertNotNull(result, "个股资金流向数据不应为空")
-    }
-
-    @Test
-    fun testMoneyflowHsgtWorks() = test {
-        val config = createConfigWithMockEngine("moneyflow_hsgt.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getMoneyflowHsgt(
-            MoneyflowHsgtParams(
-                tradeDate = LocalDate(2018, 7, 16)
-            )
-        )
-        assertNotNull(result, "沪深港股通资金流向数据不应为空")
-    }
+            val result =
+                tuShareInstance.getMoneyflowHsgt(
+                    MoneyflowHsgtParams(
+                        tradeDate = LocalDate(2018, 7, 16),
+                    ),
+                )
+            assertNotNull(result, "沪深港股通资金流向数据不应为空")
+        }
 
     @Test
-    fun testGgtDailyWorks() = test {
-        val config = createConfigWithMockEngine("ggt_daily.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testGgtDailyWorks() =
+        test {
+            val config = createConfigWithMockEngine("ggt_daily.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getGgtDaily(
-            GgtDailyParams(
-                tradeDate = LocalDate(2018, 7, 16)
-            )
-        )
-        assertNotNull(result, "港股通每日成交统计数据不应为空")
-    }
+            val result =
+                tuShareInstance.getGgtDaily(
+                    GgtDailyParams(
+                        tradeDate = LocalDate(2018, 7, 16),
+                    ),
+                )
+            assertNotNull(result, "港股通每日成交统计数据不应为空")
+        }
 
     @Test
-    fun testGgtMonthlyWorks() = test {
-        val config = createConfigWithMockEngine("ggt_monthly.json")
-        val tuShareInstance = generateTuShare(config)
+    fun testGgtMonthlyWorks() =
+        test {
+            val config = createConfigWithMockEngine("ggt_monthly.json")
+            val tuShareInstance = generateTuShare(config)
 
-        val result = tuShareInstance.getGgtMonthly(
-            GgtMonthlyParams(
-                month = "201807"
-            )
-        )
-        assertNotNull(result, "港股通每月成交统计数据不应为空")
-    }
+            val result =
+                tuShareInstance.getGgtMonthly(
+                    GgtMonthlyParams(
+                        month = "201807",
+                    ),
+                )
+            assertNotNull(result, "港股通每月成交统计数据不应为空")
+        }
 }

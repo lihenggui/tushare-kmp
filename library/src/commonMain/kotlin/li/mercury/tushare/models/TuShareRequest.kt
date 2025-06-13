@@ -30,10 +30,11 @@ public class TuShareRequestBuilder {
     public var fields: List<String>? = null
     public var params: Map<String, String> = emptyMap()
 
-    public fun build(): TuShareRequest = TuShareRequest(
-        apiName = requireNotNull(apiName) { "API name must be specified" },
-        token = token ?: "",
-        params = params,
-        fields = fields?.joinToString(",") ?: ""
-    )
+    public fun build(): TuShareRequest =
+        TuShareRequest(
+            apiName = requireNotNull(apiName) { "API name must be specified" },
+            token = token ?: "",
+            params = params,
+            fields = fields?.joinToString(",") ?: "",
+        )
 }

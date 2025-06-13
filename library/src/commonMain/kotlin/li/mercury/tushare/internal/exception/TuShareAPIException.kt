@@ -1,6 +1,5 @@
 package li.mercury.tushare.internal.exception
 
-
 /**
  * Represents an exception thrown when an error occurs while interacting with the TuShare API.
  *
@@ -19,7 +18,7 @@ public sealed class TuShareAPIException(
 public class RateLimitException(
     statusCode: Int,
     error: TuShareError,
-    throwable: Throwable? = null
+    throwable: Throwable? = null,
 ) : TuShareAPIException(statusCode, error, throwable)
 
 /**
@@ -28,7 +27,7 @@ public class RateLimitException(
 public class InvalidRequestException(
     statusCode: Int,
     error: TuShareError,
-    throwable: Throwable? = null
+    throwable: Throwable? = null,
 ) : TuShareAPIException(statusCode, error, throwable)
 
 /**
@@ -37,7 +36,7 @@ public class InvalidRequestException(
 public class AuthenticationException(
     statusCode: Int,
     error: TuShareError,
-    throwable: Throwable? = null
+    throwable: Throwable? = null,
 ) : TuShareAPIException(statusCode, error, throwable)
 
 /**
@@ -46,7 +45,7 @@ public class AuthenticationException(
 public class PermissionException(
     statusCode: Int,
     error: TuShareError,
-    throwable: Throwable? = null
+    throwable: Throwable? = null,
 ) : TuShareAPIException(statusCode, error, throwable)
 
 /**
@@ -56,5 +55,5 @@ public class PermissionException(
 public class UnknownAPIException(
     statusCode: Int,
     error: TuShareError,
-    throwable: Throwable? = null
+    throwable: Throwable? = null,
 ) : TuShareAPIException(statusCode, error, throwable)
