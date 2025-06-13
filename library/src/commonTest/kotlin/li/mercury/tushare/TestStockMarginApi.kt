@@ -3,10 +3,9 @@ package li.mercury.tushare
 import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.margin.models.MarginDetailParams
 import li.mercury.tushare.api.stock.margin.models.MarginParams
-import li.mercury.tushare.api.stock.margin.models.MarginTargetParams
-import li.mercury.tushare.api.stock.margin.models.PledgeDetailParams
-import li.mercury.tushare.api.stock.margin.models.PledgeStatParams
-import li.mercury.tushare.api.stock.margin.models.RepurchaseParams
+import li.mercury.tushare.api.stock.reference.models.PledgeDetailParams
+import li.mercury.tushare.api.stock.reference.models.PledgeStatParams
+import li.mercury.tushare.api.stock.reference.models.RepurchaseParams
 import li.mercury.tushare.models.TsCode
 import kotlin.test.Test
 import kotlin.test.assertNotNull
@@ -38,19 +37,6 @@ class TestStockMarginApi : TestTuShare() {
             )
         )
         assertNotNull(result, "融资融券交易明细数据不应为空")
-    }
-
-    @Test
-    fun testMarginTargetWorks() = test {
-        val config = createConfigWithMockEngine("margin_target.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getMarginTarget(
-            MarginTargetParams(
-                tsCode = TsCode("000001", "SZ")
-            )
-        )
-        assertNotNull(result, "融资融券标的数据不应为空")
     }
 
     // Test skipped, no permission

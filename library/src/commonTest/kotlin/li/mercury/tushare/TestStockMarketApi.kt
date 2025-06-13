@@ -1,6 +1,7 @@
 package li.mercury.tushare
 
 import kotlinx.datetime.LocalDate
+import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
 import li.mercury.tushare.api.stock.market.models.AdjFactorParams
 import li.mercury.tushare.api.stock.market.models.BakDailyParams
 import li.mercury.tushare.api.stock.market.models.DailyBasicParams
@@ -9,8 +10,6 @@ import li.mercury.tushare.api.stock.market.models.GgtDailyParams
 import li.mercury.tushare.api.stock.market.models.GgtMonthlyParams
 import li.mercury.tushare.api.stock.market.models.GgtTop10Params
 import li.mercury.tushare.api.stock.market.models.HsgtTop10Params
-import li.mercury.tushare.api.stock.market.models.MinutesParams
-import li.mercury.tushare.api.stock.market.models.MoneyflowParams
 import li.mercury.tushare.api.stock.market.models.MonthlyParams
 import li.mercury.tushare.api.stock.market.models.StkLimitParams
 import li.mercury.tushare.api.stock.market.models.SuspendDParams
@@ -87,7 +86,6 @@ class TestStockMarketApi : TestTuShare() {
         val result = tuShareInstance.getSuspendD(
             SuspendDParams(
                 tsCode = TsCode("000001", "SZ"),
-                suspendDate = LocalDate(2018, 7, 16)
             )
         )
         assertNotNull(result, "停复牌信息数据不应为空")
@@ -133,21 +131,6 @@ class TestStockMarketApi : TestTuShare() {
             )
         )
         assertNotNull(result, "每日涨跌停价格数据不应为空")
-    }
-
-    // Test skipped, no permission
-    // @Test
-    fun testMinutesWorks() = test {
-        val config = createConfigWithMockEngine("minutes.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getMinutes(
-            MinutesParams(
-                tsCode = TsCode("000001", "SZ"),
-                tradeDate = LocalDate(2018, 7, 16)
-            )
-        )
-        assertNotNull(result, "分钟级别行情数据不应为空")
     }
 
     @Test

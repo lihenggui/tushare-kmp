@@ -5,9 +5,6 @@ import li.mercury.tushare.api.stock.character.models.BrokerRecommendParams
 import li.mercury.tushare.api.stock.character.models.CcassHoldDetailParams
 import li.mercury.tushare.api.stock.character.models.CcassHoldParams
 import li.mercury.tushare.api.stock.character.models.HkHoldParams
-import li.mercury.tushare.api.stock.character.models.LimitListParams
-import li.mercury.tushare.api.stock.character.models.StkAccountOldParams
-import li.mercury.tushare.api.stock.character.models.StkAccountParams
 import li.mercury.tushare.api.stock.character.models.StkFactorParams
 import li.mercury.tushare.api.stock.character.models.StkSurvParams
 import li.mercury.tushare.models.TsCode
@@ -42,19 +39,6 @@ class TestStockCharacterApi : TestTuShare() {
             )
         )
         assertNotNull(result, "券商推荐池数据不应为空")
-    }
-
-    @Test
-    fun testLimitListWorks() = test {
-        val config = createConfigWithMockEngine("limit_list.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getLimitList(
-            LimitListParams(
-                tradeDate = LocalDate(2018, 7, 16)
-            )
-        )
-        assertNotNull(result, "涨跌停统计数据不应为空")
     }
 
     @Test
@@ -115,33 +99,5 @@ class TestStockCharacterApi : TestTuShare() {
             )
         )
         assertNotNull(result, "沪深港股通持股明细数据不应为空")
-    }
-
-    @Test
-    fun testStkAccountWorks() = test {
-        val config = createConfigWithMockEngine("stk_account.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getStkAccount(
-            StkAccountParams(
-                startDate = LocalDate(2018, 1, 1),
-                endDate = LocalDate(2018, 12, 31)
-            )
-        )
-        assertNotNull(result, "股票账户统计数据不应为空")
-    }
-
-    @Test
-    fun testStkAccountOldWorks() = test {
-        val config = createConfigWithMockEngine("stk_account_old.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getStkAccountOld(
-            StkAccountOldParams(
-                startDate = LocalDate(2018, 1, 1),
-                endDate = LocalDate(2018, 12, 31)
-            )
-        )
-        assertNotNull(result, "股票账户统计(旧)数据不应为空")
     }
 } 

@@ -1,11 +1,10 @@
 package li.mercury.tushare
 
 import kotlinx.datetime.LocalDate
-import li.mercury.tushare.api.stock.flow.models.GgtDailyParams
-import li.mercury.tushare.api.stock.flow.models.GgtMonthlyParams
-import li.mercury.tushare.api.stock.flow.models.HsgtFundflowParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowHsgtParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
+import li.mercury.tushare.api.stock.market.models.GgtDailyParams
+import li.mercury.tushare.api.stock.market.models.GgtMonthlyParams
 import li.mercury.tushare.models.TsCode
 import kotlin.test.Test
 import kotlin.test.assertNotNull
@@ -33,24 +32,10 @@ class TestStockFlowApi : TestTuShare() {
 
         val result = tuShareInstance.getMoneyflowHsgt(
             MoneyflowHsgtParams(
-                tsCode = TsCode("000001", "SZ"),
                 tradeDate = LocalDate(2018, 7, 16)
             )
         )
         assertNotNull(result, "沪深港股通资金流向数据不应为空")
-    }
-
-    @Test
-    fun testHsgtFundflowWorks() = test {
-        val config = createConfigWithMockEngine("hsgt_fundflow.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getHsgtFundflow(
-            HsgtFundflowParams(
-                tradeDate = LocalDate(2018, 7, 16)
-            )
-        )
-        assertNotNull(result, "沪深港股通资金流向统计数据不应为空")
     }
 
     @Test
@@ -78,4 +63,4 @@ class TestStockFlowApi : TestTuShare() {
         )
         assertNotNull(result, "港股通每月成交统计数据不应为空")
     }
-} 
+}

@@ -2,7 +2,6 @@ package li.mercury.tushare
 
 import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.finance.models.BalanceSheetParams
-import li.mercury.tushare.api.stock.finance.models.CashFlowParams
 import li.mercury.tushare.api.stock.finance.models.DividendParams
 import li.mercury.tushare.api.stock.finance.models.ExpressParams
 import li.mercury.tushare.api.stock.finance.models.FinaAuditParams
@@ -44,21 +43,6 @@ class TestStockFinanceApi : TestTuShare() {
             )
         )
         assertNotNull(result, "资产负债表数据不应为空")
-    }
-
-    @Test
-    fun testCashFlowWorks() = test {
-        val config = createConfigWithMockEngine("cashflow.json")
-        val tuShareInstance = generateTuShare(config)
-
-        val result = tuShareInstance.getCashFlow(
-            CashFlowParams(
-                tsCode = TsCode("000001", "SZ"),
-                startDate = LocalDate(2018, 1, 1),
-                endDate = LocalDate(2018, 12, 31)
-            )
-        )
-        assertNotNull(result, "现金流量表数据不应为空")
     }
 
     @Test
