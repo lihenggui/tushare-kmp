@@ -20,17 +20,17 @@ public data class TuShareRequest(
     @SerialName("fields") val fields: String = "",
 )
 
-fun tuShareRequest(block: TuShareRequestBuilder.() -> Unit): TuShareRequest =
+public fun tuShareRequest(block: TuShareRequestBuilder.() -> Unit): TuShareRequest =
     TuShareRequestBuilder().apply(block).build()
 
 @TuShareDsl
-class TuShareRequestBuilder {
-    var token: String? = null
-    var apiName: String? = null
-    var fields: List<String>? = null
-    var params: Map<String, String> = emptyMap()
+public class TuShareRequestBuilder {
+    public var token: String? = null
+    public var apiName: String? = null
+    public var fields: List<String>? = null
+    public var params: Map<String, String> = emptyMap()
 
-    fun build(): TuShareRequest = TuShareRequest(
+    public fun build(): TuShareRequest = TuShareRequest(
         apiName = requireNotNull(apiName) { "API name must be specified" },
         token = requireNotNull(token) { "API token must be specified" },
         params = params,

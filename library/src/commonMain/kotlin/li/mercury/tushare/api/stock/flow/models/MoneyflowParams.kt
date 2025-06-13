@@ -3,6 +3,7 @@ package li.mercury.tushare.api.stock.flow.models
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 @Serializable
@@ -13,7 +14,7 @@ public data class MoneyflowParams(
     val tradeDate: LocalDate? = null,
     /** 股票代码 */
     @SerialName("ts_code")
-    val tsCode: String? = null,
+    val tsCode: TsCode? = null,
     /** 开始日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("start_date")

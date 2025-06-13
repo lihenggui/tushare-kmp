@@ -9,8 +9,8 @@ import kotlin.time.Duration
  * @param connect time period in which a client should establish a connection with a server
  * @param socket maximum time of inactivity between two data packets when exchanging data with a server
  */
-class Timeout(
-    val request: Duration? = null,
-    val connect: Duration? = null,
-    val socket: Duration? = null,
+public class Timeout(
+    public val request: Duration? = null,
+    public val connect: Duration? = null,
+    public val socket: Duration? = null,
 )

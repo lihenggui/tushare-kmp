@@ -12,12 +12,12 @@ import li.mercury.tushare.models.TuShareRequest
  * HTTP请求器接口
  * 提供类型安全的HTTP请求抽象
  */
-interface HttpRequester : AutoCloseable {
+public interface HttpRequester : AutoCloseable {
 
     /**
      * 获取TuShare配置
      */
-    val config: TuShareConfig
+    public val config: TuShareConfig
 
     /**
      * 执行HTTP请求并返回指定类型的结果
@@ -25,7 +25,7 @@ interface HttpRequester : AutoCloseable {
      * @param block HTTP请求构建器
      * @return 反序列化后的响应对象
      */
-    suspend fun <T : Any> perform(info: TypeInfo, block: suspend (HttpClient) -> HttpResponse): T
+    public suspend fun <T : Any> perform(info: TypeInfo, block: suspend (HttpClient) -> HttpResponse): T
 
     /**
      * 执行HTTP请求并处理响应
@@ -33,7 +33,7 @@ interface HttpRequester : AutoCloseable {
      * @param block 响应处理器
      * @return 处理后的结果
      */
-    suspend fun <T : Any> perform(
+    public suspend fun <T : Any> perform(
         builder: HttpRequestBuilder,
         block: suspend (response: HttpResponse) -> T
     )
@@ -42,7 +42,7 @@ interface HttpRequester : AutoCloseable {
 /**
  * 内联函数，提供类型安全的HTTP请求
  */
-suspend inline fun <reified T> HttpRequester.perform(noinline block: suspend (HttpClient) -> HttpResponse): T {
+public suspend inline fun <reified T> HttpRequester.perform(noinline block: suspend (HttpClient) -> HttpResponse): T {
     return perform(typeInfo<T>(), block)
 }
 
@@ -50,7 +50,7 @@ suspend inline fun <reified T> HttpRequester.perform(noinline block: suspend (Ht
  * 创建TuShare请求的便利方法
  * 自动从配置中获取token
  */
-fun HttpRequester.createRequest(
+public fun HttpRequester.createRequest(
     apiName: String,
     params: Map<String, String> = emptyMap(),
     fields: String = ""

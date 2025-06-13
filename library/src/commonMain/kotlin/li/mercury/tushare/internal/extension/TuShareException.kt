@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 /**
  * TuShare API异常基类
  */
-sealed class TuShareException(
+public sealed class TuShareException(
     message: String,
     cause: Throwable? = null
 ) : Exception(message, cause)
@@ -13,7 +13,7 @@ sealed class TuShareException(
 /**
  * HTTP传输层异常
  */
-class TuShareHttpException(
+public class TuShareHttpException(
     message: String,
     cause: Throwable? = null
 ) : TuShareException(message, cause)
@@ -21,16 +21,16 @@ class TuShareHttpException(
 /**
  * API业务异常
  */
-open class TuShareAPIException(
-    open val code: Int,
-    open val error: TuShareError,
+public open class TuShareAPIException(
+    public open val code: Int,
+    public open val error: TuShareError,
     cause: Throwable? = null
 ) : TuShareException(error.msg ?: "Unknown API error", cause)
 
 /**
  * 认证异常
  */
-class TuShareAuthenticationException(
+public class TuShareAuthenticationException(
     override val code: Int,
     override val error: TuShareError,
     cause: Throwable? = null
@@ -39,7 +39,7 @@ class TuShareAuthenticationException(
 /**
  * 请求频率限制异常
  */
-class TuShareRateLimitException(
+public class TuShareRateLimitException(
     override val code: Int,
     override val error: TuShareError,
     cause: Throwable? = null
@@ -48,7 +48,7 @@ class TuShareRateLimitException(
 /**
  * 无效请求异常
  */
-class TuShareInvalidRequestException(
+public class TuShareInvalidRequestException(
     override val code: Int,
     override val error: TuShareError,
     cause: Throwable? = null
@@ -57,7 +57,7 @@ class TuShareInvalidRequestException(
 /**
  * 服务器异常
  */
-class TuShareServerException(
+public class TuShareServerException(
     override val code: Int,
     override val error: TuShareError,
     cause: Throwable? = null
@@ -66,7 +66,7 @@ class TuShareServerException(
 /**
  * 超时异常
  */
-class TuShareTimeoutException(
+public class TuShareTimeoutException(
     message: String,
     cause: Throwable? = null
 ) : TuShareException(message, cause)
@@ -74,7 +74,7 @@ class TuShareTimeoutException(
 /**
  * 网络IO异常
  */
-class TuShareIOException(
+public class TuShareIOException(
     message: String,
     cause: Throwable? = null
 ) : TuShareException(message, cause)
@@ -82,7 +82,7 @@ class TuShareIOException(
 /**
  * 通用API异常，用于不需要详细错误信息的情况
  */
-class TuShareGenericException(
+public class TuShareGenericException(
     message: String,
     cause: Throwable? = null
 ) : TuShareException(message, cause)
@@ -91,7 +91,7 @@ class TuShareGenericException(
  * TuShare错误响应
  */
 @Serializable
-data class TuShareError(
+public data class TuShareError(
     val code: Int? = null,
     val msg: String? = null,
     val details: String? = null

@@ -5,4 +5,4 @@ package li.mercury.tushare.internal.extension
  */
 @DslMarker
 @Target(AnnotationTarget.CLASS, AnnotationTarget.TYPEALIAS, AnnotationTarget.TYPE, AnnotationTarget.FUNCTION)
-annotation class TuShareDsl
+public annotation class TuShareDsl

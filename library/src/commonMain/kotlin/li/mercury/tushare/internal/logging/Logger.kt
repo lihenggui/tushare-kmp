@@ -3,7 +3,7 @@ package li.mercury.tushare.internal.logging
 /**
  * Http client logger.
  */
-enum class Logger {
+public enum class Logger {
 
     /**
      * Default logger to use.

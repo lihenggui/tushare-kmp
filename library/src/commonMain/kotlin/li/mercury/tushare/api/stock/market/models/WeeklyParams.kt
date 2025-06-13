@@ -1,8 +1,10 @@
 package li.mercury.tushare.api.stock.market.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.TsCode
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
  * 周线行情API请求参数
@@ -14,11 +16,14 @@ public data class WeeklyParams(
     val tsCode: TsCode? = null,
     /** 交易日期（每周最后一个交易日） */
     @SerialName("trade_date")
-    val tradeDate: String? = null,
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    val tradeDate: LocalDate? = null,
     /** 开始日期 */
     @SerialName("start_date")
-    val startDate: String? = null,
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    val startDate: LocalDate? = null,
     /** 结束日期 */
     @SerialName("end_date")
-    val endDate: String? = null,
+    @Serializable(with = LocalDateAsStringSerializer::class)
+    val endDate: LocalDate? = null,
 )
