@@ -24,8 +24,8 @@ import li.mercury.tushare.api.stock.basic.models.StockCompanyResult
 import li.mercury.tushare.api.stock.basic.models.TradeCalParams
 import li.mercury.tushare.api.stock.basic.models.TradeCalResult
 import li.mercury.tushare.http.HttpRequester
-import li.mercury.tushare.http.createRequest
 import li.mercury.tushare.http.perform
+import li.mercury.tushare.models.TuShareRequest
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -40,7 +40,9 @@ internal class StockBasicApi(
      * @return 股票基本信息列表
      */
     override suspend fun getStockBasic(params: StockBasicParams): List<StockBasicResult> {
-        val request = requester.createRequest("stock_basic", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "stock_basic", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -50,7 +52,9 @@ internal class StockBasicApi(
      * @return 沪深股通成份股数据列表
      */
     override suspend fun getHsConst(params: HsConstParams): List<HsConstResult> {
-        val request = requester.createRequest("hs_const", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "hs_const", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -60,7 +64,9 @@ internal class StockBasicApi(
      * @return 股票曾用名数据列表
      */
     override suspend fun getNameChange(params: NameChangeParams): List<NameChangeResult> {
-        val request = requester.createRequest("namechange", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "namechange", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -70,37 +76,81 @@ internal class StockBasicApi(
      * @return 上市公司基本信息数据列表
      */
     override suspend fun getStockCompany(params: StockCompanyParams): List<StockCompanyResult> {
-        val request = requester.createRequest("stock_company", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "stock_company", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
+    /**
+     * 获取股票预披露信息
+     * @param params 股票预披露参数
+     * @return 股票预披露数据列表
+     */
     override suspend fun getStkPremarket(params: StkPremarketParams): List<StkPremarketResult> {
-        val request = requester.createRequest("stk_premarket", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "stk_premarket", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
+    /**
+     * 获取交易日历
+     * @param params 交易日历参数
+     * @return 交易日历数据列表
+     */
     override suspend fun getTradeCal(params: TradeCalParams): List<TradeCalResult> {
-        val request = requester.createRequest("trade_cal", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "trade_cal", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
+    /**
+     * 获取上市公司管理层信息
+     * @param params 上市公司管理层参数
+     * @return 上市公司管理层数据列表
+     */
     override suspend fun getStkManagers(params: StkManagersParams): List<StkManagersResult> {
-        val request = requester.createRequest("stk_managers", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "stk_managers", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
+    /**
+     * 获取上市公司分红送股信息
+     * @param params 分红送股参数
+     * @return 分红送股数据列表
+     */
     override suspend fun getStkRewards(params: StkRewardsParams): List<StkRewardsResult> {
-        val request = requester.createRequest("stk_rewards", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "stk_rewards", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
+    /**
+     * 获取新股上市信息
+     * @param params 新股上市参数
+     * @return 新股上市数据列表
+     */
     override suspend fun getNewShare(params: NewShareParams): List<NewShareResult> {
-        val request = requester.createRequest("new_share", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "new_share", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
+    /**
+     * 获取备用股票基本信息
+     * @param params 备用股票基本信息参数
+     * @return 备用股票基本信息数据列表
+     */
     override suspend fun getBakBasic(params: BakBasicParams): List<BakBasicResult> {
-        val request = requester.createRequest("bak_basic", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "bak_basic", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

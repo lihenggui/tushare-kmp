@@ -18,8 +18,8 @@ import li.mercury.tushare.api.stock.flow.models.MoneyflowResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowThsParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowThsResult
 import li.mercury.tushare.http.HttpRequester
-import li.mercury.tushare.http.createRequest
 import li.mercury.tushare.http.perform
+import li.mercury.tushare.models.TuShareRequest
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -34,7 +34,9 @@ internal class StockFlowApi(
      * @return 个股资金流向数据
      */
     override suspend fun getMoneyflow(params: MoneyflowParams): List<MoneyflowResult> {
-        val request = requester.createRequest("moneyflow", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "moneyflow", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -44,7 +46,9 @@ internal class StockFlowApi(
      * @return 同花顺个股资金流向数据
      */
     override suspend fun getMoneyflowThs(params: MoneyflowThsParams): List<MoneyflowThsResult> {
-        val request = requester.createRequest("moneyflow_ths", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "moneyflow_ths", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -54,7 +58,9 @@ internal class StockFlowApi(
      * @return 东方财富个股资金流向数据
      */
     override suspend fun getMoneyflowDc(params: MoneyflowDcParams): List<MoneyflowDcResult> {
-        val request = requester.createRequest("moneyflow_dc", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "moneyflow_dc", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -64,7 +70,9 @@ internal class StockFlowApi(
      * @return 东方财富大盘资金流向数据
      */
     override suspend fun getMoneyflowMktDc(params: MoneyflowMktDcParams): List<MoneyflowMktDcResult> {
-        val request = requester.createRequest("moneyflow_mkt_dc", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "moneyflow_mkt_dc", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -74,7 +82,9 @@ internal class StockFlowApi(
      * @return 东方财富板块资金流向数据
      */
     override suspend fun getMoneyflowIndDc(params: MoneyflowIndDcParams): List<MoneyflowIndDcResult> {
-        val request = requester.createRequest("moneyflow_ind_dc", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "moneyflow_ind_dc", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -84,7 +94,9 @@ internal class StockFlowApi(
      * @return 同花顺行业板块资金流向数据
      */
     override suspend fun getMoneyflowIndThs(params: MoneyflowIndThsParams): List<MoneyflowIndThsResult> {
-        val request = requester.createRequest("moneyflow_ind_ths", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "moneyflow_ind_ths", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -94,7 +106,9 @@ internal class StockFlowApi(
      * @return 沪深港通资金流向数据
      */
     override suspend fun getMoneyflowHsgt(params: MoneyflowHsgtParams): List<MoneyflowHsgtResult> {
-        val request = requester.createRequest("moneyflow_hsgt", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "moneyflow_hsgt", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

@@ -15,7 +15,7 @@ import li.mercury.tushare.internal.extension.TuShareDsl
 @Serializable
 public data class TuShareRequest(
     @SerialName("api_name") val apiName: String,
-    @SerialName("token") val token: String,
+    @SerialName("token") val token: String = "",
     @SerialName("params") val params: Map<String, String> = emptyMap(),
     @SerialName("fields") val fields: String = "",
 )
@@ -32,7 +32,7 @@ public class TuShareRequestBuilder {
 
     public fun build(): TuShareRequest = TuShareRequest(
         apiName = requireNotNull(apiName) { "API name must be specified" },
-        token = requireNotNull(token) { "API token must be specified" },
+        token = token ?: "",
         params = params,
         fields = fields?.joinToString(",") ?: ""
     )

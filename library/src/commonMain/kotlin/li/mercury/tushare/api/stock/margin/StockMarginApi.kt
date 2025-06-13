@@ -18,8 +18,8 @@ import li.mercury.tushare.api.stock.margin.models.SlbSecDetailResult
 import li.mercury.tushare.api.stock.margin.models.SlbSecParams
 import li.mercury.tushare.api.stock.margin.models.SlbSecResult
 import li.mercury.tushare.http.HttpRequester
-import li.mercury.tushare.http.createRequest
 import li.mercury.tushare.http.perform
+import li.mercury.tushare.models.TuShareRequest
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -34,7 +34,9 @@ internal class StockMarginApi(
      * @return 融资融券交易汇总数据
      */
     override suspend fun getMargin(params: MarginParams): List<MarginResult> {
-        val request = requester.createRequest("margin", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "margin", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -44,7 +46,9 @@ internal class StockMarginApi(
      * @return 融资融券交易明细数据
      */
     override suspend fun getMarginDetail(params: MarginDetailParams): List<MarginDetailResult> {
-        val request = requester.createRequest("margin_detail", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "margin_detail", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -54,7 +58,9 @@ internal class StockMarginApi(
      * @return 融资融券标的数据
      */
     override suspend fun getMarginSecs(params: MarginSecsParams): List<MarginSecsResult> {
-        val request = requester.createRequest("margin_secs", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "margin_secs", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -64,7 +70,9 @@ internal class StockMarginApi(
      * @return 转融券交易汇总数据
      */
     override suspend fun getSlbSec(params: SlbSecParams): List<SlbSecResult> {
-        val request = requester.createRequest("slb_sec", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "slb_sec", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -74,7 +82,9 @@ internal class StockMarginApi(
      * @return 转融资交易汇总数据
      */
     override suspend fun getSlbLen(params: SlbLenParams): List<SlbLenResult> {
-        val request = requester.createRequest("slb_len", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "slb_len", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -84,7 +94,9 @@ internal class StockMarginApi(
      * @return 转融券交易明细数据
      */
     override suspend fun getSlbSecDetail(params: SlbSecDetailParams): List<SlbSecDetailResult> {
-        val request = requester.createRequest("slb_sec_detail", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "slb_sec_detail", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -94,7 +106,9 @@ internal class StockMarginApi(
      * @return 做市借券交易汇总数据
      */
     override suspend fun getSlbLenMm(params: SlbLenMmParams): List<SlbLenMmResult> {
-        val request = requester.createRequest("slb_len_mm", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "slb_len_mm", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 }

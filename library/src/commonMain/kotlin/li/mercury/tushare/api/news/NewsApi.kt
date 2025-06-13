@@ -16,8 +16,8 @@ import li.mercury.tushare.api.news.models.MajorNewsResult
 import li.mercury.tushare.api.news.models.NewsParams
 import li.mercury.tushare.api.news.models.NewsResult
 import li.mercury.tushare.http.HttpRequester
-import li.mercury.tushare.http.createRequest
 import li.mercury.tushare.http.perform
+import li.mercury.tushare.models.TuShareRequest
 import li.mercury.tushare.utils.toApiParams
 
 /**
@@ -34,7 +34,9 @@ internal class NewsApi(
     override suspend fun getAnnsD(
         params: AnnouncementParams,
     ): List<AnnouncementResult> {
-        val request = requester.createRequest("anns_d", params.toApiParams())
+        val request = TuShareRequest(
+            apiName = "anns_d", params = params.toApiParams(),
+        )
         return requester.perform { it.post { setBody(request) }.body() }
     }
 
@@ -44,10 +46,10 @@ internal class NewsApi(
      * @return 返回问答数据
      */
     override suspend fun getIrmQaSh(params: IrmQaShParams): List<IrmQaShResult> {
-        val request = requester.createRequest("irm_qa_sh", params.toApiParams())
-        return requester.perform {
-            it.post { setBody(request) }.body()
-        }
+        val request = TuShareRequest(
+            apiName = "irm_qa_sh", params = params.toApiParams(),
+        )
+        return requester.perform { it.post { setBody(request) }.body() }
     }
 
     /**
@@ -56,10 +58,10 @@ internal class NewsApi(
      * @return 返回新闻快讯数据
      */
     override suspend fun getNews(params: NewsParams): List<NewsResult> {
-        val request = requester.createRequest("news", params.toApiParams())
-        return requester.perform {
-            it.post { setBody(request) }.body()
-        }
+        val request = TuShareRequest(
+            apiName = "news", params = params.toApiParams(),
+        )
+        return requester.perform { it.post { setBody(request) }.body() }
     }
 
     /**
@@ -68,10 +70,10 @@ internal class NewsApi(
      * @return 返回新闻联播数据
      */
     override suspend fun getCctvNews(params: CctvNewsParams): List<CctvNewsResult> {
-        val request = requester.createRequest("cctv_news", params.toApiParams())
-        return requester.perform {
-            it.post { setBody(request) }.body()
-        }
+        val request = TuShareRequest(
+            apiName = "cctv_news", params = params.toApiParams(),
+        )
+        return requester.perform { it.post { setBody(request) }.body() }
     }
 
     /**
@@ -80,10 +82,10 @@ internal class NewsApi(
      * @return 返回新闻通讯数据
      */
     override suspend fun getMajorNews(params: MajorNewsParams): List<MajorNewsResult> {
-        val request = requester.createRequest("major_news", params.toApiParams())
-        return requester.perform {
-            it.post { setBody(request) }.body()
-        }
+        val request = TuShareRequest(
+            apiName = "major_news", params = params.toApiParams(),
+        )
+        return requester.perform { it.post { setBody(request) }.body() }
     }
 
     /**
@@ -92,9 +94,9 @@ internal class NewsApi(
      * @return 返回问答数据
      */
     override suspend fun getIrmQaSz(params: IrmQaSzParams): List<IrmQaSzResult> {
-        val request = requester.createRequest("irm_qa_sz", params.toApiParams())
-        return requester.perform {
-            it.post { setBody(request) }.body()
-        }
+        val request = TuShareRequest(
+            apiName = "irm_qa_sz", params = params.toApiParams(),
+        )
+        return requester.perform { it.post { setBody(request) }.body() }
     }
 }
