@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.stock.character
 
-import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.character.models.BrokerRecommendParams
 import li.mercury.tushare.api.stock.character.models.BrokerRecommendResult
 import li.mercury.tushare.api.stock.character.models.CcassHoldDetailParams
@@ -29,71 +28,71 @@ import li.mercury.tushare.api.stock.character.models.StkSurvParams
 import li.mercury.tushare.api.stock.character.models.StkSurvResult
 
 /**
- * 股票相关API的存储库接口
+ * 股票特色数据相关API接口
  */
 public interface StockCharacterApiInterface {
     /**
      * 获取卖方盈利预测数据
      */
-    public fun getReportRc(params: ReportRcParams): Flow<List<ReportRcResult>>
+    public suspend fun getReportRc(params: ReportRcParams): List<ReportRcResult>
 
     /**
      * 获取每日筹码及胜率数据
      */
-    public fun getCyqPerf(params: CyqPerfParams): Flow<List<CyqPerfResult>>
+    public suspend fun getCyqPerf(params: CyqPerfParams): List<CyqPerfResult>
 
     /**
      * 获取每日筹码分布数据
      */
-    public fun getCyqChips(params: CyqChipsParams): Flow<List<CyqChipsResult>>
+    public suspend fun getCyqChips(params: CyqChipsParams): List<CyqChipsResult>
 
     /**
      * 获取股票技术因子数据
      */
-    public fun getStkFactor(params: StkFactorParams): Flow<List<StkFactorResult>>
+    public suspend fun getStkFactor(params: StkFactorParams): List<StkFactorResult>
 
     /**
      * 获取股票技术面因子（专业版）
      */
-    public fun getStkFactorPro(params: StkFactorProParams): Flow<List<StkFactorProResult>>
+    public suspend fun getStkFactorPro(params: StkFactorProParams): List<StkFactorProResult>
 
     /**
      * 获取中央结算系统持股汇总数据
      */
-    public fun getCcassHold(params: CcassHoldParams): Flow<List<CcassHoldResult>>
+    public suspend fun getCcassHold(params: CcassHoldParams): List<CcassHoldResult>
 
     /**
      * 获取中央结算系统持股明细数据
      */
-    public fun getCcassHoldDetail(params: CcassHoldDetailParams): Flow<List<CcassHoldDetailResult>>
+    public suspend fun getCcassHoldDetail(params: CcassHoldDetailParams): List<CcassHoldDetailResult>
 
     /**
      * 获取沪深港股通持股明细
      */
-    public fun getHkHold(params: HkHoldParams): Flow<List<HkHoldResult>>
+    public suspend fun getHkHold(params: HkHoldParams): List<HkHoldResult>
 
     /**
      * 获取股票开盘集合竞价数据
      */
-    public fun getStkAuctionO(params: StkAuctionOParams): Flow<List<StkAuctionOResult>>
+    public suspend fun getStkAuctionO(params: StkAuctionOParams): List<StkAuctionOResult>
 
     /**
      * 获取股票收盘集合竞价数据
      */
-    public fun getStkAuctionC(params: StkAuctionCParams): Flow<List<StkAuctionCResult>>
+    public suspend fun getStkAuctionC(params: StkAuctionCParams): List<StkAuctionCResult>
 
     /**
      * 获取神奇九转指标数据
      */
-    public fun getStkNineturn(params: StkNineturnParams): Flow<List<StkNineturnResult>>
+    public suspend fun getStkNineturn(params: StkNineturnParams): List<StkNineturnResult>
 
     /**
      * 获取机构调研表数据
      */
-    public fun getStkSurv(params: StkSurvParams): Flow<List<StkSurvResult>>
+    public suspend fun getStkSurv(params: StkSurvParams): List<StkSurvResult>
 
     /**
      * 获取券商每月荐股数据
      */
-    public fun getBrokerRecommend(params: BrokerRecommendParams): Flow<List<BrokerRecommendResult>>
+    public suspend fun getBrokerRecommend(params: BrokerRecommendParams): List<BrokerRecommendResult>
 }

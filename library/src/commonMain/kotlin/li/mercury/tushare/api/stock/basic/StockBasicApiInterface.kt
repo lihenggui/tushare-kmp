@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.stock.basic
 
-import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.basic.models.BakBasicParams
 import li.mercury.tushare.api.stock.basic.models.BakBasicResult
 import li.mercury.tushare.api.stock.basic.models.HsConstParams
@@ -29,50 +28,50 @@ public interface StockBasicApiInterface {
     /**
      * 获取股票基本信息
      */
-    public fun getStockBasic(params: StockBasicParams): Flow<List<StockBasicResult>>
+    public suspend fun getStockBasic(params: StockBasicParams): List<StockBasicResult>
 
     /**
      * 获取股本情况（盘前）数据
      */
-    public fun getStkPremarket(params: StkPremarketParams): Flow<List<StkPremarketResult>>
+    public suspend fun getStkPremarket(params: StkPremarketParams): List<StkPremarketResult>
 
     /**
      * 获取交易日历数据
      */
-    public fun getTradeCal(params: TradeCalParams): Flow<List<TradeCalResult>>
+    public suspend fun getTradeCal(params: TradeCalParams): List<TradeCalResult>
 
     /**
      * 获取股票曾用名信息
      */
-    public fun getNameChange(params: NameChangeParams): Flow<List<NameChangeResult>>
+    public suspend fun getNameChange(params: NameChangeParams): List<NameChangeResult>
 
     /**
      * 获取沪深股通成份股数据
      */
-    public fun getHsConst(params: HsConstParams): Flow<List<HsConstResult>>
+    public suspend fun getHsConst(params: HsConstParams): List<HsConstResult>
 
     /**
      * 获取上市公司基本信息
      */
-    public fun getStockCompany(params: StockCompanyParams): Flow<List<StockCompanyResult>>
+    public suspend fun getStockCompany(params: StockCompanyParams): List<StockCompanyResult>
 
     /**
      * 获取上市公司管理层信息
      */
-    public fun getStkManagers(params: StkManagersParams): Flow<List<StkManagersResult>>
+    public suspend fun getStkManagers(params: StkManagersParams): List<StkManagersResult>
 
     /**
      * 获取上市公司管理层薪酬和持股情况
      */
-    public fun getStkRewards(params: StkRewardsParams): Flow<List<StkRewardsResult>>
+    public suspend fun getStkRewards(params: StkRewardsParams): List<StkRewardsResult>
 
     /**
      * 获取IPO新股列表数据
      */
-    public fun getNewShare(params: NewShareParams): Flow<List<NewShareResult>>
+    public suspend fun getNewShare(params: NewShareParams): List<NewShareResult>
 
     /**
      * 备用基础列表（历史每天股票列表）
      */
-    public fun getBakBasic(params: BakBasicParams): Flow<List<BakBasicResult>>
+    public suspend fun getBakBasic(params: BakBasicParams): List<BakBasicResult>
 }

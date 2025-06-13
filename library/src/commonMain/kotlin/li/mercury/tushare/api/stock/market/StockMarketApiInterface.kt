@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.stock.market
 
-import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.market.models.AdjFactorParams
 import li.mercury.tushare.api.stock.market.models.AdjFactorResult
 import li.mercury.tushare.api.stock.market.models.BakDailyParams
@@ -31,76 +30,76 @@ import li.mercury.tushare.api.stock.market.models.WeeklyParams
 import li.mercury.tushare.api.stock.market.models.WeeklyResult
 
 /**
- * 股票相关API的存储库接口
+ * 股票行情数据相关API接口
  */
 public interface StockMarketApiInterface {
     /**
      * 获取股票日线行情数据
      */
-    public fun getDaily(params: DailyParams): Flow<List<DailyResult>>
+    public suspend fun getDaily(params: DailyParams): List<DailyResult>
 
     /**
      * 获取股票分钟行情数据
      */
-    public fun getMins(params: MinsParams): Flow<List<MinsResult>>
+    public suspend fun getMins(params: MinsParams): List<MinsResult>
 
     /**
      * 获取A股周线行情数据
      */
-    public fun getWeekly(params: WeeklyParams): Flow<List<WeeklyResult>>
+    public suspend fun getWeekly(params: WeeklyParams): List<WeeklyResult>
 
     /**
      * 获取A股月线行情数据
      */
-    public fun getMonthly(params: MonthlyParams): Flow<List<MonthlyResult>>
+    public suspend fun getMonthly(params: MonthlyParams): List<MonthlyResult>
 
     /**
      * 获取股票周/月线行情数据(每日更新)
      */
-    public fun getWeeklyMonthly(params: WeeklyMonthlyParams): Flow<List<WeeklyMonthlyResult>>
+    public suspend fun getWeeklyMonthly(params: WeeklyMonthlyParams): List<WeeklyMonthlyResult>
 
     /**
      * 获取股票复权因子数据
      */
-    public fun getAdjFactor(params: AdjFactorParams): Flow<List<AdjFactorResult>>
+    public suspend fun getAdjFactor(params: AdjFactorParams): List<AdjFactorResult>
 
     /**
      * 获取股票每日指标数据
      */
-    public fun getDailyBasic(params: DailyBasicParams): Flow<List<DailyBasicResult>>
+    public suspend fun getDailyBasic(params: DailyBasicParams): List<DailyBasicResult>
 
     /**
      * 获取每日涨跌停价格数据
      */
-    public fun getStkLimit(params: StkLimitParams): Flow<List<StkLimitResult>>
+    public suspend fun getStkLimit(params: StkLimitParams): List<StkLimitResult>
 
     /**
      * 获取每日停复牌信息
      */
-    public fun getSuspendD(params: SuspendDParams): Flow<List<SuspendDResult>>
+    public suspend fun getSuspendD(params: SuspendDParams): List<SuspendDResult>
 
     /**
      * 获取沪深股通十大成交股数据
      */
-    public fun getHsgtTop10(params: HsgtTop10Params): Flow<List<HsgtTop10Result>>
+    public suspend fun getHsgtTop10(params: HsgtTop10Params): List<HsgtTop10Result>
 
     /**
      * 获取港股通十大成交股数据
      */
-    public fun getGgtTop10(params: GgtTop10Params): Flow<List<GgtTop10Result>>
+    public suspend fun getGgtTop10(params: GgtTop10Params): List<GgtTop10Result>
 
     /**
      * 获取港股通每日成交统计
      */
-    public fun getGgtDaily(params: GgtDailyParams): Flow<List<GgtDailyResult>>
+    public suspend fun getGgtDaily(params: GgtDailyParams): List<GgtDailyResult>
 
     /**
      * 获取港股通每月成交统计
      */
-    public fun getGgtMonthly(params: GgtMonthlyParams): Flow<List<GgtMonthlyResult>>
+    public suspend fun getGgtMonthly(params: GgtMonthlyParams): List<GgtMonthlyResult>
 
     /**
      * 获取备用行情数据
      */
-    public fun getBakDaily(params: BakDailyParams): Flow<List<BakDailyResult>>
+    public suspend fun getBakDaily(params: BakDailyParams): List<BakDailyResult>
 }

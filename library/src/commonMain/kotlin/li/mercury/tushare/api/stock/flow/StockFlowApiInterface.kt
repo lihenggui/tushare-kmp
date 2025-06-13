@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.stock.flow
 
-import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowDcResult
 import li.mercury.tushare.api.stock.flow.models.MoneyflowHsgtParams
@@ -23,49 +22,49 @@ public interface StockFlowApiInterface {
     /**
      * 获取个股资金流向
      * @param params 请求参数
-     * @return 个股资金流向数据流
+     * @return 个股资金流向数据
      */
-    public fun getMoneyflowThs(params: MoneyflowParams): Flow<List<MoneyflowResult>>
+    public suspend fun getMoneyflow(params: MoneyflowParams): List<MoneyflowResult>
 
     /**
      * 获取同花顺个股资金流向
      * @param params 请求参数
-     * @return 同花顺个股资金流向数据流
+     * @return 同花顺个股资金流向数据
      */
-    public fun getMoneyflowThs(params: MoneyflowThsParams): Flow<List<MoneyflowThsResult>>
+    public suspend fun getMoneyflowThs(params: MoneyflowThsParams): List<MoneyflowThsResult>
 
     /**
      * 获取东方财富个股资金流向数据
      * @param params 请求参数
-     * @return 东方财富个股资金流向数据流
+     * @return 东方财富个股资金流向数据
      */
-    public fun getMoneyflowDc(params: MoneyflowDcParams): Flow<List<MoneyflowDcResult>>
+    public suspend fun getMoneyflowDc(params: MoneyflowDcParams): List<MoneyflowDcResult>
 
     /**
      * 获取东方财富大盘资金流向数据
      * @param params 请求参数
-     * @return 东方财富大盘资金流向数据流
+     * @return 东方财富大盘资金流向数据
      */
-    public fun getMoneyflowMktDc(params: MoneyflowMktDcParams): Flow<List<MoneyflowMktDcResult>>
+    public suspend fun getMoneyflowMktDc(params: MoneyflowMktDcParams): List<MoneyflowMktDcResult>
 
     /**
      * 获取东方财富板块资金流向数据
      * @param params 请求参数
-     * @return 东方财富板块资金流向数据流
+     * @return 东方财富板块资金流向数据
      */
-    public fun getMoneyflowIndDc(params: MoneyflowIndDcParams): Flow<List<MoneyflowIndDcResult>>
+    public suspend fun getMoneyflowIndDc(params: MoneyflowIndDcParams): List<MoneyflowIndDcResult>
 
     /**
      * 获取同花顺行业板块资金流向
      * @param params 请求参数
-     * @return 同花顺行业板块资金流向数据流
+     * @return 同花顺行业板块资金流向数据
      */
-    public fun getMoneyflowIndThs(params: MoneyflowIndThsParams): Flow<List<MoneyflowIndThsResult>>
+    public suspend fun getMoneyflowIndThs(params: MoneyflowIndThsParams): List<MoneyflowIndThsResult>
 
     /**
      * 获取沪深港通资金流向
      * @param params 请求参数
-     * @return 沪深港通资金流向数据流
+     * @return 沪深港通资金流向数据
      */
-    public fun getMoneyflowHsgt(params: MoneyflowHsgtParams): Flow<List<MoneyflowHsgtResult>>
+    public suspend fun getMoneyflowHsgt(params: MoneyflowHsgtParams): List<MoneyflowHsgtResult>
 }

@@ -12,11 +12,15 @@ import kotlinx.serialization.json.buildJsonObject
  *
  * @property fields 字段名列表
  * @property items 数据行列表
+ * @property hasMore 是否有更多数据
+ * @property count 数据总数
  */
 @Serializable
 public data class TuShareData(
     @SerialName("fields") val fields: List<String>,
     @SerialName("items") val items: List<List<JsonElement>>,
+    @SerialName("has_more") val hasMore: Boolean = false,
+    @SerialName("count") val count: Int = -1,
 ) {
     /**
      * TuShare数据中的对象表达方式不是标准方式

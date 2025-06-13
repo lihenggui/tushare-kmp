@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.news
 
-import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.news.models.AnnouncementParams
 import li.mercury.tushare.api.news.models.AnnouncementResult
 import li.mercury.tushare.api.news.models.CctvNewsParams
@@ -21,30 +20,30 @@ public interface NewsApiInterface {
     /**
      * 获取全量公告数据
      */
-    public fun getAnnsD(params: AnnouncementParams): Flow<List<AnnouncementResult>>
+    public suspend fun getAnnsD(params: AnnouncementParams): List<AnnouncementResult>
 
     /**
      * 获取上证E互动问答数据
      */
-    public fun getIrmQaSh(params: IrmQaShParams): Flow<List<IrmQaShResult>>
+    public suspend fun getIrmQaSh(params: IrmQaShParams): List<IrmQaShResult>
 
     /**
      * 获取新闻快讯数据
      */
-    public fun getNews(params: NewsParams): Flow<List<NewsResult>>
+    public suspend fun getNews(params: NewsParams): List<NewsResult>
 
     /**
      * 获取新闻联播数据
      */
-    public fun getCctvNews(params: CctvNewsParams): Flow<List<CctvNewsResult>>
+    public suspend fun getCctvNews(params: CctvNewsParams): List<CctvNewsResult>
 
     /**
      * 获取长篇通讯信息
      */
-    public fun getMajorNews(params: MajorNewsParams): Flow<List<MajorNewsResult>>
+    public suspend fun getMajorNews(params: MajorNewsParams): List<MajorNewsResult>
 
     /**
      * 获取深证互动易问答数据
      */
-    public fun getIrmQaSz(params: IrmQaSzParams): Flow<List<IrmQaSzResult>>
+    public suspend fun getIrmQaSz(params: IrmQaSzParams): List<IrmQaSzResult>
 }

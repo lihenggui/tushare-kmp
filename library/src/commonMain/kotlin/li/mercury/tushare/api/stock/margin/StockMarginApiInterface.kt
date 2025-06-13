@@ -1,6 +1,5 @@
 package li.mercury.tushare.api.stock.margin
 
-import kotlinx.coroutines.flow.Flow
 import li.mercury.tushare.api.stock.margin.models.MarginDetailParams
 import li.mercury.tushare.api.stock.margin.models.MarginDetailResult
 import li.mercury.tushare.api.stock.margin.models.MarginParams
@@ -17,41 +16,41 @@ import li.mercury.tushare.api.stock.margin.models.SlbSecParams
 import li.mercury.tushare.api.stock.margin.models.SlbSecResult
 
 /**
- * 股票相关API的存储库接口
+ * 股票融资融券相关API接口
  */
 public interface StockMarginApiInterface {
     /**
      * 获取融资融券交易汇总数据
      */
-    public fun getMargin(params: MarginParams): Flow<List<MarginResult>>
+    public suspend fun getMargin(params: MarginParams): List<MarginResult>
 
     /**
      * 获取融资融券交易明细数据
      */
-    public fun getMarginDetail(params: MarginDetailParams): Flow<List<MarginDetailResult>>
+    public suspend fun getMarginDetail(params: MarginDetailParams): List<MarginDetailResult>
 
     /**
      * 获取融资融券标的（盘前更新）
      */
-    public fun getMarginSecs(params: MarginSecsParams): Flow<List<MarginSecsResult>>
+    public suspend fun getMarginSecs(params: MarginSecsParams): List<MarginSecsResult>
 
     /**
      * 获取转融券交易汇总数据
      */
-    public fun getSlbSec(params: SlbSecParams): Flow<List<SlbSecResult>>
+    public suspend fun getSlbSec(params: SlbSecParams): List<SlbSecResult>
 
     /**
      * 获取转融资交易汇总数据
      */
-    public fun getSlbLen(params: SlbLenParams): Flow<List<SlbLenResult>>
+    public suspend fun getSlbLen(params: SlbLenParams): List<SlbLenResult>
 
     /**
      * 获取转融券交易明细数据
      */
-    public fun getSlbSecDetail(params: SlbSecDetailParams): Flow<List<SlbSecDetailResult>>
+    public suspend fun getSlbSecDetail(params: SlbSecDetailParams): List<SlbSecDetailResult>
 
     /**
      * 获取做市借券交易汇总数据
      */
-    public fun getSlbLenMm(params: SlbLenMmParams): Flow<List<SlbLenMmResult>>
+    public suspend fun getSlbLenMm(params: SlbLenMmParams): List<SlbLenMmResult>
 }
