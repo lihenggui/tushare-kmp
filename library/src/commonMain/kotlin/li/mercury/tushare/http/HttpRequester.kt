@@ -50,7 +50,7 @@ public suspend inline fun <reified T> HttpRequester.perform(noinline block: susp
  * 创建TuShare请求的便利方法
  * 自动从配置中获取token
  */
-public fun HttpRequester.createRequest(
+fun HttpRequester.createRequest(
     apiName: String,
     params: Map<String, String> = emptyMap(),
     fields: String = ""
