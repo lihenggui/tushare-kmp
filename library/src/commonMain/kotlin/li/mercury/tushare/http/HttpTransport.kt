@@ -13,7 +13,8 @@ import io.ktor.client.statement.HttpStatement
 import io.ktor.util.reflect.TypeInfo
 import kotlinx.coroutines.CancellationException
 import kotlinx.io.IOException
-import li.mercury.tushare.client.TuShareConfig
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.serializer
 import li.mercury.tushare.internal.exception.AuthenticationException
 import li.mercury.tushare.internal.exception.GenericIOException
 import li.mercury.tushare.internal.exception.InvalidRequestException
@@ -25,13 +26,13 @@ import li.mercury.tushare.internal.exception.TuShareHttpException
 import li.mercury.tushare.internal.exception.TuShareServerException
 import li.mercury.tushare.internal.exception.TuShareTimeoutException
 import li.mercury.tushare.internal.exception.UnknownAPIException
+import li.mercury.tushare.models.TuShareResponse
 
 /**
  * TuShare HTTP传输层
  */
 internal class HttpTransport(
     private val httpClient: HttpClient,
-    override val config: TuShareConfig,
 ) : HttpRequester {
 
     /**
@@ -43,7 +44,31 @@ internal class HttpTransport(
     override suspend fun <T : Any> perform(info: TypeInfo, block: suspend (HttpClient) -> HttpResponse): T {
         try {
             val response = block(httpClient)
-            return response.body(info)
+            val tuShareResponse = response.body<TuShareResponse>()
+
+            if (tuShareResponse.code != 0) {
+                throw ClientRequestException(
+                    response,
+                    "TuShare API error: ${tuShareResponse.msg}"
+                )
+            }
+
+            val data = tuShareResponse.data ?: throw ClientRequestException(
+                response,
+                "No data in response"
+            )
+
+            @Suppress("UNCHECKED_CAST")
+            return when (info.type) {
+                List::class -> {
+                    val itemType = info.kotlinType?.arguments?.firstOrNull()?.type
+                        ?: throw IllegalArgumentException("Expected List type with one type parameter")
+                    val serializer = serializer(itemType) as KSerializer<Any>
+                    data.getResponseItems(serializer) as T
+                }
+
+                else -> throw IllegalArgumentException("Expected List type")
+            }
         } catch (e: Exception) {
             throw handleException(e)
         }
@@ -83,7 +108,6 @@ internal class HttpTransport(
         is HttpRequestTimeoutException, is SocketTimeoutException, is ConnectTimeoutException -> TuShareTimeoutException(
             e
         )
-
         is IOException -> GenericIOException(e)
         else -> TuShareHttpException(e)
     }

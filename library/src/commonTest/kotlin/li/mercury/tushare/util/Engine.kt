@@ -1,4 +1,4 @@
-package li.mercury.tushare.api.util
+package li.mercury.tushare.util
 
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -9,7 +9,6 @@ import kotlinx.io.buffered
 import kotlinx.io.readString
 import li.mercury.tushare.internal.TestFileSystem
 import li.mercury.tushare.internal.testResponsePath
-import li.mercury.tushare.util.FileSource
 
 fun createMockEngine(responseFileName: String) =
     MockEngine { _ ->

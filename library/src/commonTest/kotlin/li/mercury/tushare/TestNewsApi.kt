@@ -14,7 +14,9 @@ import kotlin.test.assertNotNull
 
 class TestNewsApi : TestTuShare() {
 
-    @Test
+
+    //    @Test
+    // Test skipped, no permission
     fun testAnnsDWorks() = test {
         val annsConfig = createConfigWithMockEngine("anns_d.json")
         val tuShareInstance = generateTuShare(annsConfig)

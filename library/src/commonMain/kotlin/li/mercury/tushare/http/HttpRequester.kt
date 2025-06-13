@@ -5,19 +5,12 @@ import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.statement.HttpResponse
 import io.ktor.util.reflect.TypeInfo
 import io.ktor.util.reflect.typeInfo
-import li.mercury.tushare.client.TuShareConfig
 
 /**
  * HTTP请求器接口
  * 提供类型安全的HTTP请求抽象
  */
 internal interface HttpRequester : AutoCloseable {
-
-    /**
-     * 获取TuShare配置
-     */
-    val config: TuShareConfig
-
     /**
      * 执行HTTP请求并返回指定类型的结果
      * @param info 类型信息，用于反序列化
