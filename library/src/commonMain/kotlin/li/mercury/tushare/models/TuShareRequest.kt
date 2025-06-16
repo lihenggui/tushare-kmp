@@ -20,8 +20,7 @@ public data class TuShareRequest(
     @SerialName("fields") val fields: String = "",
 )
 
-public fun tuShareRequest(block: TuShareRequestBuilder.() -> Unit): TuShareRequest =
-    TuShareRequestBuilder().apply(block).build()
+public fun tuShareRequest(block: TuShareRequestBuilder.() -> Unit): TuShareRequest = TuShareRequestBuilder().apply(block).build()
 
 @TuShareDsl
 public class TuShareRequestBuilder {

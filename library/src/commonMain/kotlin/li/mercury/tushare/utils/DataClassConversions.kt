@@ -58,5 +58,4 @@ internal object DataClassConversions {
 /**
  * 扩展函数：将任意可序列化的数据类转换为API参数Map
  */
-internal inline fun <reified T> T.toApiParams(snakeCase: Boolean = true): Map<String, String> =
-    DataClassConversions.toMap(this, snakeCase)
+internal inline fun <reified T> T.toApiParams(snakeCase: Boolean = true): Map<String, String> = DataClassConversions.toMap(this, snakeCase)
