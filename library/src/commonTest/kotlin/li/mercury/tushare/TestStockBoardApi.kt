@@ -38,7 +38,7 @@ class TestStockBoardApi : TestTuShare() {
             val result =
                 tuShareInstance.getDcMember(
                     DcMemberParams(
-                        tsCode = TsCode("000001", "SZ")
+                        tsCode = TsCode("000001", "SZ"),
                     ),
                 )
             assertNotNull(result, "东方财富板块成分数据不应为空")
@@ -265,7 +265,7 @@ class TestStockBoardApi : TestTuShare() {
         }
 
     //    @Test
-    //Skipped due to permission issues
+    // Skipped due to permission issues
     fun testTopInstWorks() =
         test {
             val config = createConfigWithMockEngine("top_inst.json")
@@ -281,7 +281,7 @@ class TestStockBoardApi : TestTuShare() {
         }
 
     //    @Test
-    //Skipped due to permission issues
+    // Skipped due to permission issues
     fun testLimitListDWorks() =
         test {
             val config = createConfigWithMockEngine("limit_list_d.json")
@@ -298,7 +298,7 @@ class TestStockBoardApi : TestTuShare() {
         }
 
     //    @Test
-    //Skipped due to permission issues
+    // Skipped due to permission issues
     fun testStkAuctionWorks() =
         test {
             val config = createConfigWithMockEngine("stk_auction.json")

@@ -36,42 +36,49 @@ import li.mercury.tushare.models.TuShareResponse
 internal class HttpTransport(
     private val httpClient: HttpClient,
 ) : HttpRequester {
-
     companion object {
         // TuShare API错误码映射
-        private val TUSHARE_ERROR_CODE_MAPPING = mapOf(
-            40001 to ::AuthenticationException,
-            40002 to ::RateLimitException,
-            40003 to ::PermissionException,
-            40203 to ::PermissionException  // 接口访问权限错误
-        )
+        private val TUSHARE_ERROR_CODE_MAPPING =
+            mapOf(
+                40001 to ::AuthenticationException,
+                40002 to ::RateLimitException,
+                40003 to ::PermissionException,
+                40203 to ::PermissionException, // 接口访问权限错误
+            )
 
         // 错误消息关键词映射（按优先级排序）
-        private val ERROR_MESSAGE_MAPPING = listOf(
-            // 认证相关 - 最高优先级
+        private val ERROR_MESSAGE_MAPPING =
             listOf(
-                "invalid_api_key",
-                "api key",
-                "token",
-                "unauthorized",
-                "authentication"
-            ) to ::AuthenticationException,
-            // 频率限制
-            listOf("rate limit", "too many", "frequency", "exceed") to ::RateLimitException,
-            // 权限相关（支持中英文）
-            listOf(
-                "permission", "access denied", "forbidden", "not allowed",
-                "权限", "访问权限", "接口访问权限", "没有权限"
-            ) to ::PermissionException,
-            // 请求参数错误 - 最低优先级，使用更精确的关键词
-            listOf(
-                "invalid parameter",
-                "parameter error",
-                "param error",
-                "bad request",
-                "missing parameter"
-            ) to ::InvalidRequestException
-        )
+                // 认证相关 - 最高优先级
+                listOf(
+                    "invalid_api_key",
+                    "api key",
+                    "token",
+                    "unauthorized",
+                    "authentication",
+                ) to ::AuthenticationException,
+                // 频率限制
+                listOf("rate limit", "too many", "frequency", "exceed") to ::RateLimitException,
+                // 权限相关（支持中英文）
+                listOf(
+                    "permission",
+                    "access denied",
+                    "forbidden",
+                    "not allowed",
+                    "权限",
+                    "访问权限",
+                    "接口访问权限",
+                    "没有权限",
+                ) to ::PermissionException,
+                // 请求参数错误 - 最低优先级，使用更精确的关键词
+                listOf(
+                    "invalid parameter",
+                    "parameter error",
+                    "param error",
+                    "bad request",
+                    "missing parameter",
+                ) to ::InvalidRequestException,
+            )
     }
 
     /**
@@ -93,18 +100,19 @@ internal class HttpTransport(
                 throw createTuShareAPIException(response, tuShareResponse)
             }
 
-            val data = tuShareResponse.data ?: throw InvalidRequestException(
-                response.status.value,
-                TuShareError(
-                    TuShareErrorDetails(
-                        code = "no_data",
-                        msg = "No data in response",
-                        data = null,
-                        requestId = tuShareResponse.requestId
-                    )
-                ),
-                null
-            )
+            val data =
+                tuShareResponse.data ?: throw InvalidRequestException(
+                    response.status.value,
+                    TuShareError(
+                        TuShareErrorDetails(
+                            code = "no_data",
+                            msg = "No data in response",
+                            data = null,
+                            requestId = tuShareResponse.requestId,
+                        ),
+                    ),
+                    null,
+                )
 
             return deserializeResponse(info, data)
         } catch (e: Exception) {
@@ -139,46 +147,51 @@ internal class HttpTransport(
      * 反序列化响应数据
      */
     @Suppress("UNCHECKED_CAST")
-    private fun <T : Any> deserializeResponse(info: TypeInfo, data: TuShareData): T {
-        return when (info.type) {
+    private fun <T : Any> deserializeResponse(
+        info: TypeInfo,
+        data: TuShareData,
+    ): T =
+        when (info.type) {
             List::class -> {
-                val itemType = info.kotlinType
-                    ?.arguments
-                    ?.firstOrNull()
-                    ?.type
-                    ?: throw IllegalArgumentException("List type requires one type parameter")
+                val itemType =
+                    info.kotlinType
+                        ?.arguments
+                        ?.firstOrNull()
+                        ?.type
+                        ?: throw IllegalArgumentException("List type requires one type parameter")
                 val serializer = serializer(itemType) as KSerializer<Any>
                 data.getResponseItems(serializer) as T
             }
             // 可以在这里扩展支持其他类型
             else -> throw IllegalArgumentException("Unsupported type: ${info.type}")
         }
-    }
 
     /**
      * 根据TuShare响应体中的错误信息创建相应的异常类型
      */
     private fun createTuShareAPIException(
         response: HttpResponse,
-        tuShareResponse: TuShareResponse
+        tuShareResponse: TuShareResponse,
     ): TuShareAPIException {
-        val errorDetails = TuShareErrorDetails(
-            code = "api_error_${tuShareResponse.code}",
-            msg = tuShareResponse.msg ?: "Unknown API error",
-            data = null,
-            requestId = tuShareResponse.requestId
-        )
+        val errorDetails =
+            TuShareErrorDetails(
+                code = "api_error_${tuShareResponse.code}",
+                msg = tuShareResponse.msg ?: "Unknown API error",
+                data = null,
+                requestId = tuShareResponse.requestId,
+            )
         val error = TuShareError(detail = errorDetails)
 
         // 为TuShare API错误提供合理的HTTP状态码映射
-        val httpStatusCode = when (tuShareResponse.code) {
-            40001 -> 401 // 认证错误
-            40002 -> 429 // 频率限制
-            40003 -> 403 // 权限错误
-            40203 -> 403 // 接口访问权限错误
-            in 30000..39999 -> 400 // 请求参数错误
-            else -> response.status.value // 使用原始状态码
-        }
+        val httpStatusCode =
+            when (tuShareResponse.code) {
+                40001 -> 401 // 认证错误
+                40002 -> 429 // 频率限制
+                40003 -> 403 // 权限错误
+                40203 -> 403 // 接口访问权限错误
+                in 30000..39999 -> 400 // 请求参数错误
+                else -> response.status.value // 使用原始状态码
+            }
 
         // 优先使用错误码映射
         TUSHARE_ERROR_CODE_MAPPING[tuShareResponse.code]?.let { exceptionConstructor ->
@@ -189,13 +202,14 @@ internal class HttpTransport(
         val errorMessage = tuShareResponse.msg?.lowercase() ?: ""
         for ((keywords, exceptionConstructor) in ERROR_MESSAGE_MAPPING) {
             if (keywords.any { keyword -> errorMessage.contains(keyword) }) {
-                val statusCode = when (exceptionConstructor) {
-                    ::AuthenticationException -> 401
-                    ::RateLimitException -> 429
-                    ::PermissionException -> 403
-                    ::InvalidRequestException -> 400
-                    else -> response.status.value
-                }
+                val statusCode =
+                    when (exceptionConstructor) {
+                        ::AuthenticationException -> 401
+                        ::RateLimitException -> 429
+                        ::PermissionException -> 403
+                        ::InvalidRequestException -> 400
+                        else -> response.status.value
+                    }
                 return exceptionConstructor(statusCode, error, null)
             }
         }
@@ -231,19 +245,20 @@ internal class HttpTransport(
     private suspend fun createHttpAPIException(exception: ClientRequestException): TuShareAPIException {
         val response = exception.response
         val status = response.status.value
-        val error = try {
-            response.body<TuShareError>()
-        } catch (e: Exception) {
-            // 如果无法反序列化错误响应，创建一个默认的错误对象
-            TuShareError(
-                TuShareErrorDetails(
-                    code = "http_error_$status",
-                    msg = exception.message,
-                    data = null,
-                    requestId = null
+        val error =
+            try {
+                response.body<TuShareError>()
+            } catch (e: Exception) {
+                // 如果无法反序列化错误响应，创建一个默认的错误对象
+                TuShareError(
+                    TuShareErrorDetails(
+                        code = "http_error_$status",
+                        msg = exception.message,
+                        data = null,
+                        requestId = null,
+                    ),
                 )
-            )
-        }
+            }
 
         return when (status) {
             429 -> RateLimitException(status, error, exception)
