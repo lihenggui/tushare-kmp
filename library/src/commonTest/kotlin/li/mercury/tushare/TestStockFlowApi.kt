@@ -8,8 +8,6 @@ import li.mercury.tushare.api.stock.flow.models.MoneyflowIndThsParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowMktDcParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowParams
 import li.mercury.tushare.api.stock.flow.models.MoneyflowThsParams
-import li.mercury.tushare.api.stock.market.models.GgtDailyParams
-import li.mercury.tushare.api.stock.market.models.GgtMonthlyParams
 import li.mercury.tushare.models.TsCode
 import kotlin.test.Test
 import kotlin.test.assertNotNull
@@ -127,37 +125,5 @@ class TestStockFlowApi : TestTuShare() {
                     ),
                 )
             assertNotNull(result, "沪深港股通资金流向数据不应为空")
-        }
-
-    //    @Test
-//    Skipped due to permission issues
-    fun testGgtDailyWorks() =
-        test {
-            val config = createConfigWithMockEngine("ggt_daily.json")
-            val tuShareInstance = generateTuShare(config)
-
-            val result =
-                tuShareInstance.getGgtDaily(
-                    GgtDailyParams(
-                        tradeDate = LocalDate(2018, 7, 16),
-                    ),
-                )
-            assertNotNull(result, "港股通每日成交统计数据不应为空")
-        }
-
-    //    @Test
-//    Skipped due to permission issues
-    fun testGgtMonthlyWorks() =
-        test {
-            val config = createConfigWithMockEngine("ggt_monthly.json")
-            val tuShareInstance = generateTuShare(config)
-
-            val result =
-                tuShareInstance.getGgtMonthly(
-                    GgtMonthlyParams(
-                        month = "201807",
-                    ),
-                )
-            assertNotNull(result, "港股通每月成交统计数据不应为空")
         }
 }
