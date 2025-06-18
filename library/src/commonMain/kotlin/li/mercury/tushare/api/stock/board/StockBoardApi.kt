@@ -1,8 +1,8 @@
 package li.mercury.tushare.api.stock.board
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import li.mercury.tushare.TuShare
+import io.ktor.client.call.body
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
 import li.mercury.tushare.api.stock.board.models.DcHotParams
 import li.mercury.tushare.api.stock.board.models.DcHotResult
 import li.mercury.tushare.api.stock.board.models.DcIndexParams
@@ -39,335 +39,266 @@ import li.mercury.tushare.api.stock.board.models.TopInstParams
 import li.mercury.tushare.api.stock.board.models.TopInstResult
 import li.mercury.tushare.api.stock.board.models.TopListParams
 import li.mercury.tushare.api.stock.board.models.TopListResult
+import li.mercury.tushare.http.HttpRequester
+import li.mercury.tushare.http.perform
+import li.mercury.tushare.models.TuShareRequest
 import li.mercury.tushare.utils.toApiParams
 
 /**
- * 股票资金流向相关API的实现类
+ * 股票打版专题数据相关API的实现类
  */
 internal class StockBoardApi(
-    private val tuShare: TuShare,
+    private val requester: HttpRequester,
 ) : StockBoardApiInterface {
     /**
      * 获取东方财富板块成分
      * @param params 请求参数
-     * @return 东方财富板块成分数据流
+     * @return 东方财富板块成分数据
      */
-    override fun getDcMember(params: DcMemberParams): Flow<List<DcMemberResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "dc_member",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(DcMemberResult.serializer())
-            emit(results)
-        }
+    override suspend fun getDcMember(params: DcMemberParams): List<DcMemberResult> {
+        val request =
+            TuShareRequest(
+                apiName = "dc_member",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取东方财富概念板块数据
      * @param params 请求参数
-     * @return 东方财富概念板块数据流
+     * @return 东方财富概念板块数据
      */
-    override fun getDcIndex(params: DcIndexParams): Flow<List<DcIndexResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "dc_index",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(DcIndexResult.serializer())
-            emit(results)
-        }
+    override suspend fun getDcIndex(params: DcIndexParams): List<DcIndexResult> {
+        val request =
+            TuShareRequest(
+                apiName = "dc_index",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取东方财富热板数据
      * @param params 请求参数
-     * @return 东方财富热板数据流
+     * @return 东方财富热板数据
      */
-    override fun getDcHot(params: DcHotParams): Flow<List<DcHotResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "dc_hot",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(DcHotResult.serializer())
-            emit(results)
-        }
+    override suspend fun getDcHot(params: DcHotParams): List<DcHotResult> {
+        val request =
+            TuShareRequest(
+                apiName = "dc_hot",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取同花顺概念和行业指数
      * @param params 请求参数
-     * @return 同花顺概念和行业指数数据流
+     * @return 同花顺概念和行业指数数据
      */
-    override fun getThsIndex(params: ThsIndexParams): Flow<List<ThsIndexResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "ths_index",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ThsIndexResult.serializer())
-            emit(results)
-        }
+    override suspend fun getThsIndex(params: ThsIndexParams): List<ThsIndexResult> {
+        val request =
+            TuShareRequest(
+                apiName = "ths_index",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取同花顺概念板块成分
      * @param params 请求参数
-     * @return 同花顺概念板块成分数据流
+     * @return 同花顺概念板块成分数据
      */
-    override fun getThsMember(params: ThsMemberParams): Flow<List<ThsMemberResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "ths_member",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ThsMemberResult.serializer())
-            emit(results)
-        }
+    override suspend fun getThsMember(params: ThsMemberParams): List<ThsMemberResult> {
+        val request =
+            TuShareRequest(
+                apiName = "ths_member",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取同花顺热榜数据
      * @param params 请求参数
-     * @return 同花顺热榜数据流
+     * @return 同花顺热榜数据
      */
-    override fun getThsHot(params: ThsHotParams): Flow<List<ThsHotResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "ths_hot",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(ThsHotResult.serializer())
-            emit(results)
-        }
+    override suspend fun getThsHot(params: ThsHotParams): List<ThsHotResult> {
+        val request =
+            TuShareRequest(
+                apiName = "ths_hot",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取开盘啦榜单数据
      * @param params 请求参数
-     * @return 开盘啦榜单数据流
+     * @return 开盘啦榜单数据
      */
-    override fun getKplList(params: KplListParams): Flow<List<KplListResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "kpl_list",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(KplListResult.serializer())
-            emit(results)
-        }
+    override suspend fun getKplList(params: KplListParams): List<KplListResult> {
+        val request =
+            TuShareRequest(
+                apiName = "kpl_list",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取开盘啦题材库数据
      * @param params 请求参数
-     * @return 开盘啦题材库数据流
+     * @return 开盘啦题材库数据
      */
-    override fun getKplConcept(params: KplConceptParams): Flow<List<KplConceptResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "kpl_concept",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(KplConceptResult.serializer())
-            emit(results)
-        }
+    override suspend fun getKplConcept(params: KplConceptParams): List<KplConceptResult> {
+        val request =
+            TuShareRequest(
+                apiName = "kpl_concept",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取开盘啦题材成分数据
      * @param params 请求参数
-     * @return 开盘啦题材成分数据流
+     * @return 开盘啦题材成分数据
      */
-    override fun getKplConceptCons(params: KplConceptConsParams): Flow<List<KplConceptConsResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "kpl_concept_cons",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(KplConceptConsResult.serializer())
-            emit(results)
-        }
+    override suspend fun getKplConceptCons(params: KplConceptConsParams): List<KplConceptConsResult> {
+        val request =
+            TuShareRequest(
+                apiName = "kpl_concept_cons",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取当日集合竞价数据
      * @param params 请求参数
-     * @return 当日集合竞价数据流
+     * @return 当日集合竞价数据
      */
-    override fun getStkAuction(params: StkAuctionParams): Flow<List<StkAuctionResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "stk_auction",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(StkAuctionResult.serializer())
-            emit(results)
-        }
+    override suspend fun getStkAuction(params: StkAuctionParams): List<StkAuctionResult> {
+        val request =
+            TuShareRequest(
+                apiName = "stk_auction",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取最强板块统计数据
      * @param params 请求参数
-     * @return 最强板块统计数据流
+     * @return 最强板块统计数据
      */
-    override fun getLimitCptList(params: LimitCptListParams): Flow<List<LimitCptListResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "limit_cpt_list",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(LimitCptListResult.serializer())
-            emit(results)
-        }
+    override suspend fun getLimitCptList(params: LimitCptListParams): List<LimitCptListResult> {
+        val request =
+            TuShareRequest(
+                apiName = "limit_cpt_list",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取涨跌停列表数据（新）
      * @param params 请求参数
-     * @return 涨跌停列表数据流
+     * @return 涨跌停列表数据
      */
-    override fun getLimitListD(params: LimitListDParams): Flow<List<LimitListDResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "limit_list_d",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(LimitListDResult.serializer())
-            emit(results)
-        }
+    override suspend fun getLimitListD(params: LimitListDParams): List<LimitListDResult> {
+        val request =
+            TuShareRequest(
+                apiName = "limit_list_d",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取同花顺每日涨跌停榜单数据
      * @param params 请求参数
-     * @return 同花顺涨跌停榜单数据流
+     * @return 同花顺涨跌停榜单数据
      */
-    override fun getLimitListThs(params: LimitListThsParams): Flow<List<LimitListThsResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "limit_list_ths",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(LimitListThsResult.serializer())
-            emit(results)
-        }
+    override suspend fun getLimitListThs(params: LimitListThsParams): List<LimitListThsResult> {
+        val request =
+            TuShareRequest(
+                apiName = "limit_list_ths",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取游资名录数据
      * @param params 请求参数
-     * @return 游资名录数据流
+     * @return 游资名录数据
      */
-    override fun getHmList(params: HmListParams): Flow<List<HmListResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "hm_list",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(HmListResult.serializer())
-            emit(results)
-        }
+    override suspend fun getHmList(params: HmListParams): List<HmListResult> {
+        val request =
+            TuShareRequest(
+                apiName = "hm_list",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取游资每日明细数据
      * @param params 请求参数
-     * @return 游资每日明细数据流
+     * @return 游资每日明细数据
      */
-    override fun getHmDetail(params: HmDetailParams): Flow<List<HmDetailResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "hm_detail",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(HmDetailResult.serializer())
-            emit(results)
-        }
+    override suspend fun getHmDetail(params: HmDetailParams): List<HmDetailResult> {
+        val request =
+            TuShareRequest(
+                apiName = "hm_detail",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取连板天梯数据
      * @param params 请求参数
-     * @return 连板天梯数据流
+     * @return 连板天梯数据
      */
-    override fun getLimitStep(params: LimitStepParams): Flow<List<LimitStepResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "limit_step",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(LimitStepResult.serializer())
-            emit(results)
-        }
+    override suspend fun getLimitStep(params: LimitStepParams): List<LimitStepResult> {
+        val request =
+            TuShareRequest(
+                apiName = "limit_step",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取龙虎榜机构成交明细
      * @param params 请求参数
-     * @return 龙虎榜机构成交明细数据流
+     * @return 龙虎榜机构成交明细数据
      */
-    override fun getTopInst(params: TopInstParams): Flow<List<TopInstResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "top_inst",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(TopInstResult.serializer())
-            emit(results)
-        }
+    override suspend fun getTopInst(params: TopInstParams): List<TopInstResult> {
+        val request =
+            TuShareRequest(
+                apiName = "top_inst",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 
     /**
      * 获取龙虎榜每日交易明细
      * @param params 请求参数
-     * @return 龙虎榜每日交易明细数据流
+     * @return 龙虎榜每日交易明细数据
      */
-    override fun getTopList(params: TopListParams): Flow<List<TopListResult>> =
-        flow {
-            val apiParams = params.toApiParams()
-
-            val response =
-                tuShare.callApi(
-                    apiName = "top_list",
-                    params = apiParams,
-                )
-            val results = response.getResponseItems(TopListResult.serializer())
-            emit(results)
-        }
+    override suspend fun getTopList(params: TopListParams): List<TopListResult> {
+        val request =
+            TuShareRequest(
+                apiName = "top_list",
+                params = params.toApiParams(),
+            )
+        return requester.perform { it.post { setBody(request) }.body() }
+    }
 }
