@@ -248,7 +248,7 @@ internal class HttpTransport(
         val error =
             try {
                 response.body<TuShareError>()
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 // 如果无法反序列化错误响应，创建一个默认的错误对象
                 TuShareError(
                     TuShareErrorDetails(
