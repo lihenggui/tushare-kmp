@@ -6,13 +6,17 @@ import li.mercury.tushare.api.stock.market.models.AdjFactorParams
 import li.mercury.tushare.api.stock.market.models.BakDailyParams
 import li.mercury.tushare.api.stock.market.models.DailyBasicParams
 import li.mercury.tushare.api.stock.market.models.DailyParams
+import li.mercury.tushare.api.stock.market.models.FreqMin
+import li.mercury.tushare.api.stock.market.models.FreqWeekMonth
 import li.mercury.tushare.api.stock.market.models.GgtDailyParams
 import li.mercury.tushare.api.stock.market.models.GgtMonthlyParams
 import li.mercury.tushare.api.stock.market.models.GgtTop10Params
 import li.mercury.tushare.api.stock.market.models.HsgtTop10Params
+import li.mercury.tushare.api.stock.market.models.MinsParams
 import li.mercury.tushare.api.stock.market.models.MonthlyParams
 import li.mercury.tushare.api.stock.market.models.StkLimitParams
 import li.mercury.tushare.api.stock.market.models.SuspendDParams
+import li.mercury.tushare.api.stock.market.models.WeeklyMonthlyParams
 import li.mercury.tushare.api.stock.market.models.WeeklyParams
 import li.mercury.tushare.models.TsCode
 import kotlin.test.Test
@@ -33,6 +37,22 @@ class TestStockMarketApi : TestTuShare() {
                     ),
                 )
             assertNotNull(result, "日线行情数据不应为空")
+        }
+
+    @Test
+    fun testMinsWorks() =
+        test {
+            val config = createConfigWithMockEngine("mins.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getMins(
+                    MinsParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        freq = FreqMin.MIN_60,
+                    ),
+                )
+            assertNotNull(result, "分钟行情数据不应为空")
         }
 
     @Test
@@ -67,6 +87,22 @@ class TestStockMarketApi : TestTuShare() {
                     ),
                 )
             assertNotNull(result, "月线行情数据不应为空")
+        }
+
+    @Test
+    fun testWeeklyMonthlyWorks() =
+        test {
+            val config = createConfigWithMockEngine("weekly_monthly.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getWeeklyMonthly(
+                    WeeklyMonthlyParams(
+                        tsCode = TsCode("000001", "SZ"),
+                        freq = FreqWeekMonth.MONTH,
+                    ),
+                )
+            assertNotNull(result, "股票周/月线行情数据不应为空")
         }
 
     @Test

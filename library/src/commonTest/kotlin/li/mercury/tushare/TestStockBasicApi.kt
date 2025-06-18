@@ -4,11 +4,13 @@ import kotlinx.datetime.LocalDate
 import li.mercury.tushare.api.stock.basic.models.BakBasicParams
 import li.mercury.tushare.api.stock.basic.models.HsConstParams
 import li.mercury.tushare.api.stock.basic.models.HsType
+import li.mercury.tushare.api.stock.basic.models.ListStatus
 import li.mercury.tushare.api.stock.basic.models.NameChangeParams
 import li.mercury.tushare.api.stock.basic.models.NewShareParams
 import li.mercury.tushare.api.stock.basic.models.StkManagersParams
 import li.mercury.tushare.api.stock.basic.models.StkPremarketParams
 import li.mercury.tushare.api.stock.basic.models.StkRewardsParams
+import li.mercury.tushare.api.stock.basic.models.StockBasicParams
 import li.mercury.tushare.api.stock.basic.models.StockCompanyParams
 import li.mercury.tushare.api.stock.basic.models.TradeCalParams
 import li.mercury.tushare.models.Exchange
@@ -17,6 +19,22 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class TestStockBasicApi : TestTuShare() {
+    @Test
+    fun testStockBasicWorks() =
+        test {
+            val config = createConfigWithMockEngine("stock_basic.json")
+            val tuShareInstance = generateTuShare(config)
+
+            val result =
+                tuShareInstance.getStockBasic(
+                    StockBasicParams(
+                        listStatus = ListStatus.L,
+                        exchange = Exchange.SZSE,
+                    ),
+                )
+            assertNotNull(result, "股票基本信息数据不应为空")
+        }
+
     @Test
     fun testHsConstWorks() =
         test {
