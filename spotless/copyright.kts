@@ -1,7 +1,6 @@
 /*
  * GNU LESSER GENERAL PUBLIC LICENSE
- *
- * Copyright (C) 2025 Mercury Li
+ * Copyright (C) $YEAR Mercury Li
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,11 +16,3 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package li.mercury.tushare.internal.extension
-
-/**
- * A marker annotations for DSLs.
- */
-@DslMarker
-@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPEALIAS, AnnotationTarget.TYPE, AnnotationTarget.FUNCTION)
-public annotation class TuShareDsl

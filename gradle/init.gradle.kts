@@ -36,10 +36,12 @@ rootProject {
                 target("**/*.kt")
                 targetExclude("**/build/**/*.kt")
                 ktlint(ktlintVersion)
+                licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
             }
             format("kts") {
                 target("**/*.kts")
                 targetExclude("**/build/**/*.kts")
+                licenseHeaderFile(rootProject.file("spotless/copyright.kts"), "(^(?![\\/ ]\\*).*$)")
             }
         }
     }
