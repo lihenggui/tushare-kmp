@@ -33,8 +33,8 @@ plugins {
     alias(libs.plugins.vanniktech.mavenPublish)
 }
 
-group = "li.mercury.tushare"
-version = "1.0.0"
+group = project.property("GROUP") as String
+version = project.property("VERSION_NAME") as String
 
 kotlin {
     explicitApi()
@@ -75,31 +75,29 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "library", version.toString())
-
     pom {
-        name = "tushare-kmp"
-        description = "A Kotlin Multiplatform library for TuShare financial data API"
-        inceptionYear = "2025"
-        url = "https://github.com/lihenggui/tushare-kmp"
+        name.set(project.property("POM_NAME") as String)
+        description.set(project.property("POM_DESCRIPTION") as String)
+        inceptionYear.set(project.property("POM_INCEPTION_YEAR") as String)
+        url.set(project.property("POM_URL") as String)
         licenses {
             license {
-                name = "The Apache License, Version 2.0"
-                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-                distribution = "repo"
+                name.set(project.property("POM_LICENSE_NAME") as String)
+                url.set(project.property("POM_LICENSE_URL") as String)
+                distribution.set(project.property("POM_LICENSE_DIST") as String)
             }
         }
         developers {
             developer {
-                id = "lihenggui"
-                name = "Mercury Li"
-                url = "https://github.com/lihenggui"
+                id.set(project.property("POM_DEVELOPER_ID") as String)
+                name.set(project.property("POM_DEVELOPER_NAME") as String)
+                url.set(project.property("POM_DEVELOPER_URL") as String)
             }
         }
         scm {
-            url = "https://github.com/lihenggui/tushare-kmp"
-            connection = "scm:git:git://github.com/lihenggui/tushare-kmp.git"
-            developerConnection = "scm:git:ssh://git@github.com/lihenggui/tushare-kmp.git"
+            url.set(project.property("POM_SCM_URL") as String)
+            connection.set(project.property("POM_SCM_CONNECTION") as String)
+            developerConnection.set(project.property("POM_SCM_DEV_CONNECTION") as String)
         }
     }
 }

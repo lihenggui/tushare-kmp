@@ -115,3 +115,9 @@ gradle-app.setting
 
 # Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
 .kotlin/
+
+# Maven Central publishing configuration - contains sensitive information, should not be committed
+local.properties
+*.asc
+*.gpg
+secring.gpg
