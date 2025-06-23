@@ -2,9 +2,7 @@
 
 # TuShare API Kotlin 客户端
 
-[![Maven Central](https://img.shields.io/maven-central/v/li.mercury.tushare/tushare-kmp?color=blue&label=下载)](https://central.sonatype.com/namespace/li.mercury.tushare)
 [![License](https://img.shields.io/github/license/lihenggui/tushare-kmp?color=yellow)](LICENSE)
-[![Documentation](https://img.shields.io/badge/docs-api-a97bff.svg?logo=kotlin)](https://lihenggui.github.io/tushare-kmp/)
 
 用于 [TuShare 金融数据 API](https://tushare.pro/document/2) 的 Kotlin 客户端，支持多平台和协程。
 
@@ -234,7 +232,7 @@ repositories {
 
 1. **Star**: 在右上角给它一个星标，这对我们很重要！
 2. **贡献**: 发现问题或有功能想法？提交 PR。
-3. **反馈**: 有建议？开个 issue 或开始讨论。
+3. **反馈**: 有建议？[开个 issue](https://github.com/lihenggui/tushare-kmp/issues/new)。
 
 ## 📄 许可证
 
