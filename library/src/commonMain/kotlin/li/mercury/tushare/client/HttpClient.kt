@@ -48,8 +48,8 @@ import kotlin.time.DurationUnit
  */
 @OptIn(InternalAPI::class)
 internal fun createHttpClient(config: TuShareConfig): HttpClient {
-    val customerBodyPlugin =
-        createClientPlugin("CustomHeaderPlugin") {
+    val tuShareBodyPlugin =
+        createClientPlugin("TuShareBodyPlugin") {
             onRequest { request, _ ->
                 val originalBody = request.body
                 if (originalBody is JsonObject) {
@@ -78,7 +78,7 @@ internal fun createHttpClient(config: TuShareConfig): HttpClient {
             register(ContentType.Application.Json, KotlinxSerializationConverter(JsonLenient))
         }
 
-        install(customerBodyPlugin)
+        install(tuShareBodyPlugin)
 
         install(Logging) {
             val logging = config.logging
