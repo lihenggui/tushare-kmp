@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "tushare-kmp"
 include(":library")
+include(":sample")
+include(":sample:jvm")
+include(":sample:js")
+include(":sample:native")
