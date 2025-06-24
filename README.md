@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation "li.mercury.tushare:tushare-kmp:0.0.1"
+    implementation "li.mercury.tushare:tushare-kmp:latest-version"
 }
 ```
 
@@ -30,13 +30,13 @@ dependencies {
 ```groovy
 dependencies {
     // Android/JVM
-    implementation "io.ktor:ktor-client-okhttp:3.2.0"
+    implementation "io.ktor:ktor-client-okhttp:ktor-latest-version"
     
     // iOS/Native
-    implementation "io.ktor:ktor-client-darwin:3.2.0"
+    implementation "io.ktor:ktor-client-darwin:ktor-latest-version"
     
     // JavaScript
-    implementation "io.ktor:ktor-client-js:3.2.0"
+    implementation "io.ktor:ktor-client-js:ktor-latest-version"
 }
 ```
 
@@ -51,9 +51,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("li.mercury.tushare:tushare-kmp:0.0.1")
+                implementation("li.mercury.tushare:tushare-kmp:latest-version")
                 // 选择一个适合的 Ktor 引擎
-                implementation("io.ktor:ktor-client-cio:3.2.0")
+                implementation("io.ktor:ktor-client-cio:ktor-latest-version")
             }
         }
     }
@@ -69,12 +69,12 @@ Gradle 是多平台支持所必需的，但你仍然可以在 Maven 项目中使
     <dependency>
         <groupId>li.mercury.tushare</groupId>
         <artifactId>tushare-kmp-jvm</artifactId>
-        <version>1.0.0</version>
+        <version>latest-version</version>
     </dependency>
     <dependency>
         <groupId>io.ktor</groupId>
         <artifactId>ktor-client-okhttp-jvm</artifactId>
-        <version>3.2.0</version>
+        <version>ktor-latest-version</version>
         <scope>runtime</scope>
     </dependency>
 </dependencies>
