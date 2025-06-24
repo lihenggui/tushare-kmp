@@ -1,85 +1,24 @@
-name: Publish to Maven Central
-
+name: Publish
 on:
-  workflow_dispatch:
-    inputs:
-      version_type:
-        description: 'Release type'
-        required: true
-        default: 'snapshot'
-        type: choice
-        options:
-          - snapshot
-          - release
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-      - '.github/**'
-      - '!.github/workflows/publish.yml'
-
+  release:
+    types: [released, prereleased]
 jobs:
   publish:
-    name: Publish to Maven Central
-    runs-on: ubuntu-latest
-    if: github.repository == 'lihenggui/tushare-kmp'
-    
+    name: Release build and publish
+    runs-on: macOS-latest
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
-          distribution: 'temurin'
-      
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-      
-      - name: Validate Gradle wrapper
-        uses: gradle/actions/wrapper-validation@v4
-      
-      - name: Create local properties file
-        env:
-          SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
-          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-          SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
-          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
-          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-        run: |
-          echo "signing.keyId=$SIGNING_KEY_ID" >> local.properties
-          echo "signing.password=$SIGNING_PASSWORD" >> local.properties
-          echo "signing.secretKeyRingFile=$SIGNING_SECRET_KEY_RING_FILE" >> local.properties
-          echo "mavenCentralUsername=$MAVEN_CENTRAL_USERNAME" >> local.properties
-          echo "mavenCentralPassword=$MAVEN_CENTRAL_PASSWORD" >> local.properties
-      
-      - name: Import GPG key
-        env:
-          GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENTS }}
-        run: |
-          echo "$GPG_KEY_CONTENTS" | base64 -d > secring.gpg
-          gpg --import secring.gpg
-          echo "signing.secretKeyRingFile=$(pwd)/secring.gpg" >> local.properties
-      
-      - name: Publish SNAPSHOT version
-        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.version_type == 'snapshot')
+          distribution: 'zulu'
+          java-version: 21
+      - name: Publish to MavenCentral
         run: ./gradlew publishToMavenCentral --no-configuration-cache
-      
-      - name: Publish release version
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.version_type == 'release'
-        run: |
-          # Update version to release version
-          sed -i 's/VERSION_NAME=.*-SNAPSHOT/VERSION_NAME=1.0.0/' gradle.properties
-          ./gradlew publishToMavenCentral --no-configuration-cache
-      
-      - name: Clean up sensitive files
-        if: always()
-        run: |
-          rm -f local.properties
-          rm -f secring.gpg 
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_KEY_CONTENTS }}
