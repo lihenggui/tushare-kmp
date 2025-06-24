@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation "li.mercury.tushare:tushare-kmp:1.0.0-SNAPSHOT"
+    implementation "li.mercury.tushare:tushare-kmp:0.0.1-SNAPSHOT"
 }
 ```
 
@@ -50,7 +50,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("li.mercury.tushare:tushare-kmp:1.0.0-SNAPSHOT")
+                implementation("li.mercury.tushare:tushare-kmp:0.0.1-SNAPSHOT")
                 // 选择一个适合的 Ktor 引擎
                 implementation("io.ktor:ktor-client-cio:3.2.0")
             }
@@ -190,7 +190,7 @@ val indexDaily = tuShare.indexDaily(
 ```kotlin
 val tuShare = TuShare(
     token = "your-token",
-    host = TuShareHost.TuShare, // 或自定义域名
+    host = TuShareHost.TuShare,
     timeout = Timeout(
         socket = 60.seconds,
         connect = 30.seconds,
@@ -198,13 +198,11 @@ val tuShare = TuShare(
     ),
     loggingConfig = LoggingConfig(
         level = LogLevel.INFO,
-        sanitize = { "***" }
     ),
     retry = RetryStrategy(
         maxRetries = 3,
-        backoff = ExponentialBackoff()
     ),
-    proxy = ProxyConfig(
+    proxy = Socks(
         host = "proxy.example.com",
         port = 8080
     )
