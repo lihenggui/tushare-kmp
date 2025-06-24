@@ -3,7 +3,7 @@
 # TuShare API Kotlin 客户端
 
 [![License](https://img.shields.io/github/license/lihenggui/tushare-kmp?color=yellow)](LICENSE)
-[![Maven Central](https://img.shields.io/maven-central/v/li.mercury.tushare/tushare-kmp?color=blue&label=Latest)](https://central.sonatype.com/namespace/li.mercury.tushare)
+[![Maven Central](https://img.shields.io/maven-central/v/li.mercury.tushare/tushare-kmp?color=blue&label=Version)](https://central.sonatype.com/namespace/li.mercury.tushare)
 
 用于 [TuShare 金融数据 API](https://tushare.pro/document/2) 的 Kotlin 客户端，支持多平台和协程。
 
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation "li.mercury.tushare:tushare-kmp:0.0.1-SNAPSHOT"
+    implementation "li.mercury.tushare:tushare-kmp:0.0.1"
 }
 ```
 
@@ -51,7 +51,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("li.mercury.tushare:tushare-kmp:0.0.1-SNAPSHOT")
+                implementation("li.mercury.tushare:tushare-kmp:0.0.1")
                 // 选择一个适合的 Ktor 引擎
                 implementation("io.ktor:ktor-client-cio:3.2.0")
             }
@@ -69,7 +69,7 @@ Gradle 是多平台支持所必需的，但你仍然可以在 Maven 项目中使
     <dependency>
         <groupId>li.mercury.tushare</groupId>
         <artifactId>tushare-kmp-jvm</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </dependency>
     <dependency>
         <groupId>io.ktor</groupId>
