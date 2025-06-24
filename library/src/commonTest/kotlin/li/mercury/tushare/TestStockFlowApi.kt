@@ -46,7 +46,7 @@ class TestStockFlowApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "个股资金流向数据不应为空")
+            assertNotNull(result, "Individual stock money flow data should not be null")
         }
 
     //    @Test
@@ -63,7 +63,7 @@ class TestStockFlowApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "同花顺个股资金流向数据不应为空")
+            assertNotNull(result, "THS individual stock money flow data should not be null")
         }
 
     //    @Test
@@ -80,7 +80,7 @@ class TestStockFlowApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "东方财富个股资金流向数据不应为空")
+            assertNotNull(result, "Eastmoney individual stock money flow data should not be null")
         }
 
     //    @Test
@@ -96,7 +96,7 @@ class TestStockFlowApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "东方财富大盘资金流向数据不应为空")
+            assertNotNull(result, "Eastmoney market money flow data should not be null")
         }
 
     //    @Test
@@ -112,7 +112,7 @@ class TestStockFlowApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "东方财富板块资金流向数据不应为空")
+            assertNotNull(result, "Eastmoney sector money flow data should not be null")
         }
 
     //    @Test
@@ -128,7 +128,7 @@ class TestStockFlowApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "同花顺行业板块资金流向数据不应为空")
+            assertNotNull(result, "THS industry sector money flow data should not be null")
         }
 
     @Test
@@ -143,6 +143,6 @@ class TestStockFlowApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "沪深港股通资金流向数据不应为空")
+            assertNotNull(result, "Shanghai-Shenzhen-Hong Kong Stock Connect money flow data should not be null")
         }
 }

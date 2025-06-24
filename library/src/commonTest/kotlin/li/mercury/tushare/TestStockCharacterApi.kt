@@ -52,7 +52,7 @@ class TestStockCharacterApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "卖方盈利预测数据不应为空")
+            assertNotNull(result, "Analyst earnings forecast data should not be null")
         }
 
     @Test
@@ -68,7 +68,7 @@ class TestStockCharacterApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "每日筹码及胜率数据不应为空")
+            assertNotNull(result, "Daily chips and win rate data should not be null")
         }
 
     @Test
@@ -84,7 +84,7 @@ class TestStockCharacterApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "每日筹码分布数据不应为空")
+            assertNotNull(result, "Daily chips distribution data should not be null")
         }
 
     @Test
@@ -101,7 +101,7 @@ class TestStockCharacterApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "股票技术面统计数据不应为空")
+            assertNotNull(result, "Stock technical survey data should not be null")
         }
 
     //    @Test
@@ -117,7 +117,7 @@ class TestStockCharacterApi : TestTuShare() {
                         month = "201801",
                     ),
                 )
-            assertNotNull(result, "券商推荐池数据不应为空")
+            assertNotNull(result, "Broker recommendation pool data should not be null")
         }
 
     @Test
@@ -134,7 +134,7 @@ class TestStockCharacterApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "股票技术因子数据不应为空")
+            assertNotNull(result, "Stock technical factor data should not be null")
         }
 
     //    @Test
@@ -152,7 +152,7 @@ class TestStockCharacterApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "股票技术面因子（专业版）数据不应为空")
+            assertNotNull(result, "Stock technical factor pro data should not be null")
         }
 
     @Test
@@ -169,7 +169,7 @@ class TestStockCharacterApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "中央结算系统持股汇总数据不应为空")
+            assertNotNull(result, "CCASS holding summary data should not be null")
         }
 
     @Test
@@ -186,7 +186,7 @@ class TestStockCharacterApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "中央结算系统持股明细数据不应为空")
+            assertNotNull(result, "CCASS holding detail data should not be null")
         }
 
     @Test
@@ -203,7 +203,7 @@ class TestStockCharacterApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "沪深港股通持股明细数据不应为空")
+            assertNotNull(result, "Shanghai-Shenzhen-Hong Kong Stock Connect holding detail data should not be null")
         }
 
     //    @Test
@@ -220,7 +220,7 @@ class TestStockCharacterApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "股票开盘集合竞价数据不应为空")
+            assertNotNull(result, "Stock opening auction data should not be null")
         }
 
     //    @Test
@@ -237,7 +237,7 @@ class TestStockCharacterApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "股票收盘集合竞价数据不应为空")
+            assertNotNull(result, "Stock closing auction data should not be null")
         }
 
     //    @Test
@@ -253,6 +253,6 @@ class TestStockCharacterApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "神奇九转指标数据不应为空")
+            assertNotNull(result, "Stock nine-turn indicator data should not be null")
         }
 }

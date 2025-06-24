@@ -54,7 +54,7 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "日线行情数据不应为空")
+            assertNotNull(result, "Daily market data should not be null")
         }
 
     @Test
@@ -70,7 +70,7 @@ class TestStockMarketApi : TestTuShare() {
                         freq = FreqMin.MIN_60,
                     ),
                 )
-            assertNotNull(result, "分钟行情数据不应为空")
+            assertNotNull(result, "Minute market data should not be null")
         }
 
     @Test
@@ -87,7 +87,7 @@ class TestStockMarketApi : TestTuShare() {
                         endDate = LocalDate(2018, 7, 31),
                     ),
                 )
-            assertNotNull(result, "周线行情数据不应为空")
+            assertNotNull(result, "Weekly market data should not be null")
         }
 
     @Test
@@ -104,7 +104,7 @@ class TestStockMarketApi : TestTuShare() {
                         endDate = LocalDate(2018, 7, 31),
                     ),
                 )
-            assertNotNull(result, "月线行情数据不应为空")
+            assertNotNull(result, "Monthly market data should not be null")
         }
 
     //    @Test
@@ -121,7 +121,7 @@ class TestStockMarketApi : TestTuShare() {
                         freq = FreqWeekMonth.MONTH,
                     ),
                 )
-            assertNotNull(result, "股票周/月线行情数据不应为空")
+            assertNotNull(result, "Stock weekly/monthly market data should not be null")
         }
 
     @Test
@@ -137,7 +137,7 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "复权因子数据不应为空")
+            assertNotNull(result, "Adjustment factor data should not be null")
         }
 
     @Test
@@ -152,7 +152,7 @@ class TestStockMarketApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "停复牌信息数据不应为空")
+            assertNotNull(result, "Suspension information data should not be null")
         }
 
     //    @Test
@@ -169,7 +169,7 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "每日指标数据不应为空")
+            assertNotNull(result, "Daily basic indicators data should not be null")
         }
 
     //    @Test
@@ -186,7 +186,7 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "每日涨跌停价格数据不应为空")
+            assertNotNull(result, "Daily limit up/down price data should not be null")
         }
 
     //    @Test
@@ -202,7 +202,7 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "港股通每日成交统计数据不应为空")
+            assertNotNull(result, "Hong Kong Stock Connect daily trading statistics data should not be null")
         }
 
     //    @Test
@@ -218,7 +218,7 @@ class TestStockMarketApi : TestTuShare() {
                         month = "201807",
                     ),
                 )
-            assertNotNull(result, "港股通每月成交统计数据不应为空")
+            assertNotNull(result, "Hong Kong Stock Connect monthly trading statistics data should not be null")
         }
 
     @Test
@@ -234,7 +234,7 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "备用行情数据不应为空")
+            assertNotNull(result, "Backup market data should not be null")
         }
 
     @Test
@@ -249,7 +249,7 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "沪深股通十大成交股数据不应为空")
+            assertNotNull(result, "Shanghai-Shenzhen Stock Connect top 10 trading stocks data should not be null")
         }
 
     @Test
@@ -264,6 +264,6 @@ class TestStockMarketApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "港股通十大成交股数据不应为空")
+            assertNotNull(result, "Hong Kong Stock Connect top 10 trading stocks data should not be null")
         }
 }
