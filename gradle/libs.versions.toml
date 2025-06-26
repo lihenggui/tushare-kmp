@@ -1,6 +1,6 @@
 [versions]
 kermit = "2.0.6"
-kotlin = "2.1.21"
+kotlin = "2.2.0"
 kotlinxCroutines = "1.10.2"
 kotlinxDateTime = "0.6.2"
 kotlinxIo = "0.7.0"
