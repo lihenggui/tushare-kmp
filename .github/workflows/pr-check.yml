@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
   checks: write
   pull-requests: write
 
@@ -72,6 +72,20 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-home-cache-cleanup: true
+
+      - name: Upgrade Yarn Lock
+        run: ./gradlew kotlinUpgradeYarnLock
+
+      - name: Commit yarn.lock changes
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: 'chore: update yarn.lock after dependency upgrade [skip ci]'
+          file_pattern: 'kotlin-js-store/yarn.lock'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: '41898282+github-actions[bot]@users.noreply.github.com'
+          commit_author: 'github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>'
+          skip_dirty_check: false
+          skip_fetch: true
 
       - name: Build JVM and JS targets
         run: ./gradlew jvmJar jsJar wasmJsJar
