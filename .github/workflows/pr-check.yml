@@ -76,16 +76,12 @@ jobs:
       - name: Upgrade Yarn Lock
         run: ./gradlew kotlinUpgradeYarnLock
 
-      - name: Commit yarn.lock changes
-        uses: stefanzweifel/git-auto-commit-action@v6
+      - name: Auto-commit yarn.lock changes
+        uses: EndBug/add-and-commit@v9
         with:
-          commit_message: 'chore: update yarn.lock after dependency upgrade [skip ci]'
-          file_pattern: 'kotlin-js-store/yarn.lock'
-          commit_user_name: 'github-actions[bot]'
-          commit_user_email: '41898282+github-actions[bot]@users.noreply.github.com'
-          commit_author: 'github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>'
-          skip_dirty_check: false
-          skip_fetch: true
+          add: 'kotlin-js-store/yarn.lock'
+          message: 'chore: update yarn.lock after dependency upgrade [skip ci]'
+          default_author: github_actions
 
       - name: Build JVM and JS targets
         run: ./gradlew jvmJar jsJar wasmJsJar
