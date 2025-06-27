@@ -45,7 +45,7 @@ class TestNewsApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "公告数据不应为空")
+            assertNotNull(result, "Announcement data should not be null")
         }
 
     @Test
@@ -61,7 +61,7 @@ class TestNewsApi : TestTuShare() {
                         tsCode = TsCode("601121", "SH"),
                     ),
                 )
-            assertNotNull(result, "上证E互动问答数据不应为空")
+            assertNotNull(result, "Shanghai E-interactive Q&A data should not be null")
         }
 
     @Test
@@ -77,7 +77,7 @@ class TestNewsApi : TestTuShare() {
                         endDate = LocalDateTime(2025, 2, 12, 9, 10, 0),
                     ),
                 )
-            assertNotNull(result, "新闻快讯数据不应为空")
+            assertNotNull(result, "News data should not be null")
         }
 
     // Test skipped, no permission
@@ -91,7 +91,7 @@ class TestNewsApi : TestTuShare() {
                 tuShareInstance.getCctvNews(
                     CctvNewsParams(date = LocalDate(2025, 2, 12)),
                 )
-            assertNotNull(result, "新闻联播数据不应为空")
+            assertNotNull(result, "CCTV news data should not be null")
         }
 
     @Test
@@ -108,7 +108,7 @@ class TestNewsApi : TestTuShare() {
                         src = "人民网",
                     ),
                 )
-            assertNotNull(result, "长篇通讯数据不应为空")
+            assertNotNull(result, "Major news data should not be null")
         }
 
     @Test
@@ -124,6 +124,6 @@ class TestNewsApi : TestTuShare() {
                         tsCode = TsCode("002254", "SZ"),
                     ),
                 )
-            assertNotNull(result, "深证互动易问答数据不应为空")
+            assertNotNull(result, "Shenzhen interactive Q&A data should not be null")
         }
 }

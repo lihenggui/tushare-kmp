@@ -50,7 +50,7 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "利润表数据不应为空")
+            assertNotNull(result, "Income statement data should not be null")
         }
 
     //    @Test
@@ -68,7 +68,7 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "资产负债表数据不应为空")
+            assertNotNull(result, "Balance sheet data should not be null")
         }
 
     //    @Test
@@ -86,7 +86,7 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "现金流量表数据不应为空")
+            assertNotNull(result, "Cash flow statement data should not be null")
         }
 
     //    @Test
@@ -104,7 +104,7 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "业绩预告数据不应为空")
+            assertNotNull(result, "Earnings forecast data should not be null")
         }
 
     //    @Test
@@ -122,7 +122,7 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "业绩快报数据不应为空")
+            assertNotNull(result, "Express report data should not be null")
         }
 
     @Test
@@ -137,7 +137,7 @@ class TestStockFinanceApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "分红送股数据不应为空")
+            assertNotNull(result, "Dividend data should not be null")
         }
 
     //    @Test
@@ -155,7 +155,7 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "财务指标数据不应为空")
+            assertNotNull(result, "Financial indicator data should not be null")
         }
 
     //    @Test
@@ -171,7 +171,7 @@ class TestStockFinanceApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "财务审计意见数据不应为空")
+            assertNotNull(result, "Financial audit opinion data should not be null")
         }
 
     //    @Test
@@ -189,7 +189,7 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "主营业务构成数据不应为空")
+            assertNotNull(result, "Main business composition data should not be null")
         }
 
     //    @Test
@@ -206,6 +206,6 @@ class TestStockFinanceApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "财报披露计划数据不应为空")
+            assertNotNull(result, "Financial report disclosure plan data should not be null")
         }
 }

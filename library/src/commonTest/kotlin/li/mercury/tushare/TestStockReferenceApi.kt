@@ -50,7 +50,7 @@ class TestStockReferenceApi : TestTuShare() {
                         endDate = LocalDate(2017, 12, 31),
                     ),
                 )
-            assertNotNull(result, "前十大股东数据不应为空")
+            assertNotNull(result, "Top 10 shareholders data should not be null")
         }
 
     @Test
@@ -67,7 +67,7 @@ class TestStockReferenceApi : TestTuShare() {
                         endDate = LocalDate(2017, 12, 31),
                     ),
                 )
-            assertNotNull(result, "前十大流通股东数据不应为空")
+            assertNotNull(result, "Top 10 float shareholders data should not be null")
         }
 
     // Test skipped, no permission
@@ -83,7 +83,7 @@ class TestStockReferenceApi : TestTuShare() {
                         tsCode = TsCode("000014", "SZ"),
                     ),
                 )
-            assertNotNull(result, "股权质押统计数据不应为空")
+            assertNotNull(result, "Pledge statistics data should not be null")
         }
 
     // Test skipped, no permission
@@ -99,7 +99,7 @@ class TestStockReferenceApi : TestTuShare() {
                         tsCode = TsCode("000014", "SZ"),
                     ),
                 )
-            assertNotNull(result, "股权质押明细数据不应为空")
+            assertNotNull(result, "Pledge detail data should not be null")
         }
 
     // Test skipped, no permission
@@ -116,7 +116,7 @@ class TestStockReferenceApi : TestTuShare() {
                         endDate = LocalDate(2018, 5, 10),
                     ),
                 )
-            assertNotNull(result, "股票回购信息数据不应为空")
+            assertNotNull(result, "Stock repurchase data should not be null")
         }
 
     // Test skipped, no permission
@@ -132,7 +132,7 @@ class TestStockReferenceApi : TestTuShare() {
                         src = "ts",
                     ),
                 )
-            assertNotNull(result, "概念股分类数据不应为空")
+            assertNotNull(result, "Concept classification data should not be null")
         }
 
     // Test skipped, no permission
@@ -148,7 +148,7 @@ class TestStockReferenceApi : TestTuShare() {
                         id = "TS2",
                     ),
                 )
-            assertNotNull(result, "概念股列表数据不应为空")
+            assertNotNull(result, "Concept list data should not be null")
         }
 
     @Test
@@ -164,7 +164,7 @@ class TestStockReferenceApi : TestTuShare() {
                         annDate = LocalDate(2018, 12, 20),
                     ),
                 )
-            assertNotNull(result, "限售股解禁数据不应为空")
+            assertNotNull(result, "Share float unlock data should not be null")
         }
 
     // Test skipped, no permission
@@ -181,7 +181,7 @@ class TestStockReferenceApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 12, 27),
                     ),
                 )
-            assertNotNull(result, "大宗交易数据不应为空")
+            assertNotNull(result, "Block trade data should not be null")
         }
 
     // Test skipped, no permission
@@ -199,7 +199,7 @@ class TestStockReferenceApi : TestTuShare() {
                         endDate2 = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "股东人数数据不应为空")
+            assertNotNull(result, "Shareholder number data should not be null")
         }
 
     // Test skipped, no permission
@@ -217,6 +217,6 @@ class TestStockReferenceApi : TestTuShare() {
                         endDate = LocalDate(2022, 12, 31),
                     ),
                 )
-            assertNotNull(result, "股东增减持数据不应为空")
+            assertNotNull(result, "Shareholder trading data should not be null")
         }
 }

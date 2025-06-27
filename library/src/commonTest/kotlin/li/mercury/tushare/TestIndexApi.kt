@@ -56,7 +56,7 @@ class TestIndexApi : TestTuShare() {
                         category = IndexCategory.主题指数,
                     ),
                 )
-            assertNotNull(result, "指数基本信息数据不应为空")
+            assertNotNull(result, "Index basic data should not be null")
         }
 
     // Test skipped, no permission
@@ -70,7 +70,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIdxFactorPro(
                     IdxFactorProParams(),
                 )
-            assertNotNull(result, "指数因子数据不应为空")
+            assertNotNull(result, "Index factor pro data should not be null")
         }
 
     // Test skipped, no permission
@@ -84,7 +84,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIndexMemberAll(
                     IndexMemberAllParams(),
                 )
-            assertNotNull(result, "指数成分股数据不应为空")
+            assertNotNull(result, "Index member all data should not be null")
         }
 
     // Test skipped, no permission
@@ -98,7 +98,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIndexClassify(
                     IndexClassifyParams(),
                 )
-            assertNotNull(result, "申万行业分类数据不应为空")
+            assertNotNull(result, "Index classify data should not be null")
         }
 
     // Test skipped, no permission
@@ -114,7 +114,7 @@ class TestIndexApi : TestTuShare() {
                         indexCode = TsCode("000001", "SH"),
                     ),
                 )
-            assertNotNull(result, "指数权重数据不应为空")
+            assertNotNull(result, "Index weight data should not be null")
         }
 
     // Test skipped, no permission
@@ -128,7 +128,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIndexDailyBasic(
                     IndexDailyBasicParams(),
                 )
-            assertNotNull(result, "指数每日基本信息数据不应为空")
+            assertNotNull(result, "Index daily basic data should not be null")
         }
 
     // Test skipped, no permission
@@ -142,7 +142,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIndexMonthly(
                     IndexMonthlyParams(),
                 )
-            assertNotNull(result, "指数月线数据不应为空")
+            assertNotNull(result, "Index monthly data should not be null")
         }
 
     @Test
@@ -158,7 +158,7 @@ class TestIndexApi : TestTuShare() {
                         tsCode = TsCode("801012", "SI"),
                     ),
                 )
-            assertNotNull(result, "申万指数日线数据不应为空")
+            assertNotNull(result, "SW daily data should not be null")
         }
 
     @Test
@@ -171,7 +171,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getSzDailyInfo(
                     SzDailyInfoParams(),
                 )
-            assertNotNull(result, "深圳市场每日交易统计数据不应为空")
+            assertNotNull(result, "Shenzhen daily trading statistics data should not be null")
         }
 
     @Test
@@ -188,7 +188,7 @@ class TestIndexApi : TestTuShare() {
                         endDate = LocalDate(2020, 3, 1),
                     ),
                 )
-            assertNotNull(result, "同花顺概念和行业指数数据不应为空")
+            assertNotNull(result, "THS concept and industry index data should not be null")
         }
 
     @Test
@@ -204,7 +204,7 @@ class TestIndexApi : TestTuShare() {
                         tsCode = TsCode("005002", "SH"),
                     ),
                 )
-            assertNotNull(result, "中证指数日线数据不应为空")
+            assertNotNull(result, "CSI daily data should not be null")
         }
 
     @Test
@@ -220,7 +220,7 @@ class TestIndexApi : TestTuShare() {
                         tradeDate = LocalDate(2023, 7, 5),
                     ),
                 )
-            assertNotNull(result, "国际指数数据不应为空")
+            assertNotNull(result, "Global index data should not be null")
         }
 
     // Test skipped, no permission
@@ -234,7 +234,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getDailyInfo(
                     DailyInfoParams(),
                 )
-            assertNotNull(result, "大盘指数每日指标数据不应为空")
+            assertNotNull(result, "Market daily indicators data should not be null")
         }
 
     // Test skipped, no permission
@@ -248,7 +248,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIndexWeekly(
                     IndexWeeklyParams(),
                 )
-            assertNotNull(result, "指数周线数据不应为空")
+            assertNotNull(result, "Index weekly data should not be null")
         }
 
     // Test skipped, no permission
@@ -264,6 +264,6 @@ class TestIndexApi : TestTuShare() {
                         tsCode = TsCode("000001", "SH"),
                     ),
                 )
-            assertNotNull(result, "指数日线数据不应为空")
+            assertNotNull(result, "Index daily data should not be null")
         }
 }

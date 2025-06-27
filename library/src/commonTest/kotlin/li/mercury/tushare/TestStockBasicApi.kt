@@ -51,7 +51,7 @@ class TestStockBasicApi : TestTuShare() {
                         exchange = Exchange.SZSE,
                     ),
                 )
-            assertNotNull(result, "股票基本信息数据不应为空")
+            assertNotNull(result, "Stock basic information data should not be null")
         }
 
     @Test
@@ -66,7 +66,7 @@ class TestStockBasicApi : TestTuShare() {
                         hsType = HsType.SZ,
                     ),
                 )
-            assertNotNull(result, "沪深股通成分股数据不应为空")
+            assertNotNull(result, "HS connect constituent data should not be null")
         }
 
     @Test
@@ -81,7 +81,7 @@ class TestStockBasicApi : TestTuShare() {
                         tsCode = TsCode("600519", "SH"),
                     ),
                 )
-            assertNotNull(result, "股票曾用名数据不应为空")
+            assertNotNull(result, "Stock name change data should not be null")
         }
 
     @Test
@@ -96,7 +96,7 @@ class TestStockBasicApi : TestTuShare() {
                         exchange = Exchange.SZSE,
                     ),
                 )
-            assertNotNull(result, "上市公司基本信息数据不应为空")
+            assertNotNull(result, "Listed company basic information data should not be null")
         }
 
     // Test skipped, no permission
@@ -112,7 +112,7 @@ class TestStockBasicApi : TestTuShare() {
                         tradeDate = LocalDate(2025, 1, 1),
                     ),
                 )
-            assertNotNull(result, "股票盘前数据不应为空")
+            assertNotNull(result, "Stock pre-market data should not be null")
         }
 
     // Test skipped, no permission
@@ -130,7 +130,7 @@ class TestStockBasicApi : TestTuShare() {
                         endDate = LocalDate(2023, 2, 1),
                     ),
                 )
-            assertNotNull(result, "交易日历数据不应为空")
+            assertNotNull(result, "Trading calendar data should not be null")
         }
 
     // Test skipped, no permission
@@ -146,7 +146,7 @@ class TestStockBasicApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "上市公司管理层数据不应为空")
+            assertNotNull(result, "Listed company management data should not be null")
         }
 
     // Test skipped, no permission
@@ -162,7 +162,7 @@ class TestStockBasicApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "管理层薪酬和持股数据不应为空")
+            assertNotNull(result, "Management compensation and shareholding data should not be null")
         }
 
     @Test
@@ -178,7 +178,7 @@ class TestStockBasicApi : TestTuShare() {
                         endDate = LocalDate(2018, 10, 18),
                     ),
                 )
-            assertNotNull(result, "IPO新股列表数据不应为空")
+            assertNotNull(result, "IPO new share list data should not be null")
         }
 
     @Test
@@ -194,6 +194,6 @@ class TestStockBasicApi : TestTuShare() {
                         tsCode = TsCode("300605", "SZ"),
                     ),
                 )
-            assertNotNull(result, "备用列表数据不应为空")
+            assertNotNull(result, "Backup list data should not be null")
         }
 }

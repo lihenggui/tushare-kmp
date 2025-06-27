@@ -48,7 +48,7 @@ class TestStockMarginApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "融资融券交易汇总数据不应为空")
+            assertNotNull(result, "Margin trading summary data should not be null")
         }
 
     //    @Test
@@ -65,7 +65,7 @@ class TestStockMarginApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "融资融券交易明细数据不应为空")
+            assertNotNull(result, "Margin trading detail data should not be null")
         }
 
     @Test
@@ -80,7 +80,7 @@ class TestStockMarginApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "融资融券标的数据不应为空")
+            assertNotNull(result, "Margin securities data should not be null")
         }
 
     @Test
@@ -95,7 +95,7 @@ class TestStockMarginApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "转融券交易汇总数据不应为空")
+            assertNotNull(result, "Securities lending summary data should not be null")
         }
 
     @Test
@@ -110,7 +110,7 @@ class TestStockMarginApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "转融资交易汇总数据不应为空")
+            assertNotNull(result, "Refinancing summary data should not be null")
         }
 
     @Test
@@ -126,7 +126,7 @@ class TestStockMarginApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "转融券交易明细数据不应为空")
+            assertNotNull(result, "Securities lending detail data should not be null")
         }
 
     @Test
@@ -141,7 +141,7 @@ class TestStockMarginApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "做市借券交易汇总数据不应为空")
+            assertNotNull(result, "Market making securities lending summary data should not be null")
         }
 
     // Test skipped, no permission
@@ -157,7 +157,7 @@ class TestStockMarginApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "股权质押统计数据不应为空")
+            assertNotNull(result, "Pledge statistics data should not be null")
         }
 
     // Test skipped, no permission
@@ -173,7 +173,7 @@ class TestStockMarginApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "股权质押明细数据不应为空")
+            assertNotNull(result, "Pledge detail data should not be null")
         }
 
     // Test skipped, no permission
@@ -190,6 +190,6 @@ class TestStockMarginApi : TestTuShare() {
                         endDate = LocalDate(2018, 12, 31),
                     ),
                 )
-            assertNotNull(result, "股票回购数据不应为空")
+            assertNotNull(result, "Stock repurchase data should not be null")
         }
 }

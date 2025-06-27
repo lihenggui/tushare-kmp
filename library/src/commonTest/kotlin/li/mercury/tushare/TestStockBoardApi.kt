@@ -60,7 +60,7 @@ class TestStockBoardApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "东方财富板块成分数据不应为空")
+            assertNotNull(result, "Eastmoney board constituent data should not be null")
         }
 
     //    @Test
@@ -76,7 +76,7 @@ class TestStockBoardApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "东方财富概念板块数据不应为空")
+            assertNotNull(result, "Eastmoney concept board data should not be null")
         }
 
     @Test
@@ -93,7 +93,7 @@ class TestStockBoardApi : TestTuShare() {
                         hotType = DcHotType.POPULARITY,
                     ),
                 )
-            assertNotNull(result, "东财热门股票数据不应为空")
+            assertNotNull(result, "Eastmoney hot stock data should not be null")
         }
 
     //    @Test
@@ -110,7 +110,7 @@ class TestStockBoardApi : TestTuShare() {
                         type = ThsIndexType.THEME,
                     ),
                 )
-            assertNotNull(result, "同花顺概念和行业指数数据不应为空")
+            assertNotNull(result, "THS concept and industry index data should not be null")
         }
 
     //    @Test
@@ -126,7 +126,7 @@ class TestStockBoardApi : TestTuShare() {
                         tsCode = TsCode("865001", "TI"),
                     ),
                 )
-            assertNotNull(result, "同花顺概念板块成分数据不应为空")
+            assertNotNull(result, "THS concept board constituent data should not be null")
         }
 
     @Test
@@ -142,7 +142,7 @@ class TestStockBoardApi : TestTuShare() {
                         market = "热股",
                     ),
                 )
-            assertNotNull(result, "同花顺热门股票数据不应为空")
+            assertNotNull(result, "THS hot stock data should not be null")
         }
 
     //    @Test
@@ -158,7 +158,7 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2024, 3, 15),
                     ),
                 )
-            assertNotNull(result, "开盘啦榜单数据不应为空")
+            assertNotNull(result, "KPL ranking data should not be null")
         }
 
     //    @Test
@@ -172,7 +172,7 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getKplConcept(
                     KplConceptParams(),
                 )
-            assertNotNull(result, "开盘啦题材库数据不应为空")
+            assertNotNull(result, "KPL concept library data should not be null")
         }
 
     //    @Test
@@ -188,7 +188,7 @@ class TestStockBoardApi : TestTuShare() {
                         tsCode = TsCode("000001", "SZ"),
                     ),
                 )
-            assertNotNull(result, "开盘啦题材成分数据不应为空")
+            assertNotNull(result, "KPL concept constituent data should not be null")
         }
 
     //    @Test
@@ -204,7 +204,7 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2024, 3, 15),
                     ),
                 )
-            assertNotNull(result, "最强板块统计数据不应为空")
+            assertNotNull(result, "Strongest sector statistics data should not be null")
         }
 
     //    @Test
@@ -220,7 +220,7 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2024, 3, 15),
                     ),
                 )
-            assertNotNull(result, "同花顺涨跌停榜单数据不应为空")
+            assertNotNull(result, "THS limit up/down ranking data should not be null")
         }
 
     @Test
@@ -233,7 +233,7 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getHmList(
                     HmListParams(),
                 )
-            assertNotNull(result, "游资名录数据不应为空")
+            assertNotNull(result, "Hot money list data should not be null")
         }
 
     @Test
@@ -248,7 +248,7 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2024, 3, 15),
                     ),
                 )
-            assertNotNull(result, "游资每日明细数据不应为空")
+            assertNotNull(result, "Hot money daily detail data should not be null")
         }
 
     //    @Test
@@ -264,7 +264,7 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2024, 3, 15),
                     ),
                 )
-            assertNotNull(result, "连板天梯数据不应为空")
+            assertNotNull(result, "Consecutive limit up ladder data should not be null")
         }
 
     //    @Test
@@ -280,7 +280,7 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "龙虎榜每日明细数据不应为空")
+            assertNotNull(result, "Dragon tiger list daily detail data should not be null")
         }
 
     //    @Test
@@ -296,7 +296,7 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "龙虎榜机构明细数据不应为空")
+            assertNotNull(result, "Dragon tiger list institutional detail data should not be null")
         }
 
     //    @Test
@@ -313,7 +313,7 @@ class TestStockBoardApi : TestTuShare() {
                         limitType = LimitType.U,
                     ),
                 )
-            assertNotNull(result, "每日涨跌停统计数据不应为空")
+            assertNotNull(result, "Daily limit up/down statistics data should not be null")
         }
 
     //    @Test
@@ -329,6 +329,6 @@ class TestStockBoardApi : TestTuShare() {
                         tradeDate = LocalDate(2018, 7, 16),
                     ),
                 )
-            assertNotNull(result, "股票竞价交易数据不应为空")
+            assertNotNull(result, "Stock auction trading data should not be null")
         }
 }

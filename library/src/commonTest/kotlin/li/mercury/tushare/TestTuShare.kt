@@ -30,17 +30,17 @@ import li.mercury.tushare.internal.logging.LogLevel
 import li.mercury.tushare.util.createMockEngine
 import kotlin.time.Duration.Companion.minutes
 
-// 测试用的默认配置，使用固定的测试 token
+// Default test configuration using a fixed test token
 internal val testConfig: TuShareConfig by lazy {
     TuShareConfig(
-        token = "test-token", // 测试中使用固定的 token
+        token = "test-token", // Use fixed token in tests
         logging = LoggingConfig(logLevel = LogLevel.All),
         timeout = Timeout(socket = 1.minutes),
     )
 }
 
 private fun transport(config: TuShareConfig): HttpTransport {
-    require(config.engine != null) { "测试必须提供 MockEngine，请使用 createConfigWithMockEngine 创建配置" }
+    require(config.engine != null) { "Tests must provide MockEngine, please use createConfigWithMockEngine to create configuration" }
     return HttpTransport(
         createHttpClient(config),
     )
@@ -53,7 +53,7 @@ abstract class TestTuShare {
         )
 
     /**
-     * 创建带有指定 mock 响应文件的配置
+     * Create configuration with specified mock response file
      */
     internal fun createConfigWithMockEngine(responseFileName: String): TuShareConfig =
         TuShareConfig(
