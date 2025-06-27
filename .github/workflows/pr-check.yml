@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
   checks: write
   pull-requests: write
 
@@ -32,7 +32,7 @@ jobs:
           gradle-home-cache-cleanup: true
 
       - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v2
+        uses: gradle/actions/wrapper-validation@v4
 
       - name: Check code formatting
         run: ./gradlew --init-script=gradle/init.gradle.kts spotlessCheck --no-configuration-cache
@@ -61,6 +61,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -72,6 +75,16 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-home-cache-cleanup: true
+
+      - name: Upgrade Yarn Lock
+        run: ./gradlew kotlinUpgradeYarnLock
+
+      - name: Auto-commit yarn.lock changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'kotlin-js-store/yarn.lock'
+          message: 'chore: update yarn.lock after dependency upgrade [skip ci]'
+          default_author: github_actions
 
       - name: Build JVM and JS targets
         run: ./gradlew jvmJar jsJar wasmJsJar

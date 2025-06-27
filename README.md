@@ -3,8 +3,9 @@
 # TuShare API Kotlin 客户端
 
 [![License](https://img.shields.io/github/license/lihenggui/tushare-kmp?color=yellow)](LICENSE)
+[![Maven Central](https://img.shields.io/maven-central/v/li.mercury.tushare/tushare-kmp?color=blue&label=Version)](https://central.sonatype.com/namespace/li.mercury.tushare)
 
-用于 [TuShare 金融数据 API](https://tushare.pro/document/2) 的 Kotlin 客户端，支持多平台和协程。
+用于 [TuShare 金融数据 API](https://tushare.pro/document/2) 的 Kotlin 客户端，支持[Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html)和[Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)。
 
 ## 📦 安装配置
 
@@ -18,41 +19,41 @@ repositories {
 }
 
 dependencies {
-    implementation "li.mercury.tushare:tushare-kmp:1.0.0-SNAPSHOT"
+    implementation "li.mercury.tushare:tushare-kmp:latest-version"
 }
 ```
 
-### 2. 选择网络引擎
+### 2. 选择Ktor Engine
 
-选择并添加一个 [Ktor 引擎](https://ktor.io/docs/http-client-engines.html) 到你的依赖中：
+选择并添加一个 [Ktor Engine](https://ktor.io/docs/http-client-engines.html) 到你的依赖中：
 
 ```groovy
 dependencies {
     // Android/JVM
-    implementation "io.ktor:ktor-client-okhttp:3.2.0"
+    implementation "io.ktor:ktor-client-okhttp:ktor-latest-version"
     
     // iOS/Native
-    implementation "io.ktor:ktor-client-darwin:3.2.0"
+    implementation "io.ktor:ktor-client-darwin:ktor-latest-version"
     
     // JavaScript
-    implementation "io.ktor:ktor-client-js:3.2.0"
+    implementation "io.ktor:ktor-client-js:ktor-latest-version"
 }
 ```
 
 
 
-### 多平台项目
+### Kotlin Multiplatform
 
-在多平台项目中，将 tushare 客户端依赖添加到 `commonMain`：
+在Kotlin Multiplatform多平台项目中，你可以将 tushare 客户端依赖添加到 `commonMain`：
 
 ```kotlin
 kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("li.mercury.tushare:tushare-kmp:1.0.0-SNAPSHOT")
-                // 选择一个适合的 Ktor 引擎
-                implementation("io.ktor:ktor-client-cio:3.2.0")
+                implementation("li.mercury.tushare:tushare-kmp:latest-version")
+                // 选择一个适合的 Ktor 引擎，这里以cio为例子
+                implementation("io.ktor:ktor-client-cio:ktor-latest-version")
             }
         }
     }
@@ -61,19 +62,19 @@ kotlin {
 
 ### Maven
 
-Gradle 是多平台支持所必需的，但你仍然可以在 Maven 项目中使用 JVM 客户端：
+你可以在 Maven 项目中使用 JVM 客户端：
 
 ```xml
 <dependencies>
     <dependency>
         <groupId>li.mercury.tushare</groupId>
         <artifactId>tushare-kmp-jvm</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>latest-version</version>
     </dependency>
     <dependency>
         <groupId>io.ktor</groupId>
         <artifactId>ktor-client-okhttp-jvm</artifactId>
-        <version>3.2.0</version>
+        <version>ktor-latest-version</version>
         <scope>runtime</scope>
     </dependency>
 </dependencies>
@@ -174,23 +175,25 @@ val indexDaily = tuShare.indexDaily(
 
 该库支持以下平台：
 
-- **JVM** (Java 8+)
-- **Android** (API 21+)
-- **iOS** (iOS 13+)
-- **macOS** (macOS 10.14+)
-- **watchOS** (watchOS 6.0+)
-- **tvOS** (tvOS 13+)
-- **Linux** (x64)
-- **Windows** (x64)
-- **JavaScript** (Node.js & Browser)
+- **JVM**
+- **Android**
+- **iOS**
+- **macOS**
+- **watchOS** 
+- **tvOS**
+- **Linux**
+- **Windows** 
+- **JavaScript**
 - **WebAssembly**
+
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/supported-platforms.html
 
 ## 🔧 配置选项
 
 ```kotlin
 val tuShare = TuShare(
     token = "your-token",
-    host = TuShareHost.TuShare, // 或自定义域名
+    host = TuShareHost.TuShare,
     timeout = Timeout(
         socket = 60.seconds,
         connect = 30.seconds,
@@ -198,32 +201,15 @@ val tuShare = TuShare(
     ),
     loggingConfig = LoggingConfig(
         level = LogLevel.INFO,
-        sanitize = { "***" }
     ),
     retry = RetryStrategy(
         maxRetries = 3,
-        backoff = ExponentialBackoff()
     ),
-    proxy = ProxyConfig(
+    proxy = Socks(
         host = "proxy.example.com",
         port = 8080
     )
 )
-```
-
-
-
-## 📸 快照版本
-
-[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://oss.sonatype.org/service/local/repositories/snapshots/content/li/mercury/tushare/tushare-kmp/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://oss.sonatype.org/content/repositories/snapshots/li/mercury/tushare/tushare-kmp/)
-
-要导入快照版本到你的项目中，在 gradle 文件中添加以下代码：
-
-```groovy
-repositories {
-    //...
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-}
 ```
 
 ## ⭐️ 支持
@@ -231,7 +217,7 @@ repositories {
 欣赏这个项目？以下是你可以帮助的方式：
 
 1. **Star**: 在右上角给它一个星标，这对我们很重要！
-2. **贡献**: 发现问题或有功能想法？提交 PR。
+2. **贡献**: 发现问题或有功能想法？提交 PR 吧。
 3. **反馈**: 有建议？[开个 issue](https://github.com/lihenggui/tushare-kmp/issues/new)。
 
 ## 📄 许可证
