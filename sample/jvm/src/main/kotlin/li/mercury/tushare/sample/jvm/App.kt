@@ -29,8 +29,9 @@ fun main() =
         val sampleStockCode = "600519" // Kweichow Moutai
         val sampleExchange = "SH" // Shanghai Stock Exchange
 
-        val apiKey = System.getenv("TUSHARE_TOKEN")
-            ?: throw IllegalArgumentException("Please set the TUSHARE_TOKEN environment variable with your TuShare API key.")
+        val apiKey =
+            System.getenv("TUSHARE_TOKEN")
+                ?: throw IllegalArgumentException("Please set the TUSHARE_TOKEN environment variable with your TuShare API key.")
         val tuShare =
             TuShare(
                 token = apiKey,

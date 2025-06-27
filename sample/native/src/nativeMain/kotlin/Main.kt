@@ -67,7 +67,8 @@ fun main(): Unit =
         println("\n> Getting Index basic data...")
         val indexBasic =
             tuShare.getIndexBasic(
-                li.mercury.tushare.api.index.models.IndexBasicParams(tsCode = TsCode("000001", "SH")),
+                li.mercury.tushare.api.index.models
+                    .IndexBasicParams(tsCode = TsCode("000001", "SH")),
             )
         println("Index basic data: $indexBasic")
     }
