@@ -17,54 +17,26 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.index.models.IndexBasicParams
 import li.mercury.tushare.api.stock.basic.models.StockBasicParams
 import li.mercury.tushare.client.LoggingConfig
 import li.mercury.tushare.internal.logging.LogLevel
 import li.mercury.tushare.models.TsCode
 
-fun main() {
-    console.log("TuShare JS Sample")
+suspend fun main() {
+    val token = js("process.env.TUSHARE_TOKEN").unsafeCast<String>()
+    val tuShare =
+        TuShare(
+            token = token,
+            loggingConfig = LoggingConfig(LogLevel.None),
+        )
 
-    val token = js("process.env.TUSHARE_TOKEN") as? String
+    println("\n> Getting Stock basic data...")
+    val stockBasic = tuShare.getStockBasic(StockBasicParams(tsCode = TsCode("000001", "SZ")))
+    println("Stock basic data: $stockBasic")
 
-    if (token == null) {
-        console.error("TUSHARE_TOKEN environment variable must be set.")
-        return
-    }
-
-    GlobalScope.launch {
-        try {
-            console.log("Creating TuShare client...")
-            val tuShare =
-                TuShare(
-                    token = token,
-                    loggingConfig = LoggingConfig(LogLevel.None),
-                )
-
-            console.log("Querying for stock information...")
-            val result =
-                tuShare.getStockBasic(
-                    StockBasicParams(
-                        tsCode = TsCode("600519", "SH"), // Kweichow Moutai
-                    ),
-                )
-
-            if (result.isNotEmpty()) {
-                val stock = result.first()
-                console.log("Stock found: ${stock.name} (${stock.tsCode})")
-                console.log("Industry: ${stock.industry}")
-                console.log("Listing Date: ${stock.listDate}")
-            } else {
-                console.log("No stock data found")
-            }
-
-            tuShare.close()
-            console.log("Sample completed")
-        } catch (e: Exception) {
-            console.error("Error: ${e.message}")
-        }
-    }
+    println("\n> Getting Index basic data...")
+    val indexBasic = tuShare.getIndexBasic(IndexBasicParams(tsCode = TsCode("000001", "SH")))
+    println("Index basic data: $indexBasic")
 }

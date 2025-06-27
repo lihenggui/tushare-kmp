@@ -29,14 +29,6 @@ dependencies {
     implementation(libs.kotlinx.datetime)
 }
 
-kotlin {
-    jvmToolchain(17) // Set Java toolchain to 17
-
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-    }
-}
-
 application {
     mainClass.set("li.mercury.tushare.sample.jvm.AppKt")
 }

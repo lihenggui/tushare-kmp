@@ -50,68 +50,24 @@ fun main(): Unit =
 
         @OptIn(ExperimentalForeignApi::class)
         val apiKey = getenv("TUSHARE_TOKEN")?.toKString()
-        if (apiKey.isNullOrEmpty()) {
-            println("❌ TUSHARE_TOKEN environment variable is not set.")
-            println("Please set the TUSHARE_TOKEN environment variable and try again.")
-            return@runBlocking
-        }
+        val token = requireNotNull(apiKey) { "TUSHARE_TOKEN environment variable must be set." }
+        val tuShare =
+            TuShare(
+                token = token,
+                loggingConfig = LoggingConfig(LogLevel.None),
+            )
 
-        println("=== TuShare Native API Example ===")
-        println("Welcome to TuShare Kotlin/Native library!")
-        println()
-        println("⚠️  IMPORTANT LIMITATION:")
-        println("   Kotlin/Native does not currently support TLS sessions required for HTTPS connections.")
-        println("   This means TuShare API calls will fail with 'TLS sessions are not supported' error.")
-        println("   This is a known limitation of Kotlin/Native platform.")
-        println()
-        println("🔍 Token found: ${apiKey.take(10)}...")
+        println("\n> Getting Stock basic data...")
+        val stockBasic =
+            tuShare.getStockBasic(
+                StockBasicParams(tsCode = TsCode(sampleStockCode, sampleExchange)),
+            )
+        println("Stock basic data: $stockBasic")
 
-        try {
-            println("\n🔧 Creating TuShare client...")
-            val tuShare =
-                TuShare(
-                    token = apiKey,
-                    loggingConfig = LoggingConfig(LogLevel.Info),
-                )
-
-            println("✅ TuShare client created successfully")
-
-            println("\n📊 Testing basic stock query...")
-            println("(This will fail due to TLS limitation)")
-
-            val result =
-                tuShare.getStockBasic(
-                    StockBasicParams(
-                        tsCode = TsCode(sampleStockCode, sampleExchange),
-                    ),
-                )
-
-            if (result.isNotEmpty()) {
-                val stock = result.first()
-                println("✅ Query successful!")
-                println("  Code: ${stock.tsCode}")
-                println("  Name: ${stock.name}")
-                println("  Industry: ${stock.industry}")
-            } else {
-                println("⚠️ No data returned")
-            }
-
-            println("\n🔒 Closing client...")
-            tuShare.close()
-        } catch (e: Exception) {
-            println("❌ Error: ${e.message}")
-            if (e.message?.contains("TLS sessions are not supported") == true) {
-                println()
-                println("💡 This error is expected in Kotlin/Native.")
-                println("   HTTPS connections are not fully supported in current Kotlin/Native versions.")
-                println()
-                println("   For production use, please consider:")
-                println("   - Using the JVM target")
-                println("   - Using the JavaScript target")
-            } else {
-                e.printStackTrace()
-            }
-        }
-
-        println("\n✅ Test completed")
+        println("\n> Getting Index basic data...")
+        val indexBasic =
+            tuShare.getIndexBasic(
+                li.mercury.tushare.api.index.models.IndexBasicParams(tsCode = TsCode("000001", "SH")),
+            )
+        println("Index basic data: $indexBasic")
     }
