@@ -1,5 +1,6 @@
 /*
  * GNU LESSER GENERAL PUBLIC LICENSE
+ *
  * Copyright (C) 2025 Mercury Li
  *
  * This program is free software; you can redistribute it and/or
@@ -16,27 +17,24 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-plugins {
-    id("org.jetbrains.kotlin.jvm")
-    alias(libs.plugins.kotlin.serialization)
-    application
+package li.mercury.tushare.sample.jvm
+
+import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.stock.finance.models.BalanceSheetParams
+import li.mercury.tushare.api.stock.finance.models.CashflowParams
+import li.mercury.tushare.api.stock.finance.models.IncomeParams
+
+suspend fun incomeStatements(tuShare: TuShare) {
+    println("Income Statements feature")
+    tuShare.getIncome(IncomeParams())
 }
 
-dependencies {
-    implementation(project(":library"))
-    implementation(libs.ktor.client.cio)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.datetime)
+suspend fun balanceSheets(tuShare: TuShare) {
+    println("Balance Sheets feature")
+    tuShare.getBalanceSheet(BalanceSheetParams())
 }
 
-kotlin {
-    jvmToolchain(17) // Set Java toolchain to 17
-
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-    }
-}
-
-application {
-    mainClass.set("li.mercury.tushare.sample.jvm.AppKt")
+suspend fun cashFlowStatements(tuShare: TuShare) {
+    println("Cash Flow Statements feature")
+    tuShare.getCashflow(CashflowParams())
 }

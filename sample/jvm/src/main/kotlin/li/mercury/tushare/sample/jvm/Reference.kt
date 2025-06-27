@@ -1,5 +1,6 @@
 /*
  * GNU LESSER GENERAL PUBLIC LICENSE
+ *
  * Copyright (C) 2025 Mercury Li
  *
  * This program is free software; you can redistribute it and/or
@@ -16,27 +17,24 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-plugins {
-    id("org.jetbrains.kotlin.jvm")
-    alias(libs.plugins.kotlin.serialization)
-    application
+package li.mercury.tushare.sample.jvm
+
+import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.stock.basic.models.StkPremarketParams
+import li.mercury.tushare.api.stock.basic.models.StockCompanyParams
+import li.mercury.tushare.api.stock.basic.models.TradeCalParams
+
+suspend fun tradeCalendars(tuShare: TuShare) {
+    println("Trade Calendars feature")
+    tuShare.getTradeCal(TradeCalParams())
 }
 
-dependencies {
-    implementation(project(":library"))
-    implementation(libs.ktor.client.cio)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.datetime)
+suspend fun stockCompanies(tuShare: TuShare) {
+    println("Stock Companies feature")
+    tuShare.getStockCompany(StockCompanyParams())
 }
 
-kotlin {
-    jvmToolchain(17) // Set Java toolchain to 17
-
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-    }
-}
-
-application {
-    mainClass.set("li.mercury.tushare.sample.jvm.AppKt")
+suspend fun stkPremarket(tuShare: TuShare) {
+    println("Stk Premarket feature")
+    tuShare.getStkPremarket(StkPremarketParams())
 }

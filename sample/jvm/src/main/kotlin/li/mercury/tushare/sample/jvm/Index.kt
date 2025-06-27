@@ -1,5 +1,6 @@
 /*
  * GNU LESSER GENERAL PUBLIC LICENSE
+ *
  * Copyright (C) 2025 Mercury Li
  *
  * This program is free software; you can redistribute it and/or
@@ -16,27 +17,28 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-plugins {
-    id("org.jetbrains.kotlin.jvm")
-    alias(libs.plugins.kotlin.serialization)
-    application
+package li.mercury.tushare.sample.jvm
+
+import li.mercury.tushare.TuShare
+import li.mercury.tushare.api.index.models.IndexBasicParams
+import li.mercury.tushare.api.index.models.IndexDailyParams
+import li.mercury.tushare.api.index.models.SwDailyParams
+
+suspend fun getIndexBasic(tuShare: TuShare) {
+    print("\n> Fetching index basic information...")
+    val indexBasic =
+        tuShare.getIndexBasic(
+            IndexBasicParams(),
+        )
+    print("✅ Index basic information fetched successfully: ${indexBasic[0]} \n")
 }
 
-dependencies {
-    implementation(project(":library"))
-    implementation(libs.ktor.client.cio)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.datetime)
+suspend fun indexDailyData(tuShare: TuShare) {
+    println("Index Daily Data feature")
+    tuShare.getIndexDaily(IndexDailyParams())
 }
 
-kotlin {
-    jvmToolchain(17) // Set Java toolchain to 17
-
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-    }
-}
-
-application {
-    mainClass.set("li.mercury.tushare.sample.jvm.AppKt")
+suspend fun swDaily(tuShare: TuShare) {
+    println("SW daily data feature")
+    tuShare.getSwDaily(SwDailyParams())
 }

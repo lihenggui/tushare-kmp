@@ -21,75 +21,144 @@ package li.mercury.tushare.sample.jvm
 
 import kotlinx.coroutines.runBlocking
 import li.mercury.tushare.TuShare
-import li.mercury.tushare.api.stock.basic.models.StockBasicParams
 import li.mercury.tushare.client.LoggingConfig
 import li.mercury.tushare.internal.logging.LogLevel
-import li.mercury.tushare.models.TsCode
 
-/**
- * TuShare Kotlin/JVM example application.
- *
- * This example demonstrates:
- * - TuShare client initialization and configuration
- * - Basic stock information queries
- * - Comprehensive error handling
- */
 fun main() =
     runBlocking {
-        // Sample stock for demonstration
         val sampleStockCode = "600519" // Kweichow Moutai
         val sampleExchange = "SH" // Shanghai Stock Exchange
 
+        println("Running on Java version: ${System.getProperty("java.version")}")
+
         val apiKey = System.getenv("TUSHARE_TOKEN")
-        if (apiKey.isNullOrEmpty()) {
-            println("❌ Please set TUSHARE_TOKEN environment variable.")
-            return@runBlocking
-        }
+            ?: throw IllegalArgumentException("Please set the TUSHARE_TOKEN environment variable with your TuShare API key.")
+        val tuShare =
+            TuShare(
+                token = apiKey,
+                loggingConfig = LoggingConfig(LogLevel.None),
+            )
 
-        try {
-            println("🔧 Initializing TuShare client...")
-            val tuShare =
-                TuShare(
-                    token = apiKey,
-                    loggingConfig = LoggingConfig(LogLevel.None),
-                )
+        while (true) {
+            println("Select an option:")
+            println("1 - Stock Basic Information")
+            println("2 - Market Data")
+            println("3 - Financial Data")
+            println("4 - Reference Data")
+            println("5 - Index Data")
+            println("0 - Quit")
 
-            println("✅ TuShare client created successfully")
+            suspend fun stockBasicInfo() {
+                println("Select an option:")
+                println("1 - Single Stock Query")
+                println("2 - Multiple Stocks Query")
+                println("0 - Back")
 
-            println("\n📊 Testing single stock query (Kweichow Moutai)...")
-            val result =
-                tuShare.getStockBasic(
-                    StockBasicParams(
-                        tsCode = TsCode(sampleStockCode, sampleExchange),
-                    ),
-                )
+                when (val option = readlnOrNull()?.toIntOrNull()) {
+                    1 -> singleStockQuery(tuShare, sampleStockCode, sampleExchange)
+                    2 -> multipleStocksQuery(tuShare)
+                    0 -> {
+                        println("Exiting...")
+                        return
+                    }
 
-            if (result.isNotEmpty()) {
-                val stock = result.first()
-                println("✅ Query successful!")
-                println("  Code: ${stock.tsCode}")
-                println("  Name: ${stock.name}")
-                println("  Industry: ${stock.industry}")
-            } else {
-                println("❌ No data found")
+                    else -> println("Invalid option selected: $option")
+                }
             }
 
-            println("\n🔒 Closing client...")
-            tuShare.close()
-        } catch (e: Exception) {
-            println("❌ Error: ${e.message}")
-            when {
-                e.message?.contains("您上传Token") == true -> {
-                    println("\n💡 Authentication failed. Possible solutions:")
-                    println("   1. Check your TuShare account points at https://tushare.pro/user/token")
-                    println("   2. Ensure your account is activated (verify phone/email)")
-                    println("   3. Get more points by daily sign-in at https://tushare.pro/user/sign")
-                    println("   4. Participate in TuShare community or consider donating for points")
+            suspend fun marketData() {
+                println("Select an option:")
+                println("1 - Daily Market Data")
+                println("2 - Weekly Market Data")
+                println("3 - Monthly Market Data")
+                println("0 - Back")
+
+                when (val option = readlnOrNull()?.toIntOrNull()) {
+                    1 -> dailyMarketData(tuShare)
+                    2 -> weeklyMarketData(tuShare)
+                    3 -> monthlyMarketData(tuShare)
+                    0 -> {
+                        println("Exiting...")
+                        return
+                    }
+
+                    else -> println("Invalid option selected: $option")
+                }
+            }
+
+            suspend fun financialData() {
+                println("Select an option:")
+                println("1 - Income Statements")
+                println("2 - Balance Sheets")
+                println("3 - Cash Flow Statements")
+                println("0 - Back")
+
+                when (val option = readlnOrNull()?.toIntOrNull()) {
+                    1 -> incomeStatements(tuShare)
+                    2 -> balanceSheets(tuShare)
+                    3 -> cashFlowStatements(tuShare)
+                    0 -> {
+                        println("Exiting...")
+                        return
+                    }
+
+                    else -> println("Invalid option selected: $option")
+                }
+            }
+
+            suspend fun referenceData() {
+                println("Select an option:")
+                println("1 - Trade Calendars")
+                println("2 - Stock Companies")
+                println("3 - Stk Premarket")
+                println("0 - Back")
+
+                when (val option = readlnOrNull()?.toIntOrNull()) {
+                    1 -> tradeCalendars(tuShare)
+                    2 -> stockCompanies(tuShare)
+                    3 -> stkPremarket(tuShare)
+                    0 -> {
+                        println("Exiting...")
+                        return
+                    }
+
+                    else -> println("Invalid option selected: $option")
+                }
+            }
+
+            suspend fun indexData() {
+                println("Select an option:")
+                println("1 - Index Basic Info")
+                println("2 - Index Daily Data")
+                println("3 - SW Daily Data")
+                println("0 - Back")
+
+                when (val option = readlnOrNull()?.toIntOrNull()) {
+                    1 -> getIndexBasic(tuShare)
+                    2 -> indexDailyData(tuShare)
+                    3 -> swDaily(tuShare)
+                    0 -> {
+                        println("Exiting...")
+                        return
+                    }
+
+                    else -> println("Invalid option selected: $option")
+                }
+            }
+
+            when (val option = readlnOrNull()?.toIntOrNull()) {
+                1 -> stockBasicInfo()
+                2 -> marketData()
+                3 -> financialData()
+                4 -> referenceData()
+                5 -> indexData()
+                0 -> {
+                    println("Exiting...")
+                    return@runBlocking
                 }
 
-                else -> e.printStackTrace()
+                else -> println("Invalid option selected: $option")
             }
+            println("\n----------\n") // for readability
         }
-
-        println("\n✅ Test completed")
     }
