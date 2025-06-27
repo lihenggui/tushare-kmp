@@ -8,6 +8,7 @@ kotlinxSerialization = "1.8.1"
 ktor = "3.2.0"
 okio = "3.13.0"
 maven-publish = "0.32.0"
+slf4j = "2.0.17"
 turbine = "1.2.1"
 
 [libraries]
@@ -27,6 +28,7 @@ ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-conte
 ktor-client-mock = { group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 
 [plugins]

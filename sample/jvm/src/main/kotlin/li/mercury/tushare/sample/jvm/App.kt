@@ -35,7 +35,7 @@ fun main() =
         val tuShare =
             TuShare(
                 token = apiKey,
-                loggingConfig = LoggingConfig(LogLevel.None),
+                loggingConfig = LoggingConfig(LogLevel.All),
             )
 
         while (true) {
