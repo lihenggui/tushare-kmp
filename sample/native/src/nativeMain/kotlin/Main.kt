@@ -30,17 +30,8 @@ import platform.posix.getenv
 /**
  * TuShare Kotlin/Native example application.
  *
- * This example demonstrates basic TuShare API usage in a Kotlin/Native environment.
- *
- * IMPORTANT LIMITATION:
- * Kotlin/Native does not currently support TLS sessions required for HTTPS connections.
- * This means all TuShare API calls will fail with "TLS sessions are not supported" error.
- * This is a known platform limitation, not a library issue.
- *
- * Recommended alternatives:
- * 1. Use JVM target for production applications
- * 2. Use JavaScript target for web applications
- * 3. Wait for Kotlin/Native TLS support in future versions
+ * This example demonstrates basic TuShare API usage in a Kotlin/Native environment
+ * using the Curl HTTP client engine which supports TLS connections.
  */
 fun main(): Unit =
     runBlocking {
@@ -50,25 +41,77 @@ fun main(): Unit =
 
         @OptIn(ExperimentalForeignApi::class)
         val apiKey = getenv("TUSHARE_TOKEN")?.toKString()
-        val token = requireNotNull(apiKey) { "TUSHARE_TOKEN environment variable must be set." }
+
+        // Debug: Print whether token was found
+        if (apiKey == null) {
+            println("❌ TUSHARE_TOKEN environment variable not found!")
+            println("💡 Solutions:")
+            println("   1. Set environment variable: export TUSHARE_TOKEN=your_token_here")
+            println("   2. Or run: TUSHARE_TOKEN=your_token_here ./gradlew :sample:native:runDebugExecutableNative")
+            println("   3. Or temporarily hardcode your token in the code (NOT recommended for production)")
+            return@runBlocking
+        } else {
+            println("✅ Found TUSHARE_TOKEN (length: ${apiKey.length})")
+            if (apiKey.isBlank()) {
+                println("❌ Token is empty or contains only whitespace!")
+                return@runBlocking
+            }
+            if (apiKey.length < 10) {
+                println("⚠️  Token seems very short (${apiKey.length} chars) - TuShare tokens are typically longer")
+            }
+            // Show first and last few characters for debugging (safely)
+            if (apiKey.length > 6) {
+                println("🔍 Token preview: ${apiKey.take(3)}...${apiKey.takeLast(3)}")
+            }
+        }
+
+        val token = apiKey
+        println("🔧 Creating TuShare client...")
         val tuShare =
             TuShare(
                 token = token,
-                loggingConfig = LoggingConfig(LogLevel.None),
+                loggingConfig = LoggingConfig(LogLevel.All), // Enable logging to debug API calls
             )
+        println("✅ TuShare client created successfully")
 
-        println("\n> Getting Stock basic data...")
-        val stockBasic =
-            tuShare.getStockBasic(
-                StockBasicParams(tsCode = TsCode(sampleStockCode, sampleExchange)),
-            )
-        println("Stock basic data: $stockBasic")
+        try {
+            println("\n> Getting Stock basic data...")
+            val stockBasic =
+                tuShare.getStockBasic(
+                    StockBasicParams(tsCode = TsCode(sampleStockCode, sampleExchange)),
+                )
+            println("Stock basic data: $stockBasic")
+        } catch (e: li.mercury.tushare.internal.exception.AuthenticationException) {
+            println("❌ Authentication failed: ${e.message}")
+            println("💡 This usually means:")
+            println("   1. Your token is invalid or expired")
+            println("   2. Your token doesn't have permission for this API")
+            println("   3. Token format is incorrect")
+            println("   Please verify your TuShare token at: https://tushare.pro/")
+            return@runBlocking
+        } catch (e: Exception) {
+            println("❌ Error: ${e.message}")
+            e.printStackTrace()
+            return@runBlocking
+        }
 
-        println("\n> Getting Index basic data...")
-        val indexBasic =
-            tuShare.getIndexBasic(
-                li.mercury.tushare.api.index.models
-                    .IndexBasicParams(tsCode = TsCode("000001", "SH")),
-            )
-        println("Index basic data: $indexBasic")
+        try {
+            println("\n> Getting Index basic data...")
+            val indexBasic =
+                tuShare.getIndexBasic(
+                    li.mercury.tushare.api.index.models
+                        .IndexBasicParams(tsCode = TsCode(sampleStockCode, sampleExchange)),
+                )
+            println("Index basic data: $indexBasic")
+        } catch (e: li.mercury.tushare.internal.exception.AuthenticationException) {
+            println("❌ Authentication failed: ${e.message}")
+            println("💡 This usually means:")
+            println("   1. Your token is invalid or expired")
+            println("   2. Your token doesn't have permission for this API")
+            println("   3. Token format is incorrect")
+            println("   Please verify your TuShare token at: https://tushare.pro/")
+        } catch (e: Exception) {
+            println("❌ Error: ${e.message}")
+            e.printStackTrace()
+        }
     }
