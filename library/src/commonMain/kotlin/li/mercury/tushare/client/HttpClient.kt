@@ -25,7 +25,6 @@ import io.ktor.client.engine.ProxyBuilder
 import io.ktor.client.engine.http
 import io.ktor.client.plugins.HttpRequestRetry
 import io.ktor.client.plugins.HttpTimeout
-import io.ktor.client.plugins.api.createClientPlugin
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.Logging
@@ -35,34 +34,18 @@ import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
 import io.ktor.util.appendIfNameAbsent
 import io.ktor.utils.io.InternalAPI
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
 import li.mercury.tushare.internal.extension.toKtorLogLevel
 import li.mercury.tushare.internal.extension.toKtorLogger
+import li.mercury.tushare.plugins.AuthPlugin
 import kotlin.time.DurationUnit
 
 /**
  * Default Http Client.
  */
-@OptIn(InternalAPI::class)
+@OptIn(InternalAPI::class, ExperimentalSerializationApi::class)
 internal fun createHttpClient(config: TuShareConfig): HttpClient {
-    val tuShareBodyPlugin =
-        createClientPlugin("TuShareBodyPlugin") {
-            onRequest { request, _ ->
-                val originalBody = request.body
-                if (originalBody is JsonObject) {
-                    val newBody =
-                        buildJsonObject {
-                            put("token", config.token)
-                            originalBody.forEach { (k, v) -> put(k, v) }
-                        }
-                    request.body = newBody
-                }
-            }
-        }
-
     val configuration: HttpClientConfig<*>.() -> Unit = {
         engine {
             config.proxy?.let { proxyConfig ->
@@ -78,7 +61,10 @@ internal fun createHttpClient(config: TuShareConfig): HttpClient {
             register(ContentType.Application.Json, KotlinxSerializationConverter(JsonLenient))
         }
 
-        install(tuShareBodyPlugin)
+        install(AuthPlugin) {
+            token = config.token
+            json = JsonLenient
+        }
 
         install(Logging) {
             val logging = config.logging
