@@ -73,8 +73,7 @@ class TestIndexApi : TestTuShare() {
             assertNotNull(result, "Index factor pro data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testIndexMemberAllWorks() =
         test {
             val config = createConfigWithMockEngine("index_member_all.json")
@@ -82,13 +81,12 @@ class TestIndexApi : TestTuShare() {
 
             val result =
                 tuShareInstance.getIndexMemberAll(
-                    IndexMemberAllParams(),
+                    IndexMemberAllParams(tsCode = TsCode("600519", "SH")),
                 )
             assertNotNull(result, "Index member all data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testIndexClassifyWorks() =
         test {
             val config = createConfigWithMockEngine("index_classify.json")
@@ -96,13 +94,12 @@ class TestIndexApi : TestTuShare() {
 
             val result =
                 tuShareInstance.getIndexClassify(
-                    IndexClassifyParams(),
+                    IndexClassifyParams(indexCode = "801020.SI", parentCode = "0"),
                 )
             assertNotNull(result, "Index classify data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testIndexWeightWorks() =
         test {
             val config = createConfigWithMockEngine("index_weight.json")
@@ -112,6 +109,8 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIndexWeight(
                     IndexWeightParams(
                         indexCode = TsCode("000001", "SH"),
+                        startDate = LocalDate(2018, 1, 25),
+                        endDate = LocalDate(2018, 1, 26)
                     ),
                 )
             assertNotNull(result, "Index weight data should not be null")

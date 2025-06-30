@@ -40,7 +40,7 @@ public data class IndexClassifyResult(
     val industryCode: String,
     /** 是否发布指数*/
     @SerialName("is_pub")
-    val isPub: String,
+    val isPub: String?,
     /** 行业分类来源*/
     val src: String?,
 )
