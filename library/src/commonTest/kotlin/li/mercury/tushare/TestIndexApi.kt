@@ -110,7 +110,7 @@ class TestIndexApi : TestTuShare() {
                     IndexWeightParams(
                         indexCode = TsCode("000001", "SH"),
                         startDate = LocalDate(2018, 1, 25),
-                        endDate = LocalDate(2018, 1, 26)
+                        endDate = LocalDate(2018, 1, 26),
                     ),
                 )
             assertNotNull(result, "Index weight data should not be null")
