@@ -222,8 +222,7 @@ class TestIndexApi : TestTuShare() {
             assertNotNull(result, "Global index data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testDailyInfoWorks() =
         test {
             val config = createConfigWithMockEngine("daily_info.json")

@@ -23,7 +23,6 @@ import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.Exchange
-import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
@@ -37,7 +36,7 @@ public data class DailyInfoResult(
     val tradeDate: LocalDate,
     /** 市场代码 */
     @SerialName("ts_code")
-    val tsCode: TsCode,
+    val tsCode: String,
     /** 市场名称 */
     @SerialName("ts_name")
     val tsName: String,
@@ -62,7 +61,7 @@ public data class DailyInfoResult(
     val vol: Double? = null,
     /** 成交笔数（万笔） */
     @SerialName("trans_count")
-    val transCount: Int,
+    val transCount: Int?,
     /** 平均市盈率 */
     val pe: Double,
     /** 换手率（%） */
