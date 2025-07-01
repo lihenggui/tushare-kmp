@@ -116,8 +116,7 @@ class TestIndexApi : TestTuShare() {
             assertNotNull(result, "Index weight data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testIndexDailyBasicWorks() =
         test {
             val config = createConfigWithMockEngine("index_dailybasic.json")
@@ -125,13 +124,12 @@ class TestIndexApi : TestTuShare() {
 
             val result =
                 tuShareInstance.getIndexDailyBasic(
-                    IndexDailyBasicParams(),
+                    IndexDailyBasicParams(tsCode = TsCode("000001", "SH"), tradeDate = LocalDate(2023, 7, 5)),
                 )
             assertNotNull(result, "Index daily basic data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testIndexMonthlyWorks() =
         test {
             val config = createConfigWithMockEngine("index_monthly.json")
@@ -139,7 +137,7 @@ class TestIndexApi : TestTuShare() {
 
             val result =
                 tuShareInstance.getIndexMonthly(
-                    IndexMonthlyParams(),
+                    IndexMonthlyParams(tsCode = TsCode("000001", "SH"), tradeDate = LocalDate(2023, 7, 5)),
                 )
             assertNotNull(result, "Index monthly data should not be null")
         }
