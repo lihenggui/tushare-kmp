@@ -266,8 +266,7 @@ class TestStockBoardApi : TestTuShare() {
             assertNotNull(result, "Consecutive limit up ladder data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testTopListWorks() =
         test {
             val config = createConfigWithMockEngine("top_list.json")
@@ -277,6 +276,7 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getTopList(
                     TopListParams(
                         tradeDate = LocalDate(2018, 7, 16),
+                        tsCode = TsCode("000001", "SZ")
                     ),
                 )
             assertNotNull(result, "Dragon tiger list daily detail data should not be null")
