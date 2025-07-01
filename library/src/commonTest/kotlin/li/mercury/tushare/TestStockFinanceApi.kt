@@ -52,8 +52,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Income statement data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testBalanceSheetWorks() =
         test {
             val config = createConfigWithMockEngine("balancesheet.json")
