@@ -282,8 +282,7 @@ class TestStockBoardApi : TestTuShare() {
             assertNotNull(result, "Dragon tiger list daily detail data should not be null")
         }
 
-    //    @Test
-    // Skipped due to permission issues
+    @Test
     fun testTopInstWorks() =
         test {
             val config = createConfigWithMockEngine("top_inst.json")
@@ -293,6 +292,7 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getTopInst(
                     TopInstParams(
                         tradeDate = LocalDate(2018, 7, 16),
+                        tsCode = TsCode("000001", "SZ"),
                     ),
                 )
             assertNotNull(result, "Dragon tiger list institutional detail data should not be null")
