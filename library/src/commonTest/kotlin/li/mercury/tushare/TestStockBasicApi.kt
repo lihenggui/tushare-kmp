@@ -115,8 +115,7 @@ class TestStockBasicApi : TestTuShare() {
             assertNotNull(result, "Stock pre-market data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testTradeCalWorks() =
         test {
             val config = createConfigWithMockEngine("trade_cal.json")

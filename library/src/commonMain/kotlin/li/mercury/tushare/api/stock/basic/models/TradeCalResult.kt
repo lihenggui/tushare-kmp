@@ -38,7 +38,7 @@ public data class TradeCalResult(
     val calDate: LocalDate,
     /** 是否交易：0休市 1交易 */
     @SerialName("is_open")
-    val isOpen: String,
+    val isOpen: Int,
     /** 上一个交易日 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("pretrade_date")
