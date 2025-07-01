@@ -1,0 +1,37 @@
+{
+  "request_id": "c5081cb4-fdef-4775-9c89-fc7035d4f6e5",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "close",
+      "open",
+      "high",
+      "low",
+      "pre_close",
+      "change",
+      "pct_chg",
+      "vol",
+      "amount"
+    ],
+    "items": [
+      [
+        "000001.SH",
+        "20190329",
+        3090.758,
+        3058.8016,
+        3093.0329,
+        2987.7717,
+        3104.1487,
+        -13.3907,
+        -0.0043,
+        168835655600.0,
+        1688150618307.0
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}
