@@ -256,7 +256,7 @@ class TestIndexApi : TestTuShare() {
                 tuShareInstance.getIndexDaily(
                     IndexDailyParams(
                         tsCode = TsCode("000001", "SH"),
-                        tradeDate = LocalDate(2023, 7, 5)
+                        tradeDate = LocalDate(2023, 7, 5),
                     ),
                 )
             assertNotNull(result, "Index daily data should not be null")
