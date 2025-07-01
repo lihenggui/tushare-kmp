@@ -96,8 +96,7 @@ class TestStockBoardApi : TestTuShare() {
             assertNotNull(result, "Eastmoney hot stock data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testThsIndexWorks() =
         test {
             val config = createConfigWithMockEngine("ths_index.json")
@@ -107,7 +106,7 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getThsIndex(
                     ThsIndexParams(
                         exchange = "A",
-                        type = ThsIndexType.THEME,
+                        type = ThsIndexType.REGION,
                     ),
                 )
             assertNotNull(result, "THS concept and industry index data should not be null")
