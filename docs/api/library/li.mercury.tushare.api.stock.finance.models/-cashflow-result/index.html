@@ -1,0 +1,494 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CashflowResult</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            TuShare Kotlin API
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":library:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="library::li.mercury.tushare.api.stock.finance.models/CashflowResult///PointingToDeclaration//1482069898">
+  <div class="breadcrumbs"><a href="../../index.html">library</a><span class="delimiter">/</span><a href="../index.html">li.mercury.tushare.api.stock.finance.models</a><span class="delimiter">/</span><span class="current">CashflowResult</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Cashflow</span><wbr><span><span>Result</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">CashflowResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>tsCode<span class="token operator">: </span><a href="../../li.mercury.tushare.models/-ts-code/index.html">TsCode</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>annDate<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fAnnDate<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endDate<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>compType<span class="token operator">: </span><a href="../-company-type/index.html">CompanyType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>reportType<span class="token operator">: </span><a href="../-report-type/index.html">ReportType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>netProfit<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>finanExp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cFrSaleSg<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>recpTaxRends<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cInfFrOperateA<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cPaidGoodsS<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cPaidToForEmpl<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cPaidForTaxes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stCashOutAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>nCashflowAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stotInflowsInvAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stotOutInvAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>nCashflowInvAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stotCashInFncAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stotCashoutFncAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>nCashFlowsFncAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>effFxFluCash<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>nIncrCashCashEqu<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cCashEquBegPeriod<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cCashEquEndPeriod<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><p class="paragraph">现金流量表返回对象类</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1520978531%2FConstructors%2F1482069898" anchor-label="CashflowResult" id="1520978531%2FConstructors%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cashflow-result.html"><span>Cashflow</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1520978531%2FConstructors%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tsCode<span class="token operator">: </span><a href="../../li.mercury.tushare.models/-ts-code/index.html">TsCode</a><span class="token punctuation">, </span></span><span class="parameter ">annDate<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">fAnnDate<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">endDate<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">compType<span class="token operator">: </span><a href="../-company-type/index.html">CompanyType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">reportType<span class="token operator">: </span><a href="../-report-type/index.html">ReportType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">netProfit<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">finanExp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cFrSaleSg<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">recpTaxRends<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cInfFrOperateA<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cPaidGoodsS<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cPaidToForEmpl<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cPaidForTaxes<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">stCashOutAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">nCashflowAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">stotInflowsInvAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">stotOutInvAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">nCashflowInvAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">stotCashInFncAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">stotCashoutFncAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">nCashFlowsFncAct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">effFxFluCash<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">nIncrCashCashEqu<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cCashEquBegPeriod<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cCashEquEndPeriod<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="12889526%2FProperties%2F1482069898" anchor-label="annDate" id="12889526%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ann-date.html"><span>ann</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="12889526%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span><span class="token punctuation">(</span><span>with<span class="token operator"> = </span><span data-unresolved-link="li.mercury.tushare.utils/LocalDateAsStringSerializer///PointingToDeclaration/">LocalDateAsStringSerializer::class</span></span><wbr><span class="token punctuation">)</span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"ann_date"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="ann-date.html">annDate</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">公告日期</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="70491347%2FProperties%2F1482069898" anchor-label="cCashEquBegPeriod" id="70491347%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="c-cash-equ-beg-period.html"><span>c</span><wbr><span>Cash</span><wbr><span>Equ</span><wbr><span>Beg</span><wbr><span><span>Period</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="70491347%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"c_cash_equ_beg_period"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="c-cash-equ-beg-period.html">cCashEquBegPeriod</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">期初现金及现金等价物余额</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1885878884%2FProperties%2F1482069898" anchor-label="cCashEquEndPeriod" id="-1885878884%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="c-cash-equ-end-period.html"><span>c</span><wbr><span>Cash</span><wbr><span>Equ</span><wbr><span>End</span><wbr><span><span>Period</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1885878884%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"c_cash_equ_end_period"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="c-cash-equ-end-period.html">cCashEquEndPeriod</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">期末现金及现金等价物余额</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="768783067%2FProperties%2F1482069898" anchor-label="cFrSaleSg" id="768783067%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="c-fr-sale-sg.html"><span>c</span><wbr><span>Fr</span><wbr><span>Sale</span><wbr><span><span>Sg</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="768783067%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"c_fr_sale_sg"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="c-fr-sale-sg.html">cFrSaleSg</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">销售商品、提供劳务收到的现金</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1303511310%2FProperties%2F1482069898" anchor-label="cInfFrOperateA" id="1303511310%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="c-inf-fr-operate-a.html"><span>c</span><wbr><span>Inf</span><wbr><span>Fr</span><wbr><span>Operate</span><wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1303511310%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"c_inf_fr_operate_a"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="c-inf-fr-operate-a.html">cInfFrOperateA</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">经营活动现金流入小计</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-110078548%2FProperties%2F1482069898" anchor-label="compType" id="-110078548%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="comp-type.html"><span>comp</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-110078548%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"comp_type"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="comp-type.html">compType</a><span class="token operator">: </span><a href="../-company-type/index.html">CompanyType</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">公司类型</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1104041382%2FProperties%2F1482069898" anchor-label="cPaidForTaxes" id="1104041382%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="c-paid-for-taxes.html"><span>c</span><wbr><span>Paid</span><wbr><span>For</span><wbr><span><span>Taxes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1104041382%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"c_paid_for_taxes"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="c-paid-for-taxes.html">cPaidForTaxes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">支付的各项税费</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2046433511%2FProperties%2F1482069898" anchor-label="cPaidGoodsS" id="-2046433511%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="c-paid-goods-s.html"><span>c</span><wbr><span>Paid</span><wbr><span>Goods</span><wbr><span><span>S</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2046433511%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"c_paid_goods_s"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="c-paid-goods-s.html">cPaidGoodsS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">购买商品、接受劳务支付的现金</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="394725074%2FProperties%2F1482069898" anchor-label="cPaidToForEmpl" id="394725074%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="c-paid-to-for-empl.html"><span>c</span><wbr><span>Paid</span><wbr><span>To</span><wbr><span>For</span><wbr><span><span>Empl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="394725074%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"c_paid_to_for_empl"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="c-paid-to-for-empl.html">cPaidToForEmpl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">支付给职工以及为职工支付的现金</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1232943658%2FProperties%2F1482069898" anchor-label="effFxFluCash" id="1232943658%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="eff-fx-flu-cash.html"><span>eff</span><wbr><span>Fx</span><wbr><span>Flu</span><wbr><span><span>Cash</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1232943658%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"eff_fx_flu_cash"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="eff-fx-flu-cash.html">effFxFluCash</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">汇率变动对现金的影响</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="449247484%2FProperties%2F1482069898" anchor-label="endDate" id="449247484%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="end-date.html"><span>end</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="449247484%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span><span class="token punctuation">(</span><span>with<span class="token operator"> = </span><span data-unresolved-link="li.mercury.tushare.utils/LocalDateAsStringSerializer///PointingToDeclaration/">LocalDateAsStringSerializer::class</span></span><wbr><span class="token punctuation">)</span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"end_date"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="end-date.html">endDate</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">报告期</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-897004884%2FProperties%2F1482069898" anchor-label="fAnnDate" id="-897004884%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="f-ann-date.html"><span>f</span><wbr><span>Ann</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-897004884%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span><span class="token punctuation">(</span><span>with<span class="token operator"> = </span><span data-unresolved-link="li.mercury.tushare.utils/LocalDateAsStringSerializer///PointingToDeclaration/">LocalDateAsStringSerializer::class</span></span><wbr><span class="token punctuation">)</span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"f_ann_date"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="f-ann-date.html">fAnnDate</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/LocalDate///PointingToDeclaration/">LocalDate</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">实际公告日期</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1931973264%2FProperties%2F1482069898" anchor-label="finanExp" id="1931973264%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="finan-exp.html"><span>finan</span><wbr><span><span>Exp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1931973264%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"finan_exp"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="finan-exp.html">finanExp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">财务费用</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1043251918%2FProperties%2F1482069898" anchor-label="nCashflowAct" id="-1043251918%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="n-cashflow-act.html"><span>n</span><wbr><span>Cashflow</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1043251918%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"n_cashflow_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="n-cashflow-act.html">nCashflowAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">经营活动产生的现金流量净额</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1077414101%2FProperties%2F1482069898" anchor-label="nCashflowInvAct" id="1077414101%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="n-cashflow-inv-act.html"><span>n</span><wbr><span>Cashflow</span><wbr><span>Inv</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1077414101%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"n_cashflow_inv_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="n-cashflow-inv-act.html">nCashflowInvAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">投资活动产生的现金流量净额</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1588827386%2FProperties%2F1482069898" anchor-label="nCashFlowsFncAct" id="1588827386%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="n-cash-flows-fnc-act.html"><span>n</span><wbr><span>Cash</span><wbr><span>Flows</span><wbr><span>Fnc</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1588827386%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"n_cash_flows_fnc_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="n-cash-flows-fnc-act.html">nCashFlowsFncAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">筹资活动产生的现金流量净额</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1513017060%2FProperties%2F1482069898" anchor-label="netProfit" id="1513017060%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="net-profit.html"><span>net</span><wbr><span><span>Profit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1513017060%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"net_profit"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="net-profit.html">netProfit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">净利润</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2141304948%2FProperties%2F1482069898" anchor-label="nIncrCashCashEqu" id="2141304948%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="n-incr-cash-cash-equ.html"><span>n</span><wbr><span>Incr</span><wbr><span>Cash</span><wbr><span>Cash</span><wbr><span><span>Equ</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2141304948%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"n_incr_cash_cash_equ"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="n-incr-cash-cash-equ.html">nIncrCashCashEqu</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">现金及现金等价物净增加额</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1521601066%2FProperties%2F1482069898" anchor-label="recpTaxRends" id="-1521601066%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="recp-tax-rends.html"><span>recp</span><wbr><span>Tax</span><wbr><span><span>Rends</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1521601066%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"recp_tax_rends"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="recp-tax-rends.html">recpTaxRends</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">收到的税费返还</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1802702937%2FProperties%2F1482069898" anchor-label="reportType" id="-1802702937%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="report-type.html"><span>report</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1802702937%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"report_type"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="report-type.html">reportType</a><span class="token operator">: </span><a href="../-report-type/index.html">ReportType</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">报表类型</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1393352003%2FProperties%2F1482069898" anchor-label="stCashOutAct" id="-1393352003%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="st-cash-out-act.html"><span>st</span><wbr><span>Cash</span><wbr><span>Out</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1393352003%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"st_cash_out_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="st-cash-out-act.html">stCashOutAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">经营活动现金流出小计</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1941103392%2FProperties%2F1482069898" anchor-label="stotCashInFncAct" id="1941103392%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stot-cash-in-fnc-act.html"><span>stot</span><wbr><span>Cash</span><wbr><span>In</span><wbr><span>Fnc</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1941103392%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"stot_cash_in_fnc_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="stot-cash-in-fnc-act.html">stotCashInFncAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">筹资活动现金流入小计</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-743830311%2FProperties%2F1482069898" anchor-label="stotCashoutFncAct" id="-743830311%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stot-cashout-fnc-act.html"><span>stot</span><wbr><span>Cashout</span><wbr><span>Fnc</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-743830311%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"stot_cashout_fnc_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="stot-cashout-fnc-act.html">stotCashoutFncAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">筹资活动现金流出小计</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1837883702%2FProperties%2F1482069898" anchor-label="stotInflowsInvAct" id="-1837883702%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stot-inflows-inv-act.html"><span>stot</span><wbr><span>Inflows</span><wbr><span>Inv</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1837883702%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"stot_inflows_inv_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="stot-inflows-inv-act.html">stotInflowsInvAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">投资活动现金流入小计</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1889102916%2FProperties%2F1482069898" anchor-label="stotOutInvAct" id="-1889102916%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stot-out-inv-act.html"><span>stot</span><wbr><span>Out</span><wbr><span>Inv</span><wbr><span><span>Act</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1889102916%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"stot_out_inv_act"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="stot-out-inv-act.html">stotOutInvAct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">投资活动现金流出小计</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1460992745%2FProperties%2F1482069898" anchor-label="tsCode" id="1460992745%2FProperties%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ts-code.html"><span>ts</span><wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1460992745%2FProperties%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"ts_code"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">val </span><a href="ts-code.html">tsCode</a><span class="token operator">: </span><a href="../../li.mercury.tushare.models/-ts-code/index.html">TsCode</a></div><div class="brief "><p class="paragraph">TS股票代码</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

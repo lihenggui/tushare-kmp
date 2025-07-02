@@ -1,0 +1,190 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>StockFlowApiInterface</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            TuShare Kotlin API
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":library:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="library::li.mercury.tushare.api.stock.flow/StockFlowApiInterface///PointingToDeclaration//1482069898">
+  <div class="breadcrumbs"><a href="../../index.html">library</a><span class="delimiter">/</span><a href="../index.html">li.mercury.tushare.api.stock.flow</a><span class="delimiter">/</span><span class="current">StockFlowApiInterface</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Stock</span><wbr><span>Flow</span><wbr><span>Api</span><wbr><span><span>Interface</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">StockFlowApiInterface</a></div><p class="paragraph">股票资金流向相关API接口</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../li.mercury.tushare/-tu-share/index.html">TuShare</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1891735208%2FFunctions%2F1482069898" anchor-label="getMoneyflow" id="-1891735208%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-moneyflow.html"><span>get</span><wbr><span><span>Moneyflow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1891735208%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-moneyflow.html"><span class="token function">getMoneyflow</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-params/index.html">MoneyflowParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-result/index.html">MoneyflowResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取个股资金流向</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="502733338%2FFunctions%2F1482069898" anchor-label="getMoneyflowDc" id="502733338%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-moneyflow-dc.html"><span>get</span><wbr><span>Moneyflow</span><wbr><span><span>Dc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="502733338%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-moneyflow-dc.html"><span class="token function">getMoneyflowDc</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-dc-params/index.html">MoneyflowDcParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-dc-result/index.html">MoneyflowDcResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取东方财富个股资金流向数据</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-346449752%2FFunctions%2F1482069898" anchor-label="getMoneyflowHsgt" id="-346449752%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-moneyflow-hsgt.html"><span>get</span><wbr><span>Moneyflow</span><wbr><span><span>Hsgt</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-346449752%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-moneyflow-hsgt.html"><span class="token function">getMoneyflowHsgt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-hsgt-params/index.html">MoneyflowHsgtParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-hsgt-result/index.html">MoneyflowHsgtResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取沪深港通资金流向</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1483865468%2FFunctions%2F1482069898" anchor-label="getMoneyflowIndDc" id="-1483865468%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-moneyflow-ind-dc.html"><span>get</span><wbr><span>Moneyflow</span><wbr><span>Ind</span><wbr><span><span>Dc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1483865468%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-moneyflow-ind-dc.html"><span class="token function">getMoneyflowIndDc</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-ind-dc-params/index.html">MoneyflowIndDcParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-ind-dc-result/index.html">MoneyflowIndDcResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取东方财富板块资金流向数据</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-899181352%2FFunctions%2F1482069898" anchor-label="getMoneyflowIndThs" id="-899181352%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-moneyflow-ind-ths.html"><span>get</span><wbr><span>Moneyflow</span><wbr><span>Ind</span><wbr><span><span>Ths</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-899181352%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-moneyflow-ind-ths.html"><span class="token function">getMoneyflowIndThs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-ind-ths-params/index.html">MoneyflowIndThsParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-ind-ths-result/index.html">MoneyflowIndThsResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取同花顺行业板块资金流向</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1495417180%2FFunctions%2F1482069898" anchor-label="getMoneyflowMktDc" id="-1495417180%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-moneyflow-mkt-dc.html"><span>get</span><wbr><span>Moneyflow</span><wbr><span>Mkt</span><wbr><span><span>Dc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1495417180%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-moneyflow-mkt-dc.html"><span class="token function">getMoneyflowMktDc</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-mkt-dc-params/index.html">MoneyflowMktDcParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-mkt-dc-result/index.html">MoneyflowMktDcResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取东方财富大盘资金流向数据</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1197077028%2FFunctions%2F1482069898" anchor-label="getMoneyflowThs" id="1197077028%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-moneyflow-ths.html"><span>get</span><wbr><span>Moneyflow</span><wbr><span><span>Ths</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1197077028%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-moneyflow-ths.html"><span class="token function">getMoneyflowThs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-ths-params/index.html">MoneyflowThsParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.flow.models/-moneyflow-ths-result/index.html">MoneyflowThsResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取同花顺个股资金流向</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

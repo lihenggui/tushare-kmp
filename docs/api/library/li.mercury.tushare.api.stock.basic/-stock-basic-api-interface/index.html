@@ -1,0 +1,235 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>StockBasicApiInterface</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            TuShare Kotlin API
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":library:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="library::li.mercury.tushare.api.stock.basic/StockBasicApiInterface///PointingToDeclaration//1482069898">
+  <div class="breadcrumbs"><a href="../../index.html">library</a><span class="delimiter">/</span><a href="../index.html">li.mercury.tushare.api.stock.basic</a><span class="delimiter">/</span><span class="current">StockBasicApiInterface</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Stock</span><wbr><span>Basic</span><wbr><span>Api</span><wbr><span><span>Interface</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">StockBasicApiInterface</a></div><p class="paragraph">股票基础数据API接口</p><p class="paragraph">提供获取股票基础信息的各种接口，包括股票基本信息、公司信息、 管理层信息、交易日历、新股发行等数据。这些接口是股票分析和投资决策的基础。</p><h2 class="">主要功能</h2><ul><li><p class="paragraph"><strong>股票基本信息</strong> - 获取A股市场所有股票的基本信息</p></li><li><p class="paragraph"><strong>公司信息</strong> - 获取上市公司的详细信息</p></li><li><p class="paragraph"><strong>管理层信息</strong> - 获取公司管理层和薪酬信息</p></li><li><p class="paragraph"><strong>交易日历</strong> - 获取股票市场的交易日历</p></li><li><p class="paragraph"><strong>沪深股通</strong> - 获取沪深港通标的股票信息</p></li><li><p class="paragraph"><strong>新股发行</strong> - 获取IPO新股信息</p></li><li><p class="paragraph"><strong>历史数据</strong> - 获取历史股票列表信息</p></li></ul><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">// 获取所有A股基本信息<br>val allStocks = tuShare.getStockBasic(<br>    StockBasicParams(isHs = "N", listStatus = "L")<br>)<br><br>// 获取特定股票信息<br>val stock = tuShare.getStockBasic(<br>    StockBasicParams(tsCode = "000001.SZ")<br>)<br><br>// 获取交易日历<br>val tradeCal = tuShare.getTradeCal(<br>    TradeCalParams(startDate = "20240101", endDate = "20241231")<br>)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../li.mercury.tushare.api.stock.basic.models/-stock-basic-result/index.html"><span>Stock</span><wbr><span>Basic</span><wbr><span><span>Result</span></span></a></div></span></div><div><div class="title"><p class="paragraph">股票基本信息数据结构</p></div></div></div></div><div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../li.mercury.tushare.api.stock.basic.models/-stock-company-result/index.html"><span>Stock</span><wbr><span>Company</span><wbr><span><span>Result</span></span></a></div></span></div><div><div class="title"><p class="paragraph">公司信息数据结构</p></div></div></div></div><div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../li.mercury.tushare.api.stock.basic.models/-trade-cal-result/index.html"><span>Trade</span><wbr><span>Cal</span><wbr><span><span>Result</span></span></a></div></span></div><div><div class="title"><p class="paragraph">交易日历数据结构</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../li.mercury.tushare/-tu-share/index.html">TuShare</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1884490160%2FFunctions%2F1482069898" anchor-label="getBakBasic" id="1884490160%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-bak-basic.html"><span>get</span><wbr><span>Bak</span><wbr><span><span>Basic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1884490160%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-bak-basic.html"><span class="token function">getBakBasic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-bak-basic-params/index.html">BakBasicParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-bak-basic-result/index.html">BakBasicResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取备用基础列表（历史每天股票列表）</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1139564308%2FFunctions%2F1482069898" anchor-label="getHsConst" id="1139564308%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-hs-const.html"><span>get</span><wbr><span>Hs</span><wbr><span><span>Const</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1139564308%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-hs-const.html"><span class="token function">getHsConst</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-hs-const-params/index.html">HsConstParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-hs-const-result/index.html">HsConstResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取沪深股通成份股数据</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="318971518%2FFunctions%2F1482069898" anchor-label="getNameChange" id="318971518%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-name-change.html"><span>get</span><wbr><span>Name</span><wbr><span><span>Change</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="318971518%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-name-change.html"><span class="token function">getNameChange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-name-change-params/index.html">NameChangeParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-name-change-result/index.html">NameChangeResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取股票曾用名信息</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="630229814%2FFunctions%2F1482069898" anchor-label="getNewShare" id="630229814%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-new-share.html"><span>get</span><wbr><span>New</span><wbr><span><span>Share</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="630229814%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-new-share.html"><span class="token function">getNewShare</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-new-share-params/index.html">NewShareParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-new-share-result/index.html">NewShareResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取IPO新股列表数据</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1333742868%2FFunctions%2F1482069898" anchor-label="getStkManagers" id="1333742868%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-stk-managers.html"><span>get</span><wbr><span>Stk</span><wbr><span><span>Managers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1333742868%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-stk-managers.html"><span class="token function">getStkManagers</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-stk-managers-params/index.html">StkManagersParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-stk-managers-result/index.html">StkManagersResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取上市公司管理层信息</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1706271818%2FFunctions%2F1482069898" anchor-label="getStkPremarket" id="1706271818%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-stk-premarket.html"><span>get</span><wbr><span>Stk</span><wbr><span><span>Premarket</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1706271818%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-stk-premarket.html"><span class="token function">getStkPremarket</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-stk-premarket-params/index.html">StkPremarketParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-stk-premarket-result/index.html">StkPremarketResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取股本情况（盘前）数据</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-396606080%2FFunctions%2F1482069898" anchor-label="getStkRewards" id="-396606080%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-stk-rewards.html"><span>get</span><wbr><span>Stk</span><wbr><span><span>Rewards</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-396606080%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-stk-rewards.html"><span class="token function">getStkRewards</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-stk-rewards-params/index.html">StkRewardsParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-stk-rewards-result/index.html">StkRewardsResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取上市公司管理层薪酬和持股情况</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-588925116%2FFunctions%2F1482069898" anchor-label="getStockBasic" id="-588925116%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-stock-basic.html"><span>get</span><wbr><span>Stock</span><wbr><span><span>Basic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-588925116%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-stock-basic.html"><span class="token function">getStockBasic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-stock-basic-params/index.html">StockBasicParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-stock-basic-result/index.html">StockBasicResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取股票基本信息</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2005070106%2FFunctions%2F1482069898" anchor-label="getStockCompany" id="-2005070106%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-stock-company.html"><span>get</span><wbr><span>Stock</span><wbr><span><span>Company</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2005070106%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-stock-company.html"><span class="token function">getStockCompany</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-stock-company-params/index.html">StockCompanyParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-stock-company-result/index.html">StockCompanyResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取上市公司基本信息</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="303853344%2FFunctions%2F1482069898" anchor-label="getTradeCal" id="303853344%2FFunctions%2F1482069898" data-filterable-set=":library:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":library:dokkaHtmlPartial/commonMain" data-filterable-set=":library:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-trade-cal.html"><span>get</span><wbr><span>Trade</span><wbr><span><span>Cal</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="303853344%2FFunctions%2F1482069898"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":library:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-trade-cal.html"><span class="token function">getTradeCal</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="../../li.mercury.tushare.api.stock.basic.models/-trade-cal-params/index.html">TradeCalParams</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../li.mercury.tushare.api.stock.basic.models/-trade-cal-result/index.html">TradeCalResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取交易日历数据</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

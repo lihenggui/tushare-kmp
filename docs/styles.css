@@ -1,0 +1,140 @@
+/* TuShare Kotlin API Documentation Custom Styles */
+
+:root {
+    --color-primary: #1976D2;
+    --color-primary-dark: #1565C0;
+    --color-accent: #FF6F00;
+    --color-success: #4CAF50;
+    --color-warning: #FF9800;
+    --color-error: #F44336;
+    --color-background: #FAFAFA;
+    --color-surface: #FFFFFF;
+    --color-on-surface: #212121;
+    --color-secondary: #757575;
+}
+
+/* Header customization */
+.navigation-wrapper {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.library-name {
+    color: white !important;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+/* Content area improvements */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* API documentation sections */
+.symbol {
+    border-left: 3px solid var(--color-primary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+}
+
+.symbol .symbol-name {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Sample code blocks */
+.sample-block {
+    background: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+.sample-block .keyword {
+    color: #7C4DFF;
+    font-weight: 500;
+}
+
+.sample-block .string {
+    color: #388E3C;
+}
+
+.sample-block .comment {
+    color: #616161;
+    font-style: italic;
+}
+
+/* Parameters and return types */
+.parameters-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.parameters-table th,
+.parameters-table td {
+    border: 1px solid #E0E0E0;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.parameters-table th {
+    background-color: var(--color-background);
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* Navigation improvements */
+.navigation-tabs {
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.navigation-tab {
+    color: var(--color-secondary);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.navigation-tab:hover,
+.navigation-tab.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+/* Footer styling */
+.footer {
+    background: var(--color-background);
+    border-top: 1px solid #E0E0E0;
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-secondary);
+    margin-top: 3rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .symbol {
+        padding-left: 0.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navigation-wrapper,
+    .footer {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 0;
+        max-width: none;
+    }
+}

@@ -42,9 +42,34 @@ import li.mercury.tushare.api.stock.reference.StockReferenceApiInterface
 import li.mercury.tushare.http.HttpRequester
 
 /**
- * Implementation of [TuShare]
+ * [TuShare] 接口的默认实现类
+ * 
+ * 该类通过委托模式整合所有API模块的具体实现，提供统一的接口访问点。
+ * 使用 Kotlin 的委托特性，将各个功能模块的实现委托给相应的API类。
+ * 
+ * ## 实现方式
+ * - 使用委托模式整合各个API模块
+ * - 共享HTTP传输层，提高性能和资源利用率
+ * - 实现 [AutoCloseable] 接口，支持资源自动释放
+ * 
+ * ## API模块组织
+ * - **新闻模块** ([NewsApi]) - 新闻快讯、公告等信息
+ * - **指数模块** ([IndexApi]) - 各类指数数据
+ * - **股票基础** ([StockBasicApi]) - 股票基本信息
+ * - **股票行情** ([StockMarketApi]) - 行情数据
+ * - **股票财务** ([StockFinanceApi]) - 财务数据
+ * - **参考数据** ([StockReferenceApi]) - 股东、概念股等
+ * - **特色数据** ([StockCharacterApi]) - 龙虎榜、机构调研等
+ * - **两融数据** ([StockMarginApi]) - 融资融券数据
+ * - **资金流向** ([StockFlowApi]) - 资金流向数据
+ * - **打板数据** ([StockBoardApi]) - 涨跌停、连板等数据
  *
- * @param requester http transport layer
+ * @param requester HTTP请求传输层，负责与TuShare API服务器的通信
+ * 
+ * @constructor 创建TuShare API实现实例
+ * 
+ * @see TuShare 主接口定义
+ * @see HttpRequester HTTP传输层接口
  */
 internal class TuShareApi(
     private val requester: HttpRequester,

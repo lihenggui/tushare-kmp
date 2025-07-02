@@ -26,11 +26,13 @@ import org.jetbrains.kotlin.gradle.targets.js.testing.KotlinJsTest
 import org.jetbrains.kotlin.gradle.targets.jvm.tasks.KotlinJvmTest
 import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeTest
 import org.jetbrains.kotlin.konan.target.HostManager
+import java.net.URL
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.vanniktech.mavenPublish)
+    id("org.jetbrains.dokka") version "1.9.20"
 }
 
 group = project.property("GROUP") as String
@@ -66,6 +68,40 @@ kotlin {
                 implementation(libs.okio)
                 implementation(libs.turbine)
             }
+        }
+    }
+}
+
+// Dokka configuration
+tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
+    dokkaSourceSets {
+        named("commonMain") {
+            displayName.set("TuShare Kotlin API")
+            platform.set(org.jetbrains.dokka.Platform.common)
+            
+            // Include module description
+            includes.from("Module.md")
+            
+            sourceLink {
+                localDirectory.set(projectDir.resolve("src/commonMain/kotlin"))
+                remoteUrl.set(URL("https://github.com/lihenggui/tushare-kmp/tree/main/library/src/commonMain/kotlin"))
+                remoteLineSuffix.set("#L")
+            }
+            
+            externalDocumentationLink {
+                url.set(URL("https://kotlinlang.org/api/kotlinx.coroutines/"))
+            }
+            
+            externalDocumentationLink {
+                url.set(URL("https://kotlinlang.org/api/kotlinx.serialization/"))
+            }
+            
+            externalDocumentationLink {
+                url.set(URL("https://api.ktor.io/"))
+            }
+            
+            // Samples configuration
+            samples.from("src/commonMain/kotlin")
         }
     }
 }

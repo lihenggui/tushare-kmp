@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>All modules</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="styles/styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="index.html">
+                            TuShare Kotlin API
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageIds="TuShare Kotlin API::.ext/allModules///PointingToDeclaration//0">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <div class="cover ">
+      <p class="paragraph">🚧 <strong>项目开发中</strong> - 此项目正在积极开发中，API 可能会发生变化</p>
+      <h1 class="">TuShare API Kotlin 客户端</h1>
+      <p class="paragraph">LICENSE <a href="https://central.sonatype.com/namespace/li.mercury.tushare"></a></p>
+      <p class="paragraph">用于 <a href="https://tushare.pro/document/2">TuShare 金融数据 API</a> 的 Kotlin 客户端，支持<a href="https://kotlinlang.org/docs/multiplatform.html">Kotlin Multiplatform</a>和<a href="https://kotlinlang.org/docs/coroutines-overview.html">Kotlin Coroutines</a>。</p>
+      <h2 class="">📦 安装配置</h2>
+      <h3 class="">1. 添加依赖</h3>
+      <p class="paragraph">在你的 <code class="lang-kotlin">build.gradle</code> 文件中添加以下依赖：</p>
+      <div class="sample-container">
+        <pre><code class="block lang-groovy" theme="idea">repositories {<br>    mavenCentral()<br>}<br><br>dependencies {<br>    implementation &quot;li.mercury.tushare:tushare-kmp:latest-version&quot;<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h3 class="">2. 选择Ktor Engine</h3>
+      <p class="paragraph">选择并添加一个 <a href="https://ktor.io/docs/http-client-engines.html">Ktor Engine</a> 到你的依赖中：</p>
+      <div class="sample-container">
+        <pre><code class="block lang-groovy" theme="idea">dependencies {<br>    // Android/JVM<br>    implementation &quot;io.ktor:ktor-client-okhttp:ktor-latest-version&quot;<br>    <br>    // iOS/Native<br>    implementation &quot;io.ktor:ktor-client-darwin:ktor-latest-version&quot;<br>    <br>    // JavaScript<br>    implementation &quot;io.ktor:ktor-client-js:ktor-latest-version&quot;<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h3 class="">Kotlin Multiplatform</h3>
+      <p class="paragraph">在Kotlin Multiplatform多平台项目中，你可以将 tushare 客户端依赖添加到 <code class="lang-kotlin">commonMain</code>：</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">kotlin {<br>    sourceSets {<br>        val commonMain by getting {<br>            dependencies {<br>                implementation(&quot;li.mercury.tushare:tushare-kmp:latest-version&quot;)<br>                // 选择一个适合的 Ktor 引擎，这里以cio为例子<br>                implementation(&quot;io.ktor:ktor-client-cio:ktor-latest-version&quot;)<br>            }<br>        }<br>    }<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h3 class="">Maven</h3>
+      <p class="paragraph">你可以在 Maven 项目中使用 JVM 客户端：</p>
+      <div class="sample-container">
+        <pre><code class="block lang-xml" theme="idea">&lt;dependencies&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;li.mercury.tushare&lt;/groupId&gt;<br>        &lt;artifactId&gt;tushare-kmp-jvm&lt;/artifactId&gt;<br>        &lt;version&gt;latest-version&lt;/version&gt;<br>    &lt;/dependency&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;io.ktor&lt;/groupId&gt;<br>        &lt;artifactId&gt;ktor-client-okhttp-jvm&lt;/artifactId&gt;<br>        &lt;version&gt;ktor-latest-version&lt;/version&gt;<br>        &lt;scope&gt;runtime&lt;/scope&gt;<br>    &lt;/dependency&gt;<br>&lt;/dependencies&gt;</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h2 class="">⚡️ 快速开始</h2>
+      <blockquote class="quotation">
+        <p class="paragraph">!NOTE TuShare 建议使用环境变量存储 API token。 <a href="https://tushare.pro/document/2">了解更多最佳实践</a>。</p>
+      </blockquote>
+      <p class="paragraph">创建 <code class="lang-kotlin">TuShare</code> 客户端实例：</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val tuShare = TuShare(<br>    token = &quot;your-tushare-token&quot;,<br>    timeout = Timeout(socket = 60.seconds),<br>    // 其他配置...<br>)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <p class="paragraph">或者使用预配置的 <code class="lang-kotlin">TuShareConfig</code>：</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val config = TuShareConfig(<br>    token = apiToken,<br>    timeout = Timeout(socket = 60.seconds),<br>    // 其他配置...<br>)<br>val tuShare = TuShare(config)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h3 class="">使用示例</h3>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">// 获取股票基本信息<br>val stockBasic = tuShare.stockBasic(<br>    StockBasicParams(<br>        isHs = &quot;N&quot;,<br>        listStatus = &quot;L&quot;<br>    )<br>)<br><br>// 获取日线行情<br>val daily = tuShare.daily(<br>    DailyParams(<br>        tsCode = &quot;000001.SZ&quot;,<br>        startDate = &quot;20240101&quot;,<br>        endDate = &quot;20241231&quot;<br>    )<br>)<br><br>// 获取指数行情<br>val indexDaily = tuShare.indexDaily(<br>    IndexDailyParams(<br>        tsCode = &quot;000001.SH&quot;,<br>        startDate = &quot;20240101&quot;<br>    )<br>)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h2 class="">🎯 支持的功能</h2>
+      <h3 class="">沪深股票</h3>
+      <ul>
+        <li>
+          <p class="paragraph">readme/沪深股票/基础数据/ - 股票基本信息、交易日历、股本情况等</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/沪深股票/行情数据/ - 日线、周线、月线、分钟行情等</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/沪深股票/财务数据/ - 资产负债表、利润表、现金流量表等</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/沪深股票/参考数据/ - 股东信息、概念股分类、大宗交易等</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/沪深股票/特色数据/ - 龙虎榜、机构调研、筹码分布等</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/沪深股票/打板专题数据/ - 涨跌停统计、连板天梯、游资数据等</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/沪深股票/两融及融转通/ - 融资融券、转融通数据</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/沪深股票/资金流向数据/ - 个股资金流向、板块资金流向等</p>
+        </li>
+      </ul>
+      <h3 class="">指数行情</h3>
+      <ul>
+        <li>
+          <p class="paragraph">readme/指数行情/指数基本信息.md - 指数基础信息</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/指数行情/指数日线行情.md - 各类指数日线数据</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/指数行情/指数周线行情.md - 指数周线数据</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/指数行情/指数月线行情.md - 指数月线数据</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/指数行情/申万行业分类.md - 申万行业分类体系</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/指数行情/国际指数.md - 国际主要指数行情</p>
+        </li>
+      </ul>
+      <h3 class="">快讯公告</h3>
+      <ul>
+        <li>
+          <p class="paragraph">readme/快讯公告/新闻快讯.md - 实时新闻数据</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/快讯公告/上市公司全量公告.md - 公司公告信息</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/快讯公告/新闻联播.md - 新闻联播内容</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/快讯公告/上证E互动.md - 投资者互动数据</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/快讯公告/深证互动易.md - 深交所互动数据</p>
+        </li>
+      </ul>
+      <h2 class="">📚 使用指南</h2>
+      <p class="paragraph">详细的使用指南和示例请查看：</p>
+      <ul>
+        <li>
+          <p class="paragraph">readme/README.md</p>
+        </li>
+        <li>
+          <p class="paragraph">readme/通过HTTP调取数据.md</p>
+        </li>
+        <li>
+          <p class="paragraph">各个功能模块的详细文档在 readme/ 目录下</p>
+        </li>
+      </ul>
+      <h2 class="">🌍 多平台支持</h2>
+      <p class="paragraph">该库支持以下平台：</p>
+      <ul>
+        <li>
+          <p class="paragraph"><strong>JVM</strong></p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>Android</strong></p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>iOS</strong></p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>macOS</strong></p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>watchOS</strong> </p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>tvOS</strong></p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>Linux</strong></p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>Windows</strong> </p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>JavaScript</strong></p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>WebAssembly</strong></p>
+        </li>
+      </ul>
+      <p class="paragraph">https://www.jetbrains.com/help/kotlin-multiplatform-dev/supported-platforms.html</p>
+      <h2 class="">🔧 配置选项</h2>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">val tuShare = TuShare(<br>    token = &quot;your-token&quot;,<br>    host = TuShareHost.TuShare,<br>    timeout = Timeout(<br>        socket = 60.seconds,<br>        connect = 30.seconds,<br>        request = 120.seconds<br>    ),<br>    loggingConfig = LoggingConfig(<br>        level = LogLevel.INFO,<br>    ),<br>    retry = RetryStrategy(<br>        maxRetries = 3,<br>    ),<br>    proxy = Socks(<br>        host = &quot;proxy.example.com&quot;,<br>        port = 8080<br>    )<br>)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <h2 class="">⭐️ 支持</h2>
+      <p class="paragraph">欣赏这个项目？以下是你可以帮助的方式：</p>
+      <ol>
+        <li>
+          <p class="paragraph"><strong>Star</strong>: 在右上角给它一个星标，这对我们很重要！</p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>贡献</strong>: 发现问题或有功能想法？提交 PR 吧。</p>
+        </li>
+        <li>
+          <p class="paragraph"><strong>反馈</strong>: 有建议？<a href="https://github.com/lihenggui/tushare-kmp/issues/new">开个 issue</a>。</p>
+        </li>
+      </ol>
+      <h2 class="">📄 许可证</h2>
+      <p class="paragraph">TuShare Kotlin API 客户端是在 LICENSE 下开源的软件。</p>
+      <p class="paragraph"><strong>这是一个非官方库，它与 TuShare 官方无关联也未得到其认可</strong>。欢迎贡献。</p>
+
+      <h2 class="">关于 TuShare</h2>
+      <p class="paragraph"><a href="https://tushare.pro/">TuShare</a> 是一个提供中国金融市场数据的开放平台，包括股票、期货、基金、宏观经济等各类金融数据。该项目是 TuShare API 的非官方 Kotlin 客户端实现。 </p>
+    </div>
+    <h2 class="">All modules:</h2>
+    <div class="table"><a data-name="-299504334%2FMain%2F0" anchor-label="library" id="-299504334%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="library/index.html">library</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-299504334%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Mercury Li - TuShare Kotlin API Client</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
