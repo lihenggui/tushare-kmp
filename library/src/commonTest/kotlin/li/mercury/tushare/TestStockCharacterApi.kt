@@ -104,8 +104,7 @@ class TestStockCharacterApi : TestTuShare() {
             assertNotNull(result, "Stock technical survey data should not be null")
         }
 
-    //    @Test
-    // Test skipped, no permission
+    @Test
     fun testBrokerRecommendWorks() =
         test {
             val config = createConfigWithMockEngine("broker_recommend.json")
@@ -114,7 +113,7 @@ class TestStockCharacterApi : TestTuShare() {
             val result =
                 tuShareInstance.getBrokerRecommend(
                     BrokerRecommendParams(
-                        month = "201801",
+                        month = "202106",
                     ),
                 )
             assertNotNull(result, "Broker recommendation pool data should not be null")
@@ -137,8 +136,7 @@ class TestStockCharacterApi : TestTuShare() {
             assertNotNull(result, "Stock technical factor data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testStkFactorProWorks() =
         test {
             val config = createConfigWithMockEngine("stk_factor_pro.json")
@@ -147,9 +145,9 @@ class TestStockCharacterApi : TestTuShare() {
             val result =
                 tuShareInstance.getStkFactorPro(
                     StkFactorProParams(
-                        tsCode = TsCode("000001", "SZ"),
-                        startDate = LocalDate(2018, 1, 1),
-                        endDate = LocalDate(2018, 12, 31),
+                        tsCode = TsCode("600000", "SH"),
+                        startDate = LocalDate(2022, 5, 1),
+                        endDate = LocalDate(2022, 5, 20),
                     ),
                 )
             assertNotNull(result, "Stock technical factor pro data should not be null")

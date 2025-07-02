@@ -1,0 +1,45 @@
+{
+  "request_id": "fb13fefe-bffa-425f-ae74-7b2eb590cb51",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "ann_date",
+      "end_date",
+      "revenue",
+      "operate_profit",
+      "total_profit",
+      "n_income",
+      "total_assets",
+      "total_hldr_eqy_exc_min_int",
+      "diluted_eps",
+      "diluted_roe",
+      "yoy_net_profit",
+      "bps",
+      "perf_summary",
+      "update_flag"
+    ],
+    "items": [
+      [
+        "600000.SH",
+        "20180106",
+        "20171231",
+        168619000000.0,
+        70174000000.0,
+        69785000000.0,
+        54240000000.0,
+        6135061000000.0,
+        395466000000.0,
+        1.84,
+        14.44,
+        53099000000.0,
+        null,
+        null,
+        "0"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

@@ -35,35 +35,35 @@ public data class MoneyflowResult(
     val tsCode: String,
     /** 股票名称 */
     @SerialName("name")
-    val name: String,
+    val name: String? = null,
     /** 涨跌幅 */
     @SerialName("pct_change")
-    val pctChange: Double,
+    val pctChange: Double? = null,
     /** 最新价 */
     @SerialName("latest")
-    val latest: Double,
+    val latest: Double? = null,
     /** 资金净流入(万元) */
     @SerialName("net_amount")
-    val netAmount: Double,
+    val netAmount: Double? = null,
     /** 5日主力净额(万元) */
     @SerialName("net_d5_amount")
-    val netD5Amount: Double,
+    val netD5Amount: Double? = null,
     /** 今日大单净流入额(万元) */
     @SerialName("buy_lg_amount")
-    val buyLgAmount: Double,
+    val buyLgAmount: Double? = null,
     /** 今日大单净流入占比(%) */
     @SerialName("buy_lg_amount_rate")
-    val buyLgAmountRate: Double,
+    val buyLgAmountRate: Double? = null,
     /** 今日中单净流入额(万元) */
     @SerialName("buy_md_amount")
-    val buyMdAmount: Double,
+    val buyMdAmount: Double? = null,
     /** 今日中单净流入占比(%) */
     @SerialName("buy_md_amount_rate")
-    val buyMdAmountRate: Double,
+    val buyMdAmountRate: Double? = null,
     /** 今日小单净流入额(万元) */
     @SerialName("buy_sm_amount")
-    val buySmAmount: Double,
+    val buySmAmount: Double? = null,
     /** 今日小单净流入占比(%) */
     @SerialName("buy_sm_amount_rate")
-    val buySmAmountRate: Double,
+    val buySmAmountRate: Double? = null,
 )

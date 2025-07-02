@@ -146,7 +146,7 @@ internal class IndexApi(
     override suspend fun getIndexDailyBasic(params: IndexDailyBasicParams): List<IndexDailyBasicResult> {
         val request =
             TuShareRequest(
-                apiName = "index_daily_basic",
+                apiName = "index_dailybasic",
                 params = params.toApiParams(),
             )
         return requester.perform { it.post { setBody(request) }.body() }

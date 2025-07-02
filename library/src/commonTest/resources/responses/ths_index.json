@@ -1,0 +1,35 @@
+{
+  "request_id": "38801c49-7876-4a5a-b8a1-50cbc8c5fd44",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "name",
+      "count",
+      "exchange",
+      "list_date",
+      "type"
+    ],
+    "items": [
+      [
+        "882001.TI",
+        "安徽",
+        159,
+        "A",
+        "20070808",
+        "R"
+      ],
+      [
+        "882024.TI",
+        "山西",
+        40,
+        "A",
+        "20070808",
+        "R"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

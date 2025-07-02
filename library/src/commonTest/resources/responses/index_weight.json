@@ -1,0 +1,29 @@
+{
+  "request_id": "cac53b18-cc50-4b41-bac9-e7b37c286dc7",
+  "code": 0,
+  "data": {
+    "fields": [
+      "index_code",
+      "con_code",
+      "trade_date",
+      "weight"
+    ],
+    "items": [
+      [
+        "399300.SZ",
+        "601318.SH",
+        "20180801",
+        6.1668
+      ],
+      [
+        "399300.SZ",
+        "600519.SH",
+        "20180801",
+        3.4256
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

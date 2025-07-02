@@ -1,0 +1,71 @@
+{
+  "request_id": "88acec26-6f40-4a75-a7e2-64d73eb6e288",
+  "code": 0,
+  "data": {
+    "fields": [
+      "trade_date",
+      "ts_code",
+      "industry",
+      "name",
+      "close",
+      "pct_chg",
+      "amount",
+      "limit_amount",
+      "float_mv",
+      "total_mv",
+      "turnover_ratio",
+      "fd_amount",
+      "first_time",
+      "last_time",
+      "open_times",
+      "up_stat",
+      "limit_times",
+      "limit"
+    ],
+    "items": [
+      [
+        "20220615",
+        "000017.SZ",
+        "交运设备",
+        "深中华A",
+        3.65,
+        9.94,
+        33024970.0,
+        null,
+        1105880679.2,
+        2012420024.8,
+        2.99,
+        24018222.0,
+        "93000",
+        "93000",
+        0,
+        "1/1",
+        1,
+        "U"
+      ],
+      [
+        "20220615",
+        "000025.SZ",
+        "汽车服务",
+        "特  力Ａ",
+        29.54,
+        10.02,
+        1525713872.0,
+        null,
+        11602671572.8,
+        12733462772.8,
+        13.44,
+        82943534.0,
+        "93406",
+        "95957",
+        5,
+        "12/23",
+        1,
+        "U"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

@@ -1,0 +1,37 @@
+{
+  "request_id": "a343c4a0-7088-4095-a6a5-dca5c9a7074f",
+  "code": 0,
+  "data": {
+    "fields": [
+      "l1_code",
+      "l1_name",
+      "l2_code",
+      "l2_name",
+      "l3_code",
+      "l3_name",
+      "ts_code",
+      "name",
+      "in_date",
+      "out_date",
+      "is_new"
+    ],
+    "items": [
+      [
+        "801120.SI",
+        "食品饮料",
+        "801125.SI",
+        "白酒Ⅱ",
+        "851251.SI",
+        "白酒Ⅲ",
+        "600519.SH",
+        "贵州茅台",
+        "20010731",
+        null,
+        "Y"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

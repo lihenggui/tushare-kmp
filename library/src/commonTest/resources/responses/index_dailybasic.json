@@ -1,0 +1,39 @@
+{
+  "request_id": "2f024b8f-3bf4-4abb-9682-2f71484370a4",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "total_mv",
+      "float_mv",
+      "total_share",
+      "float_share",
+      "free_share",
+      "turnover_rate",
+      "turnover_rate_f",
+      "pe",
+      "pe_ttm",
+      "pb"
+    ],
+    "items": [
+      [
+        "000001.SH",
+        "20190329",
+        39595321443689.0,
+        28650714903352.0,
+        4542391607310.0,
+        3352028485268.0,
+        1292150574004.0,
+        1.12,
+        2.9,
+        13.96,
+        13.6,
+        1.5
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}
