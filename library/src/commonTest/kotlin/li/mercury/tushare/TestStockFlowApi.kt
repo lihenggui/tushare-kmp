@@ -32,8 +32,7 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class TestStockFlowApi : TestTuShare() {
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow.json")
