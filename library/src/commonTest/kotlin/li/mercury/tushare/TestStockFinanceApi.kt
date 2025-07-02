@@ -103,8 +103,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Earnings forecast data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testExpressWorks() =
         test {
             val config = createConfigWithMockEngine("express.json")
