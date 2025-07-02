@@ -35,4 +35,5 @@ public enum class ForecastType {
     续盈,
     略增,
     略减,
+    其他,
 }
