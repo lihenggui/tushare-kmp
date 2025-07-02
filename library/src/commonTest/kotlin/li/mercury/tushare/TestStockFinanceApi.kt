@@ -184,8 +184,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Main business composition data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testDisclosureDateWorks() =
         test {
             val config = createConfigWithMockEngine("disclosure_date.json")

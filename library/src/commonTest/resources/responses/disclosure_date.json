@@ -1,0 +1,25 @@
+{
+  "request_id": "76cded2d-578c-4752-8621-a81264bb2ef8",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "ann_date",
+      "end_date",
+      "pre_date",
+      "actual_date"
+    ],
+    "items": [
+      [
+        "000627.SZ",
+        "20181228",
+        "20181231",
+        "20190429",
+        "20190429"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}
