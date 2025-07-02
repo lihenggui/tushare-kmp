@@ -298,8 +298,7 @@ class TestStockBoardApi : TestTuShare() {
             assertNotNull(result, "Dragon tiger list institutional detail data should not be null")
         }
 
-    //    @Test
-    // Skipped due to permission issues
+    @Test
     fun testLimitListDWorks() =
         test {
             val config = createConfigWithMockEngine("limit_list_d.json")
@@ -308,7 +307,7 @@ class TestStockBoardApi : TestTuShare() {
             val result =
                 tuShareInstance.getLimitListD(
                     LimitListDParams(
-                        tradeDate = LocalDate(2018, 7, 16),
+                        tradeDate = LocalDate(2022, 6, 15),
                         limitType = LimitType.U,
                     ),
                 )

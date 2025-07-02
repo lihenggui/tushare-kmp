@@ -20,12 +20,10 @@
 package li.mercury.tushare.api.stock.board.models
 
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.TsCode
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
-import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
 
 @Serializable
 public data class LimitListDResult(
@@ -63,13 +61,11 @@ public data class LimitListDResult(
     @SerialName("fd_amount")
     val fdAmount: Float? = null,
     /** 首次封板时间（跌停无此数据） */
-    @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("first_time")
-    val firstTime: LocalDateTime? = null,
+    val firstTime: String? = null,
     /** 最后封板时间 */
-    @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("last_time")
-    val lastTime: LocalDateTime? = null,
+    val lastTime: String? = null,
     /** 炸板次数（跌停为开板次数） */
     @SerialName("open_times")
     val openTimes: Int? = null,
@@ -77,9 +73,8 @@ public data class LimitListDResult(
     @SerialName("up_stat")
     val upStat: String? = null,
     /** 连板数 */
-    @Serializable(with = LocalDateTimeAsStringSerializer::class)
     @SerialName("limit_times")
-    val limitTimes: LocalDateTime? = null,
+    val limitTimes: Int? = null,
     /** D跌停，U涨停，Z炸板 */
     val limit: String? = null,
 )
