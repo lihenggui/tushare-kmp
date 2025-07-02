@@ -167,8 +167,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Financial audit opinion data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testFinaMainbzWorks() =
         test {
             val config = createConfigWithMockEngine("fina_mainbz.json")
@@ -177,7 +176,7 @@ class TestStockFinanceApi : TestTuShare() {
             val result =
                 tuShareInstance.getFinaMainbz(
                     FinaMainbzParams(
-                        tsCode = TsCode("000001", "SZ"),
+                        tsCode = TsCode("000627", "SZ"),
                         startDate = LocalDate(2018, 1, 1),
                         endDate = LocalDate(2018, 12, 31),
                     ),
