@@ -314,8 +314,7 @@ class TestStockBoardApi : TestTuShare() {
             assertNotNull(result, "Daily limit up/down statistics data should not be null")
         }
 
-    //    @Test
-    // Skipped due to permission issues
+    @Test
     fun testStkAuctionWorks() =
         test {
             val config = createConfigWithMockEngine("stk_auction.json")
@@ -324,7 +323,8 @@ class TestStockBoardApi : TestTuShare() {
             val result =
                 tuShareInstance.getStkAuction(
                     StkAuctionParams(
-                        tradeDate = LocalDate(2018, 7, 16),
+                        tsCode = TsCode("600000", "SH"),
+                        tradeDate = LocalDate(2025, 2, 18),
                     ),
                 )
             assertNotNull(result, "Stock auction trading data should not be null")
