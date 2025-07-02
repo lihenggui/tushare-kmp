@@ -152,8 +152,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Financial indicator data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testFinaAuditWorks() =
         test {
             val config = createConfigWithMockEngine("fina_audit.json")
