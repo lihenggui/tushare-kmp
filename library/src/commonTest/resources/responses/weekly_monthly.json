@@ -1,0 +1,29 @@
+{
+  "request_id": "20250707202613493a71a85a9a3ee",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "open",
+      "high",
+      "low",
+      "close",
+      "vol",
+      "amount"
+    ],
+    "items": [
+      [
+        "000001.SZ",
+        "20250630",
+        9.95,
+        10.75,
+        9.74,
+        10.24,
+        1048803.67,
+        10842511.32
+      ]
+    ]
+  }
+}
