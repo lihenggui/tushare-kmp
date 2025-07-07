@@ -35,8 +35,7 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class TestStockMarginApi : TestTuShare() {
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMarginWorks() =
         test {
             val config = createConfigWithMockEngine("margin.json")
@@ -51,8 +50,7 @@ class TestStockMarginApi : TestTuShare() {
             assertNotNull(result, "Margin trading summary data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMarginDetailWorks() =
         test {
             val config = createConfigWithMockEngine("margin_detail.json")
@@ -144,8 +142,7 @@ class TestStockMarginApi : TestTuShare() {
             assertNotNull(result, "Market making securities lending summary data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testPledgeStatWorks() =
         test {
             val config = createConfigWithMockEngine("pledge_stat.json")
@@ -176,8 +173,7 @@ class TestStockMarginApi : TestTuShare() {
             assertNotNull(result, "Pledge detail data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testRepurchaseWorks() =
         test {
             val config = createConfigWithMockEngine("repurchase.json")

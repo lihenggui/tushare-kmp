@@ -33,4 +33,7 @@ public enum class RepurchaseProgress {
 
     @SerialName("股东大会通过")
     SHAREHOLDER_APPROVED,
+
+    @SerialName("预案")
+    PROPOSAL,
 }
