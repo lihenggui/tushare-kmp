@@ -1,0 +1,71 @@
+{
+  "request_id": "cd503a45-e22c-4745-9f21-eecec4d328d7",
+  "code": 0,
+  "data": {
+    "fields": [
+      "trade_date",
+      "content_type",
+      "ts_code",
+      "name",
+      "pct_change",
+      "close",
+      "net_amount",
+      "net_amount_rate",
+      "buy_elg_amount",
+      "buy_elg_amount_rate",
+      "buy_lg_amount",
+      "buy_lg_amount_rate",
+      "buy_md_amount",
+      "buy_md_amount_rate",
+      "buy_sm_amount",
+      "buy_sm_amount_rate",
+      "buy_sm_amount_stock",
+      "rank"
+    ],
+    "items": [
+      [
+        "20241010",
+        "行业",
+        "BK0475.DC",
+        "银行",
+        3.34,
+        3564.32,
+        3634052608.0,
+        6.32,
+        2967909888.0,
+        5.16,
+        666142720.0,
+        1.16,
+        -1872441600.0,
+        -3.26,
+        -1761611008.0,
+        -3.06,
+        "工商银行",
+        1
+      ],
+      [
+        "20241010",
+        "行业",
+        "BK0425.DC",
+        "建筑材料",
+        3.93,
+        18867.26,
+        3238571776.0,
+        8.84,
+        3886000896.0,
+        10.6,
+        -647429120.0,
+        -1.77,
+        -1557956864.0,
+        -4.25,
+        -1680484864.0,
+        -4.58,
+        "中国建筑",
+        2
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

@@ -1,0 +1,45 @@
+{
+  "request_id": "e1241fdc-cf09-4232-b1ee-6c72b649b131",
+  "code": 0,
+  "data": {
+    "fields": [
+      "trade_date",
+      "close_sh",
+      "pct_change_sh",
+      "close_sz",
+      "pct_change_sz",
+      "net_amount",
+      "net_amount_rate",
+      "buy_elg_amount",
+      "buy_elg_amount_rate",
+      "buy_lg_amount",
+      "buy_lg_amount_rate",
+      "buy_md_amount",
+      "buy_md_amount_rate",
+      "buy_sm_amount",
+      "buy_sm_amount_rate"
+    ],
+    "items": [
+      [
+        "20241010",
+        3301.93,
+        1.32,
+        10471.08,
+        -0.82,
+        -60139020288.0,
+        -2.81,
+        -31675404288.0,
+        -1.48,
+        -28463616000.0,
+        -1.33,
+        6361354240.0,
+        0.3,
+        53777666048.0,
+        2.51
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

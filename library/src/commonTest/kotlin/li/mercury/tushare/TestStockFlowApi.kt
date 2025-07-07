@@ -82,8 +82,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Eastmoney individual stock money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowMktDcWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_mkt_dc.json")
@@ -98,8 +97,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Eastmoney market money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowIndDcWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_ind_dc.json")
@@ -114,8 +112,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Eastmoney sector money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowIndThsWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_ind_ths.json")
