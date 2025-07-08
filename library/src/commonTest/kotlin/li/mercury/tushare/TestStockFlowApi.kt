@@ -48,8 +48,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Individual stock money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowThsWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_ths.json")
