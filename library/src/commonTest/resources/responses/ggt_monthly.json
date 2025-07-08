@@ -1,0 +1,33 @@
+{
+  "request_id": "20250707202502493a71a85a9a3ed",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "fields": [
+      "month",
+      "day_buy_amt",
+      "day_buy_vol",
+      "day_sell_amt",
+      "day_sell_vol",
+      "total_buy_amt",
+      "total_buy_vol",
+      "total_sell_amt",
+      "total_sell_vol",
+      "cat_id"
+    ],
+    "items": [
+      [
+        "201807",
+        1345792.34,
+        1422344.4,
+        1238719.76,
+        1310003.1,
+        33644808.5,
+        35558610.0,
+        30967952.0,
+        32749780.5,
+        "2"
+      ]
+    ]
+  }
+}

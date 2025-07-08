@@ -80,8 +80,7 @@ class TestNewsApi : TestTuShare() {
             assertNotNull(result, "News data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testCctvNewsWorks() =
         test {
             val config = createConfigWithMockEngine("cctv_news.json")

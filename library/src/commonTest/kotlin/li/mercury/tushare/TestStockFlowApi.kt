@@ -32,8 +32,7 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class TestStockFlowApi : TestTuShare() {
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow.json")
@@ -49,8 +48,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Individual stock money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowThsWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_ths.json")
@@ -66,8 +64,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "THS individual stock money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowDcWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_dc.json")
@@ -83,8 +80,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Eastmoney individual stock money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowMktDcWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_mkt_dc.json")
@@ -99,8 +95,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Eastmoney market money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowIndDcWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_ind_dc.json")
@@ -115,8 +110,7 @@ class TestStockFlowApi : TestTuShare() {
             assertNotNull(result, "Eastmoney sector money flow data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testMoneyflowIndThsWorks() =
         test {
             val config = createConfigWithMockEngine("moneyflow_ind_ths.json")

@@ -1,0 +1,55 @@
+{
+  "request_id": "e67df4b6-1ec7-4ff3-8eab-aa6ddc65037e",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "buy_sm_vol",
+      "buy_sm_amount",
+      "sell_sm_vol",
+      "sell_sm_amount",
+      "buy_md_vol",
+      "buy_md_amount",
+      "sell_md_vol",
+      "sell_md_amount",
+      "buy_lg_vol",
+      "buy_lg_amount",
+      "sell_lg_vol",
+      "sell_lg_amount",
+      "buy_elg_vol",
+      "buy_elg_amount",
+      "sell_elg_vol",
+      "sell_elg_amount",
+      "net_mf_vol",
+      "net_mf_amount"
+    ],
+    "items": [
+      [
+        "000627.SZ",
+        "20190315",
+        64180,
+        4405.88,
+        61520,
+        4230.56,
+        76350,
+        5240.27,
+        76737,
+        5275.47,
+        98753,
+        6787.39,
+        98825,
+        6790.12,
+        26820,
+        1840.86,
+        29021,
+        1978.24,
+        5332,
+        401.38
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

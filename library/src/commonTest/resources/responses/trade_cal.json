@@ -1,0 +1,29 @@
+{
+  "request_id": "c35b6cbe-3ea1-4ef2-972f-bf43a79db363",
+  "code": 0,
+  "data": {
+    "fields": [
+      "exchange",
+      "cal_date",
+      "is_open",
+      "pretrade_date"
+    ],
+    "items": [
+      [
+        "SSE",
+        "20251231",
+        1,
+        "20251230"
+      ],
+      [
+        "SSE",
+        "20251230",
+        1,
+        "20251229"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

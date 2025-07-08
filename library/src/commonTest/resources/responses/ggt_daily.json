@@ -1,0 +1,29 @@
+{
+  "request_id": "20250707202352493a71a85a9a3ec",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "fields": [
+      "trade_date",
+      "buy_amount",
+      "buy_volume",
+      "sell_amount",
+      "sell_volume",
+      "day_rank",
+      "total",
+      "cat_id"
+    ],
+    "items": [
+      [
+        "20180716",
+        58457.95,
+        61595.0,
+        49870.94,
+        52841.0,
+        499,
+        2950,
+        "2"
+      ]
+    ]
+  }
+}

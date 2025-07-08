@@ -107,8 +107,7 @@ class TestStockMarketApi : TestTuShare() {
             assertNotNull(result, "Monthly market data should not be null")
         }
 
-    //    @Test
-    // Test skipped, no permission
+    @Test
     fun testWeeklyMonthlyWorks() =
         test {
             val config = createConfigWithMockEngine("weekly_monthly.json")
@@ -155,8 +154,7 @@ class TestStockMarketApi : TestTuShare() {
             assertNotNull(result, "Suspension information data should not be null")
         }
 
-    //    @Test
-    // Test skipped, no permission
+    @Test
     fun testDailyBasicWorks() =
         test {
             val config = createConfigWithMockEngine("daily_basic.json")
@@ -172,8 +170,7 @@ class TestStockMarketApi : TestTuShare() {
             assertNotNull(result, "Daily basic indicators data should not be null")
         }
 
-    //    @Test
-    // Test skipped, no permission
+    @Test
     fun testStkLimitWorks() =
         test {
             val config = createConfigWithMockEngine("stk_limit.json")
@@ -189,8 +186,7 @@ class TestStockMarketApi : TestTuShare() {
             assertNotNull(result, "Daily limit up/down price data should not be null")
         }
 
-    //    @Test
-    // Test skipped, no permission
+    @Test
     fun testGgtDailyWorks() =
         test {
             val config = createConfigWithMockEngine("ggt_daily.json")

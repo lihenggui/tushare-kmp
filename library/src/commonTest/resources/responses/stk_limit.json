@@ -1,0 +1,21 @@
+{
+  "request_id": "20250707202133493a71a85a9a3ea",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "fields": [
+      "trade_date",
+      "ts_code",
+      "up_limit",
+      "down_limit"
+    ],
+    "items": [
+      [
+        "20180716",
+        "000001.SZ",
+        11.27,
+        9.22
+      ]
+    ]
+  }
+}

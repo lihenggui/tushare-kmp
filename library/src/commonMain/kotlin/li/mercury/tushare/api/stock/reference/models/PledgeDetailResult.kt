@@ -53,7 +53,7 @@ public data class PledgeDetailResult(
     val endDate: LocalDate? = null,
     /** 是否已解押 */
     @SerialName("is_release")
-    val isRelease: ReleaseStatus? = null,
+    val isRelease: Int? = null,
     /** 解押日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("release_date")
@@ -74,29 +74,5 @@ public data class PledgeDetailResult(
     val hTotalRatio: Float? = null,
     /** 是否回购 */
     @SerialName("is_buyback")
-    val isBuyback: BuybackStatus? = null,
+    val isBuyback: Int? = null,
 )
-
-/**
- * 是否已解押状态
- */
-@Serializable
-public enum class ReleaseStatus {
-    /** 是 */
-    Y,
-
-    /** 否 */
-    N,
-}
-
-/**
- * 是否回购状态
- */
-@Serializable
-public enum class BuybackStatus {
-    /** 是 */
-    Y,
-
-    /** 否 */
-    N,
-}

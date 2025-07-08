@@ -96,8 +96,7 @@ class TestStockBoardApi : TestTuShare() {
             assertNotNull(result, "Eastmoney hot stock data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testThsIndexWorks() =
         test {
             val config = createConfigWithMockEngine("ths_index.json")
@@ -107,7 +106,7 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getThsIndex(
                     ThsIndexParams(
                         exchange = "A",
-                        type = ThsIndexType.THEME,
+                        type = ThsIndexType.REGION,
                     ),
                 )
             assertNotNull(result, "THS concept and industry index data should not be null")
@@ -267,8 +266,7 @@ class TestStockBoardApi : TestTuShare() {
             assertNotNull(result, "Consecutive limit up ladder data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testTopListWorks() =
         test {
             val config = createConfigWithMockEngine("top_list.json")
@@ -278,13 +276,13 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getTopList(
                     TopListParams(
                         tradeDate = LocalDate(2018, 7, 16),
+                        tsCode = TsCode("000001", "SZ"),
                     ),
                 )
             assertNotNull(result, "Dragon tiger list daily detail data should not be null")
         }
 
-    //    @Test
-    // Skipped due to permission issues
+    @Test
     fun testTopInstWorks() =
         test {
             val config = createConfigWithMockEngine("top_inst.json")
@@ -294,13 +292,13 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getTopInst(
                     TopInstParams(
                         tradeDate = LocalDate(2018, 7, 16),
+                        tsCode = TsCode("000001", "SZ"),
                     ),
                 )
             assertNotNull(result, "Dragon tiger list institutional detail data should not be null")
         }
 
-    //    @Test
-    // Skipped due to permission issues
+    @Test
     fun testLimitListDWorks() =
         test {
             val config = createConfigWithMockEngine("limit_list_d.json")
@@ -309,15 +307,14 @@ class TestStockBoardApi : TestTuShare() {
             val result =
                 tuShareInstance.getLimitListD(
                     LimitListDParams(
-                        tradeDate = LocalDate(2018, 7, 16),
+                        tradeDate = LocalDate(2022, 6, 15),
                         limitType = LimitType.U,
                     ),
                 )
             assertNotNull(result, "Daily limit up/down statistics data should not be null")
         }
 
-    //    @Test
-    // Skipped due to permission issues
+    @Test
     fun testStkAuctionWorks() =
         test {
             val config = createConfigWithMockEngine("stk_auction.json")
@@ -326,7 +323,8 @@ class TestStockBoardApi : TestTuShare() {
             val result =
                 tuShareInstance.getStkAuction(
                     StkAuctionParams(
-                        tradeDate = LocalDate(2018, 7, 16),
+                        tsCode = TsCode("600000", "SH"),
+                        tradeDate = LocalDate(2025, 2, 18),
                     ),
                 )
             assertNotNull(result, "Stock auction trading data should not be null")

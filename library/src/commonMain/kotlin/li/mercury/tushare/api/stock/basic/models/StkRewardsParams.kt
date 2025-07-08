@@ -19,9 +19,11 @@
  */
 package li.mercury.tushare.api.stock.basic.models
 
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import li.mercury.tushare.models.TsCode
+import li.mercury.tushare.utils.LocalDateAsStringSerializer
 
 /**
  * 管理层薪酬和持股API请求参数
@@ -32,6 +34,7 @@ public data class StkRewardsParams(
     @SerialName("ts_code")
     val tsCode: TsCode,
     /** 报告期（格式：YYYYMMDD） */
+    @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("end_date")
-    val endDate: String? = null,
+    val endDate: LocalDate? = null,
 )

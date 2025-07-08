@@ -1,0 +1,29 @@
+{
+  "request_id": "26eff7ad-6c8b-4095-a528-0d090f7e3bb3",
+  "code": 0,
+  "data": {
+    "fields": [
+      "month",
+      "broker",
+      "ts_code",
+      "name"
+    ],
+    "items": [
+      [
+        "202106",
+        "东兴证券",
+        "000066.SZ",
+        "中国长城"
+      ],
+      [
+        "202106",
+        "东兴证券",
+        "000708.SZ",
+        "中信特钢"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

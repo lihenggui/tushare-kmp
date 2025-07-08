@@ -115,8 +115,7 @@ class TestStockBasicApi : TestTuShare() {
             assertNotNull(result, "Stock pre-market data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testTradeCalWorks() =
         test {
             val config = createConfigWithMockEngine("trade_cal.json")
@@ -133,8 +132,7 @@ class TestStockBasicApi : TestTuShare() {
             assertNotNull(result, "Trading calendar data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testStkManagersWorks() =
         test {
             val config = createConfigWithMockEngine("stk_managers.json")
@@ -143,14 +141,13 @@ class TestStockBasicApi : TestTuShare() {
             val result =
                 tuShareInstance.getStkManagers(
                     StkManagersParams(
-                        tsCode = TsCode("000001", "SZ"),
+                        tsCode = TsCode("600000", "SH"),
                     ),
                 )
             assertNotNull(result, "Listed company management data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testStkRewardsWorks() =
         test {
             val config = createConfigWithMockEngine("stk_rewards.json")
@@ -160,6 +157,7 @@ class TestStockBasicApi : TestTuShare() {
                 tuShareInstance.getStkRewards(
                     StkRewardsParams(
                         tsCode = TsCode("000001", "SZ"),
+                        endDate = LocalDate(2014, 12, 31),
                     ),
                 )
             assertNotNull(result, "Management compensation and shareholding data should not be null")

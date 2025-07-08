@@ -1,0 +1,49 @@
+{
+  "request_id": "20250707202243493a71a85a9a3eb",
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "close",
+      "turnover_rate",
+      "turnover_rate_f",
+      "volume_ratio",
+      "pe",
+      "pe_ttm",
+      "pb",
+      "ps",
+      "ps_ttm",
+      "dv_ratio",
+      "dv_ttm",
+      "total_share",
+      "float_share",
+      "free_share",
+      "total_mv",
+      "circ_mv"
+    ],
+    "items": [
+      [
+        "000001.SZ",
+        "20180716",
+        10.24,
+        0.4918,
+        0.5382,
+        0.67,
+        11.271,
+        11.253,
+        1.081,
+        0.835,
+        0.834,
+        1.955,
+        1.952,
+        1717041.8,
+        1569097.5,
+        1476159.5,
+        17582508.0,
+        16067559.0
+      ]
+    ]
+  }
+}

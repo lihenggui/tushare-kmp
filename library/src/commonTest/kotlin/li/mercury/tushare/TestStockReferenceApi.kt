@@ -70,8 +70,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Top 10 float shareholders data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testPledgeStatWorks() =
         test {
             val config = createConfigWithMockEngine("pledge_stat.json")
@@ -86,8 +85,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Pledge statistics data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testPledgeDetailWorks() =
         test {
             val config = createConfigWithMockEngine("pledge_detail.json")
@@ -102,8 +100,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Pledge detail data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testRepurchaseWorks() =
         test {
             val config = createConfigWithMockEngine("repurchase.json")
@@ -119,8 +116,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Stock repurchase data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testConceptWorks() =
         test {
             val config = createConfigWithMockEngine("concept.json")
@@ -135,8 +131,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Concept classification data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testConceptDetailWorks() =
         test {
             val config = createConfigWithMockEngine("concept_detail.json")
@@ -167,8 +162,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Share float unlock data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testBlockTradeWorks() =
         test {
             val config = createConfigWithMockEngine("block_trade.json")
@@ -184,8 +178,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Block trade data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testStockHolderNumberWorks() =
         test {
             val config = createConfigWithMockEngine("stk_holdernumber.json")
@@ -202,8 +195,7 @@ class TestStockReferenceApi : TestTuShare() {
             assertNotNull(result, "Shareholder number data should not be null")
         }
 
-    // Test skipped, no permission
-    // @Test
+    @Test
     fun testStockHolderTradeWorks() =
         test {
             val config = createConfigWithMockEngine("stk_holdertrade.json")

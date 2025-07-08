@@ -35,8 +35,7 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class TestStockFinanceApi : TestTuShare() {
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testIncomeWorks() =
         test {
             val config = createConfigWithMockEngine("income.json")
@@ -53,8 +52,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Income statement data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testBalanceSheetWorks() =
         test {
             val config = createConfigWithMockEngine("balancesheet.json")
@@ -71,8 +69,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Balance sheet data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testCashflowWorks() =
         test {
             val config = createConfigWithMockEngine("cashflow.json")
@@ -89,8 +86,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Cash flow statement data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testForecastWorks() =
         test {
             val config = createConfigWithMockEngine("forecast.json")
@@ -107,8 +103,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Earnings forecast data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testExpressWorks() =
         test {
             val config = createConfigWithMockEngine("express.json")
@@ -140,8 +135,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Dividend data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testFinaIndicatorWorks() =
         test {
             val config = createConfigWithMockEngine("fina_indicator.json")
@@ -158,8 +152,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Financial indicator data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testFinaAuditWorks() =
         test {
             val config = createConfigWithMockEngine("fina_audit.json")
@@ -174,8 +167,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Financial audit opinion data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testFinaMainbzWorks() =
         test {
             val config = createConfigWithMockEngine("fina_mainbz.json")
@@ -184,7 +176,7 @@ class TestStockFinanceApi : TestTuShare() {
             val result =
                 tuShareInstance.getFinaMainbz(
                     FinaMainbzParams(
-                        tsCode = TsCode("000001", "SZ"),
+                        tsCode = TsCode("000627", "SZ"),
                         startDate = LocalDate(2018, 1, 1),
                         endDate = LocalDate(2018, 12, 31),
                     ),
@@ -192,8 +184,7 @@ class TestStockFinanceApi : TestTuShare() {
             assertNotNull(result, "Main business composition data should not be null")
         }
 
-    //    @Test
-//    Skipped due to permission issues
+    @Test
     fun testDisclosureDateWorks() =
         test {
             val config = createConfigWithMockEngine("disclosure_date.json")

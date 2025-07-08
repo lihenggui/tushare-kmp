@@ -1,0 +1,27 @@
+{
+  "request_id": "4339a475-d3b1-4ffe-98dd-b009c4266d15",
+  "code": 0,
+  "data": {
+    "fields": [
+      "trade_date",
+      "ts_code",
+      "name",
+      "close",
+      "pct_change",
+      "turnover_rate",
+      "amount",
+      "l_sell",
+      "l_buy",
+      "l_amount",
+      "net_amount",
+      "net_rate",
+      "amount_rate",
+      "float_values",
+      "reason"
+    ],
+    "items": [],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}

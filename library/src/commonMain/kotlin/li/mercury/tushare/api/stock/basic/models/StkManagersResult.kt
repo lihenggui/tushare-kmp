@@ -50,8 +50,7 @@ public data class StkManagersResult(
     /** 国籍 */
     val national: String? = null,
     /** 出生年月 */
-    @Serializable(with = LocalDateAsStringSerializer::class)
-    val birthday: LocalDate? = null,
+    val birthday: String? = null,
     /** 上任日期 */
     @Serializable(with = LocalDateAsStringSerializer::class)
     @SerialName("begin_date")

@@ -38,7 +38,7 @@ public data class WeeklyMonthlyResult(
     @Serializable(with = LocalDateAsStringSerializer::class)
     val tradeDate: LocalDate,
     /** 频率（week周线/month月线） */
-    val freq: FreqWeekMonth,
+    val freq: FreqWeekMonth? = null,
     /** （周/月）开盘价 */
     val open: Float,
     /** （周/月）最高价 */
@@ -49,14 +49,14 @@ public data class WeeklyMonthlyResult(
     val close: Float,
     /** 上一（周/月）收盘价 */
     @SerialName("pre_close")
-    val preClose: Float,
+    val preClose: Float? = null,
     /** （周/月）成交量 */
     val vol: Float,
     /** （周/月）成交额 */
     val amount: Float,
     /** （周/月）涨跌额 */
-    val change: Float,
+    val change: Float? = null,
     /** （周/月）涨跌幅 */
     @SerialName("pct_chg")
-    val pctChg: Float,
+    val pctChg: Float? = null,
 )
