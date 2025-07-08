@@ -1,0 +1,29 @@
+{
+  "request_id": "a458acbb-de50-42c1-8378-a512a7bd56f4",
+  "code": 0,
+  "data": {
+    "fields": [
+      "ts_code",
+      "trade_date",
+      "price",
+      "vol",
+      "amount",
+      "buyer",
+      "seller"
+    ],
+    "items": [
+      [
+        "600436.SH",
+        "20181227",
+        86.95,
+        9.49,
+        825.16,
+        "安信证券股份有限公司成都交子大道证券营业部",
+        "安信证券股份有限公司成都交子大道证券营业部"
+      ]
+    ],
+    "has_more": false,
+    "count": -1
+  },
+  "msg": ""
+}
