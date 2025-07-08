@@ -276,7 +276,7 @@ class TestStockBoardApi : TestTuShare() {
                 tuShareInstance.getTopList(
                     TopListParams(
                         tradeDate = LocalDate(2018, 7, 16),
-                        tsCode = TsCode("000001", "SZ")
+                        tsCode = TsCode("000001", "SZ"),
                     ),
                 )
             assertNotNull(result, "Dragon tiger list daily detail data should not be null")
