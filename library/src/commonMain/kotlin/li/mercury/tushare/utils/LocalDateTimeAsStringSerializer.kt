@@ -20,6 +20,7 @@
 package li.mercury.tushare.utils
 
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.number
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
@@ -36,7 +37,15 @@ internal object LocalDateTimeAsStringSerializer : KSerializer<LocalDateTime> {
         encoder: Encoder,
         value: LocalDateTime,
     ) {
-        encoder.encodeString(value.toString())
+        // 格式化为 "yyyy-MM-dd HH:mm:ss" 格式
+        val formattedDateTime =
+            "${value.year.toString().padStart(4, '0')}-" +
+                "${value.month.number.toString().padStart(2, '0')}-" +
+                "${value.day.toString().padStart(2, '0')} " +
+                "${value.hour.toString().padStart(2, '0')}:" +
+                "${value.minute.toString().padStart(2, '0')}:" +
+                value.second.toString().padStart(2, '0')
+        encoder.encodeString(formattedDateTime)
     }
 
     override fun deserialize(decoder: Decoder): LocalDateTime {
