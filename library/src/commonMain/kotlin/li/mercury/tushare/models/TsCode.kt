@@ -41,11 +41,11 @@ public data class TsCode(
     init {
         require(code.isNotBlank()) { "Stock code cannot be blank" }
         require(market.isNotBlank()) { "Market code cannot be blank" }
-        // Validate code format based on market
+        // Validate code format based on market - relaxed validation for real API data
         when (market) {
-            "SH", "SZ" -> require(code.matches(Regex("\\d{6}"))) { "Invalid stock code format for $market market: $code" }
-            "SI" -> require(code.matches(Regex("\\d{6}"))) { "Invalid index code format for $market market: $code" }
-            "HK" -> require(code.matches(Regex("\\d{5}"))) { "Invalid HK stock code format: $code" }
+            "SH", "SZ" -> require(code.matches(Regex("[A-Za-z0-9]{4,}"))) { "Invalid stock code format for $market market: $code" }
+            "SI" -> require(code.matches(Regex("[A-Za-z0-9]{4,}"))) { "Invalid index code format for $market market: $code" }
+            "HK" -> require(code.matches(Regex("[A-Za-z0-9]{4,}"))) { "Invalid HK stock code format: $code" }
         }
     }
 

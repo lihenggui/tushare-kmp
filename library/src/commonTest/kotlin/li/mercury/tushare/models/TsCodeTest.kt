@@ -55,18 +55,17 @@ class TsCodeTest {
 
     @Test
     fun testValidationForInvalidCodeFormat() {
-        // Shanghai and Shenzhen market codes should be 6 digits
+        // Codes should be at least 4 alphanumeric characters
         assertFailsWith<IllegalArgumentException> {
-            TsCode("12345", "SH") // 5 digits is invalid
+            TsCode("123", "SH") // Too short (less than 4 characters)
         }
 
         assertFailsWith<IllegalArgumentException> {
-            TsCode("1234567", "SZ") // 7 digits is invalid
+            TsCode("AB", "SZ") // Too short (less than 4 characters)
         }
 
-        // Hong Kong market codes should be 5 digits
         assertFailsWith<IllegalArgumentException> {
-            TsCode("123456", "HK") // 6 digits is invalid
+            TsCode("12@#", "HK") // Contains invalid characters
         }
     }
 
