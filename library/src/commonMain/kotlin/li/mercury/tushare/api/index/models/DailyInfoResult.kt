@@ -45,25 +45,25 @@ public data class DailyInfoResult(
     val comCount: Int,
     /** 总股本（亿股） */
     @SerialName("total_share")
-    val totalShare: Double,
+    val totalShare: Double? = null,
     /** 流通股本（亿股） */
     @SerialName("float_share")
-    val floatShare: Double,
+    val floatShare: Double? = null,
     /** 总市值（亿元） */
     @SerialName("total_mv")
-    val totalMv: Double,
+    val totalMv: Double? = null,
     /** 流通市值（亿元） */
     @SerialName("float_mv")
-    val floatMv: Double,
+    val floatMv: Double? = null,
     /** 交易金额（亿元） */
     val amount: Double,
     /** 成交量（亿股） */
     val vol: Double? = null,
     /** 成交笔数（万笔） */
     @SerialName("trans_count")
-    val transCount: Int?,
+    val transCount: Int? = null,
     /** 平均市盈率 */
-    val pe: Double,
+    val pe: Double? = null,
     /** 换手率（%） */
     val tr: Double? = null,
     /** 交易所代码 */
