@@ -39,15 +39,15 @@ public data class StockCompanyResult(
     val comName: String,
     /** 统一社会信用代码 */
     @SerialName("com_id")
-    val comId: String,
+    val comId: String? = null,
     /** 交易所代码 */
     val exchange: Exchange,
     /** 法人代表 */
     val chairman: String,
     /** 总经理 */
-    val manager: String,
+    val manager: String? = null,
     /** 董秘 */
-    val secretary: String,
+    val secretary: String? = null,
     /** 注册资本（万元） */
     @SerialName("reg_capital")
     val regCapital: Float,
@@ -62,13 +62,13 @@ public data class StockCompanyResult(
     /** 公司介绍 */
     val introduction: String? = null,
     /** 公司主页 */
-    val website: String,
+    val website: String? = null,
     /** 电子邮件 */
-    val email: String,
+    val email: String? = null,
     /** 办公室 */
     val office: String? = null,
     /** 员工人数 */
-    val employees: Int,
+    val employees: Int? = null,
     /** 主要业务及产品 */
     @SerialName("main_business")
     val mainBusiness: String? = null,
