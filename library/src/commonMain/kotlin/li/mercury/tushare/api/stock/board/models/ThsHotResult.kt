@@ -23,7 +23,7 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import li.mercury.tushare.models.TsCode
+import li.mercury.tushare.models.TsCodeOrString
 import li.mercury.tushare.utils.LocalDateAsStringSerializer
 import li.mercury.tushare.utils.LocalDateTimeAsStringSerializer
 
@@ -38,7 +38,7 @@ public data class ThsHotResult(
     val dataType: String? = null,
     /** 股票代码 */
     @SerialName("ts_code")
-    val tsCode: TsCode? = null,
+    val tsCode: TsCodeOrString? = null,
     /** 股票名称 */
     @SerialName("ts_name")
     val tsName: String? = null,

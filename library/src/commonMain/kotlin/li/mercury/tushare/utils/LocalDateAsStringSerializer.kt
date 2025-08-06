@@ -40,7 +40,7 @@ internal object LocalDateAsStringSerializer : KSerializer<LocalDate> {
     }
 
     override fun deserialize(decoder: Decoder): LocalDate {
-        val dateString = decoder.decodeString()
+        val dateString = decoder.decodeString().trim()
         return if (dateString.length == 8) {
             LocalDate.parse("${dateString.substring(0, 4)}-${dateString.substring(4, 6)}-${dateString.substring(6, 8)}")
         } else {
