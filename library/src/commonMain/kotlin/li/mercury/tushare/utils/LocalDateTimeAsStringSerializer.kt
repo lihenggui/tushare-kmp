@@ -50,6 +50,7 @@ internal object LocalDateTimeAsStringSerializer : KSerializer<LocalDateTime> {
 
     override fun deserialize(decoder: Decoder): LocalDateTime {
         val raw = decoder.decodeString().trim()
+
         // 兼容多种时间格式：
         // - "yyyy-MM-dd HH:mm:ss"（官方文档）
         // - "yyyy-MM-dd HH:mm"（部分接口秒数缺失）
@@ -86,11 +87,12 @@ internal object LocalDateTimeAsStringSerializer : KSerializer<LocalDateTime> {
         }
 
         // 最后兜底：尝试把空格替换为 'T'，若缺秒补 ":00"
-        val normalized = buildString {
-            append(raw.replace(' ', 'T'))
-            // 简单判断是否只有到分钟
-            if (length == 16 && this[10] == 'T') append(":00")
-        }
+        val normalized =
+            buildString {
+                append(raw.replace(' ', 'T'))
+                // 简单判断是否只有到分钟
+                if (length == 16 && this[10] == 'T') append(":00")
+            }
         return LocalDateTime.parse(normalized)
     }
 }
