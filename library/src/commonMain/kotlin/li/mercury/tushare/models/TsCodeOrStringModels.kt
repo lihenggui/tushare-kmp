@@ -17,34 +17,50 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package li.mercury.tushare.utils
+package li.mercury.tushare.models
 
-import kotlinx.datetime.LocalDate
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 /**
- * Custom serializer for LocalDate that formats to YYYYMMDD string
+ * 新增一个类型安全的封装，兼容股票代码和特殊字符串
  */
-internal object LocalDateAsStringSerializer : KSerializer<LocalDate> {
-    override val descriptor = PrimitiveSerialDescriptor("LocalDate", PrimitiveKind.STRING)
+@Serializable(with = TsCodeOrStringSerializer::class)
+public sealed class TsCodeOrString {
+    public data class Code(
+        val tsCode: TsCode,
+    ) : TsCodeOrString()
+
+    public data class RawString(
+        val value: String,
+    ) : TsCodeOrString()
+}
+
+public object TsCodeOrStringSerializer : KSerializer<TsCodeOrString> {
+    override val descriptor: SerialDescriptor =
+        PrimitiveSerialDescriptor("TsCodeOrString", PrimitiveKind.STRING)
 
     override fun serialize(
         encoder: Encoder,
-        value: LocalDate,
+        value: TsCodeOrString,
     ) {
-        encoder.encodeString(value.toString().replace("-", ""))
+        when (value) {
+            is TsCodeOrString.Code -> encoder.encodeString(value.tsCode.toString())
+            is TsCodeOrString.RawString -> encoder.encodeString(value.value)
+        }
     }
 
-    override fun deserialize(decoder: Decoder): LocalDate {
-        val dateString = decoder.decodeString().trim()
-        return if (dateString.length == 8) {
-            LocalDate.parse("${dateString.substring(0, 4)}-${dateString.substring(4, 6)}-${dateString.substring(6, 8)}")
-        } else {
-            LocalDate.parse(dateString)
+    override fun deserialize(decoder: Decoder): TsCodeOrString {
+        val value = decoder.decodeString()
+        return try {
+            TsCodeOrString.Code(TsCode.fromString(value))
+        } catch (_: IllegalArgumentException) {
+            TsCodeOrString.RawString(value)
         }
     }
 }
