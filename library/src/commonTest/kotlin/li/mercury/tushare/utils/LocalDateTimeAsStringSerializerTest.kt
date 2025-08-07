@@ -105,4 +105,18 @@ class LocalDateTimeAsStringSerializerTest {
         // Should be equal
         assertEquals(originalDateTime, deserialized.dateTime)
     }
+
+    @Test
+    fun testDeserializeWithoutSeconds_Space() {
+        val jsonString = """{"dateTime":"2025-08-07 14:16"}"""
+        val data = json.decodeFromString(TestData.serializer(), jsonString)
+        assertEquals(LocalDateTime(2025, 8, 7, 14, 16, 0), data.dateTime)
+    }
+
+    @Test
+    fun testDeserializeWithoutSeconds_ISO() {
+        val jsonString = """{"dateTime":"2025-08-07T14:16"}"""
+        val data = json.decodeFromString(TestData.serializer(), jsonString)
+        assertEquals(LocalDateTime(2025, 8, 7, 14, 16, 0), data.dateTime)
+    }
 }

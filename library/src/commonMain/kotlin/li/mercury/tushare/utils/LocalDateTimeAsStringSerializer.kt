@@ -49,16 +49,50 @@ internal object LocalDateTimeAsStringSerializer : KSerializer<LocalDateTime> {
     }
 
     override fun deserialize(decoder: Decoder): LocalDateTime {
-        val dateTimeString = decoder.decodeString()
-        // 处理格式为 "yyyy-MM-dd HH:mm:ss" 的字符串
-        return try {
-            val (date, time) = dateTimeString.split(" ", limit = 2)
-            val (year, month, day) = date.split("-").map { it.toInt() }
-            val (hour, minute, second) = time.split(":").map { it.toInt() }
-            LocalDateTime(year, month, day, hour, minute, second)
-        } catch (e: Exception) {
-            // 尝试标准ISO格式解析
-            LocalDateTime.parse(dateTimeString)
+        val raw = decoder.decodeString().trim()
+
+        // 兼容多种时间格式：
+        // - "yyyy-MM-dd HH:mm:ss"（官方文档）
+        // - "yyyy-MM-dd HH:mm"（部分接口秒数缺失）
+        // - ISO "yyyy-MM-ddTHH:mm[:ss]"（兜底）
+        // 优先用手动解析以保持多平台兼容性而不依赖平台特定的格式化器。
+        fun parseTimeParts(time: String): Triple<Int, Int, Int> {
+            val parts = time.split(":")
+            val hour = parts.getOrNull(0)?.toIntOrNull() ?: 0
+            val minute = parts.getOrNull(1)?.toIntOrNull() ?: 0
+            val secondStr = parts.getOrNull(2) ?: "0"
+            // 去除可能的毫秒/其他尾部（如 30.123）
+            val second = secondStr.takeWhile { it.isDigit() }.toIntOrNull() ?: 0
+            return Triple(hour, minute, second)
         }
+
+        // 如果是包含空格的常见格式
+        if (raw.contains(' ')) {
+            val (date, time) = raw.split(' ', limit = 2)
+            val dateParts = date.split('-')
+            if (dateParts.size == 3) {
+                val year = dateParts[0].toInt()
+                val month = dateParts[1].toInt()
+                val day = dateParts[2].toInt()
+                val (h, m, s) = parseTimeParts(time)
+                return LocalDateTime(year, month, day, h, m, s)
+            }
+        }
+
+        // 如果是 ISO 或者包含 'T' 分隔符
+        if (raw.contains('T')) {
+            // 若没有秒（长度形如 yyyy-MM-ddTHH:mm），补齐秒
+            val iso = if (raw.length == 16 && raw[10] == 'T') "$raw:00" else raw
+            return LocalDateTime.parse(iso)
+        }
+
+        // 最后兜底：尝试把空格替换为 'T'，若缺秒补 ":00"
+        val normalized =
+            buildString {
+                append(raw.replace(' ', 'T'))
+                // 简单判断是否只有到分钟
+                if (length == 16 && this[10] == 'T') append(":00")
+            }
+        return LocalDateTime.parse(normalized)
     }
 }
