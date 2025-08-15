@@ -50,4 +50,8 @@ public data class NewsResult(
      */
     @SerialName("channels")
     val channels: String? = null,
+    /**
+     * 新闻分数
+     */
+    val score: Int? = null,
 )

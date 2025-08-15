@@ -47,4 +47,8 @@ public data class MajorNewsResult(
      * 来源网站
      */
     val src: String,
+    /**
+     * 新闻url
+     */
+    val url: String? = null,
 )
