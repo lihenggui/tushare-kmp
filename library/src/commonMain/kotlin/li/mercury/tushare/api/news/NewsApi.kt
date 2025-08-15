@@ -55,6 +55,7 @@ internal class NewsApi(
             TuShareRequest(
                 apiName = "anns_d",
                 params = params.toApiParams(),
+                fields = "ann_date, ts_code, name, title, url, rec_time",
             )
         return requester.perform { it.post { setBody(request) }.body() }
     }
@@ -83,6 +84,7 @@ internal class NewsApi(
             TuShareRequest(
                 apiName = "news",
                 params = params.toApiParams(),
+                fields = "datetime, content, title, channels, score",
             )
         return requester.perform { it.post { setBody(request) }.body() }
     }
@@ -111,6 +113,7 @@ internal class NewsApi(
             TuShareRequest(
                 apiName = "major_news",
                 params = params.toApiParams(),
+                fields = "pub_time, content, title, src, url",
             )
         return requester.perform { it.post { setBody(request) }.body() }
     }
